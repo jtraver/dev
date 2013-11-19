@@ -79,6 +79,10 @@ function list_repos() {
         {
             type: 'orgs',
             name: 'aerospike'
+        },
+        {
+            type: 'orgs',
+            name: 'citrusleaf'
         }
     ];
     var lines = '';

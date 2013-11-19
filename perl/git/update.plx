@@ -9,7 +9,7 @@ main();
 sub get_repos
 {
     my ($filename) = @_;
-    # system("/usr/local/bin/node ../../node/githubapi/github.js");
+    system("/usr/local/bin/node ../../node/githubapi/github.js");
     my $fileopen = open(REPOS, $filename);
     if (!$fileopen)
     {
@@ -49,9 +49,9 @@ sub get_repos
         }
         else
         {
-            my $cmd = "cd $dir git clone $sshUrl; cd -";
+            my $cmd = "cd $dir ; git clone $sshUrl ; cd -";
             print "$cmd\n";
-            # system($cmd);
+            system($cmd);
         }
     }
 }
