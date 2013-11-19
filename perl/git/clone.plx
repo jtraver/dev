@@ -38,8 +38,7 @@ sub get_repos
         {
             print "need to set upstream for $sshUrl\n";
         }
-        # /Users/jtraver/dev/git/jtraver/
-        my $cmd = "cd ~jtraver/dev/git/$userOrgs; git clone $sshUrl; cd -";
+        my $cmd = "cd ~/dev/git/$userOrgs; git clone $sshUrl; cd -";
         print "$cmd\n";
         system($cmd);
     }
