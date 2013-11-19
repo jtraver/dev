@@ -1,0 +1,26 @@
+{
+  "version": "0.0.1",
+  "name": "githubstuff",
+  "publishConfig": {
+    "proprietary-attribs": false
+  },
+  "description": "github api stuff",
+  "config": {
+    "publishtest": false
+  },
+  "author": "John Traver <jt_verdius@yahoo.com>",
+  "dependencies": {
+    "async": "*"
+  },
+  "bundleDependencies": [
+  ],
+  "devDependencies": {
+  },
+  "engines": {
+    "node": ">=0.6",
+    "npm": "1"
+  },
+  "scripts": {
+  },
+  "license": "Artistic-2.0"
+}
