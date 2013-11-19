@@ -5,12 +5,12 @@ var verbose = false;
 
 main();
 
-function get_repos(type, name, callback) {
+function get_path(path, callback) {
 
     var options = {
         hostname: 'api.github.com',
         port: 443,
-        path: '/' + type + '/' + name + '/repos',
+        path: path,
         method: 'GET'
     }
 
@@ -50,6 +50,15 @@ function get_repos(type, name, callback) {
     });
 }
 
+function get_repos(type, name, callback) {
+    get_path('/' + type + '/' + name + '/repos', function (error, json) {
+        if (error) {
+            return callback(error);
+        }
+        return callback(null, json);
+    });
+}
+
 function main() {
     var repos = [
         {
@@ -68,8 +77,12 @@ function main() {
                 console.error(error);
                 return cb(error);
             }
-            json.forEach(function (repo) {
-                console.log(repo.full_name);
+            // console.log('json = ' + JSON.stringify(json, undefined, 4));
+            json.forEach(function (repoJson) {
+                // console.log(repoJson.full_name);
+                // console.log(repo.name + ' ' + repoJson.name);
+                // console.log(repo.name + ' ' + repoJson.git_url);
+                console.log(repo.name + ' ' + repoJson.ssh_url);
             });
             return cb(null);
         });
