@@ -9,7 +9,7 @@ main();
 sub get_repos
 {
     my ($filename) = @_;
-    # system("/usr/local/bin/node ../../node/githubapi/github.js");
+    system("/usr/local/bin/node ../../node/githubapi/github.js");
     my $fileopen = open(REPOS, $filename);
     if (!$fileopen)
     {
