@@ -1,6 +1,7 @@
 var https = require('https');
 var async = require('async');
 var url = require('url');
+var prompt = require('prompt');
 
 var verbose = false;
 var user;
@@ -68,7 +69,7 @@ function get_repos(type, name, callback) {
     });
 }
 
-function main() {
+function list_repos() {
     var repos = [
         {
             type: 'users',
@@ -111,5 +112,29 @@ function main() {
         if (error) {
             console.error(error);
         }
+    });
+}
+
+function main() {
+    var schema = {
+        properties: {
+            name: {
+                required: true
+            },
+            password: {
+                hidden: true,
+                required: true
+            }
+        }
+    };
+    
+    prompt.get(schema, function (err, result) {
+        if (err) {
+            console.error(err);
+            return;
+        }
+        user = result.name;
+        pass = result.password;
+        list_repos();
     });
 }
