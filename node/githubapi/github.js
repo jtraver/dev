@@ -1,5 +1,6 @@
 var https = require('https');
 var async = require('async');
+var url = require('url');
 
 var verbose = false;
 
@@ -71,20 +72,44 @@ function main() {
         }
     ];
 
-    async.forEachSeries(repos, function (repo, cb) {
+    async.forEachSeries(repos, function (repo, cb1) {
         get_repos(repo.type, repo.name, function (error, json) {
             if (error) {
                 console.error(error);
-                return cb(error);
+                return cb1(error);
             }
+            /*
             // console.log('json = ' + JSON.stringify(json, undefined, 4));
             json.forEach(function (repoJson) {
                 // console.log(repoJson.full_name);
                 // console.log(repo.name + ' ' + repoJson.name);
                 // console.log(repo.name + ' ' + repoJson.git_url);
-                console.log(repo.name + ' ' + repoJson.ssh_url);
+                // console.log(repo.name + ' ' + repoJson.ssh_url);
+                var urlInfo = url.parse(repoJson.url);
+                // console.log('url = ' + JSON.stringify(urlInfo, undefined, 4));
             });
-            return cb(null);
+            return cb1(null);
+            */
+            async.forEachSeries(json, function (repoJson, cb2) {
+                var urlInfo = url.parse(repoJson.url);
+                get_path(urlInfo.path, function (error, fullRepo) {
+                    if (error) {
+                        return cb2(error);
+                    }
+                    if (fullRepo.parent) {
+                        console.log(repo.name + ' ' + repoJson.ssh_url + ' ' + fullRepo.parent.ssh_url);
+                    } else {
+                        console.log(repo.name + ' ' + repoJson.ssh_url);
+                    }
+                    return cb2(null);
+                });
+            }, function (error) {
+                if (error) {
+                    console.error(error);
+                    return cb1(error);
+                }
+                return cb1(null);
+            });
         });
     }, function (error) {
         if (error) {
