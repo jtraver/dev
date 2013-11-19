@@ -1,7 +1,8 @@
-var https = require('https');
 var async = require('async');
-var url = require('url');
+var fs = require('fs');
+var https = require('https');
 var prompt = require('prompt');
+var url = require('url');
 
 var verbose = false;
 var user;
@@ -80,6 +81,7 @@ function list_repos() {
             name: 'aerospike'
         }
     ];
+    var lines = '';
 
     async.forEachSeries(repos, function (repo, cb1) {
         get_repos(repo.type, repo.name, function (error, json) {
@@ -89,15 +91,18 @@ function list_repos() {
             }
             async.forEachSeries(json, function (repoJson, cb2) {
                 var urlInfo = url.parse(repoJson.url);
+                var line;
                 get_path(urlInfo.path, function (error, fullRepo) {
                     if (error) {
                         return cb2(error);
                     }
                     if (fullRepo.parent) {
-                        console.log(repo.name + ' ' + repoJson.ssh_url + ' ' + fullRepo.parent.ssh_url);
+                        line = repo.name + ' ' + repoJson.ssh_url + ' ' + fullRepo.parent.ssh_url;
                     } else {
-                        console.log(repo.name + ' ' + repoJson.ssh_url);
+                        line = repo.name + ' ' + repoJson.ssh_url;
                     }
+                    console.log(line);
+                    lines += line + '\n';
                     return cb2(null);
                 });
             }, function (error) {
@@ -111,7 +116,9 @@ function list_repos() {
     }, function (error) {
         if (error) {
             console.error(error);
+            return;
         }
+        fs.writeFileSync('repos.data', lines);
     });
 }
 
