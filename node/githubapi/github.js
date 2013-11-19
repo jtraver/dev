@@ -3,6 +3,8 @@ var async = require('async');
 var url = require('url');
 
 var verbose = false;
+var user;
+var pass;
 
 main();
 
@@ -13,6 +15,10 @@ function get_path(path, callback) {
         port: 443,
         path: path,
         method: 'GET'
+    }
+
+    if (user && pass) {
+        options.auth = user + ':' + pass;
     }
 
     var req = https.request(options, function (res) {
@@ -32,9 +38,10 @@ function get_path(path, callback) {
                 json = JSON.parse(data, 'utf8');
                 if (verbose) {
                     console.log('json = ' + JSON.stringify(json, undefined, 4));
-                    json.forEach(function (repo) {
-                        console.log(repo.full_name);
-                    });
+                }
+                if (res.statusCode !== 200) {
+                    console.error('headers: ', res.headers);
+                    return callback(new Error(res.statusCode + ' ' + JSON.stringify(json, undefined, 4)));
                 }
                 return callback(null, json);
             } catch (ex) {
@@ -52,6 +59,7 @@ function get_path(path, callback) {
 }
 
 function get_repos(type, name, callback) {
+    console.log(type + ' ' + name);
     get_path('/' + type + '/' + name + '/repos', function (error, json) {
         if (error) {
             return callback(error);
@@ -78,18 +86,6 @@ function main() {
                 console.error(error);
                 return cb1(error);
             }
-            /*
-            // console.log('json = ' + JSON.stringify(json, undefined, 4));
-            json.forEach(function (repoJson) {
-                // console.log(repoJson.full_name);
-                // console.log(repo.name + ' ' + repoJson.name);
-                // console.log(repo.name + ' ' + repoJson.git_url);
-                // console.log(repo.name + ' ' + repoJson.ssh_url);
-                var urlInfo = url.parse(repoJson.url);
-                // console.log('url = ' + JSON.stringify(urlInfo, undefined, 4));
-            });
-            return cb1(null);
-            */
             async.forEachSeries(json, function (repoJson, cb2) {
                 var urlInfo = url.parse(repoJson.url);
                 get_path(urlInfo.path, function (error, fullRepo) {
