@@ -9,7 +9,7 @@ main();
 sub get_repos
 {
     my ($filename) = @_;
-    system("/usr/local/bin/node ../../node/githubapi/github.js");
+    # system("/usr/local/bin/node ../../node/githubapi/github.js");
     my $fileopen = open(REPOS, $filename);
     if (!$fileopen)
     {
@@ -38,9 +38,21 @@ sub get_repos
         {
             print "need to set upstream for $sshUrl\n";
         }
-        my $cmd = "cd ~/dev/git/$userOrgs; git clone $sshUrl; cd -";
-        print "$cmd\n";
-        system($cmd);
+        my $name = $sshUrl;
+        $name =~ s/^.*\/([^\/]+)\.git$/$1/;
+        print "$name\n";
+        my $dir = "../../../../$userOrgs";
+        my $gitdir = "$dir/$name/.git";
+        if (-e $gitdir)
+        {
+            print "$gitdir exists; skipping clone\n";
+        }
+        else
+        {
+            my $cmd = "cd $dir git clone $sshUrl; cd -";
+            print "$cmd\n";
+            # system($cmd);
+        }
     }
 }
 
