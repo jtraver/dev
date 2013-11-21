@@ -1,0 +1,1 @@
+ascli exists test "" Aerospike
