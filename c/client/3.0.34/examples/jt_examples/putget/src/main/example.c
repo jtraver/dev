@@ -46,6 +46,9 @@
 int
 main(int argc, char* argv[])
 {
+    int i1;
+
+	LOG("jtlog");
 	// Parse command line arguments.
 	if (! example_get_opts(argc, argv, EXAMPLE_BASIC_OPTS)) {
 		exit(-1);
@@ -125,42 +128,45 @@ main(int argc, char* argv[])
 	LOG("as_record object to create in database:");
 	example_dump_record(&rec);
 
-	// Try to create the record. This should fail since the record already
-	// exists in the database.
-	if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=
-			AEROSPIKE_ERR_RECORD_EXISTS) {
-		LOG("aerospike_key_put() returned %d - %s, expected "
-				"AEROSPIKE_ERR_RECORD_EXISTS", err.code, err.message);
-		example_cleanup(&as);
-		exit(-1);
-	}
+    for (i1 = 0; i1 < 10; i1++) {
+        printf("\n\nloop %d\n", i1);
+        // Try to create the record. This should fail since the record already
+        // exists in the database.
+        if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=
+                AEROSPIKE_ERR_RECORD_EXISTS) {
+            LOG("aerospike_key_put() returned %d - %s, expected "
+                    "AEROSPIKE_ERR_RECORD_EXISTS", err.code, err.message);
+            example_cleanup(&as);
+            exit(-1);
+        }
 
-	LOG("create failed as expected");
+        // LOG("create failed as expected");
 
-	// Remove the record from the database so we can demonstrate create success.
-	if (aerospike_key_remove(&as, &err, NULL, &g_key) != AEROSPIKE_OK) {
-		LOG("aerospike_key_remove() returned %d - %s", err.code, err.message);
-		example_cleanup(&as);
-		exit(-1);
-	}
+        // Remove the record from the database so we can demonstrate create success.
+        if (aerospike_key_remove(&as, &err, NULL, &g_key) != AEROSPIKE_OK) {
+            LOG("aerospike_key_remove() returned %d - %s", err.code, err.message);
+            example_cleanup(&as);
+            exit(-1);
+        }
 
-	LOG("record removed from database, trying create again");
+        // LOG("record removed from database, trying create again");
 
-	// Try to create the record again. This should succeed since the record is
-	// not currently in the database.
-	if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=
-			AEROSPIKE_OK) {
-		LOG("aerospike_key_put() returned %d - %s", err.code, err.message);
-		example_cleanup(&as);
-		exit(-1);
-	}
+        // Try to create the record again. This should succeed since the record is
+        // not currently in the database.
+        if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=
+                AEROSPIKE_OK) {
+            LOG("aerospike_key_put() returned %d - %s", err.code, err.message);
+            example_cleanup(&as);
+            exit(-1);
+        }
 
-	LOG("create succeeded");
+        // LOG("create succeeded");
 
-	if (! example_read_test_record(&as)) {
-		example_cleanup(&as);
-		exit(-1);
-	}
+        if (! example_read_test_record(&as)) {
+            example_cleanup(&as);
+            exit(-1);
+        }
+    }
 
 	// Cleanup and disconnect from the database cluster.
 	example_cleanup(&as);
