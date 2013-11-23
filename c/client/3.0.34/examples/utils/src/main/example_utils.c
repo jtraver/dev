@@ -350,8 +350,8 @@ example_read_test_record(aerospike* p_as)
 	}
 
 	// Log the result.
-	LOG("record was successfully read from database:");
-	example_dump_record(p_rec);
+	// LOG("record was successfully read from database:");
+	// example_dump_record(p_rec);
 
 	// Destroy the as_record object.
 	as_record_destroy(p_rec);

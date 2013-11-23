@@ -29,6 +29,7 @@
 #include <stddef.h>
 #include <stdint.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include <aerospike/aerospike.h>
 #include <aerospike/aerospike_key.h>
@@ -128,8 +129,10 @@ main(int argc, char* argv[])
 	LOG("as_record object to create in database:");
 	example_dump_record(&rec);
 
-    for (i1 = 0; i1 < 10; i1++) {
-        printf("\n\nloop %d\n", i1);
+    for (i1 = 0; i1 < 1000; i1++) {
+        // printf("\n\nloop %d\n", i1);
+        printf(".");
+        fflush(stdout);
         // Try to create the record. This should fail since the record already
         // exists in the database.
         if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=
@@ -167,6 +170,7 @@ main(int argc, char* argv[])
             exit(-1);
         }
     }
+    printf("\n");
 
 	// Cleanup and disconnect from the database cluster.
 	example_cleanup(&as);
