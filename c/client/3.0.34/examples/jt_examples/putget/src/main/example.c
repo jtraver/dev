@@ -47,7 +47,7 @@
 int
 main(int argc, char* argv[])
 {
-    int i1;
+    int i1, limit1, inc1;
 
 	LOG("jtlog");
 	// Parse command line arguments.
@@ -129,9 +129,14 @@ main(int argc, char* argv[])
 	LOG("as_record object to create in database:");
 	example_dump_record(&rec);
 
-    for (i1 = 0; i1 < 1000; i1++) {
+    limit1 = 10000000;
+    inc1 = limit1 / 79;
+    printf("one dot is %d loops\n", inc1);
+    for (i1 = 0; i1 < limit1; i1++) {
         // printf("\n\nloop %d\n", i1);
-        printf(".");
+        if (i1 % inc1 == 0) {
+            printf(".");
+        }
         fflush(stdout);
         // Try to create the record. This should fail since the record already
         // exists in the database.
