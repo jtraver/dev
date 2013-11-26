@@ -129,7 +129,7 @@ main(int argc, char* argv[])
 	LOG("as_record object to create in database:");
 	example_dump_record(&rec);
 
-    limit1 = 10000000;
+    limit1 = 1000000;
     inc1 = limit1 / 79;
     printf("one dot is %d loops\n", inc1);
     for (i1 = 0; i1 < limit1; i1++) {
