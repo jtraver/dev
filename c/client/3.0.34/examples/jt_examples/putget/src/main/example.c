@@ -129,15 +129,15 @@ main(int argc, char* argv[])
 	LOG("as_record object to create in database:");
 	example_dump_record(&rec);
 
-    limit1 = 1000000;
+    limit1 = 100000;
     inc1 = limit1 / 79;
     printf("one dot is %d loops\n", inc1);
     for (i1 = 0; i1 < limit1; i1++) {
         // printf("\n\nloop %d\n", i1);
         if (i1 % inc1 == 0) {
             printf(".");
+            fflush(stdout);
         }
-        fflush(stdout);
         // Try to create the record. This should fail since the record already
         // exists in the database.
         if (aerospike_key_put(&as, &err, &wpol, &g_key, &rec) !=

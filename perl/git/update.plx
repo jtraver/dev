@@ -138,10 +138,6 @@ sub get_repos
         my $userOrgs = $parts[0];
         my $sshUrl = $parts[1];
         my $parent = $parts[2];
-        if ($userOrgs eq 'jtraver' && defined($parent))
-        {
-            print "need to set upstream for $sshUrl\n";
-        }
         my $name = $sshUrl;
         $name =~ s/^.*\/([^\/]+)\.git$/$1/;
         print "\n\n$userOrgs $name\n";
@@ -155,6 +151,14 @@ sub get_repos
         {
             my $cmd = "cd $dir ; git clone $sshUrl ; cd -";
             # print "$cmd\n";
+            system($cmd);
+        }
+        if ($userOrgs eq 'jtraver' && defined($parent))
+        {
+            print "need to set upstream for $sshUrl to $parent\n";
+            my $cmd = "cd $gitdir; git remote add upstream $parent ; cd -";
+            system($cmd);
+            $cmd = "cd $gitdir; git remote set-url --push upstream '' ; cd -";
             system($cmd);
         }
         update_branches($userOrgs, $name, $dir);

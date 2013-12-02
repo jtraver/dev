@@ -130,7 +130,8 @@ function main() {
     var schema = {
         properties: {
             name: {
-                required: true
+                required: true,
+                message: "jtraver 12"
             },
             password: {
                 hidden: true,
