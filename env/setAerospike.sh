@@ -1,1 +1,1 @@
-cd ~/dev/git/jtraver/test/john/env
+cd ../..//test/john/env
