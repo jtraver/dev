@@ -23,7 +23,8 @@ else
         my $save_rs = $/;
         foreach my $file (sort @files)
         {
-        if ($file !~ /\.py$/)
+        if ($file !~ /\.py$/ &&
+            $file !~ /\.yml$/)
         {
             next;
         }

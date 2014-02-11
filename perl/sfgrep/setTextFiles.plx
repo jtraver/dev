@@ -10,6 +10,7 @@ my $status = 800;
 my $count = 0;
 sub wanted
 {
+        # print "$_\n";
         $count++;
         if ($count % $status == 0)
         {

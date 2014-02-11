@@ -2,7 +2,7 @@
 use diagnostics;
 use warnings;
 use strict;
-my $status = 0;
+my $status = 1;
 my @files;
 my $count = 0;
 $| = 1;
@@ -28,6 +28,7 @@ else
                         next;
                 }
                 $count++;
+                # print "status = $status\n";
                 if ($count % $status == 0)
                 {
                         print ".";
@@ -94,4 +95,8 @@ sub load_files
         close(FILES);
         chomp(@files);
         $status = @files / 79;
+        if ($status <= 1)
+        {
+            $status = 1;
+        }
 }
