@@ -1,1 +1,1 @@
-cd ~/dev/html
+cd ../html

@@ -1,0 +1,19 @@
+echo
+echo ssh citrusleaf@bunnycentos6 ls /mnt
+ssh citrusleaf@bunnycentos6 ls /mnt
+
+echo
+echo ssh citrusleaf@bunnycentos6 ls /mnt/release
+ssh citrusleaf@bunnycentos6 ls /mnt/release
+
+echo
+echo ssh citrusleaf@bunnycentos6 ls /mnt/release/server
+ssh citrusleaf@bunnycentos6 ls /mnt/release/server
+
+echo
+echo ssh citrusleaf@bunnycentos6 ls /mnt/release/server/3.2.0
+ssh citrusleaf@bunnycentos6 ls -RC1 /mnt/release/server/3.2.0
+
+# echo
+# echo ssh citrusleaf@bunnycentos6 ls /mnt/release/server/3.1.14/centos6
+# ssh citrusleaf@bunnycentos6 ls /mnt/release/server/3.1.14/centos6

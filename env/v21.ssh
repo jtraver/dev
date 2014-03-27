@@ -1,0 +1,7 @@
+ssh citrusleaf@v21
+# /etc/fstab
+
+# fs:/citrusleaf/release /mnt/release nfs defaults 0 0
+# fs:/citrusleaf/shared /mnt/shared nfs defaults 0 0
+# fs:/citrusleaf/users /mnt/users nfs defaults 0 0
+

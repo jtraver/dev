@@ -1,1 +1,1 @@
-cd ~/dev/git/jtraver/dev/perl/git
+cd ../perl/git

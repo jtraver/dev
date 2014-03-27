@@ -1,0 +1,1 @@
+/opt/aerospike/bin/asmonitor
