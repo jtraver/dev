@@ -1,9 +1,10 @@
 import os
+import tempfile
 
 pid1 = str(os.getpid())
 print "pid1 = %s" % pid1
 
-filename = "/tmp/" + pid1
+filename = os.path.join(tempfile.gettempdir(), pid1)
 print "filename = %s" % filename
 
 fileh = open(filename, "w");
