@@ -28,7 +28,6 @@ else
                         next;
                 }
                 $count++;
-                # print "status = $status\n";
                 if ($count % $status == 0)
                 {
                         print ".";

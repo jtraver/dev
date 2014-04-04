@@ -5,12 +5,9 @@ use strict;
 use File::Find;
 $| = 1;
 my $status = 800;
-#my $status = 330;
-#my $status = 800;
 my $count = 0;
 sub wanted
 {
-        # print "$_\n";
         $count++;
         if ($count % $status == 0)
         {
