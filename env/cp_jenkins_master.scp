@@ -1,0 +1,11 @@
+mkdir jenkins_master
+scp citrusleaf@v1:/home/jenkins/master/* jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/jenkins.diagnostics.ooom.OutOfOrderBuildMonitor jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/logs jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/plugins jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/scriptler jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/secrets jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/tools jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/updates jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/userContent jenkins_master
+scp -r citrusleaf@v1:/home/jenkins/master/users jenkins_master
