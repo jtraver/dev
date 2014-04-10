@@ -2,4 +2,6 @@
 # scp gmp-5.1.3.tar.xz citrusleaf@bunnycentos6:john/gmp-5.1.3.tar.xz
 # scp citrusleaf@bunnycentos6:john/aerospike-prod-server-3.1.3-el6.tgz centos
 # scp citrusleaf@bunnycentos6:john/aerospike-client-c-3.0.39.el6.x86_64.tgz centos
-scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/os_image .
+# scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/os_image .
+
+scp -r ~jtraver/os_image citrusleaf@v1:john/os_image
