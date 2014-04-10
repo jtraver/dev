@@ -4,4 +4,4 @@
 # scp citrusleaf@bunnycentos6:john/aerospike-client-c-3.0.39.el6.x86_64.tgz centos
 # scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/os_image .
 
-scp -r ~jtraver/os_image citrusleaf@v1:john/os_image
+scp -r ~jtraver/os_image citrusleaf@v1:/mnt/shared/john/os_image
