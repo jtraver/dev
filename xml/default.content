@@ -1,0 +1,55 @@
+<html>
+<head>
+  <title>${BUILD_STATUS} - ${PROJECT_NAME} (#${BUILD_NUMBER})</title>
+</head>
+<body style="font-family: "Helvetica Neue", Helvetica, Sans-serif; font-size: 12px; font-weight: 300;">
+<table style="empty-cells: show; border-collapse: collapse; border-spacing: 0px;">
+    <tr>
+      <td style="margin: 0; padding: 2px 4px; width: 100px; text-align: right; font-weight: bold;">Status:</td>
+      <td style="margin: 0; padding: 2px 4px; width: 400px; text-align: left; font-weight: normal;">${BUILD_STATUS}</td>
+    </tr>
+    <tr>
+      <td style="margin: 0; padding: 2px 4px; width: 100px; text-align: right; font-weight: bold;">Project:</td>
+      <td style="margin: 0; padding: 2px 4px; width: 400px; text-align: left; font-weight: normal;"><a href="${PROJECT_URL}">${PROJECT_NAME}</a></td>
+    </tr>
+    <tr>
+      <td style="margin: 0; padding: 2px 4px; width: 100px; text-align: right; font-weight: bold;">Build #:</td>
+      <td style="margin: 0; padding: 2px 4px; width: 400px; text-align: left; font-weight: normal;"><a href="${BUILD_URL}">${BUILD_NUMBER}</a> (<a href="${BUILD_URL}/console">console</a>)</td>
+    </tr>
+    <tr>
+      <td style="margin: 0; padding: 2px 4px; width: 100px; text-align: right; font-weight: bold;">Build Node:</td>
+      <td style="margin: 0; padding: 2px 4px; width: 400px; text-align: left; font-weight: normal;">${NODE_NAME}</td>
+    </tr>
+    <tr>
+      <td style="margin: 0; padding: 2px 4px; width: 100px; text-align: right; font-weight: bold;">Build Trigger:</td>
+      <td style="margin: 0; padding: 2px 4px; width: 400px; text-align: left; font-weight: normal;">${CAUSE}</td>
+    </tr>
+</table>
+
+<hr>
+
+<h3>FAILED TESTS (if any)</h3>
+<p style="white-space: pre;">
+${FAILED_TESTS}
+</p>
+
+<h3>REGRESSIONS (if any)</h3>
+<p style="white-space: pre;">
+${FAILED_TESTS,onlyRegressions=true}
+</p>
+
+<h3>TEST COUNTS (if any)</h3>
+<p style="white-space: pre;">
+Total: ${TEST_COUNTS,var="total"}
+Pass: ${TEST_COUNTS,var="pass"}
+Fail: ${TEST_COUNTS,var="fail"}
+Skip: ${TEST_COUNTS,var="skip"}
+</p>
+
+
+<hr>
+${SCRIPT, template="qaa_email.template"}
+
+
+</body>
+</html>
