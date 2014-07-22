@@ -17,7 +17,18 @@ print "StrictVersion = %s" % dir(StrictVersion)
 # print "verlib = %s" % dir(verlib)
 
 ver1 = '0.0.1'
-parts = ver1.split('.')
+parts1 = ver1.split('-')
+print "parts1 = %s" % str(parts1)
+parts = parts1[0].split('.')
+print "parts = %s" % str(parts)
+parts[2] = str(int(parts[2]) + 1)
+ver2 = '.'.join(parts)
+print "ver2 = %s" % str(ver2)
+
+ver1 = '0.0.1-1-g8df5492'
+parts1 = ver1.split('-')
+print "parts1 = %s" % str(parts1)
+parts = parts1[0].split('.')
 print "parts = %s" % str(parts)
 parts[2] = str(int(parts[2]) + 1)
 ver2 = '.'.join(parts)
