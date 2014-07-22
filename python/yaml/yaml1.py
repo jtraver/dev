@@ -19,7 +19,12 @@ tags1 = {
 }
 
 with open('tags1.yml', 'w') as outfile:
-    outfile.write( yaml.dump(tags1, default_flow_style=True) )
+    outfile.write( yaml.dump(tags1, default_flow_style=False) )
 
 tags2 = yaml.load(file('tags1.yml'))
 print "tags2 = %s" % str(tags2)
+
+if tags1 == tags2:
+    print "load and dump worked"
+else:
+    print "load and dump did not work"
