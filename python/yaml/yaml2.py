@@ -8,7 +8,7 @@ print "yaml = %s" % dir(yaml)
 # http://stackoverflow.com/questions/12470665/yaml-writing-data-into-yaml-through-python
 
 config1 = {
-    'repos3': [
+    'repos4': [
         {
             'name': 'aerospike-client-c',
             'owner': 'citrusleaf',
