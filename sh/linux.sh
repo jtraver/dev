@@ -14,12 +14,21 @@ fi
 
 cat /etc/issue | grep Debian
 RES1=$?
-
 if [ $RES1 -eq 0 ] ; then
     cat /etc/issue | grep "6."
     RES2=$?
     if [ $RES2 -eq 0 ] ; then
         OS=debian6
+    fi
+fi
+
+cat /etc/issue | grep Ubuntu
+RES1=$?
+if [ $RES1 -eq 0 ] ; then
+    cat /etc/issue | grep "12."
+    RES2=$?
+    if [ $RES2 -eq 0 ] ; then
+        OS=ubuntu12
     fi
 fi
 
