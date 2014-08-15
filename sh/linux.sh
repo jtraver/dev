@@ -2,10 +2,24 @@
 
 OS=`cat /etc/issue`
 
-if [ $? -eq 0 ] ; then
+cat /etc/issue | grep CentOS
+RES1=$?
+if [ $RES1 -eq 0 ] ; then
     cat /etc/issue | grep "6."
-    if [ $? -eq 0 ] ; then
+    RES2=$?
+    if [ $RES2 -eq 0 ] ; then
         OS=centos6
+    fi
+fi
+
+cat /etc/issue | grep Debian
+RES1=$?
+
+if [ $RES1 -eq 0 ] ; then
+    cat /etc/issue | grep "6."
+    RES2=$?
+    if [ $RES2 -eq 0 ] ; then
+        OS=debian6
     fi
 fi
 
