@@ -1,0 +1,56 @@
+[jtraver@localhost centos]$ ansible-playbook
+Usage: ansible-playbook playbook.yml
+
+Options:
+  -D, --diff            when changing (small) files and templates, show the
+                        differences in those files; works great with --check
+  -e EXTRA_VARS, --extra-vars=EXTRA_VARS
+                        set additional variables as key=value or YAML/JSON
+  --list-tasks          list all tasks that would be executed
+  --skip-tags=SKIP_TAGS
+                        only run plays and tasks whose tags do not match these
+                        values
+  --start-at-task=START_AT
+                        start the playbook at the task matching this name
+  --step                one-step-at-a-time: confirm each task before running
+  --syntax-check        perform a syntax check on the playbook, but do not
+                        execute it
+  -t TAGS, --tags=TAGS  only run plays and tasks tagged with these values
+
+
+
+
+
+
+  -k, --ask-pass        ask for SSH password
+  -K, --ask-sudo-pass   ask for sudo password
+  -C, --check           don't make any changes; instead, try to predict some
+                        of the changes that may occur
+  -c CONNECTION, --connection=CONNECTION
+                        connection type to use (default=smart)
+  -f FORKS, --forks=FORKS
+                        specify number of parallel processes to use
+                        (default=5)
+  -h, --help            show this help message and exit
+  -i INVENTORY, --inventory-file=INVENTORY
+                        specify inventory host file
+                        (default=/etc/ansible/hosts)
+  -l SUBSET, --limit=SUBSET
+                        further limit selected hosts to an additional pattern
+  --list-hosts          outputs a list of matching hosts; does not execute
+                        anything else
+  -M MODULE_PATH, --module-path=MODULE_PATH
+                        specify path(s) to module library
+                        (default=/usr/share/ansible/)
+  --private-key=PRIVATE_KEY_FILE
+                        use this file to authenticate the connection
+  -s, --sudo            run operations with sudo (nopasswd)
+  -U SUDO_USER, --sudo-user=SUDO_USER
+                        desired sudo user (default=root)
+  -T TIMEOUT, --timeout=TIMEOUT
+                        override the SSH timeout in seconds (default=10)
+  -u REMOTE_USER, --user=REMOTE_USER
+                        connect as this user (default=jtraver)
+  -v, --verbose         verbose mode (-vvv for more, -vvvv to enable
+                        connection debugging)
+  --version             show program's version number and exit
