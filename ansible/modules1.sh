@@ -24,6 +24,12 @@ echo setup
 ansible-doc setup
 ansible-doc --snippet setup
 
+echo
+echo "--------------------------------------------------------------------------------"
+echo shell
+ansible-doc shell
+ansible-doc --snippet shell
+
 
 echo
 echo "--------------------------------------------------------------------------------"
