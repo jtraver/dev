@@ -1,0 +1,12 @@
+
+[debian6]
+192.168.75.221 testVar1=1
+
+[ubuntu12]
+192.168.75.230 testVar1=2
+
+[centos6]
+192.168.75.240 testVar1=3
+192.168.75.241 testVar1=4
+192.168.75.242 testVar1=5
+192.168.75.243 testVar1=6
