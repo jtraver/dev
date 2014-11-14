@@ -37,6 +37,10 @@ while ($pc < 10000000)
             print " max";
             $mprime = $prime;
         }
+        if ($len == 2)
+        {
+            print " pair";
+        }
         $len = 0;
         print "\n";
         print "$prime";
