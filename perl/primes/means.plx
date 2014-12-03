@@ -6,6 +6,8 @@ use strict;
 
 my @primes;
 my %primes;
+my %sums;
+my $limit = 1000000;
 
 sub is_prime
 {
@@ -92,7 +94,7 @@ sub check_prime_mean
     find_sums($dpc);
 }
 
-sub main
+sub old_main
 {
     my $pc = 1;
     while ($pc < 10000)
@@ -100,6 +102,54 @@ sub main
         check_prime_mean($pc);
         $pc++;
     }
+}
+
+sub do_sums
+{
+    for (my $i1 = 2; $i1 < @primes - 1; $i1++)
+    {
+        my $s1 = $primes[$i1];
+        for (my $i2 = $i1 + 1; $i2 < @primes; $i2++)
+        {
+            my $s2 = $primes[$i2];
+            my $sum = $s1 + $s2;
+            $sums{$sum}++;
+        }
+    }
+    foreach my $num (sort {$a <=> $b} keys %sums)
+    {
+        my $count = $sums{$num};
+        if ($num > $limit)
+        {
+            last;
+        }
+        if ($count == 0)
+        {
+            print "$num zero\n";
+        }
+        elsif ($count == 1)
+        {
+            print "$num one\n";
+        }
+        else
+        {
+            print "$num $count\n";
+        }
+    }
+}
+
+sub main
+{
+    my $pc = 1;
+    while ($pc < $limit)
+    {
+        if (is_prime($pc))
+        {
+            # print "$pc is prime\n";
+        }
+        $pc++;
+    }
+    do_sums();
 }
 
 main();
