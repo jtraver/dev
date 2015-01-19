@@ -10,6 +10,8 @@ if [ $RES1 -eq 0 ] ; then
     if [ $RES2 -eq 0 ] ; then
         OS=centos6
     fi
+else
+    echo not a linux box
 fi
 
 cat /etc/issue | grep Debian
@@ -20,6 +22,8 @@ if [ $RES1 -eq 0 ] ; then
     if [ $RES2 -eq 0 ] ; then
         OS=debian6
     fi
+else
+    echo not a linux box
 fi
 
 cat /etc/issue | grep Ubuntu
@@ -30,6 +34,8 @@ if [ $RES1 -eq 0 ] ; then
     if [ $RES2 -eq 0 ] ; then
         OS=ubuntu12
     fi
+else
+    echo not a linux box
 fi
 
 echo $OS
