@@ -1,5 +1,19 @@
 #!/bin/sh
 
+OS=
+if [ -z $OS ] ; then
+    echo empty OS
+else
+    echo empty OS
+fi
+
+ETC_ISSUE=/etc/issue
+if [ -e $ETC_ISSUE ] ; then
+    echo on a linux box
+else
+    echo not on a linux box
+fi
+
 OS=`cat /etc/issue`
 
 cat /etc/issue | grep CentOS
