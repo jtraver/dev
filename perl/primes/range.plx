@@ -6,7 +6,9 @@ use strict;
 
 my @primes;
 my %primes;
-my $limit = 10000;
+my $limit = 100000;
+
+$| = 1;
 
 sub is_prime
 {
@@ -134,11 +136,13 @@ sub main
         if ($distance > $max)
         {
             $max = $distance;
-            while ($prime * $prime < $pc * 2)
+            my $prime2 = $prime * $prime;
+            while ($prime2 < $pc * 2)
             {
                 $prime = next_prime($prime);
+                $prime2 = $prime * $prime;
+                print "$prime $prime2\n";
             }
-            my $prime2 = $prime * $prime;
             print "$pc has distance $distance at $lower and $upper bounded by $prime ($prime2)\n";
         }
         $pc++;
