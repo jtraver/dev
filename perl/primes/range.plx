@@ -46,6 +46,20 @@ sub is_even
     return ($ec % 2) == 0;
 }
 
+sub next_prime
+{
+    my ($pc) = @_;
+
+    for (my $i1 = 0; $i1 < @primes; $i1++)
+    {
+        my $prime = $primes[$i1];
+        if ($prime > $pc)
+        {
+            return $prime;
+        }
+    }
+}
+
 sub main
 {
     if (is_prime(0))
@@ -71,6 +85,7 @@ sub main
     my $pc = 1;
     my $start = 1;
     my $max = 0;
+    my $prime = 1;
     while ($pc < $limit)
     {
         if (is_prime($pc))
@@ -96,18 +111,42 @@ sub main
         my $distance = $start;
         my $lower = $pc - $distance;
         my $upper = $pc + $distance;
+        for (my $i1 = $pc; $i1 <= $upper; $i1++)
+        {
+            if (!is_even($i1))
+            {
+                is_prime($i1);
+            }
+        }
         while (!(is_prime($lower) && is_prime($upper)))
         {
             $distance += 2;
             $lower = $pc - $distance;
             $upper = $pc + $distance;
+            for (my $i1 = $pc; $i1 <= $upper; $i1++)
+            {
+                if (!is_even($i1))
+                {
+                    is_prime($i1);
+                }
+            }
         }
         if ($distance > $max)
         {
             $max = $distance;
-            print "$pc has distance $distance at $lower and $upper\n";
+            while ($prime * $prime < $pc * 2)
+            {
+                $prime = next_prime($prime);
+            }
+            my $prime2 = $prime * $prime;
+            print "$pc has distance $distance at $lower and $upper bounded by $prime ($prime2)\n";
         }
         $pc++;
+    }
+    for (my $i1 = 0; $i1 < @primes; $i1++)
+    {
+        my $prime = $primes[$i1];
+        # print "$i1 $prime\n";
     }
 }
 
