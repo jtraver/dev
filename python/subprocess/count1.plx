@@ -4,7 +4,7 @@ use diagnostics;
 use warnings;
 use strict;
 
-for (my $i1 = 0; $i1 < 1000; $i1++)
+for (my $i1 = 0; $i1 < 100; $i1++)
 {
     my $time = time;
     print "$time\n";
