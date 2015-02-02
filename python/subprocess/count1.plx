@@ -4,8 +4,8 @@ use diagnostics;
 use warnings;
 use strict;
 
-my $limit1 = 1000;
-# my $limit1 = 10;
+# my $limit1 = 1000;
+my $limit1 = 10;
 
 sub makeDateTag
 {
