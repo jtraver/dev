@@ -5,6 +5,8 @@ use warnings;
 use strict;
 
 my %files;
+my %inodes;
+my %links;
 
 sub main
 {
@@ -45,15 +47,23 @@ sub show_links
     my @glob = glob("*");
     foreach my $file (@glob)
     {
-        print "$file\n";
         my $stat_ino = (stat($file))[1];
-        $files{$stat_ino} = $file;
+        my $lstat_ino = (lstat($file))[1];
+        $files{$file} = $lstat_ino;
+        $inodes{$lstat_ino} = $file;
+        $links{$file} = $stat_ino;
     }
     foreach my $file (@glob)
     {
-        my $stat_ino = (stat($file))[1];
-        my $sfile = $files{$stat_ino};
-        print "$file -> $sfile\n";
+        my $link = $inodes{$links{$file}};
+        if ($link eq $file)
+        {
+            print "$file\n";
+        }
+        else
+        {
+            print "$file -> $link\n";
+        }
     }
 }
 
