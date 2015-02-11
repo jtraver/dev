@@ -27,17 +27,17 @@ sub fractions
             $fractions{$fraction}{$n1}{$d1} = 1;
         }
     }
-    foreach my $fraction (sort keys %fractions)
+    foreach my $fraction (sort { $a <=> $b } keys %fractions)
     {
         print "$fraction\n";
         my $nref = $fractions{$fraction};
         my %nhash = %$nref;
-        foreach my $n1 (sort keys %nhash)
+        foreach my $n1 (sort { $a <=> $b } keys %nhash)
         {
             # print "  $n1\n";
             my $dref = $nhash{$n1};
             my %dhash = %$dref;
-            foreach my $d1 (sort keys %dhash)
+            foreach my $d1 (sort { $a <=> $b } keys %dhash)
             {
                 print "    $n1 / $d1\n";
             }
