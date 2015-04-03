@@ -1,2 +1,3 @@
 # https://docs.docker.com/installation/centos/
-sudo yum install docker
+sudo yum -y remove docker
+sudo yum install docker-io
