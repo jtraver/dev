@@ -23,3 +23,9 @@ def replaceIt(str1):
 print " "
 print "replaceIt(str1)"
 print replaceIt(str1)
+
+print re.sub('[^a-z]', '_', "A basic string.")
+print re.sub('[^a-z]', '_', "A BASIC STRING.")
+print re.sub('[^a-z|^A-Z]', '_', "A basic string.")
+print re.sub('[^a-z|^A-Z]', '_', "A basic string | ^.")
+print re.sub('[^a-z|^A-Z]', '_', "A basic string with | ^ and the numbers 1 and 13.")
