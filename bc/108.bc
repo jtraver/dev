@@ -1,0 +1,11 @@
+dsun = 864300 * 5280
+dearth = 7913.0934 * 5280
+dmoon = 2159.3 * 5280
+dearthsun = 93930000 * 5280
+dearthmoon = 239200 * 5280
+r1 = dsun / dearth
+r1
+r2 = dearthsun / dsun
+r2
+r3 = dearthmoon / dmoon
+r3
