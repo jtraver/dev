@@ -42,10 +42,14 @@ foreach my $file (sort @files)
     my $ext = $parts2[@parts2 - 1];
     # print "$ext\n";
     $exts{$ext} += 1;
+    if ($ext eq 'pl')
+    {
+        print "$file\n";
+    }
 }
 
 foreach my $ext (sort keys %exts)
 {
     my $val = $exts{$ext};
-    print "$ext $val\n";
+    print "$val $ext\n";
 }
