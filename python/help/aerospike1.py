@@ -968,7 +968,7 @@ def dir3():
                 attrs4 = dir2(attr3)
                 print "  attrs4 = %s" % str(attrs4)
 
-def check(object, name, dict1):
+def check(object, name, dict1, status):
     attrs1 = dir2(object)
     for e1 in attrs1:
         attr1 = getattr(object, e1)
@@ -977,11 +977,17 @@ def check(object, name, dict1):
                 # print "need a test for %s.%s" % (name, e1)
                 pass
             else:
-                check(attr1, name + "." + e1, dict1[e1])
+                status = check(attr1, name + "." + e1, dict1[e1], status)
         else:
             print "need tests for %s.%s" % (name, e1)
+            status = False
+    return status
 
 def main():
-    check(aerospike, 'aerospike', elements)
+    status = check(aerospike, 'aerospike', elements, True)
+    if status:
+        print "tests are good"
+    else:
+        print "need some tests"
 
 main()
