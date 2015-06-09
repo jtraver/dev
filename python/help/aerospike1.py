@@ -927,21 +927,9 @@ def dir1(object):
         # print "    dir attr = %s" % dir(attr)
 
 
-def dir2(object):
-    attrs = []
-    for e in dir(object):
-        if '__' in e:
-            continue
-        attr = getattr(object, e)
-        # if 'builtin_function_or_method' in str(type(attr)) or type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
-        if type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
-            continue
-        attrs.append(e)
-    return attrs
-
 def dir3():
     # dir1(aerospike)
-    attrs1 = dir2(aerospike)
+    attrs1 = do_dir(aerospike)
     print "attrs1 = %s" % str(attrs1)
     for e1 in attrs1:
         print "\naerospike.%s" % e1
@@ -949,7 +937,7 @@ def dir3():
         if 'method' in str(type(attr1)):
             continue
         # dir1(attr1)
-        attrs2 = dir2(attr1)
+        attrs2 = do_dir(attr1)
         print "  attrs2 = %s" % str(attrs2)
         for e2 in attrs2:
             print "\naerospike.%s.%s" % (e1, e2)
@@ -957,7 +945,7 @@ def dir3():
             if 'method' in str(type(attr2)):
                 continue
             # dir1(attr2)
-            attrs3 = dir2(attr2)
+            attrs3 = do_dir(attr2)
             print "  attrs3 = %s" % str(attrs3)
             for e3 in attrs3:
                 print "\naerospike.%s.%s.%s" % (e1, e2, e3)
@@ -965,11 +953,22 @@ def dir3():
                 if 'method' in str(type(attr3)):
                     continue
                 # dir1(attr3)
-                attrs4 = dir2(attr3)
+                attrs4 = do_dir(attr3)
                 print "  attrs4 = %s" % str(attrs4)
 
+def do_dir(object):
+    attrs = []
+    for e in dir(object):
+        if '__' in e:
+            continue
+        attr = getattr(object, e)
+        if type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
+            continue
+        attrs.append(e)
+    return attrs
+
 def check(object, name, dict1, status):
-    attrs1 = dir2(object)
+    attrs1 = do_dir(object)
     for e1 in attrs1:
         attr1 = getattr(object, e1)
         if e1 in dict1:
