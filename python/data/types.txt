@@ -1,0 +1,11 @@
+boolean
+bytearray
+dict
+float
+frozenset
+integer
+list
+set
+string
+tuple
+unicode
