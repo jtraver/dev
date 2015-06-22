@@ -2,15 +2,21 @@
 
 import random
 
-max = 10
-max_record = 0xFFFF
-max_depth = 5
+# max = 10
+# max_record = 0xFFFF
+# max_depth = 5
+# max_unicode = 100
+# max_string = 100
+max_string = 10
+max_unicode = 10
+max_depth = 3
+max = 3
+max_record = 3
+
 max_byte_array = max
 max_list = max
 max_dict = max
-max_unicode = 100
 max_unicode_char = 0xFFFF
-max_string = 100
 
 types = [
     "boolean",
@@ -52,6 +58,7 @@ basic = [
     "unicode",
 ]
 
+# done
 def make_bytearray():
     val = bytearray()
     len1 = random.randint(0, max_byte_array)
@@ -60,6 +67,7 @@ def make_bytearray():
         val.append(byte)
     return val
 
+# done
 def make_list(depth):
     if depth > max_depth:
         return None
@@ -76,10 +84,12 @@ def make_list(depth):
             val.append(make_any_data(depth + 1))
     return val
 
+# TODO
 def make_tuple():
     val = (0, 1, 2, 3)
     return val
 
+# done
 # hashable = [ "boolean", "float", "integer", "string", "tuple", "unicode", ]
 def make_hashable_data():
     val = 4
@@ -105,19 +115,22 @@ def make_hashable_data():
         val = make_unicode()
     return val
 
+# done
 def make_hashable_list():
     val = []
-    nbins = random.randint(0, 100)
+    nbins = random.randint(0, max_list)
     for bin in range(nbins):
         val.append(make_hashable_data())
     return val
 
+# done
 def make_frozenset(depth):
     if depth > max_depth:
         return None
     val = make_hashable_list()
     return frozenset(val)
 
+# TODO
 # types = [ "boolean", "bytearray", "dict", "float", "frozenset", "integer", "list", "set", "string", "tuple", "unicode", ]
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
 def make_any_data(depth):
@@ -136,12 +149,14 @@ def make_any_data(depth):
         val = make_list(depth + 1)
     return val
 
+# done
 def make_dict(depth):
     if depth > max_depth:
         return None
     nbins = random.randint(0, max_dict)
     return make_record(nbins, depth + 1)
 
+# done? TODO?
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
 def make_basic_data():
     dtype = random.randint(0, len(basic) - 1)
@@ -167,6 +182,7 @@ def make_basic_data():
 # >>> random.sample([1, 2, 3, 4, 5],  3)  # Choose 3 elements
 # [4, 1, 5]
 
+# done
 def make_string():
     nbins = random.randint(0, max_string)
     val = bytearray()
@@ -178,6 +194,7 @@ def make_string():
 #for x1 in range(0xd800, 0xdc00):
 #for x2 in range(0xdc00, 0xe000):
 
+# done
 def make_unicode():
     nbins = random.randint(0, max_unicode)
     u = unichr(random.randint(0, max_unicode_char))
@@ -190,6 +207,7 @@ def make_unicode():
             u = u + unichr(random.randint(0xdc00, 0xdfff))
     return u
 
+# done
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
 def make_homogenous_data(htype):
     val = 2
@@ -215,6 +233,7 @@ def make_homogenous_data(htype):
         val = make_unicode()
     return val
 
+# done
 def make_record(max_bins, depth):
     if depth > 5:
         return None
@@ -232,6 +251,7 @@ def make_record(max_bins, depth):
             record[bname] = make_any_data(depth + 1)
     return record
 
+# done
 def doit():
     record = make_record(max_record, 0)
     # print "record = %s" % str(record)
