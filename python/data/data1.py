@@ -3,15 +3,21 @@
 import random
 
 # max = 10
-# max_record = 0xFFFF
 # max_depth = 5
 # max_unicode = 100
 # max_string = 100
-max_string = 10
-max_unicode = 10
-max_depth = 3
+
 max = 3
-max_record = 3
+max_record = 0xFFFF
+max_depth = 3
+max_unicode = 10
+max_string = 10
+
+# max_string = 10
+# max_unicode = 10
+# max_depth = 3
+# max = 3
+# max_record = 3
 
 max_byte_array = max
 max_list = max
@@ -84,7 +90,7 @@ def make_list(depth):
             val.append(make_any_data(depth + 1))
     return val
 
-# TODO
+# TODO: hmmm
 def make_tuple():
     val = (0, 1, 2, 3)
     return val
@@ -130,7 +136,12 @@ def make_frozenset(depth):
     val = make_hashable_list()
     return frozenset(val)
 
-# TODO
+def make_set(depth):
+    if depth > max_depth:
+        return None
+    val = make_hashable_list()
+    return set(val)
+
 # types = [ "boolean", "bytearray", "dict", "float", "frozenset", "integer", "list", "set", "string", "tuple", "unicode", ]
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
 def make_any_data(depth):
@@ -147,6 +158,10 @@ def make_any_data(depth):
         val = make_frozenset(depth + 1)
     elif stype == 'list':
         val = make_list(depth + 1)
+    elif stype == 'set':
+        val = make_set(depth + 1)
+    elif stype == 'tuple':
+        val = make_tuple()
     return val
 
 # done
@@ -156,31 +171,10 @@ def make_dict(depth):
     nbins = random.randint(0, max_dict)
     return make_record(nbins, depth + 1)
 
-# done? TODO?
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
 def make_basic_data():
     dtype = random.randint(0, len(basic) - 1)
     return make_homogenous_data(dtype)
-
-# https://docs.python.org/2/library/random.html
-# >>> random.random()        # Random float x, 0.0 <= x < 1.0
-# 0.37444887175646646
-# >>> random.uniform(1, 10)  # Random float x, 1.0 <= x < 10.0
-# 1.1800146073117523
-# >>> random.randint(1, 10)  # Integer from 1 to 10, endpoints included
-# 7
-# >>> random.randrange(0, 101, 2)  # Even integer from 0 to 100
-# 26
-# >>> random.choice('abcdefghij')  # Choose a random element
-# 'c'
-# 
-# >>> items = [1, 2, 3, 4, 5, 6, 7]
-# >>> random.shuffle(items)
-# >>> items
-# [7, 3, 2, 5, 6, 4, 1]
-# 
-# >>> random.sample([1, 2, 3, 4, 5],  3)  # Choose 3 elements
-# [4, 1, 5]
 
 # done
 def make_string():
@@ -189,10 +183,6 @@ def make_string():
     for x in range(nbins):
         val.append(random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
     return str(val)
-
-
-#for x1 in range(0xd800, 0xdc00):
-#for x2 in range(0xdc00, 0xe000):
 
 # done
 def make_unicode():
@@ -238,8 +228,20 @@ def make_record(max_bins, depth):
     if depth > 5:
         return None
     record = dict()
-    nbins = random.randint(0, max_bins)
+    btype = random.randint(0, 32)
+    if btype < 2:
+        tot_bins = 1
+    elif btype < 4:
+        tot_bins = 10
+    elif btype < 28:
+        tot_bins = 100
+    elif btype < 32:
+        tot_bins = 1000
+    else:
+        tot_bins = max_bins
+    nbins = random.randint(0, tot_bins)
     dtype = random.randint(0, 2)
+    # dtype = 2
     htype = random.randint(0, len(basic) - 1)
     for bin in range(nbins):
         bname = "b" + str(bin)
@@ -254,14 +256,37 @@ def make_record(max_bins, depth):
 # done
 def doit():
     record = make_record(max_record, 0)
-    # print "record = %s" % str(record)
+    print "record = %s" % str(record)
     for k,v in record.items():
         if type(v) == unicode:
             print "%s %s" % (k, v.encode('utf-8'))
         else:
             print "%s %s" % (k, str(v))
 
+def countit():
+    record = make_record(max_record, 0)
+    len1 = len(str(record))
+    print "  len1 = %s" % str(len1)
+    if len1 < 0:
+        print "  record = %s" % str(record)
+        for k,v in record.items():
+            if type(v) == unicode:
+                print "  %s %s" % (k, v.encode('utf-8'))
+            else:
+                print "  %s %s" % (k, str(v))
+    return len1
+
 def main():
-    doit()
+    # doit()
+    t = 0
+    c = 0
+    for i in range(10000):
+        print "i = %s" % str(i)
+        l = countit()
+        t += l
+        c += 1
+        a = t / c
+        print "  average is %s" % str(a)
+
 
 main()
