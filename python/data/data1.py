@@ -65,6 +65,8 @@ basic = [
 ]
 
 # done
+
+
 def make_bytearray():
     val = bytearray()
     len1 = random.randint(0, max_byte_array)
@@ -74,6 +76,8 @@ def make_bytearray():
     return val
 
 # done
+
+
 def make_list(depth):
     if depth > max_depth:
         return None
@@ -91,12 +95,16 @@ def make_list(depth):
     return val
 
 # TODO: hmmm
+
+
 def make_tuple():
     val = (0, 1, 2, 3)
     return val
 
 # done
 # hashable = [ "boolean", "float", "integer", "string", "tuple", "unicode", ]
+
+
 def make_hashable_data():
     val = 4
     dtype = random.randint(0, len(hashable) - 1)
@@ -122,6 +130,8 @@ def make_hashable_data():
     return val
 
 # done
+
+
 def make_hashable_list():
     val = []
     nbins = random.randint(0, max_list)
@@ -130,11 +140,14 @@ def make_hashable_list():
     return val
 
 # done
+
+
 def make_frozenset(depth):
     if depth > max_depth:
         return None
     val = make_hashable_list()
     return frozenset(val)
+
 
 def make_set(depth):
     if depth > max_depth:
@@ -144,6 +157,8 @@ def make_set(depth):
 
 # types = [ "boolean", "bytearray", "dict", "float", "frozenset", "integer", "list", "set", "string", "tuple", "unicode", ]
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
+
+
 def make_any_data(depth):
     if depth > max_depth:
         return None
@@ -165,6 +180,8 @@ def make_any_data(depth):
     return val
 
 # done
+
+
 def make_dict(depth):
     if depth > max_depth:
         return None
@@ -172,19 +189,26 @@ def make_dict(depth):
     return make_record(nbins, depth + 1)
 
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
+
+
 def make_basic_data():
     dtype = random.randint(0, len(basic) - 1)
     return make_homogenous_data(dtype)
 
 # done
+
+
 def make_string():
     nbins = random.randint(0, max_string)
     val = bytearray()
     for x in range(nbins):
-        val.append(random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
+        val.append(
+            random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'))
     return str(val)
 
 # done
+
+
 def make_unicode():
     nbins = random.randint(0, max_unicode)
     u = unichr(random.randint(0, max_unicode_char))
@@ -199,6 +223,8 @@ def make_unicode():
 
 # done
 # basic = [ "boolean", "bytearray", "float", "integer", "string", "unicode", ]
+
+
 def make_homogenous_data(htype):
     val = 2
     if type(htype) == int:
@@ -224,6 +250,8 @@ def make_homogenous_data(htype):
     return val
 
 # done
+
+
 def make_record(max_bins, depth):
     if depth > 5:
         return None
@@ -254,14 +282,17 @@ def make_record(max_bins, depth):
     return record
 
 # done
+
+
 def doit():
     record = make_record(max_record, 0)
     print "record = %s" % str(record)
-    for k,v in record.items():
+    for k, v in record.items():
         if type(v) == unicode:
             print "%s %s" % (k, v.encode('utf-8'))
         else:
             print "%s %s" % (k, str(v))
+
 
 def countit():
     record = make_record(max_record, 0)
@@ -269,12 +300,13 @@ def countit():
     print "  len1 = %s" % str(len1)
     if len1 < 0:
         print "  record = %s" % str(record)
-        for k,v in record.items():
+        for k, v in record.items():
             if type(v) == unicode:
                 print "  %s %s" % (k, v.encode('utf-8'))
             else:
                 print "  %s %s" % (k, str(v))
     return len1
+
 
 def main():
     # doit()

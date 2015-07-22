@@ -5,6 +5,7 @@ import jinja2
 elements = {
 }
 
+
 def do_dir(object):
     attrs = []
     for e in dir(object):
@@ -15,6 +16,7 @@ def do_dir(object):
             continue
         attrs.append(e)
     return attrs
+
 
 def check(object, name, dict1, status):
     attrs1 = do_dir(object)
@@ -30,6 +32,7 @@ def check(object, name, dict1, status):
             print "need tests for %s.%s" % (name, e1)
             status = False
     return status
+
 
 def main():
     status = check(jinja2, 'jinja2', elements, True)

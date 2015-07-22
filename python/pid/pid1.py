@@ -7,11 +7,11 @@ print "pid1 = %s" % pid1
 filename = os.path.join(tempfile.gettempdir(), pid1)
 print "filename = %s" % filename
 
-fileh = open(filename, "w");
+fileh = open(filename, "w")
 fileh.write(pid1)
 fileh.close()
 
-fileh = open(filename, "r");
+fileh = open(filename, "r")
 pid2 = fileh.read()
 
 if pid1 == pid2:

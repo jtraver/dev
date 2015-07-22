@@ -819,6 +819,7 @@ elements = {
     },
 }
 
+
 def pinfo(object):
     print
     print "--------------------------------------------------------------------------------"
@@ -834,7 +835,8 @@ def pinfo(object):
     # print "--------------------------------------------------------------------------------"
     # apihelper.info(aerospike.Client)
 
-def info(object, level = 1):
+
+def info(object, level=1):
     if level > 3:
         return
     print "\n"
@@ -858,6 +860,7 @@ def info(object, level = 1):
     except Exception, ex2:
         print "      2 exception is %s" % str(ex2)
 
+
 def info2(object):
     str1 = str(object)
     if str1 in found:
@@ -876,6 +879,7 @@ def info2(object):
 
 # info(aerospike)
 
+
 def do_info2():
     info2(aerospike)
 
@@ -889,6 +893,7 @@ def do_info2():
                 e()
             except Exception, ex:
                 print "    %s" % str(ex)
+
 
 def pinfos():
     pinfo(aerospike)
@@ -916,7 +921,8 @@ def dir1(object):
         if '__' in e:
             continue
         attr = getattr(object, e)
-        # if 'builtin_function_or_method' in str(type(attr)) or type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
+        # if 'builtin_function_or_method' in str(type(attr)) or type(attr) ==
+        # int or type(attr) == str or 'NoneType' in str(type(attr)):
         if type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
             continue
         print "e = %s" % str(e)
@@ -956,6 +962,7 @@ def dir3():
                 attrs4 = do_dir(attr3)
                 print "  attrs4 = %s" % str(attrs4)
 
+
 def do_dir(object):
     attrs = []
     for e in dir(object):
@@ -966,6 +973,7 @@ def do_dir(object):
             continue
         attrs.append(e)
     return attrs
+
 
 def check(object, name, dict1, status):
     attrs1 = do_dir(object)
@@ -981,6 +989,7 @@ def check(object, name, dict1, status):
             print "need tests for %s.%s" % (name, e1)
             status = False
     return status
+
 
 def main():
     status = check(aerospike, 'aerospike', elements, True)

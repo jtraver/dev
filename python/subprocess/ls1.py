@@ -3,7 +3,8 @@
 import subprocess
 
 args = ('ls', '-lat')
-popen = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='.')
+popen = subprocess.Popen(
+    args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='.')
 
 print "popen = %s" % str(popen)
 print "popen = %s" % dir(popen)

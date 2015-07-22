@@ -5,16 +5,18 @@
 import re
 
 # regex = re.compile(r'((?P<hours>\d+?)hr)?((?P<minutes>\d+?)m)?((?P<seconds>\d+?)s)?')
-regex = re.compile(r'((?P<hours>\d+?)\s*h)?((?P<minutes>\d+?)\s*m)?((?P<seconds>\d+?)\s*s)?')
+regex = re.compile(
+    r'((?P<hours>\d+?)\s*h)?((?P<minutes>\d+?)\s*m)?((?P<seconds>\d+?)\s*s)?')
+
 
 def parse_time(time_str):
     parts = regex.match(time_str)
     if not parts:
         return time_str
     # print parts
-    parts = parts.groupdict();
+    parts = parts.groupdict()
     print parts
-    time = 0;
+    time = 0
     unit = "seconds"
     if parts[unit]:
         time += int(parts[unit])

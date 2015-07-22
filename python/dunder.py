@@ -2,8 +2,10 @@
 # http://stackoverflow.com/questions/20340815/built-in-magic-variable-names-attributes
 import gc
 
-print("\n".join(sorted({attrname for item in gc.get_objects() for attrname in dir(item) if attrname.startswith("__")})))
-print("\n".join(sorted({attrname for item in gc.get_objects() for attrname in dir(item)})))
+print("\n".join(sorted({attrname for item in gc.get_objects()
+                        for attrname in dir(item) if attrname.startswith("__")})))
+print("\n".join(
+    sorted({attrname for item in gc.get_objects() for attrname in dir(item)})))
 #>>> __about__
 #>>> __abs__
 #>>> __abstractmethods__

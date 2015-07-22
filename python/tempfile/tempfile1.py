@@ -8,21 +8,12 @@ print "tmp1 = %s" % str(tmp1)
 print "tmp1 = %s" % dir(tmp1)
 print "tmp1.name = %s" % str(tmp1.name)
 
-tmp1 = tempfile.NamedTemporaryFile(suffix = '.sql')
+tmp1 = tempfile.NamedTemporaryFile(suffix='.sql')
 print "tmp1 = %s" % str(tmp1)
 print "tmp1 = %s" % dir(tmp1)
 print "tmp1.name = %s" % str(tmp1.name)
 
-tmp1 = tempfile.NamedTemporaryFile(suffix = '.sql', prefix = 'ldt_scan')
-print "tmp1 = %s" % str(tmp1)
-print "tmp1 = %s" % dir(tmp1)
-print "tmp1.name = %s" % str(tmp1.name)
-
-os.system("ls " + tmp1.name)
-
-tmp1.close()
-
-tmp1 = tempfile.NamedTemporaryFile(suffix = '.sql', prefix = 'ldt_scan')
+tmp1 = tempfile.NamedTemporaryFile(suffix='.sql', prefix='ldt_scan')
 print "tmp1 = %s" % str(tmp1)
 print "tmp1 = %s" % dir(tmp1)
 print "tmp1.name = %s" % str(tmp1.name)
@@ -31,8 +22,16 @@ os.system("ls " + tmp1.name)
 
 tmp1.close()
 
+tmp1 = tempfile.NamedTemporaryFile(suffix='.sql', prefix='ldt_scan')
+print "tmp1 = %s" % str(tmp1)
+print "tmp1 = %s" % dir(tmp1)
+print "tmp1.name = %s" % str(tmp1.name)
 
-            
+os.system("ls " + tmp1.name)
+
+tmp1.close()
+
+
 def write_command_to_file(file_name, command):
     tmp1 = tempfile.NamedTemporaryFile(suffix='.txt', prefix=file_name)
     # print "write_command_to_file: file_name = %s" % str(tmp1.name) # pass in a verbose flag

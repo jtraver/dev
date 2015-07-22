@@ -97,7 +97,7 @@ config1 = {
 }
 
 with open('config1.yml', 'w') as outfile:
-    outfile.write( yaml.dump(config1, default_flow_style=False) )
+    outfile.write(yaml.dump(config1, default_flow_style=False))
 
 config2 = yaml.load(file('config1.yml'))
 print "config2 = %s" % str(config2)
