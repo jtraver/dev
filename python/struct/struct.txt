@@ -1,0 +1,181 @@
+
+
+7.3.1. Functions and Exceptions
+The module defines the following exception and functions:
+
+exception struct.error
+Exception raised on various occasions; argument is a string describing what is wrong.
+
+struct.pack(fmt, v1, v2, ...)
+Return a string containing the values v1, v2, ... packed according to the given format. The arguments must match the values required by the format exactly.
+
+struct.pack_into(fmt, buffer, offset, v1, v2, ...)
+Pack the values v1, v2, ... according to the given format, write the packed bytes into the writable buffer starting at offset. Note that the offset is a required argument.
+
+New in version 2.5.
+
+struct.unpack(fmt, string)
+Unpack the string (presumably packed by pack(fmt, ...)) according to the given format. The result is a tuple even if it contains exactly one item. The string must contain exactly the amount of data required by the format (len(string) must equal calcsize(fmt)).
+
+struct.unpack_from(fmt, buffer[, offset=0])
+Unpack the buffer according to the given format. The result is a tuple even if it contains exactly one item. The buffer must contain at least the amount of data required by the format (len(buffer[offset:]) must be at least calcsize(fmt)).
+
+New in version 2.5.
+
+struct.calcsize(fmt)
+Return the size of the struct (and hence of the string) corresponding to the given format.
+
+
+
+https://docs.python.org/2/library/struct.html#struct-format-strings
+
+Alternatively, the first character of the format string can be used to indicate the byte order, size and alignment of the packed data, according to the following table:
+
+Character   Byte order  Size    Alignment
+@   native  native  native
+=   native  standard    none
+<   little-endian   standard    none
+>   big-endian  standard    none
+!   network (= big-endian)  standard    none
+If the first character is not one of these, '@' is assumed.
+
+Format characters have the following meaning; the conversion between C and Python values should be obvious given their types. The ‘Standard size’ column refers to the size of the packed value in bytes when using standard size; that is, when the format string starts with one of '<', '>', '!' or '='. When using native size, the size of the packed value is platform-dependent.
+
+Format  C Type  Python type Standard size   Notes
+x   pad byte    no value         
+c   char    string of length 1  1    
+b   signed char integer 1   (3)
+B   unsigned char   integer 1   (3)
+?   _Bool   bool    1   (1)
+h   short   integer 2   (3)
+H   unsigned short  integer 2   (3)
+i   int integer 4   (3)
+I   unsigned int    integer 4   (3)
+l   long    integer 4   (3)
+L   unsigned long   integer 4   (3)
+q   long long   integer 8   (2), (3)
+Q   unsigned long long  integer 8   (2), (3)
+f   float   float   4   (4)
+d   double  float   8   (4)
+s   char[]  string       
+p   char[]  string       
+P   void *  integer     (5), (3)
+Notes:
+
+The '?' conversion code corresponds to the _Bool type defined by C99. If this type is not available, it is simulated using a char. In standard mode, it is always represented by one byte.
+
+New in version 2.6.
+
+The 'q' and 'Q' conversion codes are available in native mode only if the platform C compiler supports C long long, or, on Windows, __int64. They are always available in standard modes.
+
+New in version 2.2.
+
+When attempting to pack a non-integer using any of the integer conversion codes, if the non-integer has a __index__() method then that method is called to convert the argument to an integer before packing. If no __index__() method exists, or the call to __index__() raises TypeError, then the __int__() method is tried. However, the use of __int__() is deprecated, and will raise DeprecationWarning.
+
+Changed in version 2.7: Use of the __index__() method for non-integers is new in 2.7.
+
+Changed in version 2.7: Prior to version 2.7, not all integer conversion codes would use the __int__() method to convert, and DeprecationWarning was raised only for float arguments.
+
+For the 'f' and 'd' conversion codes, the packed representation uses the IEEE 754 binary32 (for 'f') or binary64 (for 'd') format, regardless of the floating-point format used by the platform.
+
+The 'P' format character is only available for the native byte ordering (selected as the default or with the '@' byte order character). The byte order character '=' chooses to use little- or big-endian ordering based on the host system. The struct module does not interpret this as native ordering, so the 'P' format is not available.
+
+A format character may be preceded by an integral repeat count. For example, the format string '4h' means exactly the same as 'hhhh'.
+
+
+7.3.2.3. Examples
+Note All examples assume a native byte order, size, and alignment with a big-endian machine.
+A basic example of packing/unpacking three integers:
+
+>>>
+>>> from struct import *
+>>> pack('hhl', 1, 2, 3)
+'\x00\x01\x00\x02\x00\x00\x00\x03'
+>>> unpack('hhl', '\x00\x01\x00\x02\x00\x00\x00\x03')
+(1, 2, 3)
+>>> calcsize('hhl')
+8
+Unpacked fields can be named by assigning them to variables or by wrapping the result in a named tuple:
+
+>>>
+>>> record = 'raymond   \x32\x12\x08\x01\x08'
+>>> name, serialnum, school, gradelevel = unpack('<10sHHb', record)
+
+>>> from collections import namedtuple
+>>> Student = namedtuple('Student', 'name serialnum school gradelevel')
+>>> Student._make(unpack('<10sHHb', record))
+Student(name='raymond   ', serialnum=4658, school=264, gradelevel=8)
+The ordering of format characters may have an impact on size since the padding needed to satisfy alignment requirements is different:
+
+>>>
+>>> pack('ci', '*', 0x12131415)
+'*\x00\x00\x00\x12\x13\x14\x15'
+>>> pack('ic', 0x12131415, '*')
+'\x12\x13\x14\x15*'
+>>> calcsize('ci')
+8
+>>> calcsize('ic')
+5
+The following format 'llh0l' specifies two pad bytes at the end, assuming longs are aligned on 4-byte boundaries:
+
+>>>
+>>> pack('llh0l', 1, 2, 3)
+'\x00\x00\x00\x01\x00\x00\x00\x02\x00\x03\x00\x00'
+This only works when native size and alignment are in effect; standard size and alignment does not enforce any alignment.
+
+See also
+Module array
+Packed binary storage of homogeneous data.
+Module xdrlib
+Packing and unpacking of XDR data.
+7.3.3. Classes
+The struct module also defines the following type:
+
+class struct.Struct(format)
+Return a new Struct object which writes and reads binary data according to the format string format. Creating a Struct object once and calling its methods is more efficient than calling the struct functions with the same format since the format string only needs to be compiled once.
+
+New in version 2.5.
+
+Compiled Struct objects support the following methods and attributes:
+
+pack(v1, v2, ...)
+Identical to the pack() function, using the compiled format. (len(result) will equal self.size.)
+
+pack_into(buffer, offset, v1, v2, ...)
+Identical to the pack_into() function, using the compiled format.
+
+unpack(string)
+Identical to the unpack() function, using the compiled format. (len(string) must equal self.size).
+
+unpack_from(buffer, offset=0)
+Identical to the unpack_from() function, using the compiled format. (len(buffer[offset:]) must be at least self.size).
+
+format
+The format string used to construct this Struct object.
+
+size
+The calculated size of the struct (and hence of the string) corresponding to format.
+
+Table Of Contents
+7.3. struct — Interpret strings as packed binary data
+7.3.1. Functions and Exceptions
+7.3.2. Format Strings
+7.3.2.1. Byte Order, Size, and Alignment
+7.3.2.2. Format Characters
+7.3.2.3. Examples
+7.3.3. Classes
+Previous topic
+7.2. re — Regular expression operations
+
+Next topic
+7.4. difflib — Helpers for computing deltas
+
+This Page
+Report a Bug
+Show Source
+Quick search
+  
+Enter search terms or a module, class or function name.
+
+«
+indexmodules |next |previous | Python »   Documentati
