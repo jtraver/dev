@@ -25,3 +25,9 @@ if type(test1) is not str:
     print str(test1) + " is not String"
 else:
     print str(test1) + " is String"
+
+test1 = []
+type1 = str(type(test1))
+print "test1 type is %s" % type1
+if type(test1) == list:
+    print "test1 type is list"
