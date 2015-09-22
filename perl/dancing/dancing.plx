@@ -169,17 +169,10 @@ sub dancing
     my $count = keys(%pros);
     print "$count pros\n";
     print "results\n";
-    for my $rank (sort {int($a) <=> int($b) } values(%pros))
+    for my $pro (reverse sort {int($pros{$a}) <=> int($pros{$b})} keys %pros)
     {
-        print "$rank\n";
-        for my $pro (sort keys(%pros))
-        {
-            my $val = $pros{$pro};
-            if ($val == $rank)
-            {
-                print "  $pro\n";
-            }
-        }
+        my $val = $pros{$pro};
+        print "$pro $val\n";
     }
 }
 
