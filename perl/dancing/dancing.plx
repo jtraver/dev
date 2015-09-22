@@ -63,8 +63,8 @@ sub dancing
                 my $field2 = $fields2[2];
                 my $field3 = $fields2[3];
                 $name1 = "$field0 $field1 $field2 $field3";
-                $field0 = $fields2[3];
-                $field1 = $fields2[4];
+                $field0 = $fields2[4];
+                $field1 = $fields2[5];
                 $name2 = "$field0 $field1";
             }
             else
@@ -166,6 +166,8 @@ sub dancing
     }
     print "season $season\n";
     print "\n";
+    my $count = keys(%pros);
+    print "$count pros\n";
     print "results\n";
     for my $rank (sort {int($a) <=> int($b) } values(%pros))
     {
