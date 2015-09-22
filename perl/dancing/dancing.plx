@@ -25,6 +25,9 @@ sub dancing
     my $name1;
     my $name2;
     my $place = 0;
+    my %rscores;
+    my @contestants;
+    my @seasons;
     for my $line (@lines)
     {
         print "$line\n";
@@ -49,6 +52,7 @@ sub dancing
         }
         if ($count == 0)
         {
+            $contestants[$season] = $place + 1;
             $season++;
             print "season $season\n";
             $place = 0;
@@ -73,6 +77,8 @@ sub dancing
             }
             print "$name1 -- $name2\n";
             $pros{$name2} += $place;
+            $rscores{$place}{$name2}++;
+            $seasons[$season][$place] = $name2;
             $place++;
         }
         elsif ($count == 4)
@@ -97,6 +103,8 @@ sub dancing
             }
             print "$name1 -- $name2\n";
             $pros{$name2} += $place;
+            $rscores{$place}{$name2}++;
+            $seasons[$season][$place] = $name2;
             $place++;
         }
         elsif ($count == 6)
@@ -145,6 +153,8 @@ sub dancing
             }
             print "$name1 -- $name2\n";
             $pros{$name2} += $place;
+            $rscores{$place}{$name2}++;
+            $seasons[$season][$place] = $name2;
             $place++;
         }
         elsif ($count != 5)
@@ -161,6 +171,8 @@ sub dancing
             $name2 = "$field0 $field1";
             print "$name1 -- $name2\n";
             $pros{$name2} += $place;
+            $rscores{$place}{$name2}++;
+            $seasons[$season][$place] = $name2;
             $place++;
         }
     }
@@ -173,6 +185,79 @@ sub dancing
     {
         my $val = $pros{$pro};
         print "$pro $val\n";
+    }
+
+    print "\n";
+    print "reverse scores\n";
+    for my $rscore (sort {$a <=> $b} keys %rscores)
+    {
+        print "$rscore\n";
+        my $ref = $rscores{$rscore};
+        my %hash = %$ref;
+        for my $pro (sort keys %hash)
+        {
+            my $times = $hash{$pro};
+            print "  $pro $times\n";
+        }
+    }
+
+    print "\n";
+    print "contestants\n";
+    for (my $i1 = 0; $i1 < @contestants; $i1++)
+    {
+        my $season1 = $i1 + 1;
+        my $contestant = $contestants[$i1];
+        print "$season1 $contestant\n";
+    }
+
+    print "\n";
+    print "seasons\n";
+    my %scores;
+    for (my $i1 = 0; $i1 < @seasons; $i1++)
+    {
+        print "$i1\n";
+        my $ref = $seasons[$i1];
+        my @array = @$ref;
+        my $total = @array - 1;
+        for (my $i2 = 0; $i2 < @array; $i2++)
+        {
+            my $i3 = $total - $i2;
+            my $pro = $array[$i3];
+            print "  $i2 $pro\n";
+            $scores{$i2}{$pro}++;
+        }
+    }
+
+    print "\n";
+    print "scores\n";
+    for my $score (sort {$a <=> $b} keys %scores)
+    {
+        print "$score\n";
+        my $ref = $scores{$score};
+        my %hash = %$ref;
+        for my $pro (sort {$hash{$a} <=> $hash{$b}} keys %hash)
+        {
+            my $val = $hash{$pro};
+            print "  $pro $val\n";
+        }
+    }
+
+    print "\n";
+    print "pros again\n";
+    for my $pro (reverse sort {int($pros{$a}) <=> int($pros{$b})} keys %pros)
+    {
+        my $score1 = $pros{$pro};
+        print "$pro $score1\n";
+        for my $score (sort {$a <=> $b} keys %scores)
+        {
+            my $ref = $scores{$score};
+            my %hash = %$ref;
+            if (defined($hash{$pro}))
+            {
+                my $count = $hash{$pro};
+                print "  $score $count\n";
+            }
+        }
     }
 }
 
