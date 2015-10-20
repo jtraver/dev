@@ -54,7 +54,11 @@ elements = {
         },
         "get_nodes": {
         },
+        "has_geo": {
+        },
         "increment": {
+        },
+        "index_geo2dsphere_create": {
         },
         "index_integer_create": {
         },
@@ -74,6 +78,8 @@ elements = {
         },
         "is_connected": {
         },
+        "job_info": {
+        },
         "key": {
         },
         "llist": {
@@ -91,6 +97,8 @@ elements = {
         "put": {
         },
         "query": {
+        },
+        "query_apply": {
         },
         "remove": {
         },
@@ -116,6 +124,18 @@ elements = {
         },
         "udf_remove": {
         }
+    },
+    "GeoJSON": {
+        "dumps": {
+        },
+        "geo_data": {
+        },
+        "loads": {
+        },
+        "unwrap": {
+        },
+        "wrap": {
+        },
     },
     "Key": {
         "apply": {
@@ -723,6 +743,10 @@ elements = {
             },
         },
     },
+    "geodata": {
+    },
+    "geojson": {
+    },
     "llist": {
         "add": {
         },
@@ -734,9 +758,25 @@ elements = {
         },
         "filter": {
         },
+        "find_first": {
+        },
+        "find_first_filter": {
+        },
+        "find_from": {
+        },
+        "find_from_filter": {
+        },
+        "find_last": {
+        },
+        "find_last_filter": {
+        },
         "get": {
         },
+        "range_limit": {
+        },
         "remove": {
+        },
+        "set_page_size": {
         },
         "size": {
         },
@@ -806,6 +846,8 @@ elements = {
         },
         "equals": {
         },
+        "geo_within": {
+        },
         "range": {
         },
     },
@@ -816,6 +858,8 @@ elements = {
     "set_log_level": {
     },
     "set_serializer": {
+    },
+    "unset_serializers": {
     },
 }
 
@@ -987,6 +1031,7 @@ def check(object, name, dict1, status):
                 status = check(attr1, name + "." + e1, dict1[e1], status)
         else:
             print "need tests for %s.%s" % (name, e1)
+            # print "  e1 = %s" % dir(e1)
             status = False
     return status
 
