@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 import apihelper
 
 dict1 = dict()

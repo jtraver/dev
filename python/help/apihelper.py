@@ -1,3 +1,5 @@
+#!/usr/bin/python
+
 """Cheap and simple API helper
 
 This program is part of "Dive Into Python", a free Python book for
