@@ -19,3 +19,5 @@ list1 = ['a', 'b', 'c', 'b', 'a']
 print "list1 = %s" % str(list1)
 set1 = set(list1)
 print "set1 = %s" % str(set1)
+for n in set1:
+    print "  n = %s" % str(n)
