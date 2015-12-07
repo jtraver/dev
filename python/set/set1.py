@@ -21,3 +21,6 @@ set1 = set(list1)
 print "set1 = %s" % str(set1)
 for n in set1:
     print "  n = %s" % str(n)
+print "sorted set"
+for n in sorted(set1):
+    print "  n = %s" % str(n)
