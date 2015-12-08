@@ -6,8 +6,7 @@ use strict;
 
 my @primes;
 my %primes;
-# my $limit = 100000;
-my $limit = 1000;
+my $limit = 100000;
 
 $| = 1;
 
@@ -157,6 +156,10 @@ sub main
             else
             {
                 print "    $count1 pairs\n";
+            }
+            if ($count1 == 0)
+            {
+                print "  FAIL!\n";
             }
         }
         $pc++;
