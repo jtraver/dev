@@ -89,6 +89,7 @@ sub main
     my $max = 0;
     my $prime = 1;
     my $maxcount = 0;
+    my $maxlower = 0;
     while ($pc < $limit)
     {
         if (is_prime($pc))
@@ -138,6 +139,7 @@ sub main
         {
             print "$pc\n";
             my $count1 = 0;
+            my $lastlower = 0;
             for (my $i3 = 1; $i3 <= $pc; $i3++)
             {
                 my $tlower = $pc - $i3;
@@ -146,20 +148,27 @@ sub main
                 {
                     print "  $tlower + $tupper\n";
                     $count1++;
+                    $lastlower = $tlower;
                 }
+            }
+            if ($lastlower > $maxlower)
+            {
+                $maxlower = $lastlower;
+                print "    $maxlower new lower maximum for $pc\n";
             }
             if ($count1 > $maxcount)
             {
                 $maxcount = $count1;
-                print "    $count1 pairs new max\n";
+                print "    $count1 pairs new max for $pc\n";
             }
             else
             {
-                print "    $count1 pairs\n";
+                print "    $count1 pairs for $pc\n";
             }
             if ($count1 == 0)
             {
                 print "  FAIL!\n";
+                last;
             }
         }
         $pc++;
