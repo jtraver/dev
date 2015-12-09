@@ -6,7 +6,7 @@ use strict;
 
 my @primes;
 my %primes;
-my $limit = 100000;
+my $limit = 10000;
 
 $| = 1;
 
