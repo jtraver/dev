@@ -1,9 +1,12 @@
 #!/usr/bin/python
 
-limit = 10
+limit = 100000
 primes = []
+dprimes = {}
 
 def is_prime(pc):
+    if pc in dprimes:
+        return True
     if pc < 0:
         return False
     prime = True
@@ -15,13 +18,15 @@ def is_prime(pc):
             break
         if pc % div == 0:
             prime = False
-    if prime and not pc in primes:
+    if prime and not pc in dprimes:
         primes.append(pc)
+        dprimes[pc] = 1
     return prime
 
 def main():
     maxpair = 0
     maxlower = -2
+    intlower = 0
     for pc in xrange(1, limit, 2):
         if is_prime(pc):
             print "%s is prime" % str(pc)
@@ -39,11 +44,15 @@ def main():
             lower -= 2
             upper += 2
         print "    %s pairs for %s" % (str(paircount), str(pc))
+        if paircount < intlower:
+            intlower = paircount
+            print "      new interim lower %s for %s (last max %s)" % (intlower, str(pc), str(maxpair))
         if paircount > maxpair:
             maxpair = paircount
-            print "      new max pairs for %s" % str(pc)
+            print "      new max pairs %s for %s" % (maxpair, str(pc))
+            intlower = maxpair
         if lastlower > maxlower:
             maxlower = lastlower
-            print "      new max lower for %s" % str(pc)
+            print "      new max lower %s for %s" % (maxlower, str(pc))
 
 main()
