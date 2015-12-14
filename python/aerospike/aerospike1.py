@@ -114,6 +114,8 @@ elements = {
         },
         "select_many": {
         },
+        "shm_key": {
+        },
         "touch": {
         },
         "udf_get": {
@@ -1010,6 +1012,8 @@ def dir3():
 def do_dir(object):
     attrs = []
     for e in dir(object):
+        if str(e) == 'null':
+            continue
         if '__' in e:
             continue
         attr = getattr(object, e)
