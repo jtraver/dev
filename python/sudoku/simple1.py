@@ -34,6 +34,15 @@ def check_grid_solved(grid):
             if ccell in col:
                 return False
             col[ccell] = 1
+        for x in xrange(1, 10):
+            if x in row:
+                pass
+            else:
+                return False
+            if x in col:
+                pass
+            else:
+                return False
     for x1 in xrange(0, 9, 3):
         for y1 in xrange(0, 9, 3):
             # print "%d %d" % (x1, y1)
@@ -48,6 +57,11 @@ def check_grid_solved(grid):
                     sgrid[cell] = 1
                 # print line
             # print "subgrid is ok"
+            for x in xrange(1, 10):
+                if x in sgrid:
+                    pass
+                else:
+                    return False
     return True
 
 
