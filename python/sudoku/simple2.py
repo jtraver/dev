@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+loop_count = 0
+
 # r0 = [ 5, 0, 9,  8, 1, 2,  7, 0, 0 ]
 r0 = [ 0, 0, 9,  8, 0, 0,  0, 0, 0 ]
 # r1 = [ 0, 0, 0,  9, 0, 6,  2, 5, 1 ]
@@ -165,6 +167,9 @@ def check_available(grid, x, y):
     return available
 
 def solve_grid(grid):
+    global loop_count
+    loop_count += 1
+    print "%d" % loop_count
     for x in xrange(9):
         for y in xrange(9):
             cell = grid[x][y]
