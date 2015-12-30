@@ -2,6 +2,28 @@
 
 import random
 
+def get_bid(hands):
+    bids = []
+    for index in xrange(0, 4):
+        hand = hands[index]
+        print "hand = %s" % str(hand)
+        bid = {}
+        bid['bid'] = 'pass'
+        for suit in ['S', 'C', 'D', 'H', 'NT']:
+            bid[suit] = 0
+        if 'JOKER' in hand:
+            bid['NT'] += 1
+            bid['bid'] = '6NT'
+        for suit in ['S', 'C', 'D', 'H']:
+            for icard in xrange(0, len(hand)):
+                card = hand[icard]
+                if card.endswith(suit):
+                    bid[suit] += 1
+                    if card.startswith('J'):
+                        bid['bid'] = '6' + suit
+        bids.append(bid)
+    return bids
+
 def create_deck():
     deck = []
     for suit in ['S', 'C', 'D', 'H']:
@@ -46,13 +68,27 @@ def deal(deck):
     # print "hands = %s" % str(hands)
     return hands
 
-def bid(hands):
+def old_get_bid(hands):
     bids = []
     for index in xrange(0, 4):
         hand = hands[index]
         print "hand = %s" % str(hand)
         bid = {}
+        for suit in ['S', 'C', 'D', 'H']:
+            bid[suit] = []
+        bid['JOKER'] = None
+        bid['bid'] = 'pass'
         bids.append(bid)
+        for icard in xrange(0, len(hand)):
+            card = hand[icard]
+            if card == 'JOKER':
+                bid['JOKER'] = card
+                bid['bid'] = '6NT'
+            elif card.startswith('J'):
+                for suit in ['S', 'C', 'D', 'H']:
+                    if card.endswith(suit):
+                        bid[suit].append(card)
+                        bid['bid'] = '6' + suit
     return bids
 
 def main():
@@ -61,7 +97,11 @@ def main():
     hands = deal(deck)
     # print "hands = %s" % str(hands)
     print "your hand = %s" % str(hands[3])
-    bids = bid(hands)
-    print "bids = %s" % str(bids)
+    bids = get_bid(hands)
+    # print "bids = %s" % str(bids)
+    for index in xrange(0, 4):
+        shand = bids[index]
+        bid = shand['bid']
+        print "bid = %s in %s" % (str(bid), str(shand))
 
 main()
