@@ -46,10 +46,22 @@ def deal(deck):
     # print "hands = %s" % str(hands)
     return hands
 
+def bid(hands):
+    bids = []
+    for index in xrange(0, 4):
+        hand = hands[index]
+        print "hand = %s" % str(hand)
+        bid = {}
+        bids.append(bid)
+    return bids
+
 def main():
     deck = create_deck()
     # print "deck = %s" % str(deck)
     hands = deal(deck)
-    print "hands = %s" % str(hands)
+    # print "hands = %s" % str(hands)
+    print "your hand = %s" % str(hands[3])
+    bids = bid(hands)
+    print "bids = %s" % str(bids)
 
 main()
