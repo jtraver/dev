@@ -11,3 +11,9 @@ apihelper.info(list1)
 
 list1.insert(2, 11)
 print "list1 = %s" % str(list1)
+
+index = 3
+for item in [13, 17, 19]:
+    list1.insert(index, item)
+    index += 1
+print "list1 = %s" % str(list1)
