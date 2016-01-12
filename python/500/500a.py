@@ -21,6 +21,24 @@ def get_bid(hands):
                     bid[suit] += 1
                     if card.startswith('J'):
                         bid['bid'] = '6' + suit
+        if 'JOKER' in hand:
+            if 'JH' in hand and 'JD' in hand:
+                bid['bid'] = '8H'
+                if bid['D'] > bid['H']:
+                    bid['bid'] = '8D'
+            if 'JC' in hand and 'JS' in hand:
+                bid['bid'] = '8C'
+                if bid['S'] > bid['C']:
+                    bid['bid'] = '8S'
+        else:
+            if 'JH' in hand and 'JD' in hand:
+                bid['bid'] = '7H'
+                if bid['D'] > bid['H']:
+                    bid['bid'] = '7D'
+            if 'JC' in hand and 'JS' in hand:
+                bid['bid'] = '7C'
+                if bid['S'] > bid['C']:
+                    bid['bid'] = '7S'
         bids.append(bid)
     return bids
 
@@ -95,6 +113,9 @@ def main():
     deck = create_deck()
     # print "deck = %s" % str(deck)
     hands = deal(deck)
+    for index in xrange(0, 5):
+        shand = hands[index]
+        print "%s %s" % (str(index), str(shand))
     # print "hands = %s" % str(hands)
     print "your hand = %s" % str(hands[3])
     bids = get_bid(hands)
