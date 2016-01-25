@@ -9,3 +9,4 @@ print "buf = %s" % str(dir(buf))
 buf[0] = 'a'
 print "buf = %s" % str(buf.raw)
 print "buf = %s" % str(buf[0])
+print "buf = %x" % ord(buf[0])
