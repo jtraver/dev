@@ -97,6 +97,8 @@ apihelper.info(ba1)
 
 
 # buf[0:3] = ba1[0:3]
+print "buf = %s" % str(buf.raw)
 for ind1 in xrange(6):
-    buf[ind1] = chr(ba1.pop(0))
+    # buf[ind1] = chr(ba1.pop(0))
+    buf[ind1] = chr(ba1[ind1])
 print "buf = %s" % str(buf.raw)
