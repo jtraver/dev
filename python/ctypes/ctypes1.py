@@ -85,7 +85,8 @@ print "wchar = %s" % str(ctypes.sizeof(ctypes.c_wchar))
 print "wchar_p = %s" % str(ctypes.sizeof(ctypes.c_wchar_p))
 
 inc = 1
+n = 0
 for x in xrange(1000):
-    n = x + inc
+    n += x * inc
     print "n = %s, %s %s" % (str(n), str(sys.getsizeof(n)), str(type(n)))
     inc *= 10
