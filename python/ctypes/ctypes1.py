@@ -3,6 +3,7 @@
 import ctypes
 # from ctypes import create_string_buffer
 import apihelper
+import sys
 
 buf = ctypes.create_string_buffer(10)
 print "buf = %s" % str(buf)
@@ -82,3 +83,9 @@ print "void_p = %s" % str(ctypes.sizeof(ctypes.c_void_p))
 print "voidp = %s" % str(ctypes.sizeof(ctypes.c_voidp))
 print "wchar = %s" % str(ctypes.sizeof(ctypes.c_wchar))
 print "wchar_p = %s" % str(ctypes.sizeof(ctypes.c_wchar_p))
+
+inc = 1
+for x in xrange(1000):
+    n = x + inc
+    print "n = %s, %s %s" % (str(n), str(sys.getsizeof(n)), str(type(n)))
+    inc *= 10
