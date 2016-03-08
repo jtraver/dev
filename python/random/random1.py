@@ -3,37 +3,6 @@
 # 
 import random
 import apihelper
-# 
-# # len1 = random.randint(0, max_byte_array)
-# # byte = random.randint(0, 255)
-# # nbins = random.randint(0, max_list)
-# # dtype = random.randint(0, 2)
-# # htype = random.randint(0, len(basic) - 1)
-# # dtype = random.randint(0, len(hashable) - 1)
-# # dtype = random.randint(0, 1)
-# # val = random.random() * random.randint(1, 100000)
-# # val = random.randint(1, 100000)
-# # nbins = random.randint(0, max_list)
-# # dtype = random.randint(0, len(types) - 1)
-# # nbins = random.randint(0, max_dict)
-# # dtype = random.randint(0, len(basic) - 1)
-# # nbins = random.randint(0, max_string)
-# # random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
-# # ))
-# # nbins = random.randint(0, max_unicode)
-# # u = unichr(random.randint(0, max_unicode_char))
-# # c = random.randint(0, 1)
-# # u = u + unichr(random.randint(0, max_unicode_char))
-# # u = u + unichr(random.randint(0xd800, 0xdbff))
-# # u = u + unichr(random.randint(0xdc00, 0xdfff))
-# # dtype = random.randint(0, 1)
-# # val = random.random() * random.randint(1, 100000)
-# # val = random.randint(1, 100000)
-# # btype = random.randint(0, 32)
-# # nbins = random.randint(0, tot_bins)
-# # dtype = random.randint(0, 2)
-# # htype = random.randint(0, len(basic) - 1)
-# 
 
 print "random = %s" % str(random)
 # # random = <module 'random' from '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>
@@ -158,3 +127,47 @@ apihelper.info(random)
 # 
 # weibullvariate
 #     Weibull distribution. alpha is the scale parameter and beta is the shape parameter.
+
+# 
+# # len1 = random.randint(0, max_byte_array)
+# # byte = random.randint(0, 255)
+# # nbins = random.randint(0, max_list)
+# # dtype = random.randint(0, 2)
+# # htype = random.randint(0, len(basic) - 1)
+# # dtype = random.randint(0, len(hashable) - 1)
+# # dtype = random.randint(0, 1)
+# # val = random.random() * random.randint(1, 100000)
+# # val = random.randint(1, 100000)
+# # nbins = random.randint(0, max_list)
+# # dtype = random.randint(0, len(types) - 1)
+# # nbins = random.randint(0, max_dict)
+# # dtype = random.randint(0, len(basic) - 1)
+# # nbins = random.randint(0, max_string)
+# # random.choice('abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
+# # ))
+# # nbins = random.randint(0, max_unicode)
+# # u = unichr(random.randint(0, max_unicode_char))
+# # c = random.randint(0, 1)
+# # u = u + unichr(random.randint(0, max_unicode_char))
+# # u = u + unichr(random.randint(0xd800, 0xdbff))
+# # u = u + unichr(random.randint(0xdc00, 0xdfff))
+# # dtype = random.randint(0, 1)
+# # val = random.random() * random.randint(1, 100000)
+# # val = random.randint(1, 100000)
+# # btype = random.randint(0, 32)
+# # nbins = random.randint(0, tot_bins)
+# # dtype = random.randint(0, 2)
+# # htype = random.randint(0, len(basic) - 1)
+# 
+
+while True:
+    a = random.randint(1000000000, 4000000000)
+    b = random.randint(0, 4000000000)
+    print "a = %s 0x%lx" % (str(a), a)
+    print "b = %s 0x%lx" % (str(b), b)
+    c = a << 32 | b
+    print "c = %s 0x%lx" % (str(c), c)
+    len1 = len(str("%lx" % c))
+    print "len1 = %s" % str(len1)
+    if len1 != 16:
+        break
