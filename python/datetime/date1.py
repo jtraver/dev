@@ -64,3 +64,9 @@ print "time strftime %s" % str(t.strftime("%y%m%d%H%M%S%a"))
 # %Y  Year with century as a decimal number.   
 # %Z  Time zone name (no characters if no time zone exists).   
 # %%  A literal '%' character.     
+
+# http://stackoverflow.com/questions/4548684/how-to-get-the-seconds-since-epoch-from-the-time-date-output-of-gmtime-in-py
+epoch_time = int(time.time())
+print "epoch_time = %s" % str(epoch_time)
+cf_epoch_time = epoch_time - 1262304000
+print "cf_epoch_time = %s" % str(cf_epoch_time)
