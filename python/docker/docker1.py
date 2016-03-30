@@ -14,5 +14,8 @@ def pinfo(object):
 
 def main():
     pinfo(docker)
+    dockerClient = docker.Client(base_url='unix://var/run/docker.sock')
+    pinfo(dockerClient)
+    # composeClient = client.ClientFromEnv()
 
 main()
