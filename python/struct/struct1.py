@@ -65,6 +65,10 @@ def do_pack(fmt, *args):
         print "equal"
     else:
         print "not equal"
+    v1 = u1[0]
+    print "v1 = %s" % str(v1)
+    print "v1 = %s" % str(type(v1))
+    return v1
 
 
 do_pack('! B', 4)
@@ -90,3 +94,33 @@ do_pack('>II', 72, 80)
 do_pack('>i', 73)
 do_pack('>q', 74)
 do_pack('I', 75)
+
+v1 = do_pack('! Q', 0xFFFFFFFFFFFF)
+if v1 == 0xFFFFFFFFFFFF:
+    print "v1 is correct"
+else:
+    print "v1 is not correct"
+
+v2 = 0xFFFFFFFF
+v1 = do_pack('! Q', v2)
+if v1 == v2:
+    print "v1 is correct"
+else:
+    print "v1 is not correct"
+
+v2 = 0x8FFFFFFF
+v1 = do_pack('! Q', v2)
+if v1 == v2:
+    print "v1 is correct"
+else:
+    print "v1 is not correct"
+
+v2 = 66389026883887
+print "v2 = %s" % str(v2)
+print "v2 = 0x%x" % v2
+print "v2 = %s" % str(type(v2))
+v1 = do_pack('! Q', v2)
+if v1 == v2:
+    print "v1 is correct"
+else:
+    print "v1 is not correct"
