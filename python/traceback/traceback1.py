@@ -7,6 +7,10 @@ import inspect
 print "sys = %s" % str(sys)
 print "sys = %s" % str(dir(sys))
 print "sys.platform = %s" % str(sys.platform)
+print "traceback = %s" % str(traceback)
+print "traceback = %s" % str(dir(traceback))
+print "inspect = %s" % str(inspect)
+print "inspect = %s" % str(dir(inspect))
 
 # In [47]: c=inspect.currentframe() 
 # 
