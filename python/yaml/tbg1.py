@@ -2,15 +2,20 @@
 
 import yaml
 
-tbg1 = {
-    'love': ['truth', 'beauty', 'goodness'],
+atbg1 = {
+    'love': {'truth': [ 'wise' ], 'beauty': [], 'goodness': []},
     'truth': [],
     'beauty': [],
     'goodness': [],
 }
 
 
-otbg1 = {
+dtbg1 = {
+    'love': {'truth': [ 'wise' ], 'beauty': [], 'goodness': []},
+}
+
+
+tbg1 = {
     'love': ['truth', 'beauty', 'goodness'],
     'truth': None,
     'beauty': None,
