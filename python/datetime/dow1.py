@@ -17,7 +17,7 @@ d1 = datetime.datetime(2012, 3, 23, 23, 24, 55, 173504)
 print "d1 = %s" % str(d1)
 print d1
 
-for year in xrange(2000, 2100):
+for year in xrange(1000, 10000):
     dows = ''
     for month in xrange(1, 13):
         d1 = datetime.datetime(year, month, 1, 13, 13, 13, 173504)
