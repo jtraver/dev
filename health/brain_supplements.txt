@@ -19,10 +19,10 @@ magnesium citrate
 magnesium gluconate
 magnesium orotate
 magnesium lactate
-no magnesium asparatate
-no magnesium glutomate
-no magnesium sulfide (epsom salts)
-no magnesium hydroxide (milk of magnesia)
+avoid magnesium asparatate
+avoid magnesium glutomate
+avoid magnesium sulfide (epsom salts)
+avoid magnesium hydroxide (milk of magnesia)
 
 zinc 10-100mg day
 zinc gluconate
@@ -30,3 +30,21 @@ zinc picolinate
 zinc citrate
 
 lithium orotate 1-20mg day
+
+tauring 500mg 2-4xday
+homotauring
+
+GABA 100-500mg 2-3xday
+
+glycine 100-500mg 2xday
+    as magnesium glycinate it is more easily absorbed
+
+threonine
+
+Tryptophan
+5hTP
+
+phosphatidyl choline
+phosphatidyl inositol
+phosphatidyl serine
+phosphatidyl carnitine
