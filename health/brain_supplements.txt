@@ -14,13 +14,15 @@ Nutrient Power: Heal Your Biochemistry and Heal Your Brain
 
 N-acetylcysteine NAC
 
+MANIA
+
 magnesium 200-400mg 2-3xday
 magnesium taurate
 magnesium glycinate
-magnesium chloride
+MISSING magnesium chloride
 magnesium malate
 magnesium citrate
-magnesium gluconate
+MISSING magnesium gluconate
 magnesium orotate
 magnesium lactate
 avoid magnesium asparatate
@@ -46,9 +48,38 @@ glycine 100-500mg 2xday
 threonine
 
 Tryptophan
-5hTP
+5HTP
 
 phosphatidyl choline
 phosphatidyl inositol
 phosphatidyl serine
 phosphatidyl carnitine
+
+choline citrate
+lecithin
+DMAE
+
+GLA
+    borage oil
+    evening primrose oil
+    black currant seed oil
+
+Valerian
+lemon balm (melissa leaves?)
+MISSING Scullcap
+Wood Betony
+Kava
+passion flower
+MISSING bach rescue remedy
+    vervain
+L-theanine
+Wild lettuce
+lady's slipper
+hops
+ginger
+catnip
+chamomile
+horsetail
+oatstraw
+
+
