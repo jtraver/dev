@@ -112,7 +112,7 @@ Biotin 10-100mcg
 PABA 10 mg
 
 C 10g and up
-    ester C
+    MISSING ester C
     ascorbic acid
 
 Grape seed extract
@@ -126,7 +126,7 @@ green tea
 ginger root
 rose hips
 hibiscus
-lemon grass
+MISSING lemon grass
 golgi berries -> goji berries?
 noni
 acai
@@ -165,5 +165,5 @@ molybdenum
 A
     carotenes
 
-manganese
+MISSING manganese
 
