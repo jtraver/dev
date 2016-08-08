@@ -171,6 +171,40 @@ MISSING manganese
 
 DEPRESSION
 
+Phospholipids
+    phosphatidyl
+MISSING        inositol
+        serine
+MISSING        carnitine
+
+Omega
+    3
+        EPA
+        DHA
+        LNA
+        ALA
+    6
+        GLA
+
+tryptophan
+
+tyrosine
+
 l-phenylalanine
 d-phenylalanine
 dl-phenylalanine
+
+5htp
+
+methionine
+acetyl l carnitine
+melatonin
+
+...
+
+zinc
+potassium
+vanadium
+iron
+copper
+phenylethylanine
