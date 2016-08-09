@@ -129,6 +129,8 @@ hibiscus
 MISSING lemon grass
 golgi berries -> goji berries?
 noni
+    morinda citrafolia
+    indian mulberry
 acai
 resveratrol
 
@@ -223,3 +225,41 @@ ginseng
     siberian
     american
     korean (panax)
+
+Rhodiola rosea
+    artic root
+    golden root
+green tea decaf
+cacao nibs
+bacopa monnieri
+    water hyssop
+    brahmi
+mint
+lavender
+MISSING lime blossom
+MISSING peppermint
+cinnamon
+barley grass
+wheat grass
+spirulina
+chlorella
+alfalfa
+nettle
+red clover
+watercress
+parsley
+dandelion
+reishi
+wild cherry bark
+licorice
+irish moss
+kelp
+dulse
+bee pollen
+nutritional yeast
+capsicum
+lobelia
+
+
+
+suma
