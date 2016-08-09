@@ -208,3 +208,18 @@ vanadium
 iron
 copper
 phenylethylanine
+
+boron
+cesium
+rubidium
+lithium
+organic germanium sesquioxide
+
+
+st. john's wort
+gotu kola
+gingko Biloba
+ginseng
+    siberian
+    american
+    korean (panax)
