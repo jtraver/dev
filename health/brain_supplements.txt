@@ -229,7 +229,7 @@ ginseng
 Rhodiola rosea
     artic root
     golden root
-green tea decaf
+MISSING green tea decaf
 cacao nibs
 bacopa monnieri
     water hyssop
@@ -251,7 +251,7 @@ parsley
 dandelion
 reishi
 wild cherry bark
-licorice
+MISSING licorice
 irish moss
 kelp
 dulse
