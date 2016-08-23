@@ -14,6 +14,9 @@ sub main
     print "$str1\n";
     my $str2 = substr($str1, $offset, $len2);
     print "$str2\n";
+    my $len3 = 90;
+    my $str3 = substr($str1, $offset, $len3);
+    print "$str3\n";
 }
 
 main();
