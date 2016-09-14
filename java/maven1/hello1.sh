@@ -9,12 +9,23 @@ echo CLASSPATH = $CLASSPATH
 
 rm -rf my-app
 mvn --version
+echo mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
 mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+echo
+echo generated my-app skeleton:
 find my-app
 cd my-app
+echo mvn package
 mvn package
-cd ..
+echo
+echo after mvn package
 find .
+echo mvn site
+mvn site
+echo
+echo after mvn site
+find .
+cd ..
 echo
 java com.mycompany.app.App
 # export CLASSPATH=
