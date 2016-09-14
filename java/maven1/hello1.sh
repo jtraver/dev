@@ -14,4 +14,8 @@ find my-app
 cd my-app
 mvn package
 cd ..
+find .
+echo
 java com.mycompany.app.App
+# export CLASSPATH=
+java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
