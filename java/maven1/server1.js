@@ -11,6 +11,9 @@ const util = require('util')
 var server = http.createServer(function (request, response) {
     console.log("request = " + request);
     console.log(util.inspect(request, false, null))
+    console.log("response = " + response);
+    console.log(util.inspect(response, false, null))
+    console.log("request.url = " + request.url);
     response.writeHead(200, {"Content-Type": "text/plain"});
     response.end("Hello World\n");
 });
