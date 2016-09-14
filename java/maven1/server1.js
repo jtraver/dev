@@ -26,6 +26,12 @@ var server = http.createServer(function (request, response) {
         });
     }
     else if (request.url == '/project-info.html' ||
+        request.url == '/project-summary.html' ||
+        request.url == '/plugins.html' ||
+        request.url == '/plugin-management.html' ||
+        request.url == '/index.html' ||
+        request.url == '/dependency-convergence.html' ||
+        request.url == '/dependency-info.html' ||
         request.url == '/dependencies.html')
     {
         response.writeHead(200, {"Content-Type": "text/html"});
@@ -60,7 +66,11 @@ var server = http.createServer(function (request, response) {
             response.end(data, 'binary')
         });
     }
-    else if (request.url == '/images/expanded.gif')
+    else if (request.url == '/images/expanded.gif' ||
+        request.url == '/images/icon_success_sml.gif' ||
+        request.url == '/images/icon_info_sml.gif' ||
+        request.url == '/images/icon_info_sml.gif' ||
+        request.url == '/images/icon_success_sml.gif')
     {
         response.writeHead(200, {"Content-Type": "image/gif"});
         fs.readFile('my-app/target/site' + request.url, function (err, data) {
