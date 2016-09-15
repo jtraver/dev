@@ -1,3 +1,5 @@
+rm *.class
+
 echo CLASSPATH = $CLASSPATH
 # export CLASSPATH=.;$CLASSPATH
 # export CLASSPATH=.
