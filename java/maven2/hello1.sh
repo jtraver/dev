@@ -3,7 +3,7 @@
 echo CLASSPATH = $CLASSPATH
 # export CLASSPATH=.;$CLASSPATH
 # export CLASSPATH=.
-export CLASSPATH=/home/jtraver/dev/git/jtraver/dev/java/maven2/my-app/target/classes
+export CLASSPATH=/home/jtraver/dev/git/jtraver/dev/java/maven2/my-app/target/classes;/home/jtraver/dev/git/jtraver/dev/java/maven2/my-app/target/test-classes
 # ./my-app/target/classes/com/mycompany/app/App.class
 echo CLASSPATH = $CLASSPATH
 
@@ -16,17 +16,21 @@ mvn --version
 find my-app
 cd my-app
 echo mvn package
-mvn package
-echo
-echo after mvn package
-find .
-echo mvn site
+mvn --debug package
+# echo
+# echo after mvn package
+# find .
+# echo mvn site
 mvn site
-echo
-echo after mvn site
-find .
+# echo
+# echo after mvn site
+# find .
 cd ..
 echo
 java com.mycompany.app.App
 # export CLASSPATH=
 java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
+
+# ./my-app/target/test-classes/com/mycompany/app/AppTest.class
+echo $CLASSPATH
+java com.mycompany.app.AppTest
