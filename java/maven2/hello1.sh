@@ -1,5 +1,7 @@
 # https://maven.apache.org/guides/getting-started/maven-in-five-minutes.html
 
+rm -rf my-app/target
+
 echo CLASSPATH = $CLASSPATH
 # export CLASSPATH=.;$CLASSPATH
 # export CLASSPATH=.
