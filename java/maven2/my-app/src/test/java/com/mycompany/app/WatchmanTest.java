@@ -12,7 +12,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 public class WatchmanTest {
-  private static String watchedLog;
+  private static String watchedLog = "";
 
   @Rule
   public TestRule watchman = new TestWatcher() {
@@ -23,27 +23,29 @@ public class WatchmanTest {
 
     @Override
     protected void succeeded(Description description) {
-      watchedLog += description.getDisplayName() + " " + "success!\n";
+      watchedLog += "\nsucceeded\n" + description.getDisplayName() + " " + "success!\n";
     }
 
     @Override
     protected void failed(Throwable e, Description description) {
-      watchedLog += description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
+      watchedLog += "\nfailed\n" + description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
     }
 
     @Override
     protected void skipped(AssumptionViolatedException e, Description description) {
-      watchedLog += description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
+      watchedLog += "\nskipped\n" + description.getDisplayName() + " " + e.getClass().getSimpleName() + "\n";
     }
 
     @Override
     protected void starting(Description description) {
       super.starting(description);
+      System.out.println("START\n" + description.getDisplayName() + " starting\n'" + watchedLog + "'\nDONE\n");
     }
 
     @Override
     protected void finished(Description description) {
       super.finished(description);
+      System.out.println("START\n" + description.getDisplayName() + " finished\n'" + watchedLog + "'\nDONE\n");
     }
   };
 
