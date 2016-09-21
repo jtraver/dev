@@ -23,7 +23,7 @@ mvn --debug package
 # echo after mvn package
 # find .
 # echo mvn site
-mvn site
+# mvn site
 # echo
 # echo after mvn site
 # find .
@@ -34,5 +34,5 @@ java com.mycompany.app.App
 java -cp my-app/target/my-app-1.0-SNAPSHOT.jar com.mycompany.app.App
 
 # ./my-app/target/test-classes/com/mycompany/app/AppTest.class
-echo $CLASSPATH
-java com.mycompany.app.AppTest
+# echo $CLASSPATH
+# java com.mycompany.app.AppTest
