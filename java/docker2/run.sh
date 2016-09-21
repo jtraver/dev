@@ -5,7 +5,7 @@ rm -rf my-app/target
 echo CLASSPATH = $CLASSPATH
 # export CLASSPATH=.;$CLASSPATH
 # export CLASSPATH=.
-export CLASSPATH=/home/jtraver/dev/git/jtraver/dev/java/maven2/my-app/target/classes;/home/jtraver/dev/git/jtraver/dev/java/maven2/my-app/target/test-classes
+export CLASSPATH=/home/jtraver/dev/git/jtraver/dev/java/docker2/my-app/target/classes;/home/jtraver/dev/git/jtraver/dev/java/docker2/my-app/target/test-classes
 # ./my-app/target/classes/com/mycompany/app/App.class
 echo CLASSPATH = $CLASSPATH
 
