@@ -15,6 +15,7 @@ sub wanted
         }
         my $name = $File::Find::name;
         if (! -d && -T &&
+                $name !~ /\/centos\/status\/runs\// &&
                 $name !~ /\/SFGREP\// &&
                 $name !~ /\/coverity\// &&
                 $name !~ /\/branches\// &&
