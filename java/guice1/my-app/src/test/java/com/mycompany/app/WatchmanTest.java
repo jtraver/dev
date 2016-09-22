@@ -14,31 +14,34 @@ import org.junit.runners.model.Statement;
 
 
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.Module;
-
-import com.mycompany.app.DockerUtil;
-
 /*
+import com.google.inject.Inject;
+import com.google.inject.Module;
+*/
+
 import java.util.List;
 
 import com.github.dockerjava.api.DockerClient;
+import com.github.dockerjava.api.model.Container;
+/*
 import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 // import com.github.dockerjava.api.command.InspectContainerResponse;
-import com.github.dockerjava.api.model.Container;
 // import com.github.dockerjava.api.model.ExposedPort;
 */
 
 
 public class WatchmanTest {
   private static String watchedLog = "";
+  private static DockerUtil dockerUtil;
 
 
     @Before
     public void doSetup() {
         System.out.println("BEFORE");
+        Injector injector = Guice.createInjector(new DockerModule());
+        dockerUtil = injector.getInstance(DockerUtil.class);
     }
 
     /*
@@ -91,11 +94,11 @@ public class WatchmanTest {
     // fail();
   }
 
-  /*
   @Test
   public void succeeds() {
-    // abstract: DockerClient client = new DockerClient("unix:///var/run/docker.sock");
-    DockerClient client = getDockerClient();
+    /*
+    @Inject
+    DockerClient client;
     System.out.println("got docker client");
     final List<Container> containers = client.listContainersCmd().exec();
     for (final Container container : containers) {
@@ -105,14 +108,11 @@ public class WatchmanTest {
             System.out.println("docker client name: " + name);
         }
     }
+    */
   }
-  */
 
-    @Test
-    public void testDockerUtil() {
-        @Inject
-        DockerUtil dockerUtil;
-
-        dockerUtil.listContainers();
-    }
+  @Test
+  public void testDocker() {
+    dockerUtil.listContainers();
+  }
 }
