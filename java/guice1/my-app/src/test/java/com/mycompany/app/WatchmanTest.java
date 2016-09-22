@@ -4,6 +4,7 @@ package com.mycompany.app;
 
 import static org.junit.Assert.fail; 
 import org.junit.AssumptionViolatedException; 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
@@ -11,6 +12,15 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+import com.google.inject.Module;
+
+import com.mycompany.app.DockerUtil;
+
+/*
 import java.util.List;
 
 import com.github.dockerjava.api.DockerClient;
@@ -19,28 +29,26 @@ import com.github.dockerjava.core.DefaultDockerClientConfig;
 // import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.model.Container;
 // import com.github.dockerjava.api.model.ExposedPort;
+*/
 
 
 public class WatchmanTest {
   private static String watchedLog = "";
 
 
+    @Before
+    public void doSetup() {
+        System.out.println("BEFORE");
+    }
+
+    /*
     private DockerClient getDockerClient() {
         final DefaultDockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
                 .withRegistryUrl("unix:///var/run/docker.sock").withDockerHost("unix:///var/run/docker.sock")
                 .withDockerTlsVerify(false).build();
         return DockerClientBuilder.getInstance(config).build();
     }
-
-/*
-    private DockerClient getDockerClient() {
-        final DockerClientConfig config = DockerClientConfig.createDefaultConfigBuilder()
-                .withRegistryUrl("unix:///var/run/docker.sock").withDockerHost("unix:///var/run/docker.sock")
-                .withDockerTlsVerify(false).build();
-        return DockerClientBuilder.getInstance(config).build();
-    }
-*/
-
+    */
 
 
   @Rule
@@ -83,6 +91,7 @@ public class WatchmanTest {
     // fail();
   }
 
+  /*
   @Test
   public void succeeds() {
     // abstract: DockerClient client = new DockerClient("unix:///var/run/docker.sock");
@@ -97,4 +106,13 @@ public class WatchmanTest {
         }
     }
   }
+  */
+
+    @Test
+    public void testDockerUtil() {
+        @Inject
+        DockerUtil dockerUtil;
+
+        dockerUtil.listContainers();
+    }
 }
