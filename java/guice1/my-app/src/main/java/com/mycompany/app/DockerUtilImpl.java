@@ -4,18 +4,9 @@ import java.util.List;
 
 import com.github.dockerjava.api.DockerClient;
 import com.github.dockerjava.api.model.Container;
-/*
-import com.github.dockerjava.core.DockerClientBuilder;
-import com.github.dockerjava.core.DefaultDockerClientConfig;
-import com.google.inject.AbstractModule;
-*/
 
 import com.google.inject.Inject;
 
-/**
- * DockerUtilImpl class
- *
- */
 public class DockerUtilImpl implements DockerUtil {
     private final DockerClient client;
 
