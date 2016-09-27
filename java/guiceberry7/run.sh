@@ -18,7 +18,8 @@ mvn --version
 find my-app
 cd my-app
 echo mvn package
-mvn --debug package
+# mvn --debug package
+mvn --update-snapshots --debug package
 # echo
 # echo after mvn package
 # find .
