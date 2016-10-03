@@ -3,6 +3,8 @@ var http = require('http');
 const util = require('util')
 var fs = require('fs');
 
+var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/tmp1/build/reports/tests';
+
 // console.log(util.inspect(myObject, {showHidden: false, depth: null}))
 
 // alternative shortcut
@@ -18,37 +20,40 @@ var server = http.createServer(function (request, response) {
     if (request.url == '/')
     {
         response.writeHead(200, {"Content-Type": "text/html"});
-        fs.readFile('my-app/target/site/index.html', 'utf8', function (err, data) {
+        fs.readFile(home + '/index.html', 'utf8', function (err, data) {
             if (err) {
                 return console.log(err);
             }
             response.end(data)
         });
     }
-    else if (request.url == '/project-info.html' ||
-        request.url == '/project-summary.html' ||
-        request.url == '/plugins.html' ||
-        request.url == '/plugin-management.html' ||
-        request.url == '/index.html' ||
-        request.url == '/dependency-convergence.html' ||
-        request.url == '/dependency-info.html' ||
-        request.url == '/dependencies.html')
+    else if (request.url == '/classes/com.aerospike.server.test.Test3374.html' ||
+        request.url == '/packages/com.aerospike.server.test.html' ||
+        request.url == '/index.html')
     {
         response.writeHead(200, {"Content-Type": "text/html"});
-        fs.readFile('my-app/target/site' + request.url, 'utf8', function (err, data) {
+        fs.readFile(home + request.url, 'utf8', function (err, data) {
             if (err) {
                 return console.log(err);
             }
             response.end(data)
         });
     }
-    else if (request.url == '/css/maven-base.css' ||
-        request.url == '/css/print.css' ||
-        request.url == '/css/site.css' ||
-        request.url == '/css/maven-theme.css')
+    else if (request.url == '/js/report.js')
+    {
+        response.writeHead(200, {"Content-Type": "application/javascript"});
+        fs.readFile(home + request.url, 'utf8', function (err, data) {
+            if (err) {
+                return console.log(err);
+            }
+            response.end(data)
+        });
+    }
+    else if (request.url == '/css/base-style.css' ||
+        request.url == '/css/style.css')
     {
         response.writeHead(200, {"Content-Type": "text/css"});
-        fs.readFile('my-app/target/site' + request.url, 'utf8', function (err, data) {
+        fs.readFile(home + request.url, 'utf8', function (err, data) {
             if (err) {
                 return console.log(err);
             }
@@ -59,7 +64,7 @@ var server = http.createServer(function (request, response) {
         request.url == '/images/external.png')
     {
         response.writeHead(200, {"Content-Type": "image/png"});
-        fs.readFile('my-app/target/site' + request.url, function (err, data) {
+        fs.readFile(home + request.url, function (err, data) {
             if (err) {
                 return console.log(err);
             }
@@ -73,7 +78,7 @@ var server = http.createServer(function (request, response) {
         request.url == '/images/icon_success_sml.gif')
     {
         response.writeHead(200, {"Content-Type": "image/gif"});
-        fs.readFile('my-app/target/site' + request.url, function (err, data) {
+        fs.readFile(home + request.url, function (err, data) {
             if (err) {
                 return console.log(err);
             }
