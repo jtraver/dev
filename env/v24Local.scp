@@ -1,3 +1,0 @@
-# scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/vmware_vm_images/CentOS-6.4.vmwarevm .
-# scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/os_image .
-scp -r citrusleaf@fs.citrusleaf.local:/citrusleaf/shared/software/os_image/centos_6.2 .

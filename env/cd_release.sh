@@ -1,2 +1,0 @@
-cd ../release
-git branch

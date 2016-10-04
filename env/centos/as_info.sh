@@ -1,1 +1,0 @@
-asmonitor -e info
