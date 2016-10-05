@@ -4,6 +4,7 @@ const util = require('util')
 var fs = require('fs');
 
 var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/tmp1/build/reports/tests';
+// var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/cluster-integrity/build/reports/tests';
 
 // console.log(util.inspect(myObject, {showHidden: false, depth: null}))
 
@@ -35,6 +36,7 @@ var server = http.createServer(function (request, response) {
         request.url == '/classes/com.aerospike.server.test.ConflictDigestLoggingTest.html' ||
         request.url == '/classes/com.aerospike.server.test.FastNodeRestartAer4698.html' ||
         request.url == '/classes/com.aerospike.server.test.HbV3V2Comparison.html' ||
+        request.url == '/classes/com.aerospike.server.test.HeartbeatV5Test.html' ||
         request.url == '/packages/com.aerospike.server.test.html' ||
         request.url == '/index.html')
     {
