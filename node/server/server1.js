@@ -31,6 +31,10 @@ var server = http.createServer(function (request, response) {
         request.url == '/classes/com.aerospike.server.test.TestClusterFormation1.html' ||
         request.url == '/classes/com.aerospike.server.test.CdtReplicationTest.html' ||
         request.url == '/classes/com.aerospike.server.test.ClusterFormationTest.html' ||
+        request.url == '/classes/com.aerospike.server.test.ClusteringV5Test.html' ||
+        request.url == '/classes/com.aerospike.server.test.ConflictDigestLoggingTest.html' ||
+        request.url == '/classes/com.aerospike.server.test.FastNodeRestartAer4698.html' ||
+        request.url == '/classes/com.aerospike.server.test.HbV3V2Comparison.html' ||
         request.url == '/packages/com.aerospike.server.test.html' ||
         request.url == '/index.html')
     {
