@@ -3,8 +3,8 @@ var http = require('http');
 const util = require('util')
 var fs = require('fs');
 
-// var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/tmp1/build/reports/tests';
-var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/cluster-integrity/build/reports/tests';
+var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/tmp1/build/reports/tests';
+// var home ='/home/jtraver/dev/git/jtraver/qaa/ci_tools/docker-java/cluster-integrity/build/reports/tests';
 
 // console.log(util.inspect(myObject, {showHidden: false, depth: null}))
 
