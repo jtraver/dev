@@ -121,7 +121,9 @@ print "it1 = %s" % str(it1)
 dt1 = datetime.datetime.fromtimestamp(it1)
 print "time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))
 d1 = 60 * 60 * 24
-it1 += d1
+# it1 += d1
+it1 -= d1
+print "it1 = %s" % str(it1)
 dt1 = datetime.datetime.fromtimestamp(it1)
 print "time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))
 
@@ -130,7 +132,8 @@ print "time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))
 #            ).strftime('%Y-%m-%d %H:%M:%S')
 
 if True:
-    it1 = int(time.time())
+    # it1 = int(time.time())
+    it1 = 1475768342
     d1 = 60 * 60 * 24
     for t1 in xrange(167):
         dt1 = datetime.datetime.fromtimestamp(it1)
