@@ -150,5 +150,6 @@ for i1 in xrange(166):
         # print "%s month" % str(dt1.month)
     if dt1.year == 2017 and dt1.month == 3 and dt1.day == 21:
         print "%s %s %s %s day" % (str(i1), str(dt1.year), str(dt1.month), str(dt1.day))
+        print "%s time strftime %s" % (str(i1), str(dt1.strftime("%y%m%d%H%M%S%a")))
         break
     it1 += d1
