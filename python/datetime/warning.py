@@ -139,3 +139,16 @@ if True:
         dt1 = datetime.datetime.fromtimestamp(it1)
         print "%s time strftime %s" % (str(t1), str(dt1.strftime("%y%m%d%H%M%S%a")))
         it1 += d1
+
+it1 = int(time.time())
+d1 = 60 * 60 * 24
+for i1 in xrange(166):
+    dt1 = datetime.datetime.fromtimestamp(it1)    
+    # if dt1.year == 2017:
+        # print "%s year" % str(dt1.year)
+    # if dt1.month == 3:
+        # print "%s month" % str(dt1.month)
+    if dt1.year == 2017 and dt1.month == 3 and dt1.day == 21:
+        print "%s %s %s %s day" % (str(i1), str(dt1.year), str(dt1.month), str(dt1.day))
+        break
+    it1 += d1
