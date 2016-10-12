@@ -1,4 +1,4 @@
 rm -rf  build
 rm -rf  test-run
-./gradle/gradlew test
+./gradle/gradlew hello
 bell.sh
