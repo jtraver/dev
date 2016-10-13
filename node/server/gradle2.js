@@ -8,7 +8,7 @@ var fs = require('fs');
 // var home ='/home/jtraver/dev/git/jtraver/aerospike-tests-java/cluster/cluster-integrity/build/reports/tests';
 // ./build/reports/tests/index.html
 // /home/jtraver/dev/git/jtraver/dev/java/gradle2
-var home ='/home/jtraver/dev/git/jtraver/dev/java/gradle2/build/reports';
+var home ='/home/jtraver/dev/git/jtraver/dev/java/gradle2/build/reports/tests';
 
 // console.log(util.inspect(myObject, {showHidden: false, depth: null}))
 
@@ -32,16 +32,8 @@ var server = http.createServer(function (request, response) {
             response.end(data)
         });
     }
-    else if (request.url == '/classes/com.aerospike.server.test.Test3374.html' ||
-        request.url == '/classes/com.aerospike.server.test.TestClusterFormation1.html' ||
-        request.url == '/classes/com.aerospike.server.test.CdtReplicationTest.html' ||
-        request.url == '/classes/com.aerospike.server.test.ClusterFormationTest.html' ||
-        request.url == '/classes/com.aerospike.server.test.ClusteringV5Test.html' ||
-        request.url == '/classes/com.aerospike.server.test.ConflictDigestLoggingTest.html' ||
-        request.url == '/classes/com.aerospike.server.test.FastNodeRestartAer4698.html' ||
-        request.url == '/classes/com.aerospike.server.test.HbV3V2Comparison.html' ||
-        request.url == '/classes/com.aerospike.server.test.HeartbeatV5Test.html' ||
-        request.url == '/packages/com.aerospike.server.test.html' ||
+    else if (request.url == '/packages/default-package.html' ||
+        request.url == '/classes/WatchmanTest.html' ||
         request.url == '/index.html')
     {
         response.writeHead(200, {"Content-Type": "text/html"});
