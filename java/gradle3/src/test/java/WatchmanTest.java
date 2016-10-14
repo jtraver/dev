@@ -71,6 +71,7 @@ public class WatchmanTest {
                 if (asclient1 != null) {
                     return asclient1;
                 }
+                ip = null;
             }
         }
         return null;
