@@ -12,6 +12,7 @@ import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
 import java.util.List;
+import java.util.Map;
 import java.lang.reflect.Method;
 
 import com.github.dockerjava.api.DockerClient;
@@ -19,6 +20,10 @@ import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.core.DefaultDockerClientConfig;
 // import com.github.dockerjava.api.command.InspectContainerResponse;
 import com.github.dockerjava.api.model.Container;
+import com.github.dockerjava.api.model.ContainerHostConfig;
+import com.github.dockerjava.api.model.ContainerPort;
+import com.github.dockerjava.api.model.ContainerNetworkSettings;
+import com.github.dockerjava.api.model.ContainerNetwork;
 // import com.github.dockerjava.api.model.ExposedPort;
 
 
@@ -34,6 +39,26 @@ public class WatchmanTest {
                 .withRegistryUrl("unix:///var/run/docker.sock").withDockerHost("unix:///var/run/docker.sock")
                 .withDockerTlsVerify(false).build();
         return DockerClientBuilder.getInstance(config).build();
+    }
+
+
+    private AerospikeClient getAerospikeClient(DockerClient dockerClient) {
+        // final List<Container> containers = dockerClient.listContainersCmd().exec();
+        Container container = dockerClient.listContainersCmd().exec().iterator().next();
+        System.out.println("container = " + container);
+        int port = 999999;
+        ContainerPort containerPorts[] = container.getPorts();
+        for (int i = 0; i < containerPorts.length; i++) {
+            ContainerPort containerPort = containerPorts[i];
+            System.out.println("containerPort = " + containerPort);
+            int p = containerPorts[i].getPrivatePort();
+            System.out.println("p = " + p);
+            if (p < port) {
+                port = p;
+            }
+        }
+        System.out.println("port = " + port);
+        return null;
     }
 
 /*
@@ -89,26 +114,282 @@ public class WatchmanTest {
 
   @Test
   public void succeeds() {
-    // abstract: DockerClient dockerclient = new DockerClient("unix:///var/run/docker.sock");
-    DockerClient dockerclient = getDockerClient();
-    System.out.println("got docker dockerclient");
-    final List<Container> containers = dockerclient.listContainersCmd().exec();
+    // abstract: DockerClient dockerClient = new DockerClient("unix:///var/run/docker.sock");
+    DockerClient dockerClient = getDockerClient();
+    System.out.println("got docker dockerClient");
+    Class dockerclass = dockerClient.getClass();
+    Method dockermethods[] = dockerclass.getMethods();
+    System.out.println("docker dockermethods: " + dockermethods);
+    for (int i = 0; i < dockermethods.length; i++) {
+        Method dockermethod = dockermethods[i];
+        System.out.println(i + " dockerClient method " + dockermethod.getName());
+    }
+    /*
+     * 0 dockerClient method listContainersCmd
+     * 1 dockerClient method authCmd
+     * 2 dockerClient method infoCmd
+     * 3 dockerClient method unpauseContainerCmd
+     * 4 dockerClient method eventsCmd
+     * 5 dockerClient method statsCmd
+     * 6 dockerClient method createVolumeCmd
+     * 7 dockerClient method inspectVolumeCmd
+     * 8 dockerClient method removeVolumeCmd
+     * 9 dockerClient method listVolumesCmd
+     * 10 dockerClient method listNetworksCmd
+     * 11 dockerClient method inspectNetworkCmd
+     * 12 dockerClient method createNetworkCmd
+     * 13 dockerClient method removeNetworkCmd
+     * 14 dockerClient method connectToNetworkCmd
+     * 15 dockerClient method disconnectFromNetworkCmd
+     * 16 dockerClient method createImageCmd
+     * 17 dockerClient method loadImageCmd
+     * 18 dockerClient method searchImagesCmd
+     * 19 dockerClient method pullImageCmd
+     * 20 dockerClient method pushImageCmd
+     * 21 dockerClient method pushImageCmd
+     * 22 dockerClient method pingCmd
+     * 23 dockerClient method removeImageCmd
+     * 24 dockerClient method listImagesCmd
+     * 25 dockerClient method inspectImageCmd
+     * 26 dockerClient method saveImageCmd
+     * 27 dockerClient method createContainerCmd
+     * 28 dockerClient method startContainerCmd
+     * 29 dockerClient method execCreateCmd
+     * 30 dockerClient method inspectContainerCmd
+     * 31 dockerClient method removeContainerCmd
+     * 32 dockerClient method containerDiffCmd
+     * 33 dockerClient method stopContainerCmd
+     * 34 dockerClient method killContainerCmd
+     * 35 dockerClient method updateContainerCmd
+     * 36 dockerClient method renameContainerCmd
+     * 37 dockerClient method restartContainerCmd
+     * 38 dockerClient method commitCmd
+     * 39 dockerClient method buildImageCmd
+     * 40 dockerClient method buildImageCmd
+     * 41 dockerClient method buildImageCmd
+     * 42 dockerClient method topContainerCmd
+     * 43 dockerClient method tagImageCmd
+     * 44 dockerClient method pauseContainerCmd
+     * 45 dockerClient method authConfig
+     * 46 dockerClient method waitContainerCmd
+     * 47 dockerClient method attachContainerCmd
+     * 48 dockerClient method execStartCmd
+     * 49 dockerClient method inspectExecCmd
+     * 50 dockerClient method logContainerCmd
+     * 51 dockerClient method copyArchiveFromContainerCmd
+     * 52 dockerClient method copyFileFromContainerCmd
+     * 53 dockerClient method copyArchiveToContainerCmd
+     * 54 dockerClient method versionCmd
+     * 55 dockerClient method withDockerCmdExecFactory
+     * 56 dockerClient method getInstance
+     * 57 dockerClient method getInstance
+     * 58 dockerClient method getInstance
+     * 59 dockerClient method close
+     * 60 dockerClient method wait
+     * 61 dockerClient method wait
+     * 62 dockerClient method wait
+     * 63 dockerClient method equals
+     * 64 dockerClient method toString
+     * 65 dockerClient method hashCode
+     * 66 dockerClient method getClass
+     * 67 dockerClient method notify
+     * 68 dockerClient method notifyAll
+     * */
+    final List<Container> containers = dockerClient.listContainersCmd().exec();
     for (final Container container : containers) {
-        System.out.println("docker dockerclient id: " + container.getId());
-        System.out.println("docker dockerclient command: " + container.getCommand());
+        System.out.println("container = " + container);
+        System.out.println("docker dockerClient id: " + container.getId());
+        System.out.println("docker dockerClient command: " + container.getCommand());
         for (final String name : container.getNames()) {
-            System.out.println("docker dockerclient name: " + name);
+            System.out.println("docker dockerClient name: " + name);
+        }
+        Class containerclass = container.getClass();
+        Method containermethods[] = containerclass.getMethods();
+        System.out.println("container containermethods: " + containermethods);
+        for (int i = 0; i < containermethods.length; i++) {
+            Method containermethod = containermethods[i];
+            System.out.println(i + " container method " + containermethod.getName());
+        }
+        /*
+         * 0 container method getCommand
+         * 1 container method getNames
+         * 2 container method getImageId
+         * 3 container method getImage
+         * 4 container method getHostConfig
+         * 5 container method getCreated
+         * 6 container method getPorts
+         * 7 container method getSizeRw
+         * 8 container method getSizeRootFs
+         * 9 container method getNetworkSettings
+         * 10 container method getLabels
+         * 11 container method getStatus
+         * 12 container method equals
+         * 13 container method toString
+         * 14 container method hashCode
+         * 15 container method getId
+         * 16 container method wait
+         * 17 container method wait
+         * 18 container method wait
+         * 19 container method getClass
+         * 20 container method notify
+         * 21 container method notifyAll
+         * */
+        System.out.println("container names = " + container.getNames());
+        System.out.println("container image id = " + container.getImageId());
+        System.out.println("container host config = " + container.getHostConfig());
+        System.out.println("container ports = " + container.getPorts());
+        System.out.println("container network = " + container.getNetworkSettings());
+        System.out.println("container labels = " + container.getLabels());
+        System.out.println("container status = " + container.getStatus());
+
+        ContainerHostConfig hostConfig = container.getHostConfig();
+        Class hostConfigClass = hostConfig.getClass();
+        Method hostConfigmethods[] = hostConfigClass.getMethods();
+        System.out.println("hostConfig hostConfigmethods: " + hostConfigmethods);
+        for (int i = 0; i < hostConfigmethods.length; i++) {
+            Method hostConfigmethod = hostConfigmethods[i];
+            System.out.println(i + " hostConfig method " + hostConfigmethod.getName());
+        }
+
+
+        ContainerPort containerPorts[] = container.getPorts();
+        for (int j = 0; j < containerPorts.length; j++) {
+            ContainerPort containerPort = containerPorts[j];
+            System.out.println("containerPort = " + containerPort);
+            Class portClass = containerPort.getClass();
+            Method portmethods[] = portClass.getMethods();
+            System.out.println("port portmethods: " + portmethods);
+            for (int i = 0; i < portmethods.length; i++) {
+                Method portmethod = portmethods[i];
+                System.out.println(i + " port method " + portmethod.getName());
+            }
+            /*
+             * port portmethods: [Ljava.lang.reflect.Method;@4158bffc
+             * 0 port method withType
+             * 1 port method getIp
+             * 2 port method withIp
+             * 3 port method getPrivatePort
+             * 4 port method withPrivatePort
+             * 5 port method getPublicPort
+             * 6 port method withPublicPort
+             * 7 port method equals
+             * 8 port method toString
+             * 9 port method hashCode
+             * 10 port method getType
+             * 11 port method wait
+             * 12 port method wait
+             * 13 port method wait
+             * 14 port method getClass
+             * 15 port method notify
+             * 16 port method notifyAll
+             * */
+            // System.out.println("container port type = " + containerPort.withType());
+            System.out.println("container port get ip = " + containerPort.getIp());
+            // System.out.println("container port with ip = " + containerPort.withIP());
+            System.out.println("container port getPrivatePort = " + containerPort.getPrivatePort());
+            // System.out.println("container port withPrivatePort = " + containerPort.withPrivatePort());
+            System.out.println("container port getPublicPort = " + containerPort.getPublicPort());
+            // System.out.println("container port withPublicPort = " + containerPort.withPublicPort());
+        }
+
+        System.out.println("container network = " + container.getNetworkSettings());
+        ContainerNetworkSettings containerNetworkSettings = container.getNetworkSettings();
+        Class containerNetworkSettingsClass = containerNetworkSettings.getClass();
+        Method containerNetworkSettingsmethods[] = containerNetworkSettingsClass.getMethods();
+        System.out.println("containerNetworkSettings containerNetworkSettingsmethods: " + containerNetworkSettingsmethods);
+        for (int i = 0; i < containerNetworkSettingsmethods.length; i++) {
+            Method containerNetworkSettingsmethod = containerNetworkSettingsmethods[i];
+            System.out.println(i + " containerNetworkSettings method " + containerNetworkSettingsmethod.getName());
+        }
+        /*
+         * 0 containerNetworkSettings method getNetworks
+         * 1 containerNetworkSettings method withNetworks
+         * 2 containerNetworkSettings method equals
+         * 3 containerNetworkSettings method toString
+         * 4 containerNetworkSettings method hashCode
+         * 5 containerNetworkSettings method wait
+         * 6 containerNetworkSettings method wait
+         * 7 containerNetworkSettings method wait
+         * 8 containerNetworkSettings method getClass
+         * 9 containerNetworkSettings method notify
+         * 10 containerNetworkSettings method notifyAll
+         * */
+        System.out.println("container networks = " + containerNetworkSettings.getNetworks());
+        Map<String, ContainerNetwork> containerNetworkMap = containerNetworkSettings.getNetworks();
+        System.out.println("container network map = " + containerNetworkMap);
+        for (Map.Entry<String, ContainerNetwork> entry :containerNetworkMap.entrySet())
+        {
+            System.out.println("container network map entry: " + entry.getKey() + "/" + entry.getValue());
+            ContainerNetwork containerNetwork = entry.getValue();
+            System.out.println("container network = " + containerNetwork);
+            Class containerNetworkclass = containerNetwork.getClass();
+            System.out.println("aerospike containerNetworkclass: " + containerNetworkclass);
+            Method containerNetworkmethods[] = containerNetworkclass.getMethods();
+            System.out.println("aerospike containerNetworkmethods: " + containerNetworkmethods);
+            for (int i = 0; i < containerNetworkmethods.length; i++) {
+                Method containerNetworkmethod = containerNetworkmethods[i];
+                System.out.println(i + " containerNetwork method " + containerNetworkmethod.getName());
+            }
+            /*
+             * 0 containerNetwork method getLinks
+             * 1 containerNetwork method getMacAddress
+             * 2 containerNetwork method withAliases
+             * 3 containerNetwork method withAliases
+             * 4 containerNetwork method withIpv4Address
+             * 5 containerNetwork method withLinks
+             * 6 containerNetwork method withLinks
+             * 7 containerNetwork method withMacAddress
+             * 8 containerNetwork method getEndpointId
+             * 9 containerNetwork method withEndpointId
+             * 10 containerNetwork method getGateway
+             * 11 containerNetwork method withGateway
+             * 12 containerNetwork method getGlobalIPv6Address
+             * 13 containerNetwork method withGlobalIPv6Address
+             * 14 containerNetwork method getGlobalIPv6PrefixLen
+             * 15 containerNetwork method withGlobalIPv6PrefixLen
+             * 16 containerNetwork method getIpAddress
+             * 17 containerNetwork method getIpamConfig
+             * 18 containerNetwork method withIpamConfig
+             * 19 containerNetwork method getIpPrefixLen
+             * 20 containerNetwork method withIpPrefixLen
+             * 21 containerNetwork method getIpV6Gateway
+             * 22 containerNetwork method withIpV6Gateway
+             * 23 containerNetwork method getNetworkID
+             * 24 containerNetwork method withNetworkID
+             * 25 containerNetwork method getAliases
+             * 26 containerNetwork method equals
+             * 27 containerNetwork method toString
+             * 28 containerNetwork method hashCode
+             * 29 containerNetwork method wait
+             * 30 containerNetwork method wait
+             * 31 containerNetwork method wait
+             * 32 containerNetwork method getClass
+             * 33 containerNetwork method notify
+             * 34 containerNetwork method notifyAll
+             * */
+            System.out.println("container network links = " + containerNetwork.getLinks());
+            System.out.println("container network mac address = " + containerNetwork.getMacAddress());
+            System.out.println("container network end point id = " + containerNetwork.getEndpointId());
+            System.out.println("container network gateway = " + containerNetwork.getGateway());
+            System.out.println("container network global ipv6 address = " + containerNetwork.getGlobalIPv6Address());
+            System.out.println("container network global ipv6 prefix len = " + containerNetwork.getGlobalIPv6PrefixLen());
+            System.out.println("container network ip address = " + containerNetwork.getIpAddress());
+            System.out.println("container network ipam config = " + containerNetwork.getIpamConfig());
+            System.out.println("container network ip prefix len = " + containerNetwork.getIpPrefixLen());
+            System.out.println("container network ipv6 gateway = " + containerNetwork.getIpV6Gateway());
+            System.out.println("container network network id = " + containerNetwork.getNetworkID());
+            System.out.println("container network aliases = " + containerNetwork.getAliases());
         }
     }
-    AerospikeClient asclient = new AerospikeClient("174.22.0.1", 3000);
-    System.out.println("aerospike asclient: " + asclient);
-    Class asclass = asclient.getClass();
+    AerospikeClient asclient1 = new AerospikeClient("174.22.0.1", 3000);
+    System.out.println("aerospike asclient1: " + asclient1);
+    Class asclass = asclient1.getClass();
     System.out.println("aerospike asclass: " + asclass);
     Method asmethods[] = asclass.getMethods();
     System.out.println("aerospike asmethods: " + asmethods);
     for (int i = 0; i < asmethods.length; i++) {
         Method asmethod = asmethods[i];
-        System.out.println(i + " " + asmethod.getName());
+        System.out.println(i + " asclient1 method " + asmethod.getName());
     }
     /*
      * 
@@ -188,10 +469,19 @@ public class WatchmanTest {
      * 73 notify
      * 74 notifyAll
      * */
-
-    final List<String> nodenames = asclient.getNodeNames();
-    for (final String nodename : nodenames) {
-        System.out.println(nodename);
+    final List<String> nodenames1 = asclient1.getNodeNames();
+    for (final String nodename : nodenames1) {
+        System.out.println("asclient1: " + nodename);
+    }
+    AerospikeClient asclient2 = getAerospikeClient(dockerClient);
+    if (asclient2 == null) {
+        System.out.println("asclient2 = " + asclient2);
+    }
+    else {
+        final List<String> nodenames2 = asclient2.getNodeNames();
+        for (final String nodename : nodenames2) {
+            System.out.println("asclient2: " + nodename);
+        }
     }
   }
 }
