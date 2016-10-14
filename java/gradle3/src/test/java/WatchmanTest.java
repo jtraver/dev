@@ -43,21 +43,36 @@ public class WatchmanTest {
 
 
     private AerospikeClient getAerospikeClient(DockerClient dockerClient) {
-        // final List<Container> containers = dockerClient.listContainersCmd().exec();
-        Container container = dockerClient.listContainersCmd().exec().iterator().next();
-        System.out.println("container = " + container);
+        final List<Container> containers = dockerClient.listContainersCmd().exec();
         int port = 999999;
-        ContainerPort containerPorts[] = container.getPorts();
-        for (int i = 0; i < containerPorts.length; i++) {
-            ContainerPort containerPort = containerPorts[i];
-            System.out.println("containerPort = " + containerPort);
-            int p = containerPorts[i].getPrivatePort();
-            System.out.println("p = " + p);
-            if (p < port) {
-                port = p;
+        int start = port;
+        String ip = null;
+        for (final Container container : containers) {
+            port = start;
+            ContainerPort containerPorts[] = container.getPorts();
+            for (int i = 0; i < containerPorts.length; i++) {
+                ContainerPort containerPort = containerPorts[i];
+                int p = containerPorts[i].getPrivatePort();
+                if (p < port) {
+                    port = p;
+                }
+            }
+            // test container does not publish any ports
+            if (port == start)
+            {
+                continue;
+            }
+            // should verify that network map entry key is 'test-runner'?
+            ip = container.getNetworkSettings().getNetworks().entrySet().iterator().next().getValue().getIpAddress();
+            if (ip != null) {
+                System.out.println("container ip = " + ip);
+                System.out.println("port = " + port);
+                AerospikeClient asclient1 = new AerospikeClient(ip, port);
+                if (asclient1 != null) {
+                    return asclient1;
+                }
             }
         }
-        System.out.println("port = " + port);
         return null;
     }
 
