@@ -11,8 +11,11 @@ import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
 import org.junit.runners.model.Statement;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import java.lang.reflect.Method;
 
 import com.github.dockerjava.api.DockerClient;
@@ -31,6 +34,8 @@ import com.aerospike.client.AerospikeClient;
 
 
 public class WatchmanTest {
+    private DockerClient dockerClient = null;
+
   private static String watchedLog = "";
 
 
@@ -75,6 +80,70 @@ public class WatchmanTest {
             }
         }
         return null;
+    }
+
+
+    private Set<String> getUserContainerIds(DockerClient dockerClient) {
+        Set<String> ids = new HashSet<>();
+        final List<Container> containers = dockerClient.listContainersCmd().exec();
+        for (final Container container : containers) {
+            for (final String name : container.getNames()) {
+                System.out.println("docker container name: " + name);
+                if (!name.startsWith("/test_"))
+                {
+                    ids.add(container.getId());
+                }
+            }
+        }
+        return ids;
+    }
+
+    private Set<String> getAllContainerIds(DockerClient dockerClient) {
+        Set<String> ids = new HashSet<>();
+        Class setStringClass = ids.getClass();
+        Method setStringClassMethods[] = setStringClass.getMethods();
+        System.out.println("Set<String> setStringClassMethods: " + setStringClassMethods);
+        for (int i = 0; i < setStringClassMethods.length; i++) {
+            Method setStringClassMethod = setStringClassMethods[i];
+            System.out.println(i + " Set<String> method " + setStringClassMethod.getName());
+        }
+        final List<Container> containers = dockerClient.listContainersCmd().exec();
+        for (final Container container : containers) {
+            System.out.println("container = " + container);
+            System.out.println("docker container id: " + container.getId());
+            System.out.println("docker container command: " + container.getCommand());
+            for (final String name : container.getNames()) {
+                System.out.println("docker container name: " + name);
+            }
+            ids.add(container.getId());
+        }
+        return ids;
+    }
+
+
+    private Set<String> getUserContainerNames(DockerClient dockerClient) {
+        Set<String> names = new HashSet<>();
+        final List<Container> containers = dockerClient.listContainersCmd().exec();
+        for (final Container container : containers) {
+            for (final String name : container.getNames()) {
+                if (!name.startsWith("/test_"))
+                {
+                    names.add(name);
+                }
+            }
+        }
+        return names;
+    }
+
+    private Set<String> getAllContainerNames(DockerClient dockerClient) {
+        Set<String> names = new HashSet<>();
+        final List<Container> containers = dockerClient.listContainersCmd().exec();
+        for (final Container container : containers) {
+            for (final String name : container.getNames()) {
+                names.add(name);
+            }
+        }
+        return names;
     }
 
 /*
@@ -126,12 +195,50 @@ public class WatchmanTest {
   @Test
   public void fails() {
     // fail();
+    if (dockerClient == null) {
+        dockerClient = getDockerClient();
+    }
+
+    System.out.println(" ");
+    System.out.println("all container ids");
+    Set<String> ids = getAllContainerIds(dockerClient);
+    for (final String id : ids) {
+        System.out.println("all container id " + id);
+    }
+
+
+    System.out.println(" ");
+    System.out.println("aerospike container ids");
+    ids = getUserContainerIds(dockerClient);
+    for (final String id : ids) {
+        System.out.println("aerospike container id " + id);
+    }
+
+
+    System.out.println(" ");
+    System.out.println("all container names");
+    Set<String> names = getAllContainerNames(dockerClient);
+    for (final String name : names) {
+        System.out.println("all container name " + name);
+    }
+
+
+    System.out.println(" ");
+    System.out.println("aerospike container names");
+    names = getUserContainerNames(dockerClient);
+    for (final String name : names) {
+        System.out.println("aerospike container name " + name);
+    }
+
   }
 
   @Test
   public void succeeds() {
     // abstract: DockerClient dockerClient = new DockerClient("unix:///var/run/docker.sock");
-    DockerClient dockerClient = getDockerClient();
+    if (dockerClient == null) {
+        dockerClient = getDockerClient();
+    }
+    // DockerClient dockerClient = getDockerClient();
     System.out.println("got docker dockerClient");
     Class dockerclass = dockerClient.getClass();
     Method dockermethods[] = dockerclass.getMethods();
@@ -214,10 +321,10 @@ public class WatchmanTest {
     final List<Container> containers = dockerClient.listContainersCmd().exec();
     for (final Container container : containers) {
         System.out.println("container = " + container);
-        System.out.println("docker dockerClient id: " + container.getId());
-        System.out.println("docker dockerClient command: " + container.getCommand());
+        System.out.println("docker container id: " + container.getId());
+        System.out.println("docker container command: " + container.getCommand());
         for (final String name : container.getNames()) {
-            System.out.println("docker dockerClient name: " + name);
+            System.out.println("docker container name: " + name);
         }
         Class containerclass = container.getClass();
         Method containermethods[] = containerclass.getMethods();
