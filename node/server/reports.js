@@ -31,6 +31,8 @@ var server = http.createServer(function (request, response) {
         });
     }
     else if (request.url == '/classes/com.aerospike.server.test.Test3374.html' ||
+        request.url == '/classes/ClientTest.html' ||
+        request.url == '/packages/default-package.html' ||
         request.url == '/classes/com.aerospike.server.test.AnExampleClientTest1.html' ||
         request.url == '/classes/com.aerospike.server.test.AnExampleClientTest2.html' ||
         request.url == '/classes/com.aerospike.server.test.TestClusterFormation1.html' ||
