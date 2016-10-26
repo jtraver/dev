@@ -31,6 +31,7 @@ import com.github.dockerjava.api.model.ContainerNetwork;
 
 
 import com.aerospike.client.AerospikeClient;
+import com.aerospike.client.cluster.Node;
 
 
 public class WatchmanTest {
@@ -592,9 +593,52 @@ public class WatchmanTest {
      * 73 notify
      * 74 notifyAll
      * */
+
+	Node[] nodes = asclient1.getNodes();
+	/*
+	 * 0 node method hasBatchIndex
+	 * 1 node method putConnection
+	 * 2 node method closeConnection
+	 * 3 node method isActive
+	 * 4 node method hasDouble
+	 * 5 node method hasReplicasAll
+	 * 6 node method hasPeers
+	 * 7 node method useNewBatch
+	 * 8 node method refresh
+	 * 9 node method getConnection
+	 * 10 node method equals
+	 * 11 node method toString
+	 * 12 node method hashCode
+	 * 13 node method getAddress
+	 * 14 node method getName
+	 * 15 node method close
+	 * 16 node method getHost
+	 * 17 node method wait
+	 * 18 node method wait
+	 * 19 node method wait
+	 * 20 node method getClass
+	 * 21 node method notify
+	 * 22 node method notifyAll
+	 * */
+	for (Node node : nodes) {
+        Class nodeClass = node.getClass();
+        Method nodeMethods[] = nodeClass.getMethods();
+        System.out.println("node nodeMethods: " + nodeMethods);
+        for (int i = 0; i < nodeMethods.length; i++) {
+            Method nodeMethod = nodeMethods[i];
+            System.out.println(i + " node method " + nodeMethod.getName());
+        }
+	}
+
+	for (Node node : nodes) {
+        // System.out.println("node: connection = " + node.getConnection(100));
+        System.out.println("node: address = " + node.getAddress());
+        System.out.println("node: name = " + node.getName());
+        System.out.println("node: host = " + node.getHost());
+	}
     final List<String> nodenames1 = asclient1.getNodeNames();
     for (final String nodename : nodenames1) {
-        System.out.println("asclient1: " + nodename);
+        System.out.println("asclient1: nodename = " + nodename);
     }
     AerospikeClient asclient2 = getAerospikeClient(dockerClient);
     if (asclient2 == null) {
@@ -603,7 +647,7 @@ public class WatchmanTest {
     else {
         final List<String> nodenames2 = asclient2.getNodeNames();
         for (final String nodename : nodenames2) {
-            System.out.println("asclient2: " + nodename);
+            System.out.println("asclient2: nodename = " + nodename);
         }
     }
   }
