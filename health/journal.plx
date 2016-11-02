@@ -77,6 +77,42 @@ sub count
             $bmin = $bone;
         }
     }
+    if ($bodyfatp < 18.0)
+    {
+        print "$date bodyfatp $bodyfatp is low\n";
+    }
+    elsif ($bodyfatp < 25.0)
+    {
+        print "$date bodyfatp $bodyfatp is optimal\n";
+    }
+    elsif ($bodyfatp < 28.0)
+    {
+        print "$date bodyfatp $bodyfatp is moderate\n";
+    }
+    else
+    {
+        print "$date bodyfatp $bodyfatp is high\n";
+    }
+    if ($bodywaterp < 47.0)
+    {
+        print "$date bodywaterp $bodywaterp is low\n";
+    }
+    elsif ($bodywaterp < 61.0)
+    {
+        print "$date bodywaterp $bodywaterp is normal\n";
+    }
+    else
+    {
+        print "$date bodywaterp $bodywaterp is high\n";
+    }
+    if ($musclep < 40.0)
+    {
+        print "$date musclep $musclep is low\n";
+    }
+    else
+    {
+        print "$date musclep $musclep is average\n";
+    }
     $bodyfatp /= 100.0;
     $bodywaterp /= 100.0;
     $musclep /= 100.0;
