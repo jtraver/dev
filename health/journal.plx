@@ -24,12 +24,15 @@ sub count
     my $bfmaxp = 45.2;
     my $tbwminp = 44.2;
     my $mminp = 25.0;
+    my $bodyfatmax = 140.3008;
+    my $bodywatermin = 137.1968;
+    my $bodymusclemin = 77.6;
     my $bmin = 6.2;
     my $date;
     my $weight;
     my $bodyfatp;
     my $bodywaterp;
-    my $musclep;
+    my $bodymusclep;
     my $bone;
     foreach my $line (@lines)
     {
@@ -43,13 +46,13 @@ sub count
         $weight = $fields[1];
         $bodyfatp = $fields[2];
         $bodywaterp = $fields[3];
-        $musclep = $fields[4];
+        $bodymusclep = $fields[4];
         $bone = $fields[5];
         # print "  date = $date\n";
         # print "  weight = $weight\n";
         # print "  bodyfatp = $bodyfatp\n";
         # print "  bodywaterp = $bodywaterp\n";
-        # print "  musclep = $musclep\n";
+        # print "  bodymusclep = $bodymusclep\n";
         # print "  bone = $bone\n";
         if ($weight >= $wmax)
         {
@@ -66,17 +69,46 @@ sub count
             print "$date bodywaterp $tbwminp -> $bodywaterp\n";
             $tbwminp = $bodywaterp;
         }
-        if ($musclep <= $mminp)
+        if ($bodymusclep <= $mminp)
         {
-            print "$date musclep $mminp -> $musclep\n";
-            $mminp = $musclep;
+            print "$date bodymusclep $mminp -> $bodymusclep\n";
+            $mminp = $bodymusclep;
         }
         if ($bone <= $bmin)
         {
             print "$date bone $bmin -> $bone\n";
             $bmin = $bone;
         }
+        $bodyfatp /= 100.0;
+        $bodywaterp /= 100.0;
+        $bodymusclep /= 100.0;
+        my $bodyfat = $weight * $bodyfatp;
+        my $bodywater = $weight * $bodywaterp;
+        my $bodymuscle = $weight * $bodymusclep;
+        if ($bodyfat >= $bodyfatmax)
+        {
+            print "$date body fat $bodyfatmax -> $bodyfat\n";
+            $bodyfatmax = $bodyfat;
+        }
+        if ($bodywater <= $bodywatermin)
+        {
+            print "$date body water $bodywatermin -> $bodywater\n";
+            $bodywatermin = $bodywater;
+        }
+        if ($bodymuscle <= $bodymusclemin)
+        {
+            print "$date body muscle $bodymusclemin -> $bodymuscle\n";
+            $bodymusclemin = $bodymuscle;
+        }
+        print "$date\n";
+        print "  fat $bodyfatp\% $bodyfat lbs\n";
+        print "  water $bodywaterp\% $bodywater lbs\n";
+        print "  muscle $bodymusclep\% $bodymuscle lbs\n";
+        print "  bone $bone lbs\n";
     }
+    $bodyfatp *= 100.0;
+    $bodywaterp *= 100.0;
+    $bodymusclep *= 100.0;
     if ($bodyfatp < 18.0)
     {
         print "$date bodyfatp $bodyfatp is low\n";
@@ -105,25 +137,14 @@ sub count
     {
         print "$date bodywaterp $bodywaterp is high\n";
     }
-    if ($musclep < 40.0)
+    if ($bodymusclep < 40.0)
     {
-        print "$date musclep $musclep is low\n";
+        print "$date bodymusclep $bodymusclep is low\n";
     }
     else
     {
-        print "$date musclep $musclep is average\n";
+        print "$date bodymusclep $bodymusclep is average\n";
     }
-    $bodyfatp /= 100.0;
-    $bodywaterp /= 100.0;
-    $musclep /= 100.0;
-    print "$date\n";
-    my $bodyfat = $weight * $bodyfatp;
-    print "  fat $bodyfatp\% $bodyfat lbs\n";
-    my $bodywater = $weight * $bodywaterp;
-    print "  water $bodywaterp\% $bodywater lbs\n";
-    my $muscle = $weight * $musclep;
-    print "  muscle $musclep\% $muscle lbs\n";
-    print "  bone $bone lbs\n";
 }
 
 sub main
