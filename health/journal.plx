@@ -21,22 +21,31 @@ sub count
     close(FILE);
     chomp(@lines);
     my $wmax = 310.4;
+    my $wstart = $wmax;
     my $bfmaxp = 45.2;
     my $tbwminp = 44.2;
     my $mminp = 25.0;
     my $bodyfatmax = 140.3008;
+    my $bodyfatstart = $bodyfatmax;
     my $bodywatermin = 137.1968;
+    my $bodywaterstart = $bodywatermin;
     my $bodymusclemin = 77.6;
+    my $bodymusclestart = $bodymusclemin;
     my $bmin = 6.2;
+    my $bstart = $bmin;
     my $date;
     my $weight;
     my $bodyfatp;
     my $bodywaterp;
     my $bodymusclep;
     my $bone;
+    my $days = 0;
     foreach my $line (@lines)
     {
-        # print "$line\n";
+        $days++;
+        print "\n";
+        print "day $days\n";
+        print "$line\n";
         my @fields = split(' ', $line);
         # for my $field (@fields)
         # {
@@ -105,6 +114,21 @@ sub count
         print "  water $bodywaterp\% $bodywater lbs\n";
         print "  muscle $bodymusclep\% $bodymuscle lbs\n";
         print "  bone $bone lbs\n";
+        my $wtotal = $wstart - $weight;
+        my $bodyfattotal = $bodyfatstart - $bodyfat;
+        my $bodywatertotal = $bodywaterstart - $bodywater;
+        my $bodymuscletotal = $bodymusclestart - $bodymuscle;
+        my $btotal = $bstart - $bone;
+        my $wave = $wtotal / $days;
+        my $bodyfatave = $bodyfattotal / $days;
+        my $bodywaterave = $bodywatertotal / $days;
+        my $bodymuscleave = $bodymuscletotal / $days;
+        my $bave = $btotal / $days;
+        print "  weight average $wave $wtotal\n";
+        print "  fat average $bodyfatave $bodyfattotal\n";
+        print "  water average $bodywaterave $bodywatertotal\n";
+        print "  muscle average $bodymuscleave $bodymuscletotal\n";
+        print "  bone average $bave $btotal\n";
     }
     $bodyfatp *= 100.0;
     $bodywaterp *= 100.0;
