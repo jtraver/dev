@@ -194,7 +194,40 @@ public class WatchmanTest {
   };
 
   @Test
-  public void fails() {
+  public void testDockerClient() {
+	StackTraceElement element1 = (new Exception()).getStackTrace()[0];
+	String mname0 = element1.getFileName() + " " + element1.getClassName() + "." + element1.getMethodName() + ":" + element1.getLineNumber();
+	String mname1 = (new Exception()).getStackTrace()[0].getMethodName();
+	String mname2 = java.lang.Thread.currentThread().getStackTrace()[1].getMethodName();
+	System.out.println("mname0 = " + mname0);
+	System.out.println("mname1 = " + mname1);
+	System.out.println("mname2 = " + mname2);
+
+	/*
+	 * 0 exception method equals
+	 * 1 exception method toString
+	 * 2 exception method hashCode
+	 * 3 exception method getFileName
+	 * 4 exception method getLineNumber
+	 * 5 exception method getClassName
+	 * 6 exception method getMethodName
+	 * 7 exception method isNativeMethod
+	 * 8 exception method wait
+	 * 9 exception method wait
+	 * 10 exception method wait
+	 * 11 exception method getClass
+	 * 12 exception method notify
+	 * 13 exception method notifyAll
+	 * */
+    Class exceptionclass = (new Exception()).getStackTrace()[0].getClass();
+    System.out.println("exception exceptionclass: " + exceptionclass);
+    Method exceptionmethods[] = exceptionclass.getMethods();
+    System.out.println("exception exceptionmethods: " + exceptionmethods);
+    for (int i = 0; i < exceptionmethods.length; i++) {
+        Method exceptionmethod = exceptionmethods[i];
+        System.out.println(i + " exception method " + exceptionmethod.getName());
+    }
+
     // fail();
     if (dockerClient == null) {
         dockerClient = getDockerClient();
@@ -234,7 +267,11 @@ public class WatchmanTest {
   }
 
   @Test
-  public void succeeds() {
+  public void testAerospikeClient() {
+	String mname1 = (new Exception()).getStackTrace()[0].getMethodName();
+	String mname2 = java.lang.Thread.currentThread().getStackTrace()[1].getMethodName();
+	System.out.println("mname1 = " + mname1);
+	System.out.println("mname2 = " + mname2);
     // abstract: DockerClient dockerClient = new DockerClient("unix:///var/run/docker.sock");
     if (dockerClient == null) {
         dockerClient = getDockerClient();
