@@ -37,6 +37,17 @@ func main() {
         fmt.Printf("package1 = %s\n", value1)
         fmt.Printf("package1 = %v\n", value1)
     }
+    file1, err := os.Open("os1.go")
+    type2 := reflect.TypeOf(file1)
+    fmt.Printf("file1 = %s\n", type2)
+    fmt.Printf("file1 = %v\n", type2)
+    for i := 0; i < type2.NumMethod(); i++ {
+        method := type2.Method(i)
+        fmt.Println(method.Name)
+    }
+    value2 := reflect.ValueOf(file1)
+    fmt.Printf("file1 = %s\n", value2)
+    fmt.Printf("file1 = %v\n", value2)
 }
 
 /*
