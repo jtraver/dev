@@ -583,3 +583,8 @@ echo go doc exp # — experimental and deprecated packages (handle with care; ma
 # Build version go1.7.4.
 # Except as noted, the content of this page is licensed under the Creative Commons Attribution 3.0 License, and code is licensed under a BSD license.
 # Terms of Service | Privacy Policy
+
+echo
+echo "---------------------------------------------------------------------------------"
+echo go doc store
+go doc store
