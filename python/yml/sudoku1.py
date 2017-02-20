@@ -4,51 +4,47 @@ import yaml
 import sys
 
 def main():
-    grid5 = yaml.load(file('grid5.yml'))
-    # debug1(grid5)
-    show_squares(grid5)
-    show_rows(grid5)
-    show_cols(grid5)
-    show_grid(grid5)
+    grid = init('s001.yml')
+    solve(grid)
+    show_rows(grid)
 
-def debug1(gridn):
-    print "gridn = %s" % str(gridn)
-    for sx in xrange(3):
-        for sy in xrange(3):
-            sn = gridn[sx][sy]
-            print "%s %s = %s" % (str(sx), str(sy), str(sn))
-            if 11 in sn:
-                print "found 11 in %s" % str(sn)
-                sys.exit(1)
-    for sx in xrange(3):
-        for sy in xrange(3):
-            for ix in xrange(3):
-                r1 = gridn[sx][sy][ix]
-                print "%s %s %s = %s" % (str(sx), str(sy), str(ix), str(r1))
-                if 11 in r1:
-                    print "found 11 in %s" % str(r1)
-                    sys.exit(1)
+def init(filename):
+    grid = yaml.load(file(filename))
+    get_squares(grid)
+    get_rows(grid)
+    get_cols(grid)
+    get_grid(grid)
+    return grid
+
+def reinit(grid):
+    get_squares(grid)
+    get_rows(grid)
+    get_cols(grid)
+    get_grid(grid)
 
 def show_squares(grid):
     global squares
     squares = []
     for sn in xrange(1, 10):
-        # print "sn = %s" % str(sn)
-        show_square(grid, sn)
+        get_square(grid, sn)
     for sn in xrange(1, 10):
         square = squares[sn - 1]
         print "square %s %s" % (str(sn), str(square))
 
-def show_square(grid, sn):
+def get_squares(grid):
+    global squares
+    squares = []
+    for sn in xrange(1, 10):
+        get_square(grid, sn)
+    # for sn in xrange(1, 10):
+        # square = squares[sn - 1]
+        # print "square %s %s" % (str(sn), str(square))
+
+def get_square(grid, sn):
     squares.append([])
-    # print "sn = %s" % str(sn)
     sx = (sn - 1) / 3
-    # print "sx = %s" % str(sx)
     sy = (sn - 1) % 3
-    # print "sy = %s" % str(sy)
     sa = grid[sx][sy]
-    # print "sa = %s" % str(sa)
-    # print "%s %s" % (str(sn), str(sa))
     # squares[sn - 1].append(sa)
     for sx in xrange(3):
         for sy in xrange(3):
@@ -58,41 +54,40 @@ def show_rows(grid):
     global rows
     rows = []
     for rn in xrange(1, 10):
-        # print "rn = %s" % str(rn)
-        show_row(grid, rn)
-    # print "rows = %s" % str(rows)
+        get_row(grid, rn)
     for rn in xrange(1, 10):
         row = rows[rn - 1]
         print "row %s %s" % (str(rn), str(row))
 
-def show_row(grid, rn):
-    # print "rn = %s" % str(rn)
+def get_rows(grid):
+    global rows
+    rows = []
+    for rn in xrange(1, 10):
+        get_row(grid, rn)
+    # for rn in xrange(1, 10):
+        # row = rows[rn - 1]
+        # print "row %s %s" % (str(rn), str(row))
+
+def get_row(grid, rn):
     sx = (rn - 1) / 3
-    # print "sx = %s" % str(sx)
     sr = ((rn - 1) - (sx * 3)) % 3
-    # print "sr = %s" % str(sr)
     row = []
     for sy in xrange(3):
-        # print "sy = %s" % str(sy)
         # sa = grid[sx][sy]
-        # print "sa = %s" % str(sa)
         ra = grid[sx][sy][sr]
-        # print "ra = %s" % str(ra)
         for x1 in xrange(3):
             row.append(ra[x1])
     rows.append(row)
 
-def show_cols(grid):
+def get_cols(grid):
     global cols
     cols = []
     for cn in xrange(1, 10):
-        # print "cn = %s" % str(cn)
-        show_col(grid, cn)
-    for cn in xrange(1, 10):
-        print "column %s %s" % (str(cn), str(cols[cn - 1]))
+        get_col(grid, cn)
+    # for cn in xrange(1, 10):
+        # print "column %s %s" % (str(cn), str(cols[cn - 1]))
 
-def show_col(grid, cn):
-    # print "cn = %s" % str(cn)
+def get_col(grid, cn):
     # 1 0 1 4 7 (0, 0), (0, 1), (0, 2)
     # 2 1 1 4 7
     # 3 2 1 4 7
@@ -103,26 +98,20 @@ def show_col(grid, cn):
     # 8 1 3 6 9
     # 9 2 3 6 9
     sy = (cn - 1) / 3
-    # print "sy = %s" % str(sy)
     sc = ((cn - 1) - (sy * 3)) % 3
-    # print "sc = %s" % str(sc)
     col = []
     for sx in xrange(3):
-        # print "sx = %s" % str(sx)
         sa = grid[sx][sy]
-        # print "sa = %s" % str(sa)
         for sr in xrange(3):
             col.append(sa[sr][sc])
-    # print "%s %s" % (str(cn), str(col))
     cols.append(col)
 
-def show_grid(grid):
+def get_grid(grid):
     for gx in xrange(3):
         for gy in xrange(3):
             for sx in xrange(3):
                 for sy in xrange(3):
                     cell = grid[gx][gy][sx][sy]
-                    # print "%s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                     square = gx * 3 + gy
                     if not cell in squares[square]:
                         print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
@@ -138,5 +127,46 @@ def show_grid(grid):
                         print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                         print "ERROR: col = %s %s" % (str(col), str(cols[col]))
                         sys.exit(1)
+
+def solve(grid):
+    while (check_choices(grid)):
+        show_squares(grid)
+
+def check_choices(grid):
+    ret = False
+    for gx in xrange(3):
+        for gy in xrange(3):
+            for sx in xrange(3):
+                for sy in xrange(3):
+                    cell = grid[gx][gy][sx][sy]
+                    if not cell:
+                        square = gx * 3 + gy
+                        row = gx * 3 + sx
+                        col = gy * 3 + sy
+                        choices = get_choices(square, row, col)
+                        print "%s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(choices))
+                        if len(choices) == 1:
+                            grid[gx][gy][sx][sy] = choices[0]
+                            reinit(grid)
+                            ret = True
+    return ret
+
+def get_choices(square, row, col):
+    used = []
+    for x1 in xrange(9):
+        s1 = squares[square][x1]
+        if s1:
+            used.append(s1)
+        r1 = rows[row][x1]
+        if r1:
+            used.append(r1)
+        c1 = cols[col][x1]
+        if c1:
+            used.append(c1)
+    choices = []
+    for x1 in xrange(1, 10):
+        if not x1 in used:
+            choices.append(x1)
+    return choices
 
 main()
