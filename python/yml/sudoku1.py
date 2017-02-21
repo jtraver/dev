@@ -4,7 +4,7 @@ import yaml
 import sys
 
 def main():
-    grid = init('s001.yml')
+    grid = init('../../../test/john/env/yml/s001.yml')
     solve(grid)
     show_rows(grid)
 
