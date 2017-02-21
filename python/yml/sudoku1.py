@@ -129,7 +129,10 @@ def get_grid(grid):
                         sys.exit(1)
 
 def solve(grid):
+    count = 0
     while (check_choices(grid)):
+        count += 1
+        print "\nresult of check_choices %s" % str(count)
         show_squares(grid)
 
 def check_choices(grid):
