@@ -175,13 +175,6 @@ def verify(grid):
     verify_rows(grid)
     verify_cols(grid)
 
-def main():
-    grid = init('../../../test/john/env/yml/s105.yml')
-    # grid = init('../../../test/john/env/yml/s053.yml')
-    # grid = init('../../../test/john/env/yml/s001.yml')
-    solve(grid)
-    show_rows(grid)
-
 def init(filename):
     grid = yaml.load(file(filename))
     get_squares(grid)
@@ -315,28 +308,6 @@ def get_grid(grid):
                         print "ERROR: col = %s %s" % (str(col), str(cols[col]))
                         sys.exit(1)
 
-def solve(grid):
-    changed = True
-    loop = 0
-    while changed and loop < 10:
-        loop += 1
-        print "\nstart solve loop %s" % str(loop)
-        changed = False
-        show_squares(grid)
-        count = 0
-        while (check_choices(grid)):
-            count += 1
-            print "\nresult of check_choices %s" % str(count)
-            show_squares(grid)
-            changed = True
-        show_cols(grid)
-        count = 0
-        while (common_choices(grid)):
-            count += 1
-            print "\nresult of common_choices %s" % str(count)
-            show_cols(grid)
-            changed = True
-
 def check_choices(grid):
     ret = False
     for gx in xrange(3):
@@ -353,10 +324,12 @@ def check_choices(grid):
                         if len(choices) == 1:
                             grid[gx][gy][sx][sy] = choices[0]
                             ret = True
+                            reinit(grid)
                         else:
                             if not cell or (isinstance(cell, list) and len(choices) < len(cell)):
+                                ret = True
                                 grid[gx][gy][sx][sy] = choices
-                        reinit(grid)
+                                reinit(grid)
     return ret
 
 def get_choices(square, row, col):
@@ -500,5 +473,113 @@ def common_choices(grid):
                                     # square = squares[isquare]
                                     # print "square is %s" % str(square)
     return ret
+
+def check_numbers(grid):
+    ret = False
+    for gx in xrange(3):
+        for gy in xrange(3):
+            for sx in xrange(3):
+                for sy in xrange(3):
+                    cell = grid[gx][gy][sx][sy]
+                    if not isinstance(cell, list):
+                        continue
+                    for cnum in cell:
+                        # print "looking for %s" % str(cnum)
+                        # square
+                        ncount = 0
+                        isquare, _ = get_square_from_grid_coordinates(gx, gy, sx, sy)
+                        square = squares[isquare]
+                        for s1 in xrange(9):
+                            scell = square[s1]
+                            if isinstance(scell, list):
+                                if cnum in scell:
+                                    ncount += 1
+                            else:
+                                if scell == cnum:
+                                    ncount += 1
+                        if ncount == 1:
+                            ret = True
+                            print "square %s%s%s%s must be %s" % (str(gx), str(gy), str(sx), str(sy), str(cnum))
+                            grid[gx][gy][sx][sy] = cnum
+                            reinit(grid)
+                            break
+                        # row
+                        ncount = 0
+                        irow, _ = get_row_from_grid_coordinates(gx, gy, sx, sy)
+                        row = rows[irow]
+                        for s1 in xrange(9):
+                            rcell = row[s1]
+                            if isinstance(rcell, list):
+                                if cnum in rcell:
+                                    ncount += 1
+                            else:
+                                if rcell == cnum:
+                                    ncount += 1
+                        if ncount == 1:
+                            ret = True
+                            print "row %s%s%s%s must be %s" % (str(gx), str(gy), str(sx), str(sy), str(cnum))
+                            grid[gx][gy][sx][sy] = cnum
+                            reinit(grid)
+                            break
+                        # col
+                        ncount = 0
+                        icol, _ = get_col_from_grid_coordinates(gx, gy, sx, sy)
+                        col = cols[icol]
+                        for s1 in xrange(9):
+                            ccell = col[s1]
+                            if isinstance(ccell, list):
+                                if cnum in ccell:
+                                    ncount += 1
+                            else:
+                                if ccell == cnum:
+                                    ncount += 1
+                        if ncount == 1:
+                            ret = True
+                            print "column %s%s%s%s must be %s" % (str(gx), str(gy), str(sx), str(sy), str(cnum))
+                            grid[gx][gy][sx][sy] = cnum
+                            reinit(grid)
+                            break
+    return ret
+
+def solve(grid):
+    changed = True
+    loop = 0
+    while changed and loop < 10:
+        loop += 1
+        print "\nstart solve loop %s" % str(loop)
+        changed = False
+        # show_squares(grid)
+        count = 0
+        while (check_choices(grid)):
+            count += 1
+            print "\nresult of check_choices %s" % str(count)
+            # show_squares(grid)
+            show_rows(grid)
+            changed = True
+        # show_cols(grid)
+        count = 0
+        while (common_choices(grid)):
+            count += 1
+            print "\nresult of common_choices %s" % str(count)
+            # show_cols(grid)
+            show_rows(grid)
+            changed = True
+        # show_rows(grid)
+        count = 0
+        while (check_numbers(grid)):
+            count += 1
+            print "\nresult of check_numbers %s" % str(count)
+            # show_rows(grid)
+            show_rows(grid)
+            changed = True
+        # show_rows(grid)
+
+def main():
+    grid = init('../../../test/john/env/yml/s178.yml')
+    # grid = init('../../../test/john/env/yml/s105.yml')
+    # grid = init('../../../test/john/env/yml/s053.yml')
+    # grid = init('../../../test/john/env/yml/s001.yml')
+    solve(grid)
+    show_rows(grid)
 
 main()
