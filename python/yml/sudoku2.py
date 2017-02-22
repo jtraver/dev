@@ -315,12 +315,13 @@ def check_choices(grid):
             for sx in xrange(3):
                 for sy in xrange(3):
                     cell = grid[gx][gy][sx][sy]
+                    print "%s%s%s%s is %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                     if not cell or isinstance(cell, list):
                         square = gx * 3 + gy
                         row = gx * 3 + sx
                         col = gy * 3 + sy
-                        choices = get_choices(square, row, col)
-                        print "choices for %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(choices))
+                        choices = get_choices(cell, square, row, col)
+                        print "choices for %s%s%s%s %s -> %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(choices))
                         if len(choices) == 1:
                             grid[gx][gy][sx][sy] = choices[0]
                             ret = True
@@ -332,7 +333,7 @@ def check_choices(grid):
                                 reinit(grid)
     return ret
 
-def get_choices(square, row, col):
+def get_choices(cell, square, row, col):
     used = []
     for x1 in xrange(9):
         s1 = squares[square][x1]
@@ -347,7 +348,11 @@ def get_choices(square, row, col):
     choices = []
     for x1 in xrange(1, 10):
         if not x1 in used:
-            choices.append(x1)
+            if isinstance(cell, list):
+                if x1 in cell:
+                    choices.append(x1)
+            else:
+                choices.append(x1)
     return choices
 
 def common_choices(grid):
