@@ -176,9 +176,9 @@ def verify(grid):
     verify_cols(grid)
 
 def main():
-    # grid = init('../../../test/john/env/yml/s105.yml')
+    grid = init('../../../test/john/env/yml/s105.yml')
     # grid = init('../../../test/john/env/yml/s053.yml')
-    grid = init('../../../test/john/env/yml/s001.yml')
+    # grid = init('../../../test/john/env/yml/s001.yml')
     solve(grid)
     show_rows(grid)
 
@@ -218,9 +218,8 @@ def get_squares(grid):
 
 def get_square(grid, sn):
     squares.append([])
-    sx = (sn) / 3
-    sy = (sn) % 3
-    sa = grid[sx][sy]
+    gx, gy, _, _ = get_grid_coordinates_from_square(sn, 0)
+    sa = grid[gx][gy]
     # squares[sn].append(sa)
     for sx in xrange(3):
         for sy in xrange(3):
@@ -273,15 +272,6 @@ def get_cols(grid):
         # print "column %s %s" % (str(cn), str(cols[cn]))
 
 def get_col(grid, cn):
-    # 1 0 1 4 7 (0, 0), (0, 1), (0, 2)
-    # 2 1 1 4 7
-    # 3 2 1 4 7
-    # 4 0 2 5 8 (1, 0), (1, 1), (1, 2)
-    # 5 1 2 5 8
-    # 6 2 2 5 8
-    # 7 0 3 6 9 (2, 0), (2, 1), (2, 2)
-    # 8 1 3 6 9
-    # 9 2 3 6 9
     sy = (cn) / 3
     sc = ((cn) - (sy * 3)) % 3
     col = []
@@ -298,16 +288,28 @@ def get_grid(grid):
                 for sy in xrange(3):
                     cell = grid[gx][gy][sx][sy]
                     square = gx * 3 + gy
+                    isquare, s1 = get_square_from_grid_coordinates(gx, gy, sx, sy)
+                    if square != isquare:
+                        print "ERROR"
+                        sys.exit(1)
                     if not cell in squares[square]:
                         print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                         print "ERROR: square = %s %s" % (str(square), str(squares[square]))
                         sys.exit(1)
                     row = gx * 3 + sx
+                    irow, r1 = get_row_from_grid_coordinates(gx, gy, sx, sy)
+                    if row != irow:
+                        print "ERROR"
+                        sys.exit(1)
                     if not cell in rows[row]:
                         print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                         print "ERROR: row = %s %s" % (str(row), str(rows[row]))
                         sys.exit(1)
                     col = gy * 3 + sy
+                    icol, c1 = get_col_from_grid_coordinates(gx, gy, sx, sy)
+                    if col != icol:
+                        print "ERROR"
+                        sys.exit(1)
                     if not cell in cols[col]:
                         print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                         print "ERROR: col = %s %s" % (str(col), str(cols[col]))
@@ -329,9 +331,9 @@ def solve(grid):
             changed = True
         show_cols(grid)
         count = 0
-        while (narrow_choices(grid)):
+        while (common_choices(grid)):
             count += 1
-            print "\nresult of narrow_choices %s" % str(count)
+            print "\nresult of common_choices %s" % str(count)
             show_cols(grid)
             changed = True
 
@@ -352,7 +354,8 @@ def check_choices(grid):
                             grid[gx][gy][sx][sy] = choices[0]
                             ret = True
                         else:
-                            grid[gx][gy][sx][sy] = choices
+                            if not cell or (isinstance(cell, list) and len(choices) < len(cell)):
+                                grid[gx][gy][sx][sy] = choices
                         reinit(grid)
     return ret
 
@@ -374,21 +377,7 @@ def get_choices(square, row, col):
             choices.append(x1)
     return choices
 
-def get_grid_coordinates_for_square(isquare, s1):
-    gx = isquare / 3
-    gy = isquare % 3
-    sx = s1 / 3
-    sy = s1 % 3
-    return (gx, gy, sx, sy)
-
-def get_grid_coordinates_for_row(irow, r1):
-    gx = irow / 3
-    gy = r1 / 3
-    sx = irow % 3
-    sy = r1 % 3
-    return (gx, gy, sx, sy)
-
-def narrow_choices(grid):
+def common_choices(grid):
     ret = False
     for gx in xrange(3):
         for gy in xrange(3):
@@ -399,84 +388,117 @@ def narrow_choices(grid):
                         isquare = gx * 3 + gy
                         irow = gx * 3 + sx
                         icol = gy * 3 + sy
-
-                        if True:
-                            row = rows[irow]
-                            rmatches = []
+                        # columns
+                        col = cols[icol]
+                        cmatches = []
+                        for c1 in xrange(9):
+                            if cell == col[c1]:
+                                # print "found %s%s%s%s %s in col %s at %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(icol), str(c1))
+                                gc = get_grid_coordinates_from_col(icol, c1)
+                                # print "gc for col %s%s is %s" % (str(icol), str(c1), str(gc))
+                                ccell = grid[gc[0]][gc[1]][gc[2]][gc[3]]
+                                if cell == ccell:
+                                    cmatches.append(c1)
+                                else:
+                                    print "ERROR: did not find col %s%s cell %s%s%s%s at %s" % (str(icol), str(c1), str(gx), str(gy), str(sx), str(sy), str(gc))
+                        if len(cmatches) == len(cell):
+                            # print "%s%s%s%s has %s col matches %s in %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(cmatches), str(icol), str(col))
+                            for c1 in xrange(9):
+                                scol = col[c1]
+                                if not isinstance(scol, list):
+                                    continue
+                                if cell == scol:
+                                    continue
+                                nlist = []
+                                for s2 in scol:
+                                    if not s2 in cell:
+                                        nlist.append(s2)
+                                if nlist != scol:
+                                    ret = True
+                                    # print "need to update %s to %s" % (str(scol), str(nlist))
+                                    gc = get_grid_coordinates_from_col(icol, c1)
+                                    if len(nlist) == 1:
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
+                                    else:
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist
+                                    # print "col was %s" % str(col)
+                                    reinit(grid)
+                                    # col = cols[icol]
+                                    # print "col is %s" % str(col)
+                        # rows
+                        row = rows[irow]
+                        rmatches = []
+                        for r1 in xrange(9):
+                            if cell == row[r1]:
+                                # print "found %s%s%s%s %s in row %s at %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(irow), str(r1))
+                                gc = get_grid_coordinates_from_row(irow, r1)
+                                # print "gc for row %s%s is %s" % (str(irow), str(r1), str(gc))
+                                rcell = grid[gc[0]][gc[1]][gc[2]][gc[3]]
+                                if cell == rcell:
+                                    rmatches.append(r1)
+                                else:
+                                    print "ERROR: did not find row %s%s cell %s%s%s%s at %s" % (str(irow), str(r1), str(gx), str(gy), str(sx), str(sy), str(gc))
+                        if len(rmatches) == len(cell):
+                            # print "%s%s%s%s has %s row matches %s in %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(rmatches), str(irow), str(row))
                             for r1 in xrange(9):
-                                if cell == row[r1]:
-                                    print "found %s%s%s%s %s in row %s at %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(irow), str(r1))
-                                    gc = get_grid_coordinates_for_row(irow, r1)
-                                    print "gc for row %s%s is %s" % (str(irow), str(r1), str(gc))
-                                    scell = grid[gc[0]][gc[1]][gc[2]][gc[3]]
-                                    if cell == scell:
-                                        rmatches.append(r1)
+                                srow = row[r1]
+                                if not isinstance(srow, list):
+                                    continue
+                                if cell == srow:
+                                    continue
+                                nlist = []
+                                for s2 in srow:
+                                    if not s2 in cell:
+                                        nlist.append(s2)
+                                if nlist != srow:
+                                    ret = True
+                                    # print "need to update %s to %s" % (str(srow), str(nlist))
+                                    gc = get_grid_coordinates_from_row(irow, r1)
+                                    if len(nlist) == 1:
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
                                     else:
-                                        print "ERROR: did not find row %s%s cell %s%s%s%s at %s" % (str(irow), str(r1), str(gx), str(gy), str(sx), str(sy), str(gc))
-                            if len(rmatches) == len(cell):
-                                print "%s%s%s%s has %s row matches %s in %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(rmatches), str(irow), str(row))
-                                for r1 in xrange(9):
-                                    srow = row[r1]
-                                    if not isinstance(srow, list):
-                                        continue
-                                    if cell == srow:
-                                        continue
-                                    nlist = []
-                                    for s2 in srow:
-                                        if not s2 in cell:
-                                            nlist.append(s2)
-                                    if nlist != srow:
-                                        ret = True
-                                        print "need to update %s to %s" % (str(srow), str(nlist))
-                                        gc = get_grid_coordinates_for_row(irow, r1)
-                                        if len(nlist) == 1:
-                                            grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
-                                        else:
-                                            grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist
-                                        print "row was %s" % str(row)
-                                        reinit(grid)
-                                        row = rows[irow]
-                                        print "row is %s" % str(row)
-
-
-                        if False:
-                            square = squares[isquare]
-                            smatches = []
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist
+                                    # print "row was %s" % str(row)
+                                    reinit(grid)
+                                    # row = rows[irow]
+                                    # print "row is %s" % str(row)
+                        # squares
+                        square = squares[isquare]
+                        smatches = []
+                        for s1 in xrange(9):
+                            if cell == square[s1]:
+                                # print "found %s%s%s%s %s in square %s at %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(isquare), str(s1))
+                                gc = get_grid_coordinates_from_square(isquare, s1)
+                                # print "gc for square %s%s is %s" % (str(isquare), str(s1), str(gc))
+                                scell = grid[gc[0]][gc[1]][gc[2]][gc[3]]
+                                if cell == scell:
+                                    smatches.append(s1)
+                                else:
+                                    print "ERROR: did not find square %s%s cell %s%s%s%s at %s" % (str(isquare), str(s1), str(gx), str(gy), str(sx), str(sy), str(gc))
+                        if len(smatches) == len(cell):
+                            # print "%s%s%s%s has %s square matches %s in %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(smatches), str(isquare), str(square))
                             for s1 in xrange(9):
-                                if cell == square[s1]:
-                                    # print "found %s%s%s%s %s in square %s at %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(isquare), str(s1))
-                                    gc = get_grid_coordinates_for_square(isquare, s1)
-                                    # print "gc for square %s%s is %s" % (str(isquare), str(s1), str(gc))
-                                    scell = grid[gc[0]][gc[1]][gc[2]][gc[3]]
-                                    if cell == scell:
-                                        smatches.append(s1)
+                                ssquare = square[s1]
+                                if not isinstance(ssquare, list):
+                                    continue
+                                if cell == ssquare:
+                                    continue
+                                nlist = []
+                                for s2 in ssquare:
+                                    if not s2 in cell:
+                                        nlist.append(s2)
+                                if nlist != ssquare:
+                                    ret = True
+                                    # print "need to update %s to %s" % (str(ssquare), str(nlist))
+                                    gc = get_grid_coordinates_from_square(isquare, s1)
+                                    if len(nlist) == 1:
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
                                     else:
-                                        print "ERROR: did not find square %s%s cell %s%s%s%s at %s" % (str(isquare), str(s1), str(gx), str(gy), str(sx), str(sy), str(gc))
-                            if len(smatches) == len(cell):
-                                # print "%s%s%s%s has %s square matches %s in %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell), str(smatches), str(isquare), str(square))
-                                for s1 in xrange(9):
-                                    ssquare = square[s1]
-                                    if not isinstance(ssquare, list):
-                                        continue
-                                    if cell == ssquare:
-                                        continue
-                                    nlist = []
-                                    for s2 in ssquare:
-                                        if not s2 in cell:
-                                            nlist.append(s2)
-                                    if nlist != ssquare:
-                                        ret = True
-                                        # print "need to update %s to %s" % (str(ssquare), str(nlist))
-                                        gc = get_grid_coordinates_for_square(isquare, s1)
-                                        if len(nlist) == 1:
-                                            grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
-                                        else:
-                                            grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist
-                                        # print "square was %s" % str(square)
-                                        reinit(grid)
-                                        # square = squares[isquare]
-                                        # print "square is %s" % str(square)
-
+                                        grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist
+                                    # print "square was %s" % str(square)
+                                    reinit(grid)
+                                    # square = squares[isquare]
+                                    # print "square is %s" % str(square)
     return ret
 
 main()
