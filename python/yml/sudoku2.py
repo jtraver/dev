@@ -349,7 +349,7 @@ def check_choices(grid):
                         row = gx * 3 + sx
                         col = gy * 3 + sy
                         choices = get_choices(square, row, col)
-                        print "%s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(choices))
+                        print "choices for %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(choices))
                         if len(choices) == 1:
                             grid[gx][gy][sx][sy] = choices[0]
                             ret = True
@@ -415,7 +415,7 @@ def common_choices(grid):
                                         nlist.append(s2)
                                 if nlist != scol:
                                     ret = True
-                                    # print "need to update %s to %s" % (str(scol), str(nlist))
+                                    print "need to update column %s to %s" % (str(scol), str(nlist))
                                     gc = get_grid_coordinates_from_col(icol, c1)
                                     if len(nlist) == 1:
                                         grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
@@ -452,7 +452,7 @@ def common_choices(grid):
                                         nlist.append(s2)
                                 if nlist != srow:
                                     ret = True
-                                    # print "need to update %s to %s" % (str(srow), str(nlist))
+                                    print "need to update row %s to %s" % (str(srow), str(nlist))
                                     gc = get_grid_coordinates_from_row(irow, r1)
                                     if len(nlist) == 1:
                                         grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
@@ -489,7 +489,7 @@ def common_choices(grid):
                                         nlist.append(s2)
                                 if nlist != ssquare:
                                     ret = True
-                                    # print "need to update %s to %s" % (str(ssquare), str(nlist))
+                                    print "need to update square %s to %s" % (str(ssquare), str(nlist))
                                     gc = get_grid_coordinates_from_square(isquare, s1)
                                     if len(nlist) == 1:
                                         grid[gc[0]][gc[1]][gc[2]][gc[3]] = nlist[0]
