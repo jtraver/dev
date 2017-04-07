@@ -3,6 +3,7 @@
 import apihelper
 import aerospike
 
+
 found = {}
 elements = {
     "Client": {
@@ -82,6 +83,34 @@ elements = {
         },
         "key": {
         },
+        "list_append": {
+        },
+        "list_clear": {
+        },
+        "list_extend": {
+        },
+        "list_get": {
+        },
+        "list_get_range": {
+        },
+        "list_insert": {
+        },
+        "list_insert_items": {
+        },
+        "list_pop": {
+        },
+        "list_pop_range": {
+        },
+        "list_remove": {
+        },
+        "list_remove_range": {
+        },
+        "list_set": {
+        },
+        "list_size": {
+        },
+        "list_trim": {
+        },
         "llist": {
         },
         "lmap": {
@@ -90,7 +119,59 @@ elements = {
         },
         "lstack": {
         },
+        "map_clear": {
+        },
+        "map_decrement": {
+        },
+        "map_get_by_index": {
+        },
+        "map_get_by_index_range": {
+        },
+        "map_get_by_key": {
+        },
+        "map_get_by_key_range": {
+        },
+        "map_get_by_rank": {
+        },
+        "map_get_by_rank_range": {
+        },
+        "map_get_by_value": {
+        },
+        "map_get_by_value_range": {
+        },
+        "map_increment": {
+        },
+        "map_put": {
+        },
+        "map_put_items": {
+        },
+        "map_remove_by_index": {
+        },
+        "map_remove_by_index_range": {
+        },
+        "map_remove_by_key": {
+        },
+        "map_remove_by_key_list": {
+        },
+        "map_remove_by_key_range": {
+        },
+        "map_remove_by_rank": {
+        },
+        "map_remove_by_rank_range": {
+        },
+        "map_remove_by_value": {
+        },
+        "map_remove_by_value_list": {
+        },
+        "map_remove_by_value_range": {
+        },
+        "map_set_policy": {
+        },
+        "map_size": {
+        },
         "operate": {
+        },
+        "operate_ordered": {
         },
         "prepend": {
         },
@@ -171,6 +252,8 @@ elements = {
         "select": {
         },
     },
+    "calc_digest": {
+    },
     "client": {
     },
     "exception": {
@@ -247,6 +330,12 @@ elements = {
             },
         },
         "ForbiddenPassword": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "InvalidGeoJSON": {
             "message": {
             },
             "args": {
@@ -841,12 +930,22 @@ elements = {
         "size": {
         },
     },
+    "null": {
+    },
     "predicates": {
         "between": {
         },
         "contains": {
         },
         "equals": {
+        },
+        "geo_contains_geojson_point": {
+        },
+        "geo_contains_point": {
+        },
+        "geo_within_geojson_region": {
+        },
+        "geo_within_radius": {
         },
         "geo_within": {
         },
@@ -1012,8 +1111,6 @@ def dir3():
 def do_dir(object):
     attrs = []
     for e in dir(object):
-        if str(e) == 'null':
-            continue
         if '__' in e:
             continue
         attr = getattr(object, e)
