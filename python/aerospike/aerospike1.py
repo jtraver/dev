@@ -199,6 +199,8 @@ elements = {
         },
         "touch": {
         },
+        "truncate": {
+        },
         "udf_get": {
         },
         "udf_list": {
@@ -306,6 +308,12 @@ elements = {
             },
         },
         "ClusterError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "ConnectionError": {
             "message": {
             },
             "args": {
