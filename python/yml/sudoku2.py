@@ -580,10 +580,13 @@ def solve(grid):
         # show_rows(grid)
 
 def main():
-    grid = init('../../../test/john/env/yml/s178.yml')
+    # grid = init('../../../test/john/env/yml/s178.yml')
     # grid = init('../../../test/john/env/yml/s105.yml')
     # grid = init('../../../test/john/env/yml/s053.yml')
     # grid = init('../../../test/john/env/yml/s001.yml')
+    # grid = init('../../../test/john/env/yml/s165.yml')
+    # grid = init('../../../test/john/env/yml/s165a.yml')
+    grid = init('../../../test/john/env/yml/s165a1.yml')
     solve(grid)
     show_rows(grid)
 
