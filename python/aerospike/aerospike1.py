@@ -271,6 +271,30 @@ elements = {
             "args": {
             },
         },
+        "AsyncConnectionError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "BatchDisabledError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "BatchMaxRequestError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "BatchQueueFullError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
         "BinExistsError": {
             "message": {
             },
@@ -290,6 +314,12 @@ elements = {
             },
         },
         "BinNotFound": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "ClientAbortError": {
             "message": {
             },
             "args": {
@@ -320,6 +350,18 @@ elements = {
             },
         },
         "DeviceOverload": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "ElementExistsError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "ElementNotFoundError": {
             "message": {
             },
             "args": {
@@ -416,6 +458,12 @@ elements = {
             },
         },
         "InvalidHostError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "InvalidNodeError": {
             "message": {
             },
             "args": {
@@ -691,6 +739,12 @@ elements = {
             "args": {
             },
         },
+        "NoMoreConnectionsError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
         "NoXDR": {
             "message": {
             },
@@ -704,6 +758,12 @@ elements = {
             },
         },
         "ParamError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "QueryAbortedError": {
             "message": {
             },
             "args": {
@@ -781,6 +841,12 @@ elements = {
             "args": {
             },
         },
+        "ScanAbortedError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
         "SecurityNotEnabled": {
             "message": {
             },
@@ -812,6 +878,12 @@ elements = {
             },
         },
         "TimeoutError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "TLSError": {
             "message": {
             },
             "args": {
