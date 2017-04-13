@@ -585,8 +585,11 @@ def main():
     # grid = init('../../../test/john/env/yml/s053.yml')
     # grid = init('../../../test/john/env/yml/s001.yml')
     # grid = init('../../../test/john/env/yml/s165.yml')
-    grid = init('../../../test/john/env/yml/s165a.yml')
+    # grid = init('../../../test/john/env/yml/s165a.yml')
     # grid = init('../../../test/john/env/yml/s165a1.yml')
+    # grid = init('../../../test/john/env/yml/s166.yml')
+    # grid = init('../../../test/john/env/yml/s166a.yml')
+    grid = init('../../../test/john/env/yml/s166a1.yml')
     solve(grid)
     show_rows(grid)
 
