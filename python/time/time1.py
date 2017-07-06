@@ -4,10 +4,14 @@ import time
 
 def main():
     starttime = time.time()
-    for i1 in xrange(10):
+    # for i1 in xrange(10):
+    elapsed = 0
+    while elapsed < 1:
         now = time.time()
         elapsed = now - starttime
+        ielapsed = int(elapsed)
         print "elasped time is %s" % str(elapsed)
-        time.sleep(1)
+        print "ielasped time is %s" % str(ielapsed)
+        time.sleep(elapsed)
 
 main()
