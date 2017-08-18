@@ -37,7 +37,8 @@ sub adjustwidth
         {
             last;
         }
-        my $filler = sprintf("%*.s", $len3, "                                ");
+        # my $filler = sprintf("%*.s", $len3, "                                ");
+        my $filler = sprintf("%.*s", $len3, "----------------------------------------------");
         print "$i1 $filler $str1\n";
         $str1 = "$str1$i1";
     }
