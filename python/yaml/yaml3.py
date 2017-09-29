@@ -8,8 +8,12 @@ filename = 'yaml3.config'
 dc1 = []
 dc1.append({"ip": "111.111.111.111", "name": "a1"})
 dc1.append({"ip": "222.222.222.222", "name": "b1"})
-config1 = []
-config1.append({"name": "dc1", "nodes": dc1})
+clusters = []
+clusters.append({"name": "dc1", "nodes": dc1})
+config1 = {
+    "user": "citrusleaf",
+    "clusters": clusters
+}
 
 with open(filename, 'w') as outfile:
     outfile.write(yaml.dump(config1, default_flow_style=False))
