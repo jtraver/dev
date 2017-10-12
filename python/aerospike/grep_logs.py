@@ -34,6 +34,21 @@ build_version_regex = re.compile(r'^(?P<junk>.*)(?P<month>\w+) (?P<day>\d+) (?P<
 error_build_version_regex = re.compile(r'^(?P<month>\w+) (?P<day>\d+) (?P<year>\d+) (?P<hour>\d+):(?P<minute>\d+):(?P<second>\d+) (?P<timezone>\w+): (?P<severity>\w+) \((?P<context>\w+)\): \((?P<sourcefile>\w+\.\w+):(?P<sourceline>\d+)\) (?P<message>.*) Aerospike (?P<edition>\w+) Edition build (?P<version>\d+\..*) os (?P<os>[a-z0-9.]+)(?P<remainder>.*)$')
 # WHAT? /home/jtraver/logs/1706091307/192.168.121.116/aerospike.log: 139 Jun 09 2017 19:20:47 GMT: WARNING (as): (signal.c:181) SIGSEGV received, aborting Aerospike Enterprise Edition build 3.8.4.1 os ubuntu14.04
 
+def get_value(s):
+    if s == "true":
+        return True
+    if s == "false":
+        return False
+    try:
+        return int(s)
+    except ValueError:
+        pass
+    try:
+        return float(s)
+    except ValueError:
+        pass
+    return s
+
 def main():
     home1 = os.path.expanduser("~")
     logfiles = glob.glob(home1 + "/logs/*/*/*.log")
@@ -42,6 +57,7 @@ def main():
         grep1(logfile)
 
 def grep1(filename):
+    version = None
     with open(filename) as f:
         for line in f:
             if "client" in line:
@@ -95,10 +111,12 @@ def grep1(filename):
                         val = dict1[key]
                         print "    %s %s" % (str(key), str(val))
                     sys.exit(1)
+                version1 = dict1['version']
+                if version != version1:
+                    version = version1
+                    print "version %s edition %s" % (str(dict1['version']), str(dict1['edition']))
                 if 'message' in dict1:
                     print "version %s edition %s %s os %s" % (str(dict1['version']), str(dict1['edition']), str(dict1['message']), str(dict1['os']))
-                else:
-                    print "version %s edition %s" % (str(dict1['version']), str(dict1['edition']))
 
 
 main()

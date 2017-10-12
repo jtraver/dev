@@ -2,6 +2,10 @@
 
 
 def get_value(s):
+    if s == "true":
+        return True
+    if s == "false":
+        return False
     try:
         return int(s)
     except ValueError:
@@ -11,6 +15,7 @@ def get_value(s):
     except ValueError:
         pass
     return s
+
 
 def main():
     str1 = '1'
