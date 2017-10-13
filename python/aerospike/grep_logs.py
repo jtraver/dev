@@ -35,10 +35,6 @@ error_build_version_regex = re.compile(r'^(?P<month>\w+) (?P<day>\d+) (?P<year>\
 # WHAT? /home/jtraver/logs/1706091307/192.168.121.116/aerospike.log: 139 Jun 09 2017 19:20:47 GMT: WARNING (as): (signal.c:181) SIGSEGV received, aborting Aerospike Enterprise Edition build 3.8.4.1 os ubuntu14.04
 
 def get_value(s):
-    if s == "true":
-        return True
-    if s == "false":
-        return False
     try:
         return int(s)
     except ValueError:
@@ -47,6 +43,10 @@ def get_value(s):
         return float(s)
     except ValueError:
         pass
+    if s == "true":
+        return True
+    if s == "false":
+        return False
     return s
 
 def main():
