@@ -34,6 +34,29 @@ build_version_regex = re.compile(r'^(?P<junk>.*)(?P<month>\w+) (?P<day>\d+) (?P<
 error_build_version_regex = re.compile(r'^(?P<month>\w+) (?P<day>\d+) (?P<year>\d+) (?P<hour>\d+):(?P<minute>\d+):(?P<second>\d+) (?P<timezone>\w+): (?P<severity>\w+) \((?P<context>\w+)\): \((?P<sourcefile>\w+\.\w+):(?P<sourceline>\d+)\) (?P<message>.*) Aerospike (?P<edition>\w+) Edition build (?P<version>\d+\..*) os (?P<os>[a-z0-9.]+)(?P<remainder>.*)$')
 # WHAT? /home/jtraver/logs/1706091307/192.168.121.116/aerospike.log: 139 Jun 09 2017 19:20:47 GMT: WARNING (as): (signal.c:181) SIGSEGV received, aborting Aerospike Enterprise Edition build 3.8.4.1 os ubuntu14.04
 
+def save_stat(node, key, value):
+    new_max = False
+    if not "stats" in node:
+        node["stats"] = {}
+    stats = node['stats']
+    nname = node['name']
+    if not key in stats:
+        print "new stat for %s %s %s" % (str(nname), str(key), str(value))
+        stats[key] = {}
+        stats[key]["start"] = value
+        stats[key]["max"] = value
+        stats[key]["count"] = 1
+        stats[key]["mcount"] = 1
+    else:
+        stats[key]["count"] += 1
+        if value > stats[key]["max"]:
+            new_max = True
+            stats[key]["mcount"] += 1
+            print "new max %s started at %s %s %s > %s, count %s, mcount %s" % (str(nname), str(stats[key]["start"]), str(key), str(value), str(stats[key]["max"]), str(stats[key]["count"]), str(stats[key]["mcount"]))
+            stats[key]["max"] = value
+            # print "node = %s" % str(node)
+    return new_max
+
 def get_value(s):
     try:
         return int(s)
@@ -50,6 +73,8 @@ def get_value(s):
     return s
 
 def main():
+    global nodes
+    nodes = {}
     home1 = os.path.expanduser("~")
     logfiles = glob.glob(home1 + "/logs/*/*/*.log")
     for logfile in sorted(logfiles):
@@ -57,6 +82,7 @@ def main():
         grep1(logfile)
 
 def grep1(filename):
+    node = get_node(filename)
     version = None
     with open(filename) as f:
         for line in f:
@@ -64,6 +90,13 @@ def grep1(filename):
                 line = line.strip()
                 # print "%s: %s %s" % (str(filename), str(len(line)), str(line))
                 parts1 = client_transaction_statistics_regex.match(line)
+                #if parts1:
+                #    dict1 = parts1.groupdict()
+                #    print "  dict1 = %s" % str(dict1)
+                #    for key in sorted(dict1.keys()):
+                #        val = dict1[key]
+                #        print "    %s %s" % (str(key), str(val))
+                #    sys.exit(1)
                 if not parts1:
                     parts1 = client_retransmit_statistics_regex.match(line)
                 if not parts1:
@@ -94,6 +127,14 @@ def grep1(filename):
                         val = dict1[key]
                         print "    %s %s" % (str(key), str(val))
                     sys.exit(1)
+                for key in ["client_read_error", "client_read_not_found", "client_read_success", "client_read_timeout"]:
+                    if key in dict1:
+                        save_stat(node, key, get_value(dict1[key]))
+                        #print "  dict1 = %s" % str(dict1)
+                        #for key in sorted(dict1.keys()):
+                        #    val = dict1[key]
+                        #    print "    %s %s" % (str(key), str(val))
+                        #sys.exit(1)
             elif "Edition build" in line:
                 line = line.strip()
                 # print "%s: %s %s" % (str(filename), str(len(line)), str(line))
@@ -118,5 +159,21 @@ def grep1(filename):
                 if 'message' in dict1:
                     print "version %s edition %s %s os %s" % (str(dict1['version']), str(dict1['edition']), str(dict1['message']), str(dict1['os']))
 
+def get_node(filename):
+    print "get_node: filename = %s" % str(filename)
+# get_node: filename = /home/jtraver/logs/1706091307/192.168.121.104/aerospike.log
+    parts = filename.split("/")
+    #for indx in xrange(len(parts)):
+    #    part = parts[indx]
+    #    print "%s %s" % (str(indx), str(part))
+    nname = parts[5]
+    #print "node name is %s" % str(nname)
+    if nname in nodes:
+        return nodes[nname]
+    node = { 'name': nname }
+    nodes[nname] = node
+    return node
+    sys.stdout.flush()
+    sys.exit(1)
 
 main()
