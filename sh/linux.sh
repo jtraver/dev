@@ -52,4 +52,6 @@ else
     echo not a linux box
 fi
 
+cat /etc/*elease*
+
 echo $OS
