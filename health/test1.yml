@@ -1,0 +1,37 @@
+dict1:
+  dict1:
+    a1: 1
+    b1: 2
+    c1: 3
+  dict2:
+    a2: 1
+    b2: 2
+    c2: 3
+  list2:
+  - 2 first
+  - - a
+    - b
+    - c
+  - - 1
+    - 2
+    - 3
+  - 2 last
+dict2:
+  a2: 1
+  b2: 2
+  c2: 3
+dict3: null
+dict4: {}
+dict5: []
+list1:
+- 1 first
+- - a
+  - b
+  - c
+- - 1
+  - 2
+  - 3
+- - null
+  - {}
+  - []
+- 1 last
