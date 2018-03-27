@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+
+
+package_packages()
+{
+    #       pkg_repo    pkg_kind    pkg_os          pkg_distro  pkg_arch    pkg_name      pkg_file                                                        pkg_url
+    echo    "deb"       "deb"       "debian:7"      "wheezy"    "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "deb"       "deb"       "debian:8"      "jessie"    "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "deb"       "deb"       "debian:9"      "stretch"   "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "deb"       "deb"       "ubuntu:12.04"  "precise"   "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "deb"       "deb"       "ubuntu:14.04"  "trusty"    "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "deb"       "deb"       "ubuntu:16.04"  "xenial"    "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}.${pkg_os/:/}.${pkg_arch}.deb'      $SOURCE_URL
+    echo    "el6"       "rpm"       "centos:6"      "el6"       "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}-1.${pkg_distro}.${pkg_arch}.rpm'   $SOURCE_URL
+    echo    "el7"       "rpm"       "centos:7"      "el7"       "x86_64"    'pkg-name'    '${pkg_name}-${PROJECT_VERS}-1.${pkg_distro}.${pkg_arch}.rpm'   $SOURCE_URL
+}
+
+
