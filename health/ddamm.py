@@ -165,6 +165,7 @@ def llist1(fn1):
 def main():
     ret1 = 0
     ret1 += llist1("d.yaml")
+    ret1 += llist1("m.yaml")
     # ret1 += list1()
     # ret1 += dict1()
     # ret1 += list2()
