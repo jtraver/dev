@@ -149,17 +149,21 @@ def dl1():
 def llist1(fn1):
     print "\n---------------------------------------------------------------------------------"
     print "llist1"
-    #with open(fn1, 'w') as outfile:
-    #    outfile.write(s1)
     l1 = yaml.load(file(fn1))
-    s1 = yaml.dump(l1, default_flow_style=False)
+    l2 = []
+    for v1 in l1:
+        l2.append(v1.lower())
+    l3 = sorted(l2)
+    s1 = yaml.dump(l3, default_flow_style=False)
     print "%s =\n%s" % (str(fn1), str(s1))
-    #if l1 == l2:
-    #    print "llist1: load and dump worked"
-    #    return 0
-    #else:
-    #    print "llist1: load and dump did not work"
-    #    return 1
+    with open(fn1, 'w') as outfile:
+        outfile.write(s1)
+    if l1 == l3:
+        print "llist1: load and dump worked"
+        return 0
+    else:
+        print "llist1: load and dump did not work"
+        return 1
     return 0
 
 def main():
