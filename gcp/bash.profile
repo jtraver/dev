@@ -75,7 +75,4 @@ else
      start_agent;
 fi
 
-# cd /mnt/hgfs/jtraver/dev/git/jtraver/dev/env/centos
-# cd /mnt/hgfs/jtraver/dev/git/jtraver/test/john/env/centos
-
-cd /home/jtraver/dev/git/jtraver/test/john/env/debian
+cd /home/jtraver/dev/git/jtraver/dev/gcp
