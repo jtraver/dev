@@ -17,16 +17,61 @@ my $SAT = 6;
 
 sub setAlarms
 {
-    setAlarm($MON, 12, 19);
-    setAlarm($MON, 12, 22);
-    setAlarm($MON, 12, 25);
-    setAlarm($MON, 12, 28);
-    setAlarm($MON, 12, 31);
-    setAlarm($MON, 12, 34);
-    setAlarm($MON, 12, 37);
-    setAlarm($MON, 12, 40);
-    setAlarm($MON, 12, 43);
-    setAlarm($MON, 12, 46);
+    setAlarm($MON, 9, 15);
+    setAlarm($TUE, 11, 45);
+    setAlarm($WED, 9, 15);
+    # setAlarm($MON, 11, 19);
+    # setAlarm($MON, 11, 22);
+    # setAlarm($MON, 11, 25);
+    # setAlarm($MON, 11, 28);
+    # setAlarm($MON, 11, 31);
+    # setAlarm($MON, 11, 34);
+    # setAlarm($MON, 11, 37);
+    # setAlarm($MON, 11, 40);
+    # setAlarm($MON, 11, 43);
+    # setAlarm($MON, 11, 46);
+    # setAlarm($MON, 11, 49);
+    # setAlarm($MON, 11, 52);
+    # setAlarm($MON, 11, 55);
+    # setAlarm($MON, 11, 58);
+    # setAlarm($MON, 12, 1);
+    # setAlarm($MON, 12, 4);
+    # setAlarm($MON, 12, 7);
+    # setAlarm($MON, 12, 10);
+    # setAlarm($MON, 12, 13);
+    # setAlarm($MON, 12, 16);
+    # setAlarm($MON, 12, 19);
+    # setAlarm($MON, 12, 22);
+    # setAlarm($MON, 12, 25);
+    # setAlarm($MON, 12, 28);
+    # setAlarm($MON, 12, 31);
+    # setAlarm($MON, 12, 34);
+    # setAlarm($MON, 12, 37);
+    # setAlarm($MON, 12, 40);
+    # setAlarm($MON, 12, 43);
+    # setAlarm($MON, 12, 46);
+    # setAlarm($MON, 12, 49);
+    # setAlarm($MON, 12, 52);
+    # setAlarm($MON, 12, 55);
+    # setAlarm($MON, 12, 58);
+    # setAlarm($MON, 13, 1);
+    # setAlarm($MON, 13, 4);
+    # setAlarm($MON, 13, 7);
+    # setAlarm($MON, 13, 10);
+    # setAlarm($MON, 13, 13);
+    # setAlarm($MON, 13, 16);
+    # setAlarm($MON, 13, 19);
+    # setAlarm($MON, 13, 22);
+    # setAlarm($MON, 13, 25);
+    # setAlarm($MON, 13, 28);
+    # setAlarm($MON, 13, 31);
+    # setAlarm($MON, 13, 34);
+    # setAlarm($MON, 13, 37);
+    # setAlarm($MON, 13, 40);
+    # setAlarm($MON, 13, 43);
+    # setAlarm($MON, 13, 46);
+    # setAlarm($MON, 13, 49);
+    # setAlarm($MON, 13, 52);
 }
 
 sub setAlarm
@@ -56,13 +101,14 @@ sub main
     setAlarms();
     while (1)
     {
-        checkAlarm();
+        checkAlarms();
         sleep(1);
     }
 }
 
-sub checkAlarm
+sub checkAlarms
 {
+    # print "\ncheckAlarms\n";
     my $time = time;
     # print "time = $time\n";
     my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($time);
@@ -74,15 +120,19 @@ sub checkAlarm
     {
         return;
     }
+    my $smin = $min;
+    my $shour = $hour;
     for (my $i1 = 0; $i1 < @alarms; $i1++)
     {
+        $min = $smin;
+        $hour = $shour;
         my $alarm = $alarms[$i1];
         # print "alarm = $alarm\n";
         my %hash = %$alarm;
         my $awday = $hash{'wday'};
         my $ahour = $hash{'hour'};
         my $amin = $hash{'min'};
-        print "checking alarm = $awday $ahour $amin\n";
+        # print "checking alarm = $awday $ahour $amin\n";
         # print "awday = $awday\n";
         if ($awday == $wday)
         {
@@ -93,6 +143,14 @@ sub checkAlarm
             next;
         }
         # print "ahour = $ahour\n";
+        if ($ahour == $hour - 1)
+        {
+            if ($amin + 20 > 60)
+            {
+                $hour--;
+                $min += 60;
+            }
+        }
         if ($ahour == $hour)
         {
             # print "we have an alarm this hour\n";
@@ -101,6 +159,7 @@ sub checkAlarm
         {
             next;
         }
+        # print "min = $min\n";
         # print "amin = $amin\n";
         if ($min >= $amin && $min <= $amin + 20)
         {
@@ -112,19 +171,31 @@ sub checkAlarm
         }
         if ($min == $amin && ($sec == 0 || $sec == 5 || $sec == 10 || $sec == 15))
         {
-            print "alarm $awday $ahour $amin at $tag wday = $wday $hour $min $sec\n";
+            print "first alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
         }
         if ($min == $amin + 5 && ($sec == 0 || $sec == 5 || $sec == 10 || $sec == 15 || $sec == 20 || $sec == 25 || $sec == 30))
         {
-            print "alarm $awday $ahour $amin at $tag wday = $wday $hour $min $sec\n";
+            print "second alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "second alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
         }
         if ($min == $amin + 10 && ($sec == 0 || $sec == 5 || $sec == 10 || $sec == 15 || $sec == 20 || $sec == 25 || $sec == 30 || $sec == 35 || $sec == 40 || $sec == 45))
         {
-            print "alarm $awday $ahour $amin at $tag wday = $wday $hour $min $sec\n";
+            print "third  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "third  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "third  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
         }
         if ($min >= $amin + 15 && $sec % 5 == 0)
         {
-            print "alarm $awday $ahour $amin at $tag wday = $wday $hour $min $sec\n";
+            print "YOU'RE  LATE  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "YOU'RE  LATE  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "YOU'RE  LATE  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
+            sleep(1);
+            print "YOU'RE  LATE  alarm  $awday $ahour $amin at $tag wday = $wday $shour $smin $sec\n";
         }
     }
 }
