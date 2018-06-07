@@ -15,9 +15,42 @@ my $THU = 4;
 my $FRI = 5;
 my $SAT = 6;
 
+sub isRunning
+{
+    my @lines = `ps -ef`;
+    my $count = 0;
+    for my $line (@lines)
+    {
+        if ($line =~ /setAlarm.plx/)
+        {
+            print "$line\n";
+            $count++;
+        }
+    }
+    if ($count > 1)
+    {
+        exit(1);
+    }
+    $count = 0;
+    @lines = `ps -alef`;
+    for my $line (@lines)
+    {
+        if ($line =~ /setAlarm.plx/)
+        {
+            print "$line\n";
+            $count++;
+        }
+    }
+    if ($count > 1)
+    {
+        exit(1);
+    }
+}
+
 sub setAlarms
 {
     setAlarm($MON, 9, 15);
+    setAlarm($MON, 20, 30);
     setAlarm($TUE, 11, 45);
     setAlarm($WED, 9, 15);
     # setAlarm($MON, 11, 19);
@@ -98,6 +131,7 @@ my $VT100_STOP_MARKUP="[0m";
 
 sub main
 {
+    isRunning();
     setAlarms();
     while (1)
     {
