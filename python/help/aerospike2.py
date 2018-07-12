@@ -61,10 +61,14 @@ print "-------------------------------------------------------------------------
 print "aerospike.geojson"
 apihelper.info(aerospike.geojson)
 
-print
-print "---------------------------------------------------------------------------------"
-print "aerospike.llist"
-apihelper.info(aerospike.llist)
+try:
+    print
+    print "---------------------------------------------------------------------------------"
+    print "aerospike.llist"
+    apihelper.info(aerospike.llist)
+except Exception, e:
+    print "e = %s" % str(e)
+    print "e = %s" % str(type(e))
 
 # print
 # print "---------------------------------------------------------------------------------"
