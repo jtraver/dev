@@ -15,10 +15,7 @@ class MyHTMLParser(HTMLParser):
         print "Encountered some data  :", data
 
 def main():
-    url = "http://eoddata.com/symbols.aspx"
-    url = "http://eoddata.com/stocklist/NYSE/B.htm"
-    url = "http://eoddata.com/stocklist/NASDAQ/B.htm"
-    url = "http://eoddata.com/stocklist/AMEX/B.htm"
+    url = "https://www.nasdaq.com/screening/companies-by-name.aspx?letter=B"
     req = urllib2.Request(url)
     resp = urllib2.urlopen(req)
     html = resp.read()
