@@ -1,0 +1,3 @@
+tell app "Finder"
+    get name of every disk
+end tell 

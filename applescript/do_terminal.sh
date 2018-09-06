@@ -1,1 +1,1 @@
-osascript do_terminal.orascript
+osascript do_terminal.osascript

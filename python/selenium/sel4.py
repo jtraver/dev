@@ -4,9 +4,9 @@ import selenium
 from selenium import webdriver
 import apihelper
 
-# URL = "http://pythonscraping.com/pages/javascript/ajaxDemo.html"
+URL = "http://pythonscraping.com/pages/javascript/ajaxDemo.html"
 # URL = "https://screener.finance.yahoo.com/stocks.html"
-URL = "https://finance.yahoo.com/screener"
+# URL = "https://finance.yahoo.com/screener"
 
 print "\n---------------------------------------------------------------------------------"
 print "selenium"
@@ -107,5 +107,12 @@ print "html_element"
 print "---------------------------------------------------------------------------------\n"
 print "html text is %s" % html_element.text
 
+print " "
+src = None
+try:
+    src = driver.page_source
+    print "\npage_source = %s" % str(src)
+except Exception, e:
+    print "e = %s" % str(e)
 
 driver.close()
