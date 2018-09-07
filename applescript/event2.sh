@@ -11,5 +11,7 @@ export AEDebug=1
 export AEDebugVerbose=1
 export AEDebugSends=1
 export AEDebugReceives=1
-open /Applications/Safari.app
-open http://www.apple.com
+# open /Applications/Safari.app
+# open http://www.apple.com
+# /usr/bin/osascript -e 'quit application "Finder"'
+/usr/bin/open -a "Finder"
