@@ -3,6 +3,9 @@
 import apihelper
 import aerospike
 
+if '__version__' in dir(aerospike):
+    print "Python client version is %s" % aerospike.__version__
+
 print "---------------------------------------------------------------------------------"
 print "aerospike"
 apihelper.info(aerospike)

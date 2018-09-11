@@ -75,6 +75,8 @@ elements = {
         },
         "info": {
         },
+        "info_all": {
+        },
         "info_node": {
         },
         "is_connected": {
@@ -129,6 +131,8 @@ elements = {
         },
         "map_get_by_key": {
         },
+        "map_get_by_key_list": {
+        },
         "map_get_by_key_range": {
         },
         "map_get_by_rank": {
@@ -136,6 +140,8 @@ elements = {
         "map_get_by_rank_range": {
         },
         "map_get_by_value": {
+        },
+        "map_get_by_value_list": {
         },
         "map_get_by_value_range": {
         },
@@ -239,6 +245,8 @@ elements = {
         },
         "foreach": {
         },
+        "predexp": {
+        },
         "results": {
         },
         "select": {
@@ -266,6 +274,12 @@ elements = {
             },
         },
         "AerospikeError": {
+            "message": {
+            },
+            "args": {
+            },
+        },
+        "AlwaysForbidden": {
             "message": {
             },
             "args": {
@@ -1011,6 +1025,78 @@ elements = {
         },
     },
     "null": {
+    },
+    "predexp": {
+        "geojson_bin": {
+        },
+        "geojson_contains": {
+        },
+        "geojson_value": {
+        },
+        "geojson_var": {
+        },
+        "geojson_within": {
+        },
+        "integer_bin": {
+        },
+        "integer_equal": {
+        },
+        "integer_greater": {
+        },
+        "integer_greatereq": {
+        },
+        "integer_less": {
+        },
+        "integer_lesseq": {
+        },
+        "integer_unequal": {
+        },
+        "integer_value": {
+        },
+        "integer_var": {
+        },
+        "list_bin": {
+        },
+        "list_iterate_and": {
+        },
+        "list_iterate_or": {
+        },
+        "map_bin": {
+        },
+        "mapkey_iterate_and": {
+        },
+        "mapkey_iterate_or": {
+        },
+        "mapval_iterate_and": {
+        },
+        "mapval_iterate_or": {
+        },
+        "predexp_and": {
+        },
+        "predexp_not": {
+        },
+        "predexp_or": {
+        },
+        "rec_device_size": {
+        },
+        "rec_digest_modulo": {
+        },
+        "rec_last_update": {
+        },
+        "rec_void_time": {
+        },
+        "string_bin": {
+        },
+        "string_equal": {
+        },
+        "string_regex": {
+        },
+        "string_unequal": {
+        },
+        "string_value": {
+        },
+        "string_var": {
+        },
     },
     "predicates": {
         "between": {
