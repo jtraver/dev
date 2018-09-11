@@ -1218,6 +1218,8 @@ def check(object, name, dict1, status):
 
 
 def main():
+    if '__version__' in dir(aerospike):
+        print "Python client version is %s" % aerospike.__version__
     status = check(aerospike, 'aerospike', elements, True)
     if status:
         print "tests are good"
