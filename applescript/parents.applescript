@@ -1,6 +1,6 @@
 script myScript1
-    my parent
-    my parent's parent
+    log my parent
+    log my parent's parent
     my parent's parent's parent
 end script
 script myScript2
