@@ -1,11 +1,15 @@
 #!/usr/bin/perl -w
+
 use diagnostics;
 use warnings;
 use strict;
+
 use File::Find;
+
 $| = 1;
 my $status = 800;
 my $count = 0;
+
 sub wanted
 {
         $count++;
@@ -14,9 +18,18 @@ sub wanted
                 print ".";
         }
         my $name = $File::Find::name;
-        if (! -d && -T &&
+        if ($name =~ /\.\.\/jtraver\//)
+        {
+            print "skipping $name\n";
+        }
+        elsif (! -d && -T &&
                 $name !~ /\/centos\/status\/runs\// &&
+                $name !~ /\/centos\/status\/\.17/ &&
+                $name !~ /\.css\.map$/ &&
+                $name !~ /\.min\.css$/ &&
+                $name !~ /\.min\.js$/ &&
                 $name !~ /\/SFGREP\// &&
+                $name !~ /\/old.SFGREP\// &&
                 $name !~ /\/coverity\// &&
                 $name !~ /\/branches\// &&
                 $name !~ /\/tags\// &&
