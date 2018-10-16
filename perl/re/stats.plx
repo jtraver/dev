@@ -12,64 +12,25 @@ sub stats
 {
     print "\n";
     print "Names\n";
-    my $max = 0;
-    my $maxname;
-    for my $name (sort keys %names)
+    foreach my $name (sort {$names{$b} <=> $names{$a}} keys %names)
     {
         my $count = $names{$name};
-        if ($count > $max)
-        {
-            $max = $count;
-            $maxname = $name;
-        }
-        if ($count > 1)
-        {
-            print "$name $count\n";
-        }
+        print "$name $count\n";
     }
-    for my $name (sort keys %names)
-    {
-        my $count = $names{$name};
-        if ($count == 1)
-        {
-            print "$name $count\n";
-        }
-    }
-    print "max name $maxname $max\n";
     print "\n";
     print "Songs\n";
-    $max = 0;
-    my $maxsong;
-    for my $song (sort keys %songs)
+    foreach my $song (sort {$songs{$b} <=> $songs{$a}} keys %songs)
     {
         my $count = $songs{$song};
-        if ($count > $max)
-        {
-            $max = $count;
-            $maxsong = $song;
-        }
-        if ($count > 2)
-        {
-            print "$song $count\n";
-        }
+        print "$song $count\n";
     }
-    for my $song (sort keys %songs)
+    print "\n";
+    print "Countries\n";
+    foreach my $country (sort {$countries{$b} <=> $countries{$a}} keys %countries)
     {
-        my $count = $songs{$song};
-        if ($count == 2)
-        {
-            print "$song $count\n";
-        }
+        my $count = $countries{$country};
+        print "$country $count\n";
     }
-    for my $song (sort keys %songs)
-    {
-        my $count = $songs{$song};
-        if ($count == 1)
-        {
-            print "$song $count\n";
-        }
-    }
-    print "max song $maxsong $max\n";
 }
 
 sub count
@@ -110,6 +71,13 @@ sub count
             $song =~ s/"$//;
             $country =~ s/\s+$//;
             $country =~ s/^\s+//;
+            $country =~ s/ 2018$//;
+            $country =~ s/ 2017$//;
+            $country =~ s/ 2016$//;
+            $country =~ s/ 2015$//;
+            $country =~ s/ 2014$//;
+            $country =~ s/ 2013$//;
+            $country =~ s/ 2012$//;
             print "$line\n";
             print "  $time\n";
             print "  $name\n";
@@ -146,7 +114,7 @@ sub count
             $countries{$country}++;
         }
         # 18:45   Inga Jankauskaitė, Donatas Montvydas, Justinas Jarutis, Leon Somov and Monika Marija "Adventure of a Lifetime" Lietuvos Balsas / The Voice Of Lithuania (bonus video)
-        elsif ($line =~ /^\s+(\d+:\d+)([^"]+)"(.*)"[^\/]+(.*)$/)
+        elsif ($line =~ /^\s+(\d+:\d+)([^"]+)"(.*)"[^\/]+\/(.*)$/)
         {
             my $time = $1;
             my $name = $2;
@@ -162,6 +130,15 @@ sub count
             $song =~ s/\s+$//;
             $song =~ s/^"//;
             $song =~ s/"$//;
+            $country =~ s/\s+$//;
+            $country =~ s/^\s+//;
+            $country =~ s/ 2018$//;
+            $country =~ s/ 2017$//;
+            $country =~ s/ 2016$//;
+            $country =~ s/ 2015$//;
+            $country =~ s/ 2014$//;
+            $country =~ s/ 2013$//;
+            $country =~ s/ 2012$//;
             print "$line\n";
             print "  $time\n";
             print "  $name\n";
