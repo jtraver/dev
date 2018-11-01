@@ -6,6 +6,10 @@ def main():
     phi1 = phi()
     print "phi1 = %s" % str(phi1)
     print "1.61803398875 * 0.61803398875"
+    if str(phi1) == "0.61803398875":
+        print "PASS"
+    else:
+        print "FAIL"
 
 def phi():
     print "phi"
@@ -24,10 +28,11 @@ def phi():
             guess -= step
         else:
             guess += step
+            step /= 10.0
         result = guess1(guess)
         if count % 10 == 0:
             print "%s result = %s, guess = %s" % (str(count), str(result), str(guess))
-            step /= 10.0
+            # step /= 10.0
     print "%s result = %s, guess = %s" % (str(count), str(result), str(guess))
     return guess
 
