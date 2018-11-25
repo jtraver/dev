@@ -1,7 +1,7 @@
 const Aerospike = require('aerospike')
 
 const config = {
-  hosts: '192.168.33.10:3000'
+  hosts: '127.0.0.1:3000'
 }
 const key = new Aerospike.Key('test', 'demo', 'demo')
 
