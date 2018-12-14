@@ -1,0 +1,62 @@
+#if [ -f ~/.bashrc ]; then
+#	. ~/.bashrc
+#fi
+#
+#PATH=$PATH:$HOME/bin
+#
+#export PATH
+#
+#export PATH=/home/jtraver/dev/git/jtraver/devtools/bin:/home/jtraver/dev/git/jtraver/qaa/tools/bin:/home/jtraver/dev/lua/install/lua-5.2.2/src:.:$PATH
+#
+#
+#unset PROMPT_COMMAND
+#PROMPT_COMMAND='echo -ne "\033]0;CentOs1 ${PWD##/*/}\007"'
+#export PROMPT_COMMAND
+#
+#SSH_ASKPASS=./pass.sh
+#export SSH_ASKPASS
+#
+#PYTHON_VERS=2.6
+#export PYTHON_VERS
+#
+#PYTHONPATH=:/home/jtraver/dev/git/jtraver/qaa/lib/:/home/jtraver/dev/git/jtraver/qaa/tools/python
+#export PYTHONPATH
+#
+#LD_LIBRARY_PATH=/home/jtraver/dev/git/jtraver/qaa-tools/luna:/home/jtraver/dev/git/jtraver/qaa/tools/lib
+#export LD_LIBRARY_PATH
+#
+#PACKAGE=http://v1:8080/job/aerospike-server+matrix+dev3.0/OS=centos6/lastSuccessfulBuild/artifact/pkg/packages/aerospike-server.el6.x86_64.rpm
+#export PACKAGE
+#
+#TOOLS_PACKAGE=http://v1:8080/job/aerospike-tools+matrix+master/OS=centos6/lastSuccessfulBuild/artifact/pkg/packages/aerospike-tools.el6.x86_64.rpm
+#export TOOLS_PACKAGE
+
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+  eval `$SSHAGENT $SSHAGENTARGS`
+  trap "kill $SSH_AGENT_PID" 0
+fi
+
+SSH_ENV="$HOME/.ssh/environment"
+
+function start_agent {
+     echo "Initialising new SSH agent..."
+     /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+     echo succeeded
+     chmod 600 "${SSH_ENV}"
+     . "${SSH_ENV}" > /dev/null
+     /usr/bin/ssh-add;
+}
+
+if [ -f "${SSH_ENV}" ]; then
+     . "${SSH_ENV}" > /dev/null
+     ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+         start_agent;
+     }
+else
+     start_agent;
+fi
+#start_agent;
+#
+#cd /home/jtraver/dev/git/jtraver/test/john/env/centos
