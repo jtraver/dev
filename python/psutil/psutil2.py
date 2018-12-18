@@ -15,11 +15,11 @@ def main():
         # proc.status() running
         # proc.status() zombie
         print "proc.status() %s" % str(proc.status())
-        if proc.status() == psutil.STATUS_RUNNING:
+        if proc.status() == psutil.STATUS_RUNNING or proc.status() == psutil.STATUS_SLEEPING:
             time.sleep(1)
-    if proc.status() == psutil.STATUS_RUNNING:
+    if proc.status() == psutil.STATUS_RUNNING or proc.status() == psutil.STATUS_SLEEPING:
         popen.terminate()
-    if proc.status() == psutil.STATUS_RUNNING:
+    if proc.status() == psutil.STATUS_RUNNING or proc.status() == psutil.STATUS_SLEEPING:
         popen.kill()
     out, err = popen.communicate()
     print "out = %s" % str(out)
