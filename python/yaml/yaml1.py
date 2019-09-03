@@ -21,7 +21,7 @@ tags1 = {
 with open('tags1.yml', 'w') as outfile:
     outfile.write(yaml.dump(tags1, default_flow_style=False))
 
-tags2 = yaml.load(file('tags1.yml'))
+tags2 = yaml.load(file('tags1.yml'), Loader=yaml.FullLoader)
 print "tags2 = %s" % str(tags2)
 
 if tags1 == tags2:

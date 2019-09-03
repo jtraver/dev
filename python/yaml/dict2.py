@@ -23,7 +23,8 @@ def list1():
     print "s1 =\n%s" % str(s1)
     with open(fn1, 'w') as outfile:
         outfile.write(s1)
-    l2 = yaml.load(file(fn1))
+    # l2 = yaml.load(file(fn1))
+    l2 = yaml.load(file(fn1), Loader=yaml.FullLoader)
     if l1 == l2:
         print "list1: load and dump worked"
         return 0
@@ -46,7 +47,8 @@ def dict1():
     print "s1 =\n%s" % str(s1)
     with open(fn1, 'w') as outfile:
         outfile.write(s1)
-    d2 = yaml.load(file(fn1))
+    # d2 = yaml.load(file(fn1))
+    d2 = yaml.load(file(fn1), Loader=yaml.FullLoader)
     if d1 == d2:
         print "dict1: load and dump worked"
         return 0
@@ -69,7 +71,8 @@ def list2():
     print "s1 =\n%s" % str(s1)
     with open(fn1, 'w') as outfile:
         outfile.write(s1)
-    l2 = yaml.load(file(fn1))
+    # l2 = yaml.load(file(fn1))
+    l2 = yaml.load(file(fn1), Loader=yaml.FullLoader)
     if l1 == l2:
         print "list2: load and dump worked"
         return 0
@@ -92,7 +95,8 @@ def dict2():
     print "s1 =\n%s" % str(s1)
     with open(fn1, 'w') as outfile:
         outfile.write(s1)
-    d2 = yaml.load(file(fn1))
+    # d2 = yaml.load(file(fn1))
+    d2 = yaml.load(file(fn1), Loader=yaml.FullLoader)
     if d1 == d2:
         print "dict2: load and dump worked"
         return 0

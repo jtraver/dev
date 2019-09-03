@@ -25,7 +25,7 @@ tbg1 = {
 with open('tbg1.yml', 'w') as outfile:
     outfile.write(yaml.dump(tbg1, default_flow_style=False))
 
-tbg2 = yaml.load(file('tbg1.yml'))
+tbg2 = yaml.load(file('tbg1.yml'), Loader=yaml.FullLoader)
 print "tbg2 = %s" % str(tbg2)
 
 if tbg1 == tbg2:

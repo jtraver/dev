@@ -99,7 +99,7 @@ config1 = {
 with open('config1.yml', 'w') as outfile:
     outfile.write(yaml.dump(config1, default_flow_style=False))
 
-config2 = yaml.load(file('config1.yml'))
+config2 = yaml.load(file('config1.yml'), Loader=yaml.FullLoader)
 print "config2 = %s" % str(config2)
 
 if config1 == config2:

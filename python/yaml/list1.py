@@ -5,7 +5,7 @@ import yaml
 #with open('tags1.yml', 'w') as outfile:
 #    outfile.write(yaml.dump(tags1, default_flow_style=False))
 #
-#tags2 = yaml.load(file('tags1.yml'))
+#tags2 = yaml.load(file('tags1.yml'), Loader=yaml.FullLoader)
 #print "tags2 = %s" % str(tags2)
 #
 #if tags1 == tags2:
@@ -29,7 +29,7 @@ def list1():
     print "s1 =\n%s" % str(s1)
     with open(fn1, 'w') as outfile:
         outfile.write(s1)
-    l2 = yaml.load(file(fn1))
+    l2 = yaml.load(file(fn1), Loader=yaml.FullLoader)
     if l1 == l2:
         print "load and dump worked"
     else:
