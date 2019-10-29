@@ -45,3 +45,9 @@ rm python/yml/s2.out
 rm python/yml/sudoku2.save1
 rm sh/sh2.sh
 rm sh/tmp1
+rm python/char/c2.out
+rm python/list/apihelper.pyc
+rm python/yaml/dict1.yaml
+rm python/yaml/list1.yaml
+
+git status .
