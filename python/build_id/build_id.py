@@ -94,14 +94,45 @@ print "platform.system = %s" % str(platform.system())
 # d            -   -                     ubuntu-16.04
 # d            -   -                     ubuntu-18.04
 
-
+# sysname = Linux
+# nodename = q10
+# release = 3.10.0-862.14.4.el7.x86_64
+# version = #1 SMP Wed Sep 26 15:12:11 UTC 2018
+# machine = x86_64
+# os.uname = ('Linux', 'q10', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-3.10.0-862.14.4.el7.x86_64-x86_64-with-centos-7.5.1804-Core
+# platform.system = Linux
+# platform.release = 3.10.0-862.14.4.el7.x86_64
+# platform.version = #1 SMP Wed Sep 26 15:12:11 UTC 2018
+# platform.linux_distrubution = ('CentOS Linux', '7.5.1804', 'Core')
+# sys.version = 2.7.5 (default, Oct 30 2018, 23:45:53) 
+# [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+# platform.dist = ('centos', '7.5.1804', 'Core')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-3.10.0-862.14.4.el7.x86_64-x86_64-with-centos-7.5.1804-Core
+# platform.uname = ('Linux', 'q10', '3.10.0-862.14.4.el7.x86_64', '#1 SMP Wed Sep 26 15:12:11 UTC 2018', 'x86_64', 'x86_64')
+# platform.version = #1 SMP Wed Sep 26 15:12:11 UTC 2018
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 3.10.0-862.14.4.el7.x86_64
+# platform.system = Linux
+ 
 print " "
 build_id = None
 if sysname == "Darwin":
     build_id = "darwin"
-elif "centos" in platform.dist():
-    print "found centos"
+elif sysname == "Linux":
+    if "el6" in release:
+        build_id = "centos-6"
+    elif "el7" in release:
+        build_id = "centos-7"
+    elif "el8" in release:
+        build_id = "centos-8"
+    else:
+        print "what? release = %s" % str(release)
 else:
-    osname = "debian"
+    print "what? sysname = %s" % str(sysname)
 
 print "build_id = %s" % str(build_id)
