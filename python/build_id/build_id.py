@@ -252,7 +252,36 @@ print "platform.system = %s" % str(platform.system())
 # platform.mac_ver = ('', ('', '', ''), '')
 # platform.release = 4.15.0-1014-gcp
 # platform.system = Linux
+
+# distname = centos
+# distversion = 7.5.1804
+# distid = Core
+# sysname = Linux
+# nodename = x1
+# release = 3.10.0-862.el7.x86_64
+# version = #1 SMP Fri Apr 20 16:44:24 UTC 2018
+# machine = x86_64
+# os.uname = ('Linux', 'x1', '3.10.0-862.el7.x86_64', '#1 SMP Fri Apr 20 16:44:24 UTC 2018', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-3.10.0-862.el7.x86_64-x86_64-with-centos-7.5.1804-Core
+# platform.system = Linux
+# platform.release = 3.10.0-862.el7.x86_64
+# platform.version = #1 SMP Fri Apr 20 16:44:24 UTC 2018
+# platform.linux_distrubution = ('CentOS Linux', '7.5.1804', 'Core')
+# sys.version = 2.7.5 (default, Oct 30 2018, 23:45:53) 
+# [GCC 4.8.5 20150623 (Red Hat 4.8.5-36)]
+# platform.dist = ('centos', '7.5.1804', 'Core')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-3.10.0-862.el7.x86_64-x86_64-with-centos-7.5.1804-Core
+# platform.uname = ('Linux', 'x1', '3.10.0-862.el7.x86_64', '#1 SMP Fri Apr 20 16:44:24 UTC 2018', 'x86_64', 'x86_64')
+# platform.version = #1 SMP Fri Apr 20 16:44:24 UTC 2018
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 3.10.0-862.el7.x86_64
+# platform.system = Linux
  
+
 print "\n"
 build_id = None
 if sysname == "Darwin":
