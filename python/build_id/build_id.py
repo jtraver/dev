@@ -224,8 +224,36 @@ print "platform.system = %s" % str(platform.system())
 # platform.mac_ver = ('', ('', '', ''), '')
 # platform.release = 4.2.0-35-generic
 # platform.system = Linux
+
+# distname = Ubuntu
+# distversion = 18.04
+# distid = bionic
+# sysname = Linux
+# nodename = client-oval-0
+# release = 4.15.0-1014-gcp
+# version = #14-Ubuntu SMP Thu Jul 19 08:06:08 UTC 2018
+# machine = x86_64
+# os.uname = ('Linux', 'client-oval-0', '4.15.0-1014-gcp', '#14-Ubuntu SMP Thu Jul 19 08:06:08 UTC 2018', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-4.15.0-1014-gcp-x86_64-with-Ubuntu-18.04-bionic
+# platform.system = Linux
+# platform.release = 4.15.0-1014-gcp
+# platform.version = #14-Ubuntu SMP Thu Jul 19 08:06:08 UTC 2018
+# platform.linux_distrubution = ('Ubuntu', '18.04', 'bionic')
+# sys.version = 2.7.15+ (default, Oct  7 2019, 17:39:04) 
+# [GCC 7.4.0]
+# platform.dist = ('Ubuntu', '18.04', 'bionic')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-4.15.0-1014-gcp-x86_64-with-Ubuntu-18.04-bionic
+# platform.uname = ('Linux', 'client-oval-0', '4.15.0-1014-gcp', '#14-Ubuntu SMP Thu Jul 19 08:06:08 UTC 2018', 'x86_64', 'x86_64')
+# platform.version = #14-Ubuntu SMP Thu Jul 19 08:06:08 UTC 2018
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 4.15.0-1014-gcp
+# platform.system = Linux
  
-print " "
+print "\n"
 build_id = None
 if sysname == "Darwin":
     build_id = "darwin"
