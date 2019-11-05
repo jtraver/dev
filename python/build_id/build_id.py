@@ -197,6 +197,34 @@ print "platform.system = %s" % str(platform.system())
 # ubuntu-16.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu16.04.x86_64.deb
 # ubuntu-18.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu18.04.x86_64.deb
 
+# distname = Ubuntu
+# distversion = 14.04
+# distid = trusty
+# sysname = Linux
+# nodename = aerospike-green-0.longevity.aerospike.com
+# release = 4.2.0-35-generic
+# version = #40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016
+# machine = x86_64
+# os.uname = ('Linux', 'aerospike-green-0.longevity.aerospike.com', '4.2.0-35-generic', '#40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-4.2.0-35-generic-x86_64-with-Ubuntu-14.04-trusty
+# platform.system = Linux
+# platform.release = 4.2.0-35-generic
+# platform.version = #40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016
+# platform.linux_distrubution = ('Ubuntu', '14.04', 'trusty')
+# sys.version = 2.7.6 (default, Jun 22 2015, 17:58:13) 
+# [GCC 4.8.2]
+# platform.dist = ('Ubuntu', '14.04', 'trusty')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-4.2.0-35-generic-x86_64-with-Ubuntu-14.04-trusty
+# platform.uname = ('Linux', 'aerospike-green-0.longevity.aerospike.com', '4.2.0-35-generic', '#40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016', 'x86_64', 'x86_64')
+# platform.version = #40~14.04.1-Ubuntu SMP Fri Mar 18 16:37:35 UTC 2016
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 4.2.0-35-generic
+# platform.system = Linux
+ 
 print " "
 build_id = None
 if sysname == "Darwin":
