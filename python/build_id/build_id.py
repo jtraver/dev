@@ -9,6 +9,12 @@ import os
 # print "import platform"
 import platform
 
+# (distname,version,id)
+distname, distversion, distid = platform.dist()
+print "distname = %s" % str(distname)
+print "distversion = %s" % str(distversion)
+print "distid = %s" % str(distid)
+# print "platform.dist = %s" % str(platform.dist())
 sysname, nodename, release, version, machine = os.uname()
 print "sysname = %s" % str(sysname)
 print "nodename = %s" % str(nodename)
@@ -26,6 +32,7 @@ print "platform.release = %s" % str(platform.release())
 print "platform.version = %s" % str(platform.version())
 print "platform.linux_distrubution = %s" % str(platform.linux_distribution())
 print "sys.version = %s" % str(sys.version)
+# (distname,version,id)
 print "platform.dist = %s" % str(platform.dist())
 print "platform.system = %s" % str(platform.system())
 print "platform.machine = %s" % str(platform.machine())
@@ -118,7 +125,78 @@ print "platform.system = %s" % str(platform.system())
 # platform.mac_ver = ('', ('', '', ''), '')
 # platform.release = 3.10.0-862.14.4.el7.x86_64
 # platform.system = Linux
+
+# sysname = Linux
+# nodename = jtraver
+# release = 4.4.0-98-generic
+# version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# machine = x86_64
+# os.uname = ('Linux', 'jtraver', '4.4.0-98-generic', '#121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-4.4.0-98-generic-x86_64-with-Ubuntu-16.04-xenial
+# platform.system = Linux
+# platform.release = 4.4.0-98-generic
+# platform.version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# platform.linux_distrubution = ('Ubuntu', '16.04', 'xenial')
+# sys.version = 2.7.12 (default, Nov 19 2016, 06:48:10) 
+# [GCC 5.4.0 20160609]
+# platform.dist = ('Ubuntu', '16.04', 'xenial')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-4.4.0-98-generic-x86_64-with-Ubuntu-16.04-xenial
+# platform.uname = ('Linux', 'jtraver', '4.4.0-98-generic', '#121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017', 'x86_64', 'x86_64')
+# platform.version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 4.4.0-98-generic
+# platform.system = Linux
+
+# distname = Ubuntu
+# distversion = 16.04
+# distid = xenial
+# sysname = Linux
+# nodename = jtraver
+# release = 4.4.0-98-generic
+# version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# machine = x86_64
+# os.uname = ('Linux', 'jtraver', '4.4.0-98-generic', '#121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017', 'x86_64')
+# platform = linux2
+# os name = posix
+# platform.platform = Linux-4.4.0-98-generic-x86_64-with-Ubuntu-16.04-xenial
+# platform.system = Linux
+# platform.release = 4.4.0-98-generic
+# platform.version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# platform.linux_distrubution = ('Ubuntu', '16.04', 'xenial')
+# sys.version = 2.7.12 (default, Nov 19 2016, 06:48:10) 
+# [GCC 5.4.0 20160609]
+# platform.dist = ('Ubuntu', '16.04', 'xenial')
+# platform.system = Linux
+# platform.machine = x86_64
+# platform.platform = Linux-4.4.0-98-generic-x86_64-with-Ubuntu-16.04-xenial
+# platform.uname = ('Linux', 'jtraver', '4.4.0-98-generic', '#121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017', 'x86_64', 'x86_64')
+# platform.version = #121-Ubuntu SMP Tue Oct 10 14:24:03 UTC 2017
+# platform.mac_ver = ('', ('', '', ''), '')
+# platform.release = 4.4.0-98-generic
+# platform.system = Linux
  
+# DEFAULT_POSTFIX = 'debian8.x86_64.deb'
+# package_file += '.x86_64.deb'
+# package_file += '.x86_64.rpm'
+# package_file += '.x86_64.rpm'
+# package_file += '.x86_64.rpm'
+
+# amazonlinux-1 package name is aerospike-server-enterprise-4.7.0.3-1.ami.x86_64.rpm
+# amazonlinux-2 package name is aerospike-server-enterprise-4.7.0.3-1.ami.x86_64.rpm
+# centos-6 package name is aerospike-server-enterprise-4.7.0.3-1.el6.x86_64.rpm
+# centos-7 package name is aerospike-server-enterprise-4.7.0.3-1.el7.x86_64.rpm
+# debian-10 package name is aerospike-server-enterprise-4.7.0.3.debian10.x86_64.deb
+# debian-8 package name is aerospike-server-enterprise-4.7.0.3.debian8.x86_64.deb
+# debian-9 package name is aerospike-server-enterprise-4.7.0.3.debian9.x86_64.deb
+# oraclelinux-7 package name is aerospike-server-enterprise-4.7.0.3-1.el7.x86_64.rpm
+# ubuntu-14.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu14.04.x86_64.deb
+# ubuntu-16.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu16.04.x86_64.deb
+# ubuntu-18.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu18.04.x86_64.deb
+
 print " "
 build_id = None
 if sysname == "Darwin":
@@ -131,8 +209,13 @@ elif sysname == "Linux":
     elif "el8" in release:
         build_id = "centos-8"
     else:
-        print "what? release = %s" % str(release)
+        if distname == "Ubuntu":
+            build_id = "ubuntu-%s" % str(distversion)
+        else:
+            print "what? release = %s" % str(release)
+            print "what? distname = %s" % str(distname)
 else:
     print "what? sysname = %s" % str(sysname)
+
 
 print "build_id = %s" % str(build_id)
