@@ -282,25 +282,74 @@ print "platform.system = %s" % str(platform.system())
 # platform.system = Linux
  
 
+# amazonlinux-1 package name is aerospike-server-enterprise-4.7.0.3-1.ami.x86_64.rpm
+# amazonlinux-2 package name is aerospike-server-enterprise-4.7.0.3-1.ami.x86_64.rpm
+# centos-6 package name is aerospike-server-enterprise-4.7.0.3-1.el6.x86_64.rpm
+# centos-7 package name is aerospike-server-enterprise-4.7.0.3-1.el7.x86_64.rpm
+# debian-10 package name is aerospike-server-enterprise-4.7.0.3.debian10.x86_64.deb
+# debian-8 package name is aerospike-server-enterprise-4.7.0.3.debian8.x86_64.deb
+# debian-9 package name is aerospike-server-enterprise-4.7.0.3.debian9.x86_64.deb
+# oraclelinux-7 package name is aerospike-server-enterprise-4.7.0.3-1.el7.x86_64.rpm
+# ubuntu-14.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu14.04.x86_64.deb
+# ubuntu-16.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu16.04.x86_64.deb
+# ubuntu-18.04 package name is aerospike-server-enterprise-4.7.0.3.ubuntu18.04.x86_64.deb
+
+pversion = "4.7.0.3"
+service = "aerospike-server"
+edition = "enterprise"
 print "\n"
 build_id = None
+aplatform = "x86_64"
+epackage = None
+apackage = "did not find the right build_id info"
+oversion = None
+ext = None
 if sysname == "Darwin":
     build_id = "darwin"
 elif sysname == "Linux":
     if "el6" in release:
         build_id = "centos-6"
+        epackage = "aerospike-server-enterprise-4.7.0.3-1.el6.x86_64.rpm"
+        oversion = "el6"
+        ext = "rpm"
+        apackage = "%s-%s-%s-1.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
     elif "el7" in release:
         build_id = "centos-7"
+        epackage = "aerospike-server-enterprise-4.7.0.3-1.el7.x86_64.rpm"
+        oversion = "el7"
+        ext = "rpm"
+        apackage = "%s-%s-%s-1.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
     elif "el8" in release:
         build_id = "centos-8"
+        oversion = "el8"
+        ext = "rpm"
+        apackage = "%s-%s-%s-1.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
+        epackage = "aerospike-server-enterprise-4.7.0.3-1.el8.x86_64.rpm"
     else:
         if distname == "Ubuntu":
             build_id = "ubuntu-%s" % str(distversion)
+            ext = "deb"
+            if distversion == "14.04":
+                oversion = "ubuntu14.04"
+                apackage = "%s-%s-%s.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
+                epackage = "aerospike-server-enterprise-4.7.0.3.ubuntu14.04.x86_64.deb"
+            elif distversion == "16.04":
+                oversion = "ubuntu16.04"
+                apackage = "%s-%s-%s.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
+                epackage = "aerospike-server-enterprise-4.7.0.3.ubuntu16.04.x86_64.deb"
+            elif distversion == "18.04":
+                oversion = "ubuntu18.04"
+                apackage = "%s-%s-%s.%s.%s.%s" % (service, edition, pversion, oversion, aplatform, ext)
+                epackage = "aerospike-server-enterprise-4.7.0.3.ubuntu18.04.x86_64.deb"
+            else:
+                print "what? distversion = %s" % str(distversion)
         else:
             print "what? release = %s" % str(release)
             print "what? distname = %s" % str(distname)
 else:
     print "what? sysname = %s" % str(sysname)
 
-
-print "build_id = %s" % str(build_id)
+if apackage == epackage:
+    print "build_id = %s %s" % (str(build_id), str(apackage))
+else:
+    print "FAIL build_id = %s %s expected %s" % (str(build_id), str(apackage), str(epackage))
