@@ -13,6 +13,7 @@ try:
 except Exception, e:
     print "e = %s" % str(e)
 if has_argparse:
+    print "\nSTART apihelper.info(argparse)"
     apihelper.info(argparse)
 
 
@@ -23,6 +24,7 @@ try:
 except Exception, e:
     print "e = %s" % str(e)
 if has_bcrypt:
+    print "\nSTART apihelper.info(bcrypt)"
     apihelper.info(bcrypt)
 
 
@@ -33,6 +35,7 @@ try:
 except Exception, e:
     print "e = %s" % str(e)
 if has_openssl:
+    print "\nSTART apihelper.info(OpenSSL)"
     apihelper.info(OpenSSL)
 
 has_pexpect = False
@@ -42,6 +45,7 @@ try:
 except Exception, e:
     print "e = %s" % str(e)
 if has_pexpect:
+    print "\nSTART apihelper.info(pexpect)"
     apihelper.info(pexpect)
 
 has_ply = False
@@ -51,15 +55,24 @@ try:
 except Exception, e:
     print "e = %s" % str(e)
 if has_ply:
+    print "\nSTART apihelper.info(ply)"
     apihelper.info(ply)
 
 
+print "\nSTART apihelper.info(sys)"
+apihelper.info(sys)
+print "\nSTART apihelper.info(os)"
+apihelper.info(os)
 
-print "platform = %s" % str(sys.platform)
-print "os name = %s" % str(os.name)
-# apihelper.info(sys.platform)
-# apihelper.info(os.name)
+print "\nSTART platform = %s" % str(sys.platform)
+print "\nSTART os name = %s" % str(os.name)
+print "\nSTART apihelper.info(sys.platform)"
+apihelper.info(sys.platform)
+print "\nSTART apihelper.info(os.name)"
+apihelper.info(os.name)
+print "\nSTART uname -a"
 os.system("uname -a")
+print "\nSTART apihelper.info(platform)"
 apihelper.info(platform)
 
 print "platform.platform = %s" % str(platform.platform())
