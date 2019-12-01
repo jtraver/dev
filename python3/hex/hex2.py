@@ -8,7 +8,7 @@ def main():
 def hex1():
     # ba1 = bytearray.fromhex("0x69")
     ba1 = bytearray.fromhex("69")
-    print "ba1 = %s" % str(ba1)
+    print(("ba1 = %s" % str(ba1)))
 
 def hex2():
     strings = []
@@ -23,10 +23,10 @@ def hex2():
     strings.append("asclient.connection.recv 1045 BYTE = 0xd2 210 '?'")
     strings.append("asclient.connection.recv 1046 BYTE = 0x51 81 'Q'")
     for str1 in strings:
-        print "str1 = %s" % str(str1)
+        print(("str1 = %s" % str(str1)))
         fields1 = str1.split(" ")
-        for i1 in xrange(len(fields1)):
+        for i1 in range(len(fields1)):
             field1 = fields1[i1]
-            print "  %s %s" % (str(i1), str(field1))
+            print(("  %s %s" % (str(i1), str(field1))))
 
 main()

@@ -10,8 +10,8 @@ popen = subprocess.Popen( args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, s
 popen.stdin.write("this is line 0\n")
 out, err = popen.communicate(input = "this is line 1\nthis is line 2\n\d")
 if err != None:
-    print 'errput = %s' % str(err)
+    print('errput = %s' % str(err))
 
-print "output = %s" % str(out)
+print("output = %s" % str(out))
 
 subprocess.call(['echo', ''])

@@ -16,7 +16,7 @@ popen = subprocess.Popen(
     args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, cwd='.')
 out, err = popen.communicate()
 if err != None:
-    print 'tar errput = %s' % str(err)
+    print('tar errput = %s' % str(err))
 
 
 subprocess.call(['echo', ''])

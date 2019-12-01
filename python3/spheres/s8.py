@@ -27,9 +27,9 @@ def twos():
                 d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def threes():
     d1 = {}
@@ -49,9 +49,9 @@ def threes():
                     d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def fours():
     d1 = {}
@@ -74,9 +74,9 @@ def fours():
                         d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def fives():
     d1 = {}
@@ -102,9 +102,9 @@ def fives():
                             d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def sixes():
     d1 = {}
@@ -133,9 +133,9 @@ def sixes():
                                 d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def sevens():
     d1 = {}
@@ -167,9 +167,9 @@ def sevens():
                                     d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def eights():
     d1 = {}
@@ -211,22 +211,22 @@ def eights():
                                         d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 def check_ms(l1):
     res1 = False
     len1 = len(l1)
-    for x1 in xrange(len1):
+    for x1 in range(len1):
         v1 = l1[x1]
-        for x2 in xrange(len1):
+        for x2 in range(len1):
             if x1 == x2:
                 continue
             v2 = l1[x2]
             if v1 == v2:
                 res1 = True
-                print "FAIL: %s %s = %s" % (str(x1), str(x2), v1)
+                print("FAIL: %s %s = %s" % (str(x1), str(x2), v1))
     return res1
 
 main()

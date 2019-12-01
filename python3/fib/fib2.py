@@ -13,7 +13,7 @@ def misc():
 
     # print "math.pi = %s" % str(math.pi)
     # print "math.e = %s" % str(math.e)
-    print "phi = %s" % str(phi)
+    print(("phi = %s" % str(phi)))
 
 def main():
     fib1()
@@ -28,7 +28,7 @@ def fib1():
     f1.append(1.0)
     c1 = 1
     lphi1 = 0
-    for x1 in xrange(LIMIT):
+    for x1 in range(LIMIT):
         c1 += 1
         i0 = if1[x1]
         n0 = f1[x1]
@@ -43,7 +43,7 @@ def fib1():
         #        print "%s %s is divisible by %s" % (str(c1), str(i2), str(x2))
         phi1 = n2 / n1
         # print "%s %s" % (str(c1), str(phi1))
-        print "%s %g %s / %s" % (str(c1), phi1, str(n2), str(n1))
+        print(("%s %g %s / %s" % (str(c1), phi1, str(n2), str(n1))))
         #if False:
         #    diff = phi1 - 1.61803398875
         #    if diff < 0:

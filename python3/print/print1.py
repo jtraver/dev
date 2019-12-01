@@ -12,18 +12,18 @@ def main():
     ret1 = 0
     ret1 += print1()
     if ret1:
-        print "%sFAIL %s%s" % (VT100_RED, str(ret1), VT100_STOP_MARKUP)
+        print("%sFAIL %s%s" % (VT100_RED, str(ret1), VT100_STOP_MARKUP))
     else:
-        print "%sPASS%s" % (VT100_GREEN, VT100_STOP_MARKUP)
-    print "DONE"
-    print "^G"
+        print("%sPASS%s" % (VT100_GREEN, VT100_STOP_MARKUP))
+    print("DONE")
+    print("^G")
     sys.stdout.flush()
     sys.exit(ret1)
 
 def print1():
     ret1 = 0
-    for i1 in xrange(100):
-        print "i1 = %02d" % i1
+    for i1 in range(100):
+        print("i1 = %02d" % i1)
     return ret1
 
 main()

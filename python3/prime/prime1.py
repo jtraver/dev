@@ -17,6 +17,6 @@ def is_prime(candi):
 for c1 in range(3, limit, 2):
     if is_prime(c1):
         primes.append(c1)
-        print "%d" % c1
+        print("%d" % c1)
 
-print "%s" % str(primes)
+print("%s" % str(primes))

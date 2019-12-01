@@ -35,7 +35,7 @@ def update_line(*args):
 
     if update_line.cnt==50:
         # print the timing info and quit
-        print 'FPS:' , update_line.cnt/(time.time()-tstart)
+        print('FPS:' , update_line.cnt/(time.time()-tstart))
         sys.exit()
 
     update_line.cnt += 1

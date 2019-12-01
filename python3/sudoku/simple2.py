@@ -27,17 +27,17 @@ r8 = [ 0, 0, 1,  2, 0, 0,  4, 0, 5 ]
 g0 = [ r0, r1, r2, r3, r4, r5, r6, r7, r8 ]
 
 def print_grid(grid):
-    for x in xrange(9):
+    for x in range(9):
         line = ''
-        for y in xrange(9):
+        for y in range(9):
             line += ' %d' % grid[x][y]
-        print "%s" % line
+        print("%s" % line)
 
 def check_grid_solved(grid):
-    for x in xrange(9):
+    for x in range(9):
         row = {}
         col = {}
-        for y in xrange(9):
+        for y in range(9):
             rcell = grid[x][y]
             if rcell in row:
                 return False
@@ -46,7 +46,7 @@ def check_grid_solved(grid):
             if ccell in col:
                 return False
             col[ccell] = 1
-        for x in xrange(1, 10):
+        for x in range(1, 10):
             if x in row:
                 pass
             else:
@@ -55,13 +55,13 @@ def check_grid_solved(grid):
                 pass
             else:
                 return False
-    for x1 in xrange(0, 9, 3):
-        for y1 in xrange(0, 9, 3):
+    for x1 in range(0, 9, 3):
+        for y1 in range(0, 9, 3):
             # print "%d %d" % (x1, y1)
             sgrid = {}
-            for x2 in xrange(3):
+            for x2 in range(3):
                 line = ''
-                for y2 in xrange(3):
+                for y2 in range(3):
                     cell = grid[x1 + x2][y1 + y2]
                     line += " %d" % cell
                     if cell in sgrid:
@@ -69,7 +69,7 @@ def check_grid_solved(grid):
                     sgrid[cell] = 1
                 # print line
             # print "subgrid is ok"
-            for x in xrange(1, 10):
+            for x in range(1, 10):
                 if x in sgrid:
                     pass
                 else:
@@ -78,10 +78,10 @@ def check_grid_solved(grid):
 
 
 def old_check_grid_solved(grid):
-    for x in xrange(9):
+    for x in range(9):
         row = {}
         col = {}
-        for y in xrange(9):
+        for y in range(9):
             rcell = grid[x][y]
             if rcell in row:
                 return False
@@ -90,13 +90,13 @@ def old_check_grid_solved(grid):
             if ccell in col:
                 return False
             col[ccell] = 1
-    for x1 in xrange(0, 9, 3):
-        for y1 in xrange(0, 9, 3):
+    for x1 in range(0, 9, 3):
+        for y1 in range(0, 9, 3):
             # print "%d %d" % (x1, y1)
             sgrid = {}
-            for x2 in xrange(3):
+            for x2 in range(3):
                 line = ''
-                for y2 in xrange(3):
+                for y2 in range(3):
                     cell = grid[x1 + x2][y1 + y2]
                     line += " %d" % cell
                     if cell in sgrid:
@@ -108,10 +108,10 @@ def old_check_grid_solved(grid):
 
 
 def check_grid_consistent(grid):
-    for x in xrange(9):
+    for x in range(9):
         row = {}
         col = {}
-        for y in xrange(9):
+        for y in range(9):
             rcell = grid[x][y]
             if rcell != 0 and rcell in row:
                 return False
@@ -120,13 +120,13 @@ def check_grid_consistent(grid):
             if ccell != 0 and ccell in col:
                 return False
             col[ccell] = 1
-    for x1 in xrange(0, 9, 3):
-        for y1 in xrange(0, 9, 3):
+    for x1 in range(0, 9, 3):
+        for y1 in range(0, 9, 3):
             # print "%d %d" % (x1, y1)
             sgrid = {}
-            for x2 in xrange(3):
+            for x2 in range(3):
                 line = ''
-                for y2 in xrange(3):
+                for y2 in range(3):
                     cell = grid[x1 + x2][y1 + y2]
                     line += " %d" % cell
                     if cell != 0 and cell in sgrid:
@@ -140,25 +140,25 @@ def check_available(grid, x, y):
     # print
     # print "checking %d %d" % (x, y)
     used = {}
-    for y1 in xrange(9):
+    for y1 in range(9):
         cell = grid[x][y1]
         used[cell] = 1
         # print "  found %d at %d %d" % (cell, x, y1)
-    for x1 in xrange(9):
+    for x1 in range(9):
         cell = grid[x1][y]
         used[cell] = 1
         # print "  found %d at %d %d" % (cell, x1, y)
     x1 = x - (x % 3)
     y1 = y - (y % 3)
     # print "checking %d %d in grid at %d %d" % (x, y, x1, y1)
-    for x2 in xrange(x1, x1 + 3):
-        for y2 in xrange(y1, y1 + 3):
+    for x2 in range(x1, x1 + 3):
+        for y2 in range(y1, y1 + 3):
             cell = grid[x2][y2]
             used[cell] = 1
             # print "  found %d at %d %d" % (cell, x2, y2)
     # print "  used = %s" % str(used)
     available = []
-    for a1 in xrange(1, 10):
+    for a1 in range(1, 10):
         if a1 in used:
             # print "  %d is used" % a1
             pass
@@ -170,9 +170,9 @@ def check_available(grid, x, y):
 def solve_grid(grid):
     global loop_count
     loop_count += 1
-    print "%d" % loop_count
-    for x in xrange(9):
-        for y in xrange(9):
+    print("%d" % loop_count)
+    for x in range(9):
+        for y in range(9):
             cell = grid[x][y]
             # check_available(grid, x, y)
             if cell == 0:
@@ -180,7 +180,7 @@ def solve_grid(grid):
                 if len(a1) == 1:
                     c = a1[0]
                     grid[x][y] = c
-                    print "found %d for %d %d" % (c, x, y)
+                    print("found %d for %d %d" % (c, x, y))
     if check_grid_solved(grid):
         return
     print_grid(g0)

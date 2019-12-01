@@ -7,14 +7,14 @@ import os
 apihelper.info(os.path)
 
 pathname = "/data/downloads/release/tools/3.11.0/aerospike-tools-3.11.0-debian8.tgz"
-print "pathname = %s" % str(pathname)
+print("pathname = %s" % str(pathname))
 basename = os.path.basename(pathname)
-print "basename = %s" % str(basename)
+print("basename = %s" % str(basename))
 root, ext = os.path.splitext(basename)
-print "root = %s" % str(root)
-print "ext = %s" % str(ext)
+print("root = %s" % str(root))
+print("ext = %s" % str(ext))
 tgzdir = os.path.join(os.getcwd(), root)
-print "tgzdir = %s" % str(tgzdir)
+print("tgzdir = %s" % str(tgzdir))
 
 
 # 

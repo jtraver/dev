@@ -11,7 +11,7 @@ s.listen(5)
 while True:
     c,a = s.accept()
     c.settimeout(10.0)
-    print "Someone came in Server from %s and port %s" %(a[0],a[1])
+    print("Someone came in Server from %s and port %s" %(a[0],a[1]))
     c.send("Welcome to system")
     while True:
         chunk = c.recv(2048)
@@ -21,8 +21,8 @@ while True:
             fragments.append(chunk)
             continue
     combiner = "".join(fragments)
-    print combiner
-    shutdown = str(raw_input("Wanna Quit(Y/y) or (N/n): "))
+    print(combiner)
+    shutdown = str(input("Wanna Quit(Y/y) or (N/n): "))
     if shutdown == 'Y' or shutdown == 'y':
         c.close()
         sys.exit()

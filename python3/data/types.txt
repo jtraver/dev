@@ -8,4 +8,4 @@ list
 set
 string
 tuple
-unicode
+str

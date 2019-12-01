@@ -3,5 +3,5 @@
 
 import os
 
-print "os = %s" % str(os)
-print "os = %s" % str(dir(os))
+print("os = %s" % str(os))
+print("os = %s" % str(dir(os)))

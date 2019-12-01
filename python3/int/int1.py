@@ -8,9 +8,9 @@ def int1():
     s = 400
     y = 22
     i = 0.08
-    for t in xrange(y):
+    for t in range(y):
         a = s * i
         s += a
-    print "%s" % str(s)
+    print(("%s" % str(s)))
         
 main()

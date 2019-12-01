@@ -16,17 +16,17 @@ r8 = [ 0, 0, 1,  2, 7, 8,  4, 0, 5 ]
 g0 = [ r0, r1, r2, r3, r4, r5, r6, r7, r8 ]
 
 def print_grid(grid):
-    for x in xrange(9):
+    for x in range(9):
         line = ''
-        for y in xrange(9):
+        for y in range(9):
             line += ' %d' % grid[x][y]
-        print "%s" % line
+        print("%s" % line)
 
 def check_grid_solved(grid):
-    for x in xrange(9):
+    for x in range(9):
         row = {}
         col = {}
-        for y in xrange(9):
+        for y in range(9):
             rcell = grid[x][y]
             if rcell in row:
                 return False
@@ -35,13 +35,13 @@ def check_grid_solved(grid):
             if ccell in col:
                 return False
             col[ccell] = 1
-    for x1 in xrange(0, 9, 3):
-        for y1 in xrange(0, 9, 3):
+    for x1 in range(0, 9, 3):
+        for y1 in range(0, 9, 3):
             # print "%d %d" % (x1, y1)
             sgrid = {}
-            for x2 in xrange(3):
+            for x2 in range(3):
                 line = ''
-                for y2 in xrange(3):
+                for y2 in range(3):
                     cell = grid[x1 + x2][y1 + y2]
                     line += " %d" % cell
                     if cell in sgrid:
@@ -53,10 +53,10 @@ def check_grid_solved(grid):
 
 
 def check_grid_consistent(grid):
-    for x in xrange(9):
+    for x in range(9):
         row = {}
         col = {}
-        for y in xrange(9):
+        for y in range(9):
             rcell = grid[x][y]
             if rcell != 0 and rcell in row:
                 return False
@@ -65,13 +65,13 @@ def check_grid_consistent(grid):
             if ccell != 0 and ccell in col:
                 return False
             col[ccell] = 1
-    for x1 in xrange(0, 9, 3):
-        for y1 in xrange(0, 9, 3):
+    for x1 in range(0, 9, 3):
+        for y1 in range(0, 9, 3):
             # print "%d %d" % (x1, y1)
             sgrid = {}
-            for x2 in xrange(3):
+            for x2 in range(3):
                 line = ''
-                for y2 in xrange(3):
+                for y2 in range(3):
                     cell = grid[x1 + x2][y1 + y2]
                     line += " %d" % cell
                     if cell != 0 and cell in sgrid:
@@ -82,11 +82,11 @@ def check_grid_consistent(grid):
     return True
 
 def solve_grid(grid):
-    for x in xrange(9):
-        for y in xrange(9):
+    for x in range(9):
+        for y in range(9):
             cell = grid[x][y]
             if cell == 0:
-                for g in xrange(1, 10):
+                for g in range(1, 10):
                     grid[x][y] = g
                     if check_grid_consistent(grid):
                         if check_grid_solved(grid):

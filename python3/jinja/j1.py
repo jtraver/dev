@@ -3,5 +3,5 @@
 
 import jinja2
 
-print "jinja2 = %s" % str(jinja2)
-print "jinja2 = %s" % dir(jinja2)
+print(("jinja2 = %s" % str(jinja2)))
+print(("jinja2 = %s" % dir(jinja2)))

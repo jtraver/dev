@@ -16,7 +16,7 @@ def parse_time(time_str):
         return time_str
     # print parts
     parts = parts.groupdict()
-    print parts
+    print(parts)
     time = 0
     unit = "seconds"
     if parts[unit]:
@@ -33,11 +33,11 @@ def parse_time(time_str):
     return time
 
 
-print parse_time('12hr')
-print parse_time('1 hr')
-print parse_time('3 minutes')
-print parse_time('2')
-print parse_time('4 s')
-print parse_time('5m')
-print parse_time('6s')
-print parse_time('7h')
+print(parse_time('12hr'))
+print(parse_time('1 hr'))
+print(parse_time('3 minutes'))
+print(parse_time('2'))
+print(parse_time('4 s'))
+print(parse_time('5m'))
+print(parse_time('6s'))
+print(parse_time('7h'))

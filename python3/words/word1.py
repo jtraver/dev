@@ -17,7 +17,7 @@ file1 = open(filename, 'r')
 # print "file1 = %s" % str(file1)
 # print "file1 = %s" % str(type(file1))
 # print "file1 = %s" % str(dir(file1))
-for line in file1.xreadlines():
+for line in file1:
 # for line in file1.readlines():
     line = line.rstrip()
     if len(line) == 5:
@@ -34,25 +34,25 @@ groan = list(word)
 alphas = "abcdefghijklmnopqrstuvwxyz"
 #print "alphas len = %s" % str(len(alphas))
 for a1 in alphas:
-    print "a1 = %s" % str(a1)
+    print("a1 = %s" % str(a1))
     for l1 in word:
         if l1 == "g":
             w1 = a1 + "roan"
             if w1 != word and w1 in fives:
-                print "w1 = %s" % str(w1)
+                print("w1 = %s" % str(w1))
         elif l1 == "r":
             w1 = "g" + a1 + "oan"
             if w1 != word and w1 in fives:
-                print "w1 = %s" % str(w1)
+                print("w1 = %s" % str(w1))
         elif l1 == "o":
             w1 = "gr" + a1 + "an"
             if w1 != word and w1 in fives:
-                print "w1 = %s" % str(w1)
+                print("w1 = %s" % str(w1))
         elif l1 == "a":
             w1 = "gro" + a1 + "n"
             if w1 != word and w1 in fives:
-                print "w1 = %s" % str(w1)
+                print("w1 = %s" % str(w1))
         elif l1 == "n":
             w1 = "groa" + a1
             if w1 != word and w1 in fives:
-                print "w1 = %s" % str(w1)
+                print("w1 = %s" % str(w1))

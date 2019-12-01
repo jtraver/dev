@@ -3,8 +3,8 @@
 
 import yaml
 
-print "yaml = %s" % str(yaml)
-print "yaml = %s" % dir(yaml)
+print("yaml = %s" % str(yaml))
+print("yaml = %s" % dir(yaml))
 
 # http://stackoverflow.com/questions/12470665/yaml-writing-data-into-yaml-through-python
 
@@ -101,9 +101,9 @@ with open('config1.yml', 'w') as outfile:
     outfile.write(yaml.dump(config1, default_flow_style=False))
 
 config2 = yaml.load(file('config1.yml'), Loader=yaml.FullLoader)
-print "config2 = %s" % str(config2)
+print("config2 = %s" % str(config2))
 
 if config1 == config2:
-    print "load and dump worked"
+    print("load and dump worked")
 else:
-    print "load and dump did not work"
+    print("load and dump did not work")

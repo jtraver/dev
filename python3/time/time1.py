@@ -11,8 +11,8 @@ def main():
         now = time.time()
         elapsed = now - starttime
         ielapsed = int(elapsed)
-        print "elasped time is %s" % str(elapsed)
-        print "ielasped time is %s" % str(ielapsed)
+        print("elasped time is %s" % str(elapsed))
+        print("ielasped time is %s" % str(ielapsed))
         time.sleep(elapsed)
 
 main()

@@ -6,18 +6,18 @@ import ctypes
 import apihelper
 
 buf = ctypes.create_string_buffer(10)
-print("buf = %s" % str(buf))
-print("buf = %s" % str(type(buf)))
-print("buf = %s" % str(dir(buf)))
+print(("buf = %s" % str(buf)))
+print(("buf = %s" % str(type(buf))))
+print(("buf = %s" % str(dir(buf))))
 buf[0] = ord('a')
-print("buf = %s" % str(buf.raw))
-print("buf = %s" % str(buf[0]))
-print("buf = %x" % ord(buf[0]))
+print(("buf = %s" % str(buf.raw)))
+print(("buf = %s" % str(buf[0])))
+print(("buf = %x" % ord(buf[0])))
 
 apihelper.info(ctypes)
 
 ba1 = bytearray('bytearray'.encode())
-print("ba1 = %s" % str(ba1))
+print(("ba1 = %s" % str(ba1)))
 apihelper.info(bytearray)
 apihelper.info(ba1)
 
@@ -99,8 +99,8 @@ apihelper.info(ba1)
 
 
 # buf[0:3] = ba1[0:3]
-print("buf = %s" % str(buf.raw))
+print(("buf = %s" % str(buf.raw)))
 for ind1 in range(6):
     # buf[ind1] = chr(ba1.pop(0))
     buf[ind1] = ba1[ind1]
-print("buf = %s" % str(buf.raw))
+print(("buf = %s" % str(buf.raw)))

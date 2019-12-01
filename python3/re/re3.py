@@ -13,9 +13,9 @@ regex = re.compile(
 
 parts = regex.match(line)
 
-print "parts = %s" % str(parts)
-print "parts = %s" % str(dir(parts))
+print("parts = %s" % str(parts))
+print("parts = %s" % str(dir(parts)))
 
 parts = parts.groupdict()
 
-print "parts = %s" % str(parts)
+print("parts = %s" % str(parts))

@@ -11,11 +11,11 @@ regex = re.compile(r'^.*Run \'(?P<filename>[^\']+?)\'.*$')
 
 parts = regex.match(line)
 
-print "parts = %s" % str(parts)
-print "parts = %s" % str(dir(parts))
+print("parts = %s" % str(parts))
+print("parts = %s" % str(dir(parts)))
 
 parts = parts.groupdict()
 
-print "parts = %s" % str(parts)
+print("parts = %s" % str(parts))
 filename = parts['filename']
-print "filename = %s" % str(filename)
+print("filename = %s" % str(filename))

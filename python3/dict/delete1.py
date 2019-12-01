@@ -7,8 +7,8 @@ dict1 = {'sindex_gc_list_deletion_time': '0', 'err_write_fail_key_exists': '0', 
 # print dict1
 # print dir(dict1)
 
-for k, v in dict1.items():
-    print "%s %s" % (str(k), str(v))
+for k, v in list(dict1.items()):
+    print(("%s %s" % (str(k), str(v))))
     del dict1[k]
 
-print "dict1 = %s" % str(dict1)
+print(("dict1 = %s" % str(dict1)))

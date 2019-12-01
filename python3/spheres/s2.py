@@ -21,8 +21,8 @@ def twos():
                 d1[t1] = 1
     for k in sorted(d1.keys()):
         v = d1[k]
-        print "%s = %s" % (str(k), str(v))
-    len1 = len(d1.keys())
-    print "%s" % str(len1)
+        print("%s = %s" % (str(k), str(v)))
+    len1 = len(list(d1.keys()))
+    print("%s" % str(len1))
 
 main()

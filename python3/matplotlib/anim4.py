@@ -20,10 +20,10 @@ def init():
     return ln,
 
 def update(frame):
-    print "frame = %s " % str(frame)
+    print("frame = %s " % str(frame))
     xdata.append(frame)
     sin1 = np.sin(frame)
-    print "sin1 = %s " % str(sin1)
+    print("sin1 = %s " % str(sin1))
     ydata.append(np.sin(frame))
     ln.set_data(xdata, ydata)
     return ln,

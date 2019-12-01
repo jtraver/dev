@@ -5,40 +5,40 @@ import selenium
 from selenium import webdriver
 import apihelper
 
-print "\n---------------------------------------------------------------------------------"
-print "selenium"
+print("\n---------------------------------------------------------------------------------")
+print("selenium")
 apihelper.info(selenium)
-print "selenium = %s" % str(selenium)
-print "selenium = %s" % str(type(selenium))
-print "selenium"
-print "---------------------------------------------------------------------------------\n"
+print("selenium = %s" % str(selenium))
+print("selenium = %s" % str(type(selenium)))
+print("selenium")
+print("---------------------------------------------------------------------------------\n")
 
 
-print "\n---------------------------------------------------------------------------------"
-print "webdriver"
+print("\n---------------------------------------------------------------------------------")
+print("webdriver")
 apihelper.info(webdriver)
-print "webdriver = %s" % str(webdriver)
-print "webdriver = %s" % str(type(webdriver))
-print "webdriver"
-print "---------------------------------------------------------------------------------\n"
+print("webdriver = %s" % str(webdriver))
+print("webdriver = %s" % str(type(webdriver)))
+print("webdriver")
+print("---------------------------------------------------------------------------------\n")
 
 
-print "\n---------------------------------------------------------------------------------"
-print "webdriver.Chrome"
+print("\n---------------------------------------------------------------------------------")
+print("webdriver.Chrome")
 apihelper.info(webdriver.Chrome)
-print "webdriver.Chrome = %s" % str(webdriver.Chrome)
-print "webdriver.Chrome = %s" % str(type(webdriver.Chrome))
-print "webdriver.Chrome"
-print "---------------------------------------------------------------------------------\n"
+print("webdriver.Chrome = %s" % str(webdriver.Chrome))
+print("webdriver.Chrome = %s" % str(type(webdriver.Chrome)))
+print("webdriver.Chrome")
+print("---------------------------------------------------------------------------------\n")
 
 
-print "\n---------------------------------------------------------------------------------"
-print "webdriver.Remote"
+print("\n---------------------------------------------------------------------------------")
+print("webdriver.Remote")
 apihelper.info(webdriver.Remote)
-print "webdriver.Remote = %s" % str(webdriver.Remote)
-print "webdriver.Remote = %s" % str(type(webdriver.Remote))
-print "webdriver.Remote"
-print "---------------------------------------------------------------------------------\n"
+print("webdriver.Remote = %s" % str(webdriver.Remote))
+print("webdriver.Remote = %s" % str(type(webdriver.Remote)))
+print("webdriver.Remote")
+print("---------------------------------------------------------------------------------\n")
 
 
 options = webdriver.ChromeOptions()
@@ -56,16 +56,16 @@ options.add_argument('headless')
 # initialize the driver
 driver = webdriver.Chrome(chrome_options=options)
 
-print "---------------------------------------------------------------------------------"
-print "driver"
+print("---------------------------------------------------------------------------------")
+print("driver")
 try:
     apihelper.info(driver)
-except Exception, e:
-    print "e = %s" % str(e)
-print "driver = %s" % str(driver)
-print "driver = %s" % str(type(driver))
-print "driver"
-print "---------------------------------------------------------------------------------"
+except Exception as e:
+    print("e = %s" % str(e))
+print("driver = %s" % str(driver))
+print("driver = %s" % str(type(driver)))
+print("driver")
+print("---------------------------------------------------------------------------------")
 
 
 # driver.get('https://facebook.com')
@@ -77,31 +77,31 @@ driver.implicitly_wait(10)
 # time.sleep(3)
 
 content_element = driver.find_element_by_id("content")
-print "\n---------------------------------------------------------------------------------"
-print "content_element"
+print("\n---------------------------------------------------------------------------------")
+print("content_element")
 try:
     apihelper.info(content_element)
-except Exception, e:
-    print "e = %s" % str(e)
-print "content_element = %s" % str(content_element)
-print "content_element = %s" % str(type(content_element))
-print "content_element"
-print "---------------------------------------------------------------------------------\n"
+except Exception as e:
+    print("e = %s" % str(e))
+print("content_element = %s" % str(content_element))
+print("content_element = %s" % str(type(content_element)))
+print("content_element")
+print("---------------------------------------------------------------------------------\n")
 
-print "%s" % driver.find_element_by_id("content").text
+print("%s" % driver.find_element_by_id("content").text)
 
 html_element = driver.find_element_by_tag_name('html')
-print "\n---------------------------------------------------------------------------------"
-print "html_element"
+print("\n---------------------------------------------------------------------------------")
+print("html_element")
 try:
     apihelper.info(html_element)
-except Exception, e:
-    print "e = %s" % str(e)
-print "html_element = %s" % str(html_element)
-print "html_element = %s" % str(type(html_element))
-print "html_element"
-print "---------------------------------------------------------------------------------\n"
-print "html text is %s" % html_element.text
+except Exception as e:
+    print("e = %s" % str(e))
+print("html_element = %s" % str(html_element))
+print("html_element = %s" % str(type(html_element)))
+print("html_element")
+print("---------------------------------------------------------------------------------\n")
+print("html text is %s" % html_element.text)
 
 
 driver.close()

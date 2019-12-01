@@ -5,9 +5,9 @@ import random
 
 def get_bid(hands):
     bids = []
-    for index in xrange(0, 4):
+    for index in range(0, 4):
         hand = hands[index]
-        print "hand = %s" % str(hand)
+        print(("hand = %s" % str(hand)))
         bid = {}
         bid['bid'] = 'pass'
         for suit in ['S', 'C', 'D', 'H', 'NT']:
@@ -16,7 +16,7 @@ def get_bid(hands):
             bid['NT'] += 1
             bid['bid'] = '6NT'
         for suit in ['S', 'C', 'D', 'H']:
-            for icard in xrange(0, len(hand)):
+            for icard in range(0, len(hand)):
                 card = hand[icard]
                 if card.endswith(suit):
                     bid[suit] += 1
@@ -50,7 +50,7 @@ def create_deck():
         deck.append('J' + suit)
         deck.append('Q' + suit)
         deck.append('K' + suit)
-        for card in xrange(4, 11):
+        for card in range(4, 11):
             deck.append(str(card) + suit)
     deck.append('JOKER')
     return deck
@@ -69,36 +69,36 @@ def deal_card(deck):
 
 def deal(deck):
     hands = []
-    for index in xrange(0, 5):
+    for index in range(0, 5):
         # print "index = %s" % str(index)
         hands.append([])
-    for index in xrange(0, len(hands)):
-        for card in xrange(0, 3):
+    for index in range(0, len(hands)):
+        for card in range(0, 3):
             hands[index].append(deal_card(deck))
-    for index in xrange(0, len(hands)):
-        for card in xrange(0, 2):
+    for index in range(0, len(hands)):
+        for card in range(0, 2):
             hands[index].append(deal_card(deck))
-    for index in xrange(0, len(hands) - 1):
-        for card in xrange(0, 3):
+    for index in range(0, len(hands) - 1):
+        for card in range(0, 3):
             hands[index].append(deal_card(deck))
-    for index in xrange(0, len(hands) - 1):
-        for card in xrange(0, 2):
+    for index in range(0, len(hands) - 1):
+        for card in range(0, 2):
             hands[index].append(deal_card(deck))
     # print "hands = %s" % str(hands)
     return hands
 
 def old_get_bid(hands):
     bids = []
-    for index in xrange(0, 4):
+    for index in range(0, 4):
         hand = hands[index]
-        print "hand = %s" % str(hand)
+        print(("hand = %s" % str(hand)))
         bid = {}
         for suit in ['S', 'C', 'D', 'H']:
             bid[suit] = []
         bid['JOKER'] = None
         bid['bid'] = 'pass'
         bids.append(bid)
-        for icard in xrange(0, len(hand)):
+        for icard in range(0, len(hand)):
             card = hand[icard]
             if card == 'JOKER':
                 bid['JOKER'] = card
@@ -114,16 +114,16 @@ def main():
     deck = create_deck()
     # print "deck = %s" % str(deck)
     hands = deal(deck)
-    for index in xrange(0, 5):
+    for index in range(0, 5):
         shand = hands[index]
-        print "%s %s" % (str(index), str(shand))
+        print(("%s %s" % (str(index), str(shand))))
     # print "hands = %s" % str(hands)
-    print "your hand = %s" % str(hands[3])
+    print(("your hand = %s" % str(hands[3])))
     bids = get_bid(hands)
     # print "bids = %s" % str(bids)
-    for index in xrange(0, 4):
+    for index in range(0, 4):
         shand = bids[index]
         bid = shand['bid']
-        print "bid = %s in %s" % (str(bid), str(shand))
+        print(("bid = %s in %s" % (str(bid), str(shand))))
 
 main()

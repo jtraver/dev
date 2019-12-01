@@ -34,7 +34,7 @@ def main():
     home1 = os.path.expanduser("~")
     logfiles = glob.glob(home1 + "/logs/*/*/*.log")
     for logfile in sorted(logfiles):
-        print "logfile %s" % logfile
+        print(("logfile %s" % logfile))
         grep1(logfile)
 
 def grep1(filename):
@@ -65,14 +65,14 @@ def grep1(filename):
                 if not parts1:
                     parts1 = call_stack_regex.match(line)
                 if not parts1:
-                    print "WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))
+                    print(("WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))))
                     sys.exit(1)
                 dict1 = parts1.groupdict()
                 if dict1['remainder']:
-                    print "  dict1 = %s" % str(dict1)
+                    print(("  dict1 = %s" % str(dict1)))
                     for key in sorted(dict1.keys()):
                         val = dict1[key]
-                        print "    %s %s" % (str(key), str(val))
+                        print(("    %s %s" % (str(key), str(val))))
                     sys.exit(1)
 
 

@@ -30,7 +30,7 @@ def check(object, name, dict1, status):
             else:
                 status = check(attr1, name + "." + e1, dict1[e1], status)
         else:
-            print "need tests for %s.%s" % (name, e1)
+            print(("need tests for %s.%s" % (name, e1)))
             status = False
     return status
 
@@ -38,8 +38,8 @@ def check(object, name, dict1, status):
 def main():
     status = check(jinja2, 'jinja2', elements, True)
     if status:
-        print "tests are good"
+        print("tests are good")
     else:
-        print "need some tests"
+        print("need some tests")
 
 main()

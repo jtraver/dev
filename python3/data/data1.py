@@ -212,14 +212,14 @@ def make_string():
 
 def make_unicode():
     nbins = random.randint(0, max_unicode)
-    u = unichr(random.randint(0, max_unicode_char))
+    u = chr(random.randint(0, max_unicode_char))
     for x in range(nbins):
         c = random.randint(0, 1)
         if c:
-            u = u + unichr(random.randint(0, max_unicode_char))
+            u = u + chr(random.randint(0, max_unicode_char))
         else:
-            u = u + unichr(random.randint(0xd800, 0xdbff))
-            u = u + unichr(random.randint(0xdc00, 0xdfff))
+            u = u + chr(random.randint(0xd800, 0xdbff))
+            u = u + chr(random.randint(0xdc00, 0xdfff))
     return u
 
 # done
@@ -287,25 +287,25 @@ def make_record(max_bins, depth):
 
 def doit():
     record = make_record(max_record, 0)
-    print "record = %s" % str(record)
-    for k, v in record.items():
-        if type(v) == unicode:
-            print "%s %s" % (k, v.encode('utf-8'))
+    print(("record = %s" % str(record)))
+    for k, v in list(record.items()):
+        if type(v) == str:
+            print(("%s %s" % (k, v.encode('utf-8'))))
         else:
-            print "%s %s" % (k, str(v))
+            print(("%s %s" % (k, str(v))))
 
 
 def countit():
     record = make_record(max_record, 0)
     len1 = len(str(record))
-    print "  len1 = %s" % str(len1)
+    print(("  len1 = %s" % str(len1)))
     if len1 < 0:
-        print "  record = %s" % str(record)
-        for k, v in record.items():
-            if type(v) == unicode:
-                print "  %s %s" % (k, v.encode('utf-8'))
+        print(("  record = %s" % str(record)))
+        for k, v in list(record.items()):
+            if type(v) == str:
+                print(("  %s %s" % (k, v.encode('utf-8'))))
             else:
-                print "  %s %s" % (k, str(v))
+                print(("  %s %s" % (k, str(v))))
     return len1
 
 
@@ -314,12 +314,12 @@ def main():
     t = 0
     c = 0
     for i in range(10000):
-        print "i = %s" % str(i)
+        print(("i = %s" % str(i)))
         l = countit()
         t += l
         c += 1
         a = t / c
-        print "  average is %s" % str(a)
+        print(("  average is %s" % str(a)))
 
 
 main()

@@ -16,7 +16,7 @@ md5.update('swaranga@gmail.com')
 hex1 = md5.hexdigest()
 
 if hex1 == perl_result:
-    print "ok"
+    print("ok")
 else:
-    print "FAIL perl_result = %s" % str(perl_result)
-    print "FAIL hex1        = %s" % str(hex1)
+    print(("FAIL perl_result = %s" % str(perl_result)))
+    print(("FAIL hex1        = %s" % str(hex1)))

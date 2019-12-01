@@ -7,7 +7,7 @@ def main():
 def hex1():
     # ba1 = bytearray.fromhex("0x69")
     ba1 = bytearray.fromhex("69")
-    print "ba1 = %s" % str(ba1)
+    print(("ba1 = %s" % str(ba1)))
 
 main()
 

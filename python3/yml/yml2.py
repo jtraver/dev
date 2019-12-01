@@ -13,32 +13,32 @@ def main():
     show_grid(grid5)
 
 def debug1(gridn):
-    print "gridn = %s" % str(gridn)
-    for sx in xrange(3):
-        for sy in xrange(3):
+    print("gridn = %s" % str(gridn))
+    for sx in range(3):
+        for sy in range(3):
             sn = gridn[sx][sy]
-            print "%s %s = %s" % (str(sx), str(sy), str(sn))
+            print("%s %s = %s" % (str(sx), str(sy), str(sn)))
             if 11 in sn:
-                print "found 11 in %s" % str(sn)
+                print("found 11 in %s" % str(sn))
                 sys.exit(1)
-    for sx in xrange(3):
-        for sy in xrange(3):
-            for ix in xrange(3):
+    for sx in range(3):
+        for sy in range(3):
+            for ix in range(3):
                 r1 = gridn[sx][sy][ix]
-                print "%s %s %s = %s" % (str(sx), str(sy), str(ix), str(r1))
+                print("%s %s %s = %s" % (str(sx), str(sy), str(ix), str(r1)))
                 if 11 in r1:
-                    print "found 11 in %s" % str(r1)
+                    print("found 11 in %s" % str(r1))
                     sys.exit(1)
 
 def show_squares(grid):
     global squares
     squares = []
-    for sn in xrange(1, 10):
+    for sn in range(1, 10):
         # print "sn = %s" % str(sn)
         show_square(grid, sn)
-    for sn in xrange(1, 10):
+    for sn in range(1, 10):
         square = squares[sn - 1]
-        print "square %s %s" % (str(sn), str(square))
+        print("square %s %s" % (str(sn), str(square)))
 
 def show_square(grid, sn):
     squares.append([])
@@ -51,20 +51,20 @@ def show_square(grid, sn):
     # print "sa = %s" % str(sa)
     # print "%s %s" % (str(sn), str(sa))
     # squares[sn - 1].append(sa)
-    for sx in xrange(3):
-        for sy in xrange(3):
+    for sx in range(3):
+        for sy in range(3):
             squares[sn - 1].append(sa[sx][sy])
 
 def show_rows(grid):
     global rows
     rows = []
-    for rn in xrange(1, 10):
+    for rn in range(1, 10):
         # print "rn = %s" % str(rn)
         show_row(grid, rn)
     # print "rows = %s" % str(rows)
-    for rn in xrange(1, 10):
+    for rn in range(1, 10):
         row = rows[rn - 1]
-        print "row %s %s" % (str(rn), str(row))
+        print("row %s %s" % (str(rn), str(row)))
 
 def show_row(grid, rn):
     # print "rn = %s" % str(rn)
@@ -73,24 +73,24 @@ def show_row(grid, rn):
     sr = ((rn - 1) - (sx * 3)) % 3
     # print "sr = %s" % str(sr)
     row = []
-    for sy in xrange(3):
+    for sy in range(3):
         # print "sy = %s" % str(sy)
         # sa = grid[sx][sy]
         # print "sa = %s" % str(sa)
         ra = grid[sx][sy][sr]
         # print "ra = %s" % str(ra)
-        for x1 in xrange(3):
+        for x1 in range(3):
             row.append(ra[x1])
     rows.append(row)
 
 def show_cols(grid):
     global cols
     cols = []
-    for cn in xrange(1, 10):
+    for cn in range(1, 10):
         # print "cn = %s" % str(cn)
         show_col(grid, cn)
-    for cn in xrange(1, 10):
-        print "column %s %s" % (str(cn), str(cols[cn - 1]))
+    for cn in range(1, 10):
+        print("column %s %s" % (str(cn), str(cols[cn - 1])))
 
 def show_col(grid, cn):
     # print "cn = %s" % str(cn)
@@ -108,36 +108,36 @@ def show_col(grid, cn):
     sc = ((cn - 1) - (sy * 3)) % 3
     # print "sc = %s" % str(sc)
     col = []
-    for sx in xrange(3):
+    for sx in range(3):
         # print "sx = %s" % str(sx)
         sa = grid[sx][sy]
         # print "sa = %s" % str(sa)
-        for sr in xrange(3):
+        for sr in range(3):
             col.append(sa[sr][sc])
     # print "%s %s" % (str(cn), str(col))
     cols.append(col)
 
 def show_grid(grid):
-    for gx in xrange(3):
-        for gy in xrange(3):
-            for sx in xrange(3):
-                for sy in xrange(3):
+    for gx in range(3):
+        for gy in range(3):
+            for sx in range(3):
+                for sy in range(3):
                     cell = grid[gx][gy][sx][sy]
                     # print "%s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
                     square = gx * 3 + gy
                     if not cell in squares[square]:
-                        print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
-                        print "ERROR: square = %s %s" % (str(square), str(squares[square]))
+                        print("ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell)))
+                        print("ERROR: square = %s %s" % (str(square), str(squares[square])))
                         sys.exit(1)
                     row = gx * 3 + sx
                     if not cell in rows[row]:
-                        print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
-                        print "ERROR: row = %s %s" % (str(row), str(rows[row]))
+                        print("ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell)))
+                        print("ERROR: row = %s %s" % (str(row), str(rows[row])))
                         sys.exit(1)
                     col = gy * 3 + sy
                     if not cell in cols[col]:
-                        print "ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell))
-                        print "ERROR: col = %s %s" % (str(col), str(cols[col]))
+                        print("ERROR: %s %s %s %s %s" % (str(gx), str(gy), str(sx), str(sy), str(cell)))
+                        print("ERROR: col = %s %s" % (str(col), str(cols[col])))
                         sys.exit(1)
 
 main()

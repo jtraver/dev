@@ -42,7 +42,7 @@ def save_stat(node, key, value):
     stats = node['stats']
     nname = node['name']
     if not key in stats:
-        print "new stat for %s %s %s" % (str(nname), str(key), str(value))
+        print(("new stat for %s %s %s" % (str(nname), str(key), str(value))))
         stats[key] = {}
         stats[key]["start"] = value
         stats[key]["max"] = value
@@ -53,7 +53,7 @@ def save_stat(node, key, value):
         if value > stats[key]["max"]:
             new_max = True
             stats[key]["mcount"] += 1
-            print "new max %s started at %s %s %s > %s, count %s, mcount %s" % (str(nname), str(stats[key]["start"]), str(key), str(value), str(stats[key]["max"]), str(stats[key]["count"]), str(stats[key]["mcount"]))
+            print(("new max %s started at %s %s %s > %s, count %s, mcount %s" % (str(nname), str(stats[key]["start"]), str(key), str(value), str(stats[key]["max"]), str(stats[key]["count"]), str(stats[key]["mcount"]))))
             stats[key]["max"] = value
             # print "node = %s" % str(node)
     return new_max
@@ -79,7 +79,7 @@ def main():
     home1 = os.path.expanduser("~")
     logfiles = glob.glob(home1 + "/logs/*/*/*.log")
     for logfile in sorted(logfiles):
-        print "logfile %s" % logfile
+        print(("logfile %s" % logfile))
         grep1(logfile)
 
 def grep1(filename):
@@ -119,14 +119,14 @@ def grep1(filename):
                 if not parts1:
                     parts1 = call_stack_regex.match(line)
                 if not parts1:
-                    print "WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))
+                    print(("WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))))
                     sys.exit(1)
                 dict1 = parts1.groupdict()
                 if dict1['remainder']:
-                    print "  dict1 = %s" % str(dict1)
+                    print(("  dict1 = %s" % str(dict1)))
                     for key in sorted(dict1.keys()):
                         val = dict1[key]
-                        print "    %s %s" % (str(key), str(val))
+                        print(("    %s %s" % (str(key), str(val))))
                     sys.exit(1)
                 for key in ["client_read_error", "client_read_not_found", "client_read_success", "client_read_timeout"]:
                     if key in dict1:
@@ -144,24 +144,24 @@ def grep1(filename):
                 if not parts1:
                     parts1 = error_build_version_regex.match(line)
                 if not parts1:
-                    print "WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))
+                    print(("WHAT? %s: %s %s" % (str(filename), str(len(line)), str(line))))
                     sys.exit(1)
                 dict1 = parts1.groupdict()
                 if dict1['remainder']:
-                    print "  dict1 = %s" % str(dict1)
+                    print(("  dict1 = %s" % str(dict1)))
                     for key in sorted(dict1.keys()):
                         val = dict1[key]
-                        print "    %s %s" % (str(key), str(val))
+                        print(("    %s %s" % (str(key), str(val))))
                     sys.exit(1)
                 version1 = dict1['version']
                 if version != version1:
                     version = version1
-                    print "version %s edition %s" % (str(dict1['version']), str(dict1['edition']))
+                    print(("version %s edition %s" % (str(dict1['version']), str(dict1['edition']))))
                 if 'message' in dict1:
-                    print "version %s edition %s %s os %s" % (str(dict1['version']), str(dict1['edition']), str(dict1['message']), str(dict1['os']))
+                    print(("version %s edition %s %s os %s" % (str(dict1['version']), str(dict1['edition']), str(dict1['message']), str(dict1['os']))))
 
 def get_node(filename):
-    print "get_node: filename = %s" % str(filename)
+    print(("get_node: filename = %s" % str(filename)))
 # get_node: filename = /home/jtraver/logs/1706091307/192.168.121.104/aerospike.log
     parts = filename.split("/")
     #for indx in xrange(len(parts)):

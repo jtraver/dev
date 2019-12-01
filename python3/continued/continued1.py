@@ -8,12 +8,12 @@ def main():
     v = 1
     t = 1
     l = t
-    for n in xrange(100):
+    for n in range(100):
         r = reciprocal(t)
         t = v + r
         if l == t:
             break
-        print "t = %s" % str(t)
+        print(("t = %s" % str(t)))
         l = t
 
 main()

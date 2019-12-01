@@ -6,13 +6,13 @@ import time
 import datetime
 
 d = datetime.datetime.now()
-print "d = %s" % str(d)
-print "d = %s" % str(type(d))
-print "d = %s" % str(dir(d))
-print d
-print d.strftime("%y%m%d%H%M%S%f")
-print "date str %s" % str(d)
-print "date strftime %s" % d.strftime("%y%m%d%H%M%S%f")
+print(("d = %s" % str(d)))
+print(("d = %s" % str(type(d))))
+print(("d = %s" % str(dir(d))))
+print(d)
+print((d.strftime("%y%m%d%H%M%S%f")))
+print(("date str %s" % str(d)))
+print(("date strftime %s" % d.strftime("%y%m%d%H%M%S%f")))
 
 # %a  Weekday as locale’s abbreviated name.   Sun, Mon, ..., Sat (en_US); So, Mo, ..., Sa (de_DE) (1)
 # %A  Weekday as locale’s full name.  Sunday, Monday, ..., Saturday (en_US); Sonntag, Montag, ..., Samstag (de_DE) (1)
@@ -43,9 +43,9 @@ print "date strftime %s" % d.strftime("%y%m%d%H%M%S%f")
 
 # time
 t = time
-print "time clock %s" % str(t.clock())
-print "time gmtime %s" % str(t.gmtime())
-print "time strftime %s" % str(t.strftime("%y%m%d%H%M%S%a"))
+print(("time clock %s" % str(t.clock())))
+print(("time gmtime %s" % str(t.gmtime())))
+print(("time strftime %s" % str(t.strftime("%y%m%d%H%M%S%a"))))
 # %a  Locale’s abbreviated weekday name.   
 # %A  Locale’s full weekday name.  
 # %b  Locale’s abbreviated month name.     
@@ -71,62 +71,62 @@ print "time strftime %s" % str(t.strftime("%y%m%d%H%M%S%a"))
 
 # http://stackoverflow.com/questions/4548684/how-to-get-the-seconds-since-epoch-from-the-time-date-output-of-gmtime-in-py
 epoch_time = int(time.time())
-print "epoch_time = %s" % str(epoch_time)
+print(("epoch_time = %s" % str(epoch_time)))
 cf_epoch_time = epoch_time - 1262304000
-print "cf_epoch_time = %s" % str(cf_epoch_time)
+print(("cf_epoch_time = %s" % str(cf_epoch_time)))
 
 # d = ['__add__', '__class__', '__delattr__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__le__', '__lt__', '__ne__', '__new__', '__radd__', '__reduce__', '__reduce_ex__', '__repr__', '__rsub__', '__setattr__', '__sizeof__', '__str__', '__sub__', '__subclasshook__', 'astimezone', 'combine', 'ctime', 'date', 'day', 'dst', 'fromordinal', 'fromtimestamp', 'hour', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'microsecond', 'min', 'minute', 'month', 'now', 'replace', 'resolution', 'second', 'strftime', 'strptime', 'time', 'timetuple', 'timetz', 'today', 'toordinal', 'tzinfo', 'tzname', 'utcfromtimestamp', 'utcnow', 'utcoffset', 'utctimetuple', 'weekday', 'year']
 d = datetime.datetime.now()
 # print "d.astimezone = %s" % str(d.astimezone())
 # print "d.combine = %s" % str(d.combine())
-print "d.ctime = %s" % str(d.ctime())
-print "d.date = %s" % str(d.date())
-print "d.day = %s" % str(d.day)
-print "d.dst = %s" % str(d.dst())
+print(("d.ctime = %s" % str(d.ctime())))
+print(("d.date = %s" % str(d.date())))
+print(("d.day = %s" % str(d.day)))
+print(("d.dst = %s" % str(d.dst())))
 # print "d.fromordinal = %s" % str(d.fromordinal())
 # print "d.fromtimestamp = %s" % str(d.fromtimestamp())
-print "d.hour = %s" % str(d.hour)
-print "d.isocalendar = %s" % str(d.isocalendar())
-print "d.isoformat = %s" % str(d.isoformat())
-print "d.isoweekday = %s" % str(d.isoweekday())
-print "d.max = %s" % str(d.max)
-print "d.microsecond = %s" % str(d.microsecond)
-print "d.min = %s" % str(d.min)
-print "d.minute = %s" % str(d.minute)
-print "d.month = %s" % str(d.month)
-print "d.now = %s" % str(d.now())
-print "d.replace = %s" % str(d.replace())
-print "d.resolution = %s" % str(d.resolution)
-print "d.second = %s" % str(d.second)
+print(("d.hour = %s" % str(d.hour)))
+print(("d.isocalendar = %s" % str(d.isocalendar())))
+print(("d.isoformat = %s" % str(d.isoformat())))
+print(("d.isoweekday = %s" % str(d.isoweekday())))
+print(("d.max = %s" % str(d.max)))
+print(("d.microsecond = %s" % str(d.microsecond)))
+print(("d.min = %s" % str(d.min)))
+print(("d.minute = %s" % str(d.minute)))
+print(("d.month = %s" % str(d.month)))
+print(("d.now = %s" % str(d.now())))
+print(("d.replace = %s" % str(d.replace())))
+print(("d.resolution = %s" % str(d.resolution)))
+print(("d.second = %s" % str(d.second)))
 # print "d.strftime = %s" % str(d.strftime())
 # print "d.strptime = %s" % str(d.strptime())
-print "d.time = %s" % str(d.time())
-print "d.timetuple = %s" % str(d.timetuple())
-print "d.timetz = %s" % str(d.timetz())
-print "d.today = %s" % str(d.today())
-print "d.toordinal = %s" % str(d.toordinal())
-print "d.tzinfo = %s" % str(d.tzinfo)
-print "d.tzname = %s" % str(d.tzname())
+print(("d.time = %s" % str(d.time())))
+print(("d.timetuple = %s" % str(d.timetuple())))
+print(("d.timetz = %s" % str(d.timetz())))
+print(("d.today = %s" % str(d.today())))
+print(("d.toordinal = %s" % str(d.toordinal())))
+print(("d.tzinfo = %s" % str(d.tzinfo)))
+print(("d.tzname = %s" % str(d.tzname())))
 # print "d.utcfromtimestamp = %s" % str(d.utcfromtimestamp())
-print "d.utcnow = %s" % str(d.utcnow())
-print "d.utcoffset = %s" % str(d.utcoffset())
-print "d.utctimetuple = %s" % str(d.utctimetuple())
-print "d.weekday = %s" % str(d.weekday())
-print "d.year = %s" % str(d.year)
+print(("d.utcnow = %s" % str(d.utcnow())))
+print(("d.utcoffset = %s" % str(d.utcoffset())))
+print(("d.utctimetuple = %s" % str(d.utctimetuple())))
+print(("d.weekday = %s" % str(d.weekday())))
+print(("d.year = %s" % str(d.year)))
 d2 = datetime.datetime.now()
 d3 = d2 - d
-print "d3 = %s" % str(d3)
+print(("d3 = %s" % str(d3)))
 
 it1 = int(time.time())
-print "it1 = %s" % str(it1)
+print(("it1 = %s" % str(it1)))
 dt1 = datetime.datetime.fromtimestamp(it1)
-print "time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))
+print(("time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))))
 d1 = 60 * 60 * 24
 # it1 += d1
 it1 -= d1
-print "it1 = %s" % str(it1)
+print(("it1 = %s" % str(it1)))
 dt1 = datetime.datetime.fromtimestamp(it1)
-print "time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))
+print(("time strftime %s" % str(dt1.strftime("%y%m%d%H%M%S%a"))))
 
 #datetime.datetime.fromtimestamp(
 #        int("1284101485")
@@ -136,21 +136,21 @@ if True:
     # it1 = int(time.time())
     it1 = 1475768342
     d1 = 60 * 60 * 24
-    for t1 in xrange(167):
+    for t1 in range(167):
         dt1 = datetime.datetime.fromtimestamp(it1)
-        print "%s time strftime %s" % (str(t1), str(dt1.strftime("%y%m%d%H%M%S%a")))
+        print(("%s time strftime %s" % (str(t1), str(dt1.strftime("%y%m%d%H%M%S%a")))))
         it1 += d1
 
 it1 = int(time.time())
 d1 = 60 * 60 * 24
-for i1 in xrange(166):
+for i1 in range(166):
     dt1 = datetime.datetime.fromtimestamp(it1)    
     # if dt1.year == 2017:
         # print "%s year" % str(dt1.year)
     # if dt1.month == 3:
         # print "%s month" % str(dt1.month)
     if dt1.year == 2017 and dt1.month == 3 and dt1.day == 21:
-        print "%s %s %s %s day" % (str(i1), str(dt1.year), str(dt1.month), str(dt1.day))
-        print "%s time strftime %s" % (str(i1), str(dt1.strftime("%y%m%d%H%M%S%a")))
+        print(("%s %s %s %s day" % (str(i1), str(dt1.year), str(dt1.month), str(dt1.day))))
+        print(("%s time strftime %s" % (str(i1), str(dt1.strftime("%y%m%d%H%M%S%a")))))
         break
     it1 += d1

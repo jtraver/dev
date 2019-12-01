@@ -24,7 +24,7 @@ for c1 in range(3, limit, 2):
         # print "%d" % c1
         gap = c1 - lastprime
         if gap > maxgap:
-            print "new max gap %s - %s = %s" % (str(c1), str(lastprime), str(gap))
+            print("new max gap %s - %s = %s" % (str(c1), str(lastprime), str(gap)))
             sys.stdout.flush()
             maxgap = gap
         lastprime = c1

@@ -13,7 +13,7 @@ def is_prime(pc):
     prime = True
     if pc < 1:
         return prime
-    for idiv in xrange(1, len(primes)):
+    for idiv in range(1, len(primes)):
         div = primes[idiv]
         if div * div > pc:
             break
@@ -37,7 +37,7 @@ def main():
             # print "%s %s %s" % (str(pc), str(r), str(p))
         if pc > l:
             l *= 10
-            print "%s %s %s" % (str(pc), str(r), str(p))
+            print("%s %s %s" % (str(pc), str(r), str(p)))
         pc += 1
 
 main()

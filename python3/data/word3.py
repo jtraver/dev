@@ -6,5 +6,5 @@ consonants = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', '
 
 for v1 in vowels:
     for c in consonants:
-        print "%s%s" % (str(v), str(c))
-        print "%s%s" % (str(c), str(v))
+        print(("%s%s" % (str(v), str(c))))
+        print(("%s%s" % (str(c), str(v))))

@@ -10,7 +10,7 @@ def is_prime(pc):
     prime = True
     if pc < 1:
         return prime
-    for idiv in xrange(1, len(primes)):
+    for idiv in range(1, len(primes)):
         div = primes[idiv]
         if div * div > pc:
             break
@@ -23,9 +23,9 @@ def is_prime(pc):
 def main():
     maxpair = 0
     maxlower = -1
-    for pc in xrange(limit):
+    for pc in range(limit):
         if is_prime(pc):
-            print "%s is prime" % str(pc)
+            print("%s is prime" % str(pc))
         else:
             continue
         lower = pc - 1
@@ -34,17 +34,17 @@ def main():
         lastlower = -1
         while lower >= 0:
             if is_prime(lower) and is_prime(upper):
-                print "  %s + %s" % (str(lower), str(upper))
+                print("  %s + %s" % (str(lower), str(upper)))
                 paircount += 1
                 lastlower = lower
             lower -= 1
             upper += 1
-        print "    %s pairs for %s" % (str(paircount), str(pc))
+        print("    %s pairs for %s" % (str(paircount), str(pc)))
         if paircount > maxpair:
             maxpair = paircount
-            print "      new max pairs for %s" % str(pc)
+            print("      new max pairs for %s" % str(pc))
         if lastlower > maxlower:
             maxlower = lastlower
-            print "      new max lower for %s" % str(pc)
+            print("      new max lower for %s" % str(pc))
 
 main()

@@ -5,9 +5,9 @@
 import random
 import apihelper
 
-print "random = %s" % str(random)
+print("random = %s" % str(random))
 # # random = <module 'random' from '/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/random.pyc'>
-print "random = %s" % str(dir(random))
+print("random = %s" % str(dir(random)))
 # # random = ['BPF', 'LOG4', 'NV_MAGICCONST', 'RECIP_BPF', 'Random', 'SG_MAGICCONST', 'SystemRandom', 'TWOPI', 'WichmannHill', '_BuiltinMethodType', '_MethodType', '__all__', '__builtins__', '__doc__', '__file__', '__name__', '__package__', '_acos', '_ceil', '_cos', '_e', '_exp', '_hashlib', '_hexlify', '_inst', '_log', '_pi', '_random', '_sin', '_sqrt', '_test', '_test_generator', '_urandom', '_warn', 'betavariate', 'choice', 'division', 'expovariate', 'gammavariate', 'gauss', 'getrandbits', 'getstate', 'jumpahead', 'lognormvariate', 'normalvariate', 'paretovariate', 'randint', 'random', 'randrange', 'sample', 'seed', 'setstate', 'shuffle', 'triangular', 'uniform', 'vonmisesvariate', 'weibullvariate']
 apihelper.info(random)
 
@@ -164,11 +164,11 @@ apihelper.info(random)
 while True:
     a = random.randint(1000000000, 4000000000)
     b = random.randint(0, 4000000000)
-    print "a = %s 0x%lx" % (str(a), a)
-    print "b = %s 0x%lx" % (str(b), b)
+    print("a = %s 0x%lx" % (str(a), a))
+    print("b = %s 0x%lx" % (str(b), b))
     c = a << 32 | b
-    print "c = %s 0x%lx" % (str(c), c)
+    print("c = %s 0x%lx" % (str(c), c))
     len1 = len(str("%lx" % c))
-    print "len1 = %s" % str(len1)
+    print("len1 = %s" % str(len1))
     if len1 != 16:
         break

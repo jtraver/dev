@@ -16,8 +16,8 @@ popen = subprocess.Popen( args, stdin=subprocess.PIPE, stdout=subprocess.PIPE, s
 # out, err = popen.communicate(input = "ithis is a test\033:wq! test1.txt")
 out, err = popen.communicate()
 if err != None:
-    print 'vi errput = %s' % str(err)
+    print('vi errput = %s' % str(err))
 
-print "vi output = %s" % str(out)
+print("vi output = %s" % str(out))
 
 subprocess.call(['echo', ''])

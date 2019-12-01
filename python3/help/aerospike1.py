@@ -1133,10 +1133,10 @@ elements = {
 
 
 def pinfo(object):
-    print
-    print "--------------------------------------------------------------------------------"
-    print "| %s" % str(object)
-    print "--------------------------------------------------------------------------------"
+    print()
+    print("--------------------------------------------------------------------------------")
+    print(("| %s" % str(object)))
+    print("--------------------------------------------------------------------------------")
     apihelper.info(object)
     # print "aerospike = %s" % str(aerospike)
     # print "aerospike = %s" % dir(aerospike)
@@ -1151,26 +1151,26 @@ def pinfo(object):
 def info(object, level=1):
     if level > 3:
         return
-    print "\n"
-    print "--------------------------------------------------------------------------------"
-    print "object = %s" % str(object)
+    print("\n")
+    print("--------------------------------------------------------------------------------")
+    print(("object = %s" % str(object)))
     try:
         for e in dir(object):
             attr = getattr(object, e)
             if callable(attr):
-                print "  e = %s" % e
-                print "    attr = %s" % str(attr)
-                print "    attr = %s" % type(attr)
+                print(("  e = %s" % e))
+                print(("    attr = %s" % str(attr)))
+                print(("    attr = %s" % type(attr)))
                 # print "    attr = %s" % dir(attr)
                 try:
                     attr()
-                except Exception, ex1:
-                    print "      1 exception is %s" % str(ex1)
+                except Exception as ex1:
+                    print(("      1 exception is %s" % str(ex1)))
                 # if type(attr) != int:
                 if not "__" in str(e):
                     info(attr, level + 1)
-    except Exception, ex2:
-        print "      2 exception is %s" % str(ex2)
+    except Exception as ex2:
+        print(("      2 exception is %s" % str(ex2)))
 
 
 def info2(object):
@@ -1179,14 +1179,14 @@ def info2(object):
         return
     # if "<method" in str1 and "aerospike" in str1 and not "__" in str1:
     if "aerospike" in str1 and not "__" in str1:
-        print "%s" % str1
+        print(("%s" % str1))
         if "<method" in str1:
             found[str1] = object
         try:
             for e in dir(object):
                 attr = getattr(object, e)
                 info2(attr)
-        except Exception, ex2:
+        except Exception as ex2:
             pass
 
 # info(aerospike)
@@ -1195,16 +1195,16 @@ def info2(object):
 def do_info2():
     info2(aerospike)
 
-    print "\n"
+    print("\n")
     count = 0
-    for k, e in found.items():
+    for k, e in list(found.items()):
         if callable(e):
             count += 1
-            print "%s %s" % (str(count), k)
+            print(("%s %s" % (str(count), k)))
             try:
                 e()
-            except Exception, ex:
-                print "    %s" % str(ex)
+            except Exception as ex:
+                print(("    %s" % str(ex)))
 
 
 def pinfos():
@@ -1227,8 +1227,8 @@ def pinfos():
 
 
 def dir1(object):
-    print "\n"
-    print "object = %s" % dir(object)
+    print("\n")
+    print(("object = %s" % dir(object)))
     for e in dir(object):
         if '__' in e:
             continue
@@ -1237,42 +1237,42 @@ def dir1(object):
         # int or type(attr) == str or 'NoneType' in str(type(attr)):
         if type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
             continue
-        print "e = %s" % str(e)
+        print(("e = %s" % str(e)))
         # e is just a string
         # print "  type e = %s" % type(e)
         # print "  dir e = %s" % dir(e)
-        print "  type attr = %s" % type(attr)
+        print(("  type attr = %s" % type(attr)))
         # print "    dir attr = %s" % dir(attr)
 
 
 def dir3():
     # dir1(aerospike)
     attrs1 = do_dir(aerospike)
-    print "attrs1 = %s" % str(attrs1)
+    print(("attrs1 = %s" % str(attrs1)))
     for e1 in attrs1:
-        print "\naerospike.%s" % e1
+        print(("\naerospike.%s" % e1))
         attr1 = getattr(aerospike, e1)
         if 'method' in str(type(attr1)):
             continue
         # dir1(attr1)
         attrs2 = do_dir(attr1)
-        print "  attrs2 = %s" % str(attrs2)
+        print(("  attrs2 = %s" % str(attrs2)))
         for e2 in attrs2:
-            print "\naerospike.%s.%s" % (e1, e2)
+            print(("\naerospike.%s.%s" % (e1, e2)))
             attr2 = getattr(attr1, e2)
             if 'method' in str(type(attr2)):
                 continue
             # dir1(attr2)
             attrs3 = do_dir(attr2)
-            print "  attrs3 = %s" % str(attrs3)
+            print(("  attrs3 = %s" % str(attrs3)))
             for e3 in attrs3:
-                print "\naerospike.%s.%s.%s" % (e1, e2, e3)
+                print(("\naerospike.%s.%s.%s" % (e1, e2, e3)))
                 attr3 = getattr(attr2, e3)
                 if 'method' in str(type(attr3)):
                     continue
                 # dir1(attr3)
                 attrs4 = do_dir(attr3)
-                print "  attrs4 = %s" % str(attrs4)
+                print(("  attrs4 = %s" % str(attrs4)))
 
 
 def do_dir(object):
@@ -1298,7 +1298,7 @@ def check(object, name, dict1, status):
             else:
                 status = check(attr1, name + "." + e1, dict1[e1], status)
         else:
-            print "need tests for %s.%s" % (name, e1)
+            print(("need tests for %s.%s" % (name, e1)))
             # print "  e1 = %s" % dir(e1)
             status = False
     return status
@@ -1306,11 +1306,11 @@ def check(object, name, dict1, status):
 
 def main():
     if '__version__' in dir(aerospike):
-        print "Python client version is %s" % aerospike.__version__
+        print(("Python client version is %s" % aerospike.__version__))
     status = check(aerospike, 'aerospike', elements, True)
     if status:
-        print "tests are good"
+        print("tests are good")
     else:
-        print "need some tests"
+        print("need some tests")
 
 main()

@@ -7,9 +7,9 @@ alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n'
 
 for v in vowels:
     for c in consonants:
-        print "%s%s" % (str(v), str(c))
-        print "%s%s" % (str(c), str(v))
+        print(("%s%s" % (str(v), str(c))))
+        print(("%s%s" % (str(c), str(v))))
 
 for v1 in vowels:
     for v2 in vowels:
-        print "%s%s" % (str(v1), str(v2))
+        print(("%s%s" % (str(v1), str(v2))))

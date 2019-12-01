@@ -14,7 +14,7 @@ def is_prime(pc):
     prime = True
     if pc < 1:
         return prime
-    for idiv in xrange(1, len(primes)):
+    for idiv in range(1, len(primes)):
         div = primes[idiv]
         if div * div > pc:
             break
@@ -31,14 +31,14 @@ def is_prime(pc):
     return prime
 
 def main():
-    for pc in xrange(1, limit):
+    for pc in range(1, limit):
         if is_prime(pc):
             # print "%s is prime" % str(pc)
             pass
         else:
             continue
     total = 0
-    print
+    print()
     index = 0
     for pc in primes:
         index += 1
@@ -46,12 +46,12 @@ def main():
             count = len(factors[pc])
             total += count
             if count < 20:
-                print "%s %s %s" % (str(pc), str(count), factors[pc])
+                print("%s %s %s" % (str(pc), str(count), factors[pc]))
             elif index < len(primes):
                 slice1 = factors[pc][0:10]
-                print "%s %s %s..." % (str(pc), str(count), slice1)
+                print("%s %s %s..." % (str(pc), str(count), slice1))
             else:
-                print "%s %s [%s, ...]" % (str(pc), str(count), pc * pc)
-    print "%s total" % str(total)
+                print("%s %s [%s, ...]" % (str(pc), str(count), pc * pc))
+    print("%s total" % str(total))
 
 main()

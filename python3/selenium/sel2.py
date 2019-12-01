@@ -26,5 +26,5 @@ driver.get("http://pythonscraping.com/pages/javascript/ajaxDemo.html")
 driver.implicitly_wait(10)
 
 # time.sleep(3)
-print "%s" % driver.find_element_by_id("content").text
+print("%s" % driver.find_element_by_id("content").text)
 driver.close()

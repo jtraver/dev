@@ -12,9 +12,9 @@ dict2 = {
 }
 
 if dict1 == dict2:
-    print "FAIL"
+    print("FAIL")
 else:
-    print "PASS"
+    print("PASS")
 
 dict1 = {
     'a': {
@@ -31,9 +31,9 @@ dict2 = {
 }
 
 if dict1 == dict2:
-    print "FAIL"
+    print("FAIL")
 else:
-    print "PASS"
+    print("PASS")
 
 dict1 = {
     'a': {
@@ -50,6 +50,6 @@ dict2 = {
 }
 
 if dict1 == dict2:
-    print "FAIL"
+    print("FAIL")
 else:
-    print "PASS"
+    print("PASS")

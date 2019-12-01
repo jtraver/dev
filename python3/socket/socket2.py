@@ -35,9 +35,9 @@ def readData(sock):
         # print "body_data = %s" % str(body_data)
         return (version, proto_type, sz, body_data)
     elif sz == 0:
-        print "no data to get"
+        print("no data to get")
     else:
-        print "ERROR: negative data size: %s" % str(sz)
+        print("ERROR: negative data size: %s" % str(sz))
     return (version, proto_type, sz, None)
 
 # http://www.aerospike.com/docs/reference/wire-protocol/
@@ -67,7 +67,7 @@ def check_node(sock):
     sock.send(buf)
     (version, ptype, size, bdata) = readData(sock)
     if version != 2:
-        print "ERROR: expected version 2 but found %d" % version
+        print("ERROR: expected version 2 but found %d" % version)
     proto = {
         'version': version,
         'type': ptype,
@@ -90,7 +90,7 @@ def check_node(sock):
             # print "  %s" % str(line)
             kv1 = line.split('\t');
             if len(kv1) != 2:
-                print "what line is this: %s" % str(line)
+                print("what line is this: %s" % str(line))
             else:
                 k1 = kv1[0]
                 v1 = kv1[1]
@@ -110,7 +110,7 @@ def check_node(sock):
                         if len(kv1) == 2:
                             statistics[kv1[0]] = kv1[1]
                         else:
-                            print "ERROR: %s in %s", (str(stat), str(v1))
+                            print("ERROR: %s in %s", (str(stat), str(v1)))
                     data[k1] = statistics
                 elif k1 == 'services-alumni' or k1 == 'services':
                     services = {}
@@ -120,15 +120,15 @@ def check_node(sock):
                         if len(hp) == 2:
                             services[hp[0]] = hp[1]
                         else:
-                            print "ERROR: %s in %s" % (str(hp), str(v1))
+                            print("ERROR: %s in %s" % (str(hp), str(v1)))
                         
                     data[k1] = services
                 else:
-                    print "what is key is this: %s" % str(k1)
-                    print "    %s" % str(v1)
+                    print("what is key is this: %s" % str(k1))
+                    print("    %s" % str(v1))
                     data[k1] = v1
     else:
-        print "ERROR: found no data"
+        print("ERROR: found no data")
     info['data'] = data
     return info
 
@@ -140,7 +140,7 @@ def main():
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         sock.settimeout(0.5)
         sock.connect((host, int(port)))
-        print "connected"
+        print("connected")
         # print "sock = %s" % str(sock)
         # print "sock = %s" % dir(sock)
         # connected
@@ -151,32 +151,32 @@ def main():
         proto = info['proto']
         data = info['data']
         if data:
-            print "data"
+            print("data")
             if 'statistics' in data:
-                print "  statistics"
+                print("  statistics")
                 for k,v in sorted(data['statistics'].items()):
-                    print "    %s %s" % (str(k), str(v))
-            print "  features = %s" % str(data['features'])
-            print "  node = %s" % str(data['node'])
-            print "  edition = %s" % str(data['edition'])
-            print "  build = %s" % str(data['build'])
-            print "  version = %s" % str(data['version'])
-            print "  partition-generation = %s" % str(data['partition-generation'])
-            print "  cluster-generation = %s" % str(data['cluster-generation'])
+                    print("    %s %s" % (str(k), str(v)))
+            print("  features = %s" % str(data['features']))
+            print("  node = %s" % str(data['node']))
+            print("  edition = %s" % str(data['edition']))
+            print("  build = %s" % str(data['build']))
+            print("  version = %s" % str(data['version']))
+            print("  partition-generation = %s" % str(data['partition-generation']))
+            print("  cluster-generation = %s" % str(data['cluster-generation']))
             if 'services' in data:
-                print "  services"
-                for k,v in data['services'].items():
-                    print "    %s %s" % (str(k), str(v))
+                print("  services")
+                for k,v in list(data['services'].items()):
+                    print("    %s %s" % (str(k), str(v)))
             if 'services-alumni' in data:
-                print "  services-alumni"
-                for k,v in data['services-alumni'].items():
-                    print "    %s %s" % (str(k), str(v))
-        print "proto = %s" % str(proto)
-    except Exception, e:
-        print "e = %s" % str(e)
+                print("  services-alumni")
+                for k,v in list(data['services-alumni'].items()):
+                    print("    %s %s" % (str(k), str(v)))
+        print("proto = %s" % str(proto))
+    except Exception as e:
+        print("e = %s" % str(e))
     if sock:
         sock.close()
     else:
-        print "no connection made"
+        print("no connection made")
 
 main()

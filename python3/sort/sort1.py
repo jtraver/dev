@@ -19,12 +19,12 @@ def is_version_number(candidate):
                         n2 = n2[1:]
                     else:
                         n3 = int(n2)
-                except Exception, e:
+                except Exception as e:
                     return False
         else:
             try:
                 n2 = int(n1)
-            except Exception, e:
+            except Exception as e:
                 return False
     return True
 
@@ -49,7 +49,7 @@ def get_newer_version(v1, v2):
     l3 = l1
     if l1 > l2:
         l3 = l2
-    for i1 in xrange(l3):
+    for i1 in range(l3):
         c1 = int(b1[i1])
         c2 = int(b2[i1])
         if c1 > c2:
@@ -187,9 +187,9 @@ def main():
         # print "pyfile %s" % pyfile
     pyfiles.sort(do_sort)
     # print "pyfiles = %s" % str(pyfiles)
-    print "\n"
-    print "sorted"
+    print("\n")
+    print("sorted")
     for pyfile in pyfiles:
-        print "%s" % pyfile
+        print("%s" % pyfile)
 
 main()

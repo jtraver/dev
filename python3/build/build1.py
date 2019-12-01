@@ -14,9 +14,9 @@ def main():
     for buildfile in buildfiles:
         oses = []
         editions = []
-        print "\nbuildfile %s" % buildfile
+        print(("\nbuildfile %s" % buildfile))
         file1 = open(buildfile, 'r')
-        for line in file1.xreadlines():
+        for line in file1:
             line = line.strip()
             # print "  line: %s" % str(line)
         file1.close()
@@ -31,7 +31,7 @@ def main():
             containers = build1[cname]
             for container in containers:
                 # print "    container: %s" % str(container)
-                for k2,v2 in container.items():
+                for k2,v2 in list(container.items()):
                     # print "      %s: %s" % (str(k2), str(v2))
                     for c1 in v2:
                         # print "        %s" % str(c1)
@@ -48,10 +48,10 @@ def main():
                 edition = build['name']
                 # print "      %s" % str(edition)
                 editions.append(edition)
-        except Exception, e:
-            print "FAIL %s -> %s" % (str(buildfile), str(e))
+        except Exception as e:
+            print(("FAIL %s -> %s" % (str(buildfile), str(e))))
         for ed1 in editions:
             for os1 in oses:
-                print "  %s %s" % (os1, ed1)
+                print(("  %s %s" % (os1, ed1)))
 
 main()

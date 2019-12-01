@@ -6,7 +6,7 @@ def main():
 
 def int1():
     y = 256
-    for t in xrange(y):
-        print "%x %d" % (t, t)
+    for t in range(y):
+        print(("%x %d" % (t, t)))
         
 main()

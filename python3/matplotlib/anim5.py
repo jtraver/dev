@@ -19,7 +19,7 @@ def init():  # only required for blitting to give a clean slate.
 
 
 def animate(i):
-    print "i = %s" % str(i)
+    print("i = %s" % str(i))
     line.set_ydata(np.sin(x + i / 100.0))  # update the data.
     return line,
 

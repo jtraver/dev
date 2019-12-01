@@ -31,19 +31,19 @@ and with 3 failing as well
 # line1 = " hello "
 
 pass_parts = pass_regex.match(line1)
-print "pass_parts = %s" % str(pass_parts)
+print("pass_parts = %s" % str(pass_parts))
 if pass_parts != None:
     pass_parts = pass_parts.groupdict()
-    print "pass_parts = %s" % str(pass_parts)
+    print("pass_parts = %s" % str(pass_parts))
 
 pass_parts = pass_regex.search(line1)
-print "pass_parts = %s" % str(pass_parts)
+print("pass_parts = %s" % str(pass_parts))
 if pass_parts != None:
     pass_parts = pass_parts.groupdict()
-    print "pass_parts = %s" % str(pass_parts)
+    print("pass_parts = %s" % str(pass_parts))
 
 fail_parts = fail_regex.search(line1)
-print "fail_parts = %s" % str(fail_parts)
+print("fail_parts = %s" % str(fail_parts))
 if fail_parts != None:
     fail_parts = fail_parts.groupdict()
-    print "fail_parts = %s" % str(fail_parts)
+    print("fail_parts = %s" % str(fail_parts))

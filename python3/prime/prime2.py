@@ -27,4 +27,4 @@ for c1 in range(3, limit, 2):
         lens[len(str(c1))] += 1
 
 # print "%s" % str(primes)
-print "%s" % str(lens)
+print("%s" % str(lens))

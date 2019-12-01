@@ -5,9 +5,9 @@ import yaml
 import random
 
 tbg1 = yaml.load(file('../../../test/john/env/tbg/tbg1.yml'))
-print "tbg1 = %s" % str(tbg1)
+print("tbg1 = %s" % str(tbg1))
 tbg2 = yaml.load(file('../../../test/john/env/tbg/tbg2.yml'))
-print "tbg2 = %s" % str(tbg2)
+print("tbg2 = %s" % str(tbg2))
 
 world = {}
 x = 0
@@ -22,42 +22,42 @@ while True:
     current['forward'] = random.randint(0, 1)
     current['back'] = random.randint(0, 1)
     ind1 = random.randint(0, len(tbg2) - 1)
-    res1 = tbg2.keys()[ind1]
-    print "looking at %s %s" % (res1, str(tbg2[res1]))
+    res1 = list(tbg2.keys())[ind1]
+    print("looking at %s %s" % (res1, str(tbg2[res1])))
     if not len(tbg2[res1]):
-        print "found %s %s" % (res1, str(tbg2[res1]))
-    print "%s %s %s" % (str(x), str(y), str(z))
-    command = raw_input('? ')
+        print("found %s %s" % (res1, str(tbg2[res1])))
+    print("%s %s %s" % (str(x), str(y), str(z)))
+    command = input('? ')
     if 'go' in command:
         if 'up' in command:
             if current['up']:
                 z += 1
             else:
-                print "can't go up"
+                print("can't go up")
         if 'down' in command:
             if current['down']:
                 z -= 1
             else:
-                print "can't go down"
+                print("can't go down")
         if 'right' in command:
             if current['right']:
                 x += 1
             else:
-                print "can't go right"
+                print("can't go right")
         if 'left' in command:
             if current['left']:
                 x -= 1
             else:
-                print "can't go left"
+                print("can't go left")
         if 'forward' in command:
             if current['forward']:
                 y += 1
             else:
-                print "can't go forward"
+                print("can't go forward")
         if 'back' in command:
             if current['back']:
                 y -= 1
             else:
-                print "can't go back"
+                print("can't go back")
     else:
-        print "what?"
+        print("what?")

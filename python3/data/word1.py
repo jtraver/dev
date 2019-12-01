@@ -4,4 +4,4 @@
 vowels = ['a', 'e', 'i', 'o', 'u', 'y']
 
 for v in vowels:
-    print "%s" % str(v)
+    print(("%s" % str(v)))

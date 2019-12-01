@@ -6,22 +6,22 @@ import sys
 import env
 import apihelper
 
-print "env = %s" % str(os.environ)
+print(("env = %s" % str(os.environ)))
 
-print os.environ['HOME']
-print os.environ.get('HOME')
-print os.environ.get('JOB_NAME', 'job_name')
+print((os.environ['HOME']))
+print((os.environ.get('HOME')))
+print((os.environ.get('JOB_NAME', 'job_name')))
 
-print sys.prefix
+print((sys.prefix))
 
 def pinfos():
     pinfo(env)
 
 def pinfo(object):
-    print
-    print "--------------------------------------------------------------------------------"
-    print "| %s" % str(object)
-    print "--------------------------------------------------------------------------------"
+    print()
+    print("--------------------------------------------------------------------------------")
+    print(("| %s" % str(object)))
+    print("--------------------------------------------------------------------------------")
     apihelper.info(object)
     # print "aerospike = %s" % str(aerospike)
     # print "aerospike = %s" % dir(aerospike)
@@ -34,6 +34,6 @@ def pinfo(object):
 
 pinfos()
 
-print "env = %s" % str(env)
-print "env = %s" % str(type(env))
-print "env = %s" % str(dir(env))
+print(("env = %s" % str(env)))
+print(("env = %s" % str(type(env))))
+print(("env = %s" % str(dir(env))))

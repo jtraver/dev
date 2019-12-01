@@ -2,7 +2,7 @@
 #!/usr/bin/env python3
 
 def main():
-    for i1 in xrange(256):
-        print "%s 0x%x '%c'" % (str(i1), i1, i1)
+    for i1 in range(256):
+        print(("%s 0x%x '%c'" % (str(i1), i1, i1)))
 
 main()

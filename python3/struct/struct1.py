@@ -46,29 +46,29 @@ import struct
 p1 = struct.pack('hhl', 1, 2, 3)
 # print "p1 = %s" % str(p1)
 u1 = struct.unpack('hhl', p1)
-print "u1 = %s" % str(u1)
+print("u1 = %s" % str(u1))
 s1 = struct.calcsize('hhl')
-print "s1 = %s" % str(s1)
+print("s1 = %s" % str(s1))
 
 
 def do_pack(fmt, *args):
-    print
-    print "---------------------------------------------------------------------------------"
-    print "fmt = %s" % str(fmt)
-    print "args = %s" % str(args)
+    print()
+    print("---------------------------------------------------------------------------------")
+    print("fmt = %s" % str(fmt))
+    print("args = %s" % str(args))
     p1 = struct.pack(fmt, *args)
     # print "p1 = %s" % str(p1)
     u1 = struct.unpack(fmt, p1)
-    print "u1 = %s" % str(u1)
+    print("u1 = %s" % str(u1))
     s1 = struct.calcsize(fmt)
-    print "s1 = %s" % str(s1)
+    print("s1 = %s" % str(s1))
     if u1 == args:
-        print "equal"
+        print("equal")
     else:
-        print "not equal"
+        print("not equal")
     v1 = u1[0]
-    print "v1 = %s" % str(v1)
-    print "v1 = %s" % str(type(v1))
+    print("v1 = %s" % str(v1))
+    print("v1 = %s" % str(type(v1)))
     return v1
 
 
@@ -98,30 +98,30 @@ do_pack('I', 75)
 
 v1 = do_pack('! Q', 0xFFFFFFFFFFFF)
 if v1 == 0xFFFFFFFFFFFF:
-    print "v1 is correct"
+    print("v1 is correct")
 else:
-    print "v1 is not correct"
+    print("v1 is not correct")
 
 v2 = 0xFFFFFFFF
 v1 = do_pack('! Q', v2)
 if v1 == v2:
-    print "v1 is correct"
+    print("v1 is correct")
 else:
-    print "v1 is not correct"
+    print("v1 is not correct")
 
 v2 = 0x8FFFFFFF
 v1 = do_pack('! Q', v2)
 if v1 == v2:
-    print "v1 is correct"
+    print("v1 is correct")
 else:
-    print "v1 is not correct"
+    print("v1 is not correct")
 
 v2 = 66389026883887
-print "v2 = %s" % str(v2)
-print "v2 = 0x%x" % v2
-print "v2 = %s" % str(type(v2))
+print("v2 = %s" % str(v2))
+print("v2 = 0x%x" % v2)
+print("v2 = %s" % str(type(v2)))
 v1 = do_pack('! Q', v2)
 if v1 == v2:
-    print "v1 is correct"
+    print("v1 is correct")
 else:
-    print "v1 is not correct"
+    print("v1 is not correct")
