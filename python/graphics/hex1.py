@@ -5,116 +5,69 @@
 
 from graphics import *
 
-SCALE = 20
-SCALE2 = 200
+XSCALE = 2550
+YSCALE = 1310
+XCENTER = XSCALE / 2
+YCENTER = YSCALE / 2
 
-def hex1(xscale, yscale):
-    win = GraphWin("test_%s_%s" % (str(xscale), str(yscale)), 2550, 1310)
-    # win = GraphWin("test_%s_%s" % (str(xscale), str(yscale)))
-    win.setCoords(0,0, 2550 , 1310)
-    # win.setCoords(0,0, 10,10)
-    # t = Text(Point(5,5), "Centered Text")
-    # t.draw(win)
-
-    # center
-    xoffset = 100
-    yoffset = 100
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
+def hex1(win, xoffset, yoffset):
+    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset))
     p.draw(win)
-
-    # upper right
-    xoffset = 124
-    yoffset = 114
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    # lower right
-    xoffset = 124
-    yoffset = 86
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    # top
-    xoffset = 100
-    yoffset = 128
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    # bottom
-    xoffset = 100
-    yoffset = 72
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    # upper left
-    xoffset = 76
-    yoffset = 114
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    # lower right
-    xoffset = 76
-    yoffset = 86
-    p = Polygon(Point(8 + xoffset,0 + yoffset), Point(24 + xoffset,0 + yoffset), Point(32 + xoffset,14 + yoffset), Point(24 + xoffset, 28 + yoffset), Point(8 + xoffset, 28 + yoffset), Point(0 + xoffset, 14 + yoffset), Point(8 + xoffset, 0 + yoffset))
-    p.draw(win)
-
-    win.getMouse()
-    win.close()
-
-
-def circle():
-    win = GraphWin("My Circle", 100 * SCALE, 100 * SCALE)
-    c = Circle(Point(50 * SCALE,50 * SCALE), 10 * SCALE)
-    c.draw(win)
-    win.getMouse() # Pause to view result
-    win.close()    # Close window when done
 
 def main():
-    hex1(10, 10)
-    # circle()
+    # win = GraphWin("test_%s_%s" % (str(xscale), str(yscale)), XSCALE, YSCALE)
+    win = GraphWin("hex1", XSCALE, YSCALE)
+    win.setCoords(0,0, XSCALE , YSCALE)
 
-main()
+    # one side is 16 units long
+    # height of vertical rectangle is 28
+    # bulge to either side is 8
 
-def test():
-    win = GraphWin()
-    win.setCoords(0,0,10,10)
-    t = Text(Point(5,5), "Centered Text")
-    t.draw(win)
-    p = Polygon(Point(1,1), Point(5,3), Point(2,7))
-    p.draw(win)
-    e = Entry(Point(5,6), 10)
-    e.draw(win)
-    win.getMouse()
-    p.setFill("red")
-    p.setOutline("blue")
-    p.setWidth(2)
-    s = ""
-    for pt in p.getPoints():
-        s = s + "(%0.1f,%0.1f) " % (pt.getX(), pt.getY())
-    t.setText(e.getText())
-    e.setFill("green")
-    e.setText("Spam!")
-    e.move(2,0)
-    win.getMouse()
-    p.move(2,3)
-    s = ""
-    for pt in p.getPoints():
-        s = s + "(%0.1f,%0.1f) " % (pt.getX(), pt.getY())
-    t.setText(s)
-    win.getMouse()
-    p.undraw()
-    e.undraw()
-    t.setStyle("bold")
-    win.getMouse()
-    t.setStyle("normal")
-    win.getMouse()
-    t.setStyle("italic")
-    win.getMouse()
-    t.setStyle("bold italic")
-    win.getMouse()
-    t.setSize(14)
-    win.getMouse()
-    t.setFace("arial")
-    t.setSize(20)
+    # layer 0
+    # center
+    hex1(win, XCENTER, YCENTER)
+
+    # layer 1
+    # upper right
+    hex1(win, XCENTER + 24, YCENTER + 14)
+    # lower right
+    hex1(win, XCENTER + 24, YCENTER - 14)
+    # top
+    hex1(win, XCENTER, YCENTER + 28)
+    # bottom
+    hex1(win, XCENTER, YCENTER - 28)
+    # upper left
+    hex1(win, XCENTER - 24, YCENTER + 14)
+    # lower left
+    hex1(win, XCENTER - 24, YCENTER - 14)
+
+    # layer 2
+    # one o'clock
+    hex1(win, XCENTER + 24, YCENTER + 42)
+    # two o'clock
+    hex1(win, XCENTER + 48, YCENTER + 28)
+    # three o'clock
+    hex1(win, XCENTER + 48, YCENTER)
+    # four o'clock
+    hex1(win, XCENTER + 48, YCENTER - 28)
+    # five o'clock
+    hex1(win, XCENTER + 24, YCENTER - 42)
+    # six o'clock
+    hex1(win, XCENTER, YCENTER - 56)
+    # seven o'clock
+    hex1(win, XCENTER - 24, YCENTER - 42)
+    # eight o'clock
+    hex1(win, XCENTER - 48, YCENTER - 28)
+    # nine o'clock
+    hex1(win, XCENTER - 48, YCENTER)
+    # ten o'clock
+    hex1(win, XCENTER - 48, YCENTER + 28)
+    # eleven o'clock
+    hex1(win, XCENTER - 24, YCENTER + 42)
+    # twelve o'clock
+    hex1(win, XCENTER, YCENTER + 56)
+
     win.getMouse()
     win.close()
+
+main()
