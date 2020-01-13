@@ -29,89 +29,164 @@ def main():
     # one side is 8 units long
     # height of vertical rectangle is 14
     # bulge to either side is 4
+
     # 1 -> 1
     # layer 0
     # center
     hex1(win, 0, 0, scale)
+
     # 6 -> 7
     # layer 1
-    # 1 upper right
+    # 1.1 upper right        -> lastx + 12, lasty + 7
     hex1(win,  12,   7, scale)
-    # 2 lower right
+    # 1.2 lower right        -> lastx + 12, lasty - 7
     hex1(win,  12,  -7, scale)
-    # 3 bottom
+    # 1.3 bottom             -> lastx     , lasty - 14
     hex1(win,   0, -14, scale)
-    # 4 lower left
+    # 1.4 lower left        ->  lastx - 12, lasty - 7
     hex1(win, -12,  -7, scale)
-    # 5 upper left
+    # 1.5 upper left        ->  lastx - 12, lasty + 7
     hex1(win, -12,   7, scale)
-    # 6 top
+    # 1.6 top               -> lastx      , lasty + 14
     hex1(win,   0,  14, scale)
+
     # 12 -> 19
     # layer 2
-    # 1 one o'clock
+    # 2.1 one o'clock
     hex1(win, 12, 21, scale)
-    # 2 two o'clock
+    # 2.2 two o'clock
     hex1(win, 24, 14, scale)
-    # 3 three o'clock
+    # 2.3 three o'clock
     hex1(win, 24, 0, scale)
-    # 4 four o'clock
+    # 2.4 four o'clock
     hex1(win, 24, -14, scale)
-    # 5 five o'clock
+    # 2.5 five o'clock
     hex1(win, 12, -21, scale)
-    # 6 six o'clock
+    # 2.6 six o'clock
     hex1(win, 0, -28, scale)
-    # 7 seven o'clock
+    # 2.7 seven o'clock
     hex1(win, -12, -21, scale)
-    # 8 eight o'clock
+    # 2.8 eight o'clock
     hex1(win, -24, -14, scale)
-    # 9 nine o'clock
+    # 2.9 nine o'clock
     hex1(win, -24, 0, scale)
-    # 10 ten o'clock
+    # 2.10 ten o'clock
     hex1(win, -24, 14, scale)
-    # 11 eleven o'clock
+    # 2.11 eleven o'clock
     hex1(win, -12, 21, scale)
-    # 12 twelve o'clock
+    # 2.12 twelve o'clock
     hex1(win, 0, 28, scale)
 
     # 18 -> 37
     # layer 3
-    # 1 above one o'clock
+    # 3.1 above one o'clock
     hex1(win, 12, 35, scale)
-    # 2 above two o'clock
+    # 3.2 above two o'clock
     hex1(win, 24, 28, scale)
-    # 3 shift one o'clock
+    # 3.3 shift one o'clock
     hex1(win, 36, 21, scale)
-    # 4 down from 3
+    # 3.4 down from 3
     hex1(win, 36, 7, scale)
-    # 5 down from 4
+    # 3.5 down from 4
     hex1(win, 36, -7, scale)
-    # 6 down from 5
+    # 3.6 down from 5
     hex1(win, 36, -21, scale)
-    # 7 down from four o'clock
+    # 3.7 down from four o'clock
     hex1(win, 24, -28, scale)
-    # 8 down from five o'clock
+    # 3.8 down from five o'clock
     hex1(win, 12, -35, scale)
-    # 9 bottom
+    # 3.9 bottom
     hex1(win, 0, -42, scale)
-    # 10 down from  seven o'clock
+    # 3.10 down from  seven o'clock
     hex1(win, -12, -35, scale)
-    # 11 down from eight o'clock
+    # 3.11 down from eight o'clock
     hex1(win, -24, -28, scale)
-    # 12
+    # 3.12
     hex1(win, -36, -21, scale)
-    # 13 up from 12
+    # 3.13 up from 12
     hex1(win, -36, -7, scale)
-    # 14 up from 13
+    # 3.14 up from 13
     hex1(win, -36, 7, scale)
-    # 15 up from 14
+    # 3.15 up from 14
     hex1(win, -36, 21, scale)
-    # 16 up from ten o'clock
+    # 3.16 up from ten o'clock
     hex1(win, -24, 28, scale)
-    # 17 up from eleven o'clock
+    # 3.17 up from eleven o'clock
     hex1(win, -12, 35, scale)
-    # 18 top
+    # 3.18 top
     hex1(win, 0, 42, scale)
+
+    # 24 -> 61
+    # layer 4
+    # 4.1 above 3.1             must be 40 to 63
+    hex1(win, 12, 49, scale)
+    # 4.2 above 3.2             must be 40 to 63
+    hex1(win, 24, 42, scale)
+    # 4.3 above 3.3             must be 40 to 63
+    hex1(win, 36, 35, scale)
+    # 4.4                       must be 44, 45, 46, 47, 60, 61, 62, 63
+    hex1(win, 48, 28, scale)
+    # 4.5 down from 4.4
+    hex1(win, 48, 14, scale)
+    # 4.6 down from 5
+    hex1(win, 48, 0, scale)
+    # 4.7 down from 6
+    hex1(win, 48, -14, scale)
+    # 4.8 down from 7           must be 9, 11, 25, 27, 41, 43, 57 or 59
+    hex1(win, 48, -28, scale)
+    # 4.9
+    hex1(win, 36, -35, scale)
+    # 4.10
+    hex1(win, 24, -42, scale)
+    # 4.11
+    hex1(win, 12, -49, scale)
+    # 4.12 bottom
+    hex1(win, 0, -56, scale)
+    # 4.13
+    hex1(win, -12, -49, scale)
+    # 4.14
+    hex1(win, -24, -42, scale)
+    # 4.15                      must be 17, 21, 25, 29, 49, 53, 57 or 61
+    hex1(win, -36, -35, scale)
+    # 4.16
+    hex1(win, -48, -28, scale)
+    # 4.17
+    hex1(win, -48, -14, scale)
+    # 4.18
+    hex1(win, -48, 0, scale)
+    # 4.19
+    hex1(win, -48, 14, scale)
+    # 4.20
+    hex1(win, -48, 28, scale)
+    # 4.21
+    hex1(win, -36, 35, scale)
+    # 4.22
+    hex1(win, -24, 42, scale)
+    # 4.23
+    hex1(win, -12, 49, scale)
+    # 4.24 top                  must be 24 to 31
+    hex1(win, 0, 56, scale)
+
+
+    # 5.10 top                  must be 63 - 1 = 62
+    hex1(win, 0, 70, scale)
+    # 5.20 lower right axis     must be 63 - 16 = 47
+    hex1(win, 60, -35, scale)
+    # 5.30 lower left axis      must be 63 - 8 = 55
+    hex1(win, -60, -35, scale)
+
+
+    # 30 -> 91
+    # layer 5
+
+    # 36 -> 127
+    # layer 6
+
+    # 42 -> 169 64, 128, 192, 256, 320
+    # layer 6
+
+    # 7 48 -> 217
+    # 8 54 -> 261
 
     p0 = Point(XCENTER, YCENTER)
     p0.setFill("red")
@@ -125,3 +200,96 @@ def main():
     win.close()
 
 main()
+
+#
+#
+# __
+#/  \
+#\__/
+#
+#  ____
+# /    \
+#/      \
+#\      /
+# \____/
+#
+#       5
+#     __  __
+#    /      \
+# 4            3
+#  /     0    \     000000
+#  \          /
+# 1            2
+#    \__  __/
+#       0
+#
+#       5
+#     __  __
+#    /      \
+# 4            3
+#  /     1    \     000001
+#  \          /
+# 1            2
+#    \______/
+#       0
+#
+#       5
+#     __  __
+#    /      \
+# 4            3
+#  /     2    \     000010
+#  \          /
+# 1 \          2
+#    \__  __/
+#       0
+#
+#       5
+#     __  __
+#    /      \
+# 4            3
+#  /     3    \     000011
+#  \          /
+# 1 \          2
+#    \______/
+#       0
+#
+#       5
+#     __  __
+#    /      \
+# 4            3
+#  /     4    \     000100
+#  \          /
+# 1          / 2
+#    \__  __/
+#       0
+#
+#
+#       5
+#     ______
+#    /      \
+# 4 /        \ 3
+#  /    61    \    111101
+#  \          /
+# 1          / 2
+#    \______/
+#       0
+#
+#       5
+#     ______
+#    /      \
+# 4 /        \ 3
+#  /    62    \    111110
+#  \          /
+# 1 \        / 2
+#    \__  __/
+#       0
+#
+#       5
+#     ______
+#    /      \
+# 4 /        \ 3
+#  /    63    \    111111
+#  \          /
+# 1 \        / 2
+#    \______/
+#       0
