@@ -23,7 +23,7 @@ def hex1(win, xoffset, yoffset, scale = 1.0):
     p.draw(win)
 
 def main():
-    scale = 3.7
+    scale = 7.7
     win = GraphWin("hex2", XSCALE, YSCALE)
     win.setCoords(0,0, XSCALE , YSCALE)
     # one side is 8 units long
@@ -170,10 +170,16 @@ def main():
 
     # 5.10 top                  must be 63 - 1 = 62
     hex1(win, 0, 70, scale)
+    t = Text(Point(XCENTER,YCENTER + 70 * scale), "62")
+    t.draw(win)
     # 5.20 lower right axis     must be 63 - 16 = 47
     hex1(win, 60, -35, scale)
+    t = Text(Point(XCENTER + 60 * scale,YCENTER - 35 * scale), "47")
+    t.draw(win)
     # 5.30 lower left axis      must be 63 - 8 = 55
     hex1(win, -60, -35, scale)
+    t = Text(Point(XCENTER - 60 * scale,YCENTER - 35 * scale), "55")
+    t.draw(win)
 
 
     # 30 -> 91
@@ -196,6 +202,10 @@ def main():
     l1 = Line(p0, p1)
     l1.setFill("red")
     l1.draw(win)
+
+    t = Text(Point(XCENTER,YCENTER), "0")
+    t.draw(win)
+
     win.getMouse()
     win.close()
 
