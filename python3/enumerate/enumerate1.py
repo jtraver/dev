@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+# https://medium.com/better-programming/stop-using-range-in-your-python-for-loops-53c04593f936
+
 import sys
 
 VT100_BOLD = "[0;1m"
