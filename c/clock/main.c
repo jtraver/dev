@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <time.h>
 
+// look into https://linux.die.net/man/3/clock_gettime
+
 int
 main()
 {
