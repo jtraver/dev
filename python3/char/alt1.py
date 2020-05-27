@@ -28,3 +28,21 @@ print("alt_b = %s, ord_b = %s, ord_alt_b = %s, alt_diff = %s" % (str(alt_b), str
 #for i1 in range(32, 127):
 #    c1 = chr(i1)
 #    print "%d %s" % (i1, c1)
+
+
+# 1 ¡
+# ! ⁄
+# 2 ™
+# @ €
+# ¡™£¢∞§¶•ªº
+# 1234567890
+# 
+# ⁄€‹›ﬁﬂ‡‡°·‚
+# !@#$%^&*()
+# 
+# œ∑´®†\¨ˆøπ
+# qwertyuiop
+# 
+# Œ„´‰ˇÁ¨ˆØ∏
+# QWERTYUIOP
+
