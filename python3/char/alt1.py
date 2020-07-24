@@ -1,3 +1,6 @@
+#!/usr/local/bin/python3.7
+
+# for mac?
 #!/usr/bin/env python3
 
 #!/usr/bin/python3
