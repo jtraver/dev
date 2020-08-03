@@ -1,5 +1,7 @@
 #!/usr/local/bin/python3.7
 
+# https://docs.python.org/3/library/ssl.html
+
 import socket
 import ssl
 
