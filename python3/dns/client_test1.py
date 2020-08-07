@@ -2,8 +2,8 @@
 
 # https://www.tutorialspoint.com/python_network_programming/python_dns_look_up.htm
 
-# import dnspython as dns
-import dnspython
+import dnspython as dns
+# import dnspython
 import dns.resolver
 
 result = dns.resolver.query('tutorialspoint.com', 'A')
