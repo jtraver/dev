@@ -11,4 +11,16 @@ sub main
 
 # my $filler = sprintf("%.*s", $len3, "----------------------------------------------");
 
+sub indent
+{
+    my ($indent) = @_;
+    if ($indent == 0)
+    {
+        return;
+    }
+    my $filler = sprintf("%.*s", $indent * 2, "                                                                                                                                                                 ");
+    print "| $filler$indent\n";
+    indent(--$indent);
+}
+
 main();
