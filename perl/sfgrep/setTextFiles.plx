@@ -20,7 +20,7 @@ sub wanted
         my $name = $File::Find::name;
         if ($name =~ /\.\.\/jtraver\//)
         {
-            print "skipping $name\n";
+            # print "skipping $name\n";
         }
         elsif (! -d && -T &&
                 $name !~ /\/centos\/status\/runs\// &&
