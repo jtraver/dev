@@ -19,6 +19,8 @@ sub do_poll
     my @lines = <FILE>;
     close(FILE);
     chomp(@lines);
+    my $bpop = 0;
+    my $dpop = 0;
     my $bev = 0;
     my $dev = 0;
     for my $line (@lines)
@@ -62,8 +64,10 @@ sub do_poll
             $dev += $ev;
         }
         # print "  $bev $dev\n";
+        $dpop += $idv;
+        $bpop += $ibv;
     }
-    print "$filename $bev $dev\n";
+    print "$filename $bev $bpop $dev $dpop\n";
 }
 
 sub main
