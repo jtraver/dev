@@ -4,6 +4,9 @@ use warnings;
 use diagnostics;
 use strict;
 
+my $biden;
+my $drumpf;
+
 sub do_poll
 {
     my ($filename) = @_;
@@ -68,6 +71,8 @@ sub do_poll
         $bpop += $ibv;
     }
     print "$filename $bev $bpop $dev $dpop\n";
+    $biden = $bpop;
+    $drumpf = $dpop
 }
 
 sub main
@@ -80,6 +85,12 @@ sub main
     {
         do_poll($filename);
     }
+    my $Hillary = 65853514;
+    my $odrumpf = 62984828;
+    print "2016 Popular vote    Hillary 65,853,514     drumpf 62,984,828\n";
+    my $ddiff = $biden - $Hillary;
+    my $rdiff = $drumpf - $odrumpf;
+    print "diff     dem $ddiff      rep $rdiff\n";
 }
 
 main();
