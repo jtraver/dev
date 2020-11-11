@@ -86,6 +86,43 @@ sub main
     # show_function('load_private_key');              # cf_fetch_bytes
     # show_function('create_context');                    # load_private_key    REPEAT
     # show_function('reload_cert_and_key');               # load_private_key    REPEAT
+    show_function('aerospike_connect');
+    show_function('as_policy_event_init');
+    show_function('connect_to_server');
+    show_function('example_connect_to_aerospike_with_udf_config');
+    show_function('usage');
+    parent 'as_create_event_loops'
+    parent 'as_set_external_event_loop'
+    parent 'create_event_loop_with_delay_queue'
+  as_policy_event_init calls additional functions
+
+looking for function connect_to_server
+  connect_to_server has callers
+    parent 'run_benchmark'
+  connect_to_server calls additional functions
+
+looking for function example_connect_to_aerospike_with_udf_config
+  example_connect_to_aerospike_with_udf_config has callers
+    parent 'DETAIL'
+    parent 'example_connect_to_aerospike'
+    parent 'main'
+  example_connect_to_aerospike_with_udf_config calls additional functions
+
+looking for function usage
+  usage has callers
+    parent 'example_get_opts'
+    parent 'usage'
+
+    show_function('as_lookup_node');
+    show_function('as_cluster_seed_node');
+    show_function('as_peers_duplicate');
+    show_function('as_cluster_tend');
+    show_function('as_cluster_tender');
+    show_function('as_shm_tender');
+    show_function('as_wait_till_stabilized');
+    show_function('as_cluster_init');
+    show_function('as_cluster_create');
+    show_function('as_shm_create');
 }
 
 sub show_function
@@ -320,8 +357,20 @@ sub find_files
     my $fcount = 0;
     for my $file1 (@find1)
     {
+        # 1 FAIL ../.git/packed-refs with extension packed-refs has type FILE TYPE UNKNOWN
         $fcount++;
         # print "$fcount of $ftotal file1 $file1\n";
+        if ($file1 =~ /\.\.\/\.git\//)
+        {
+            # print "$file1 is down .git: skip it\n";
+            next;
+        }
+        # ../SFGREP
+        if ($file1 =~ /\.\.\/SFGREP\//)
+        {
+            # print "$file1 is down .git: skip it\n";
+            next;
+        }
         my $type1 = "FILE TYPE UNKNOWN";
         my $ext1 = "NO FILE EXTENSION";
         my @path1 = split("/", $file1);
@@ -370,6 +419,7 @@ sub find_files
                 $ext1 eq "clang-format" ||
                 $ext1 eq "clang-format-check" ||
                 $ext1 eq "nostrip" ||
+                $ext1 eq "prepare_xcode" ||
                 $ext1 eq "normal" ||
                 $ext1 eq "strip" ||
                 $ext1 eq "check-exports" ||
@@ -392,6 +442,13 @@ sub find_files
                 $ext1 eq "query_annotate" ||
                 $ext1 eq "stp" ||
                 $ext1 eq "iddecode" ||
+                $ext1 eq "package_src" ||
+                $ext1 eq "set_version" ||
+                $ext1 eq "package_type" ||
+                $ext1 eq "client" ||
+                $ext1 eq "install" ||
+                $ext1 eq "platform" ||
+                $ext1 eq "package" ||
                 $ext1 eq "asd-coldstart" ||
                 $ext1 eq "aerospike-restart" ||
                 $ext1 eq "aerospike-init" ||
@@ -410,6 +467,14 @@ sub find_files
             {
                 $type1 = "YAML";
             }
+            elsif ($ext1 eq "plx")
+            {
+                $type1 = "perl script";
+            }
+            elsif ($ext1 eq "log")
+            {
+                $type1 = "log file";
+            }
             elsif ($ext1 eq "git")
             {
                 $type1 = "dot git locater";
@@ -418,7 +483,8 @@ sub find_files
             {
                 $type1 = "valgrind suppression file";
             }
-            elsif ($ext1 eq "png")
+            elsif ($ext1 eq "png" ||
+                $ext1 eq "jpg")
             {
                 $type1 = "media";
             }
@@ -467,6 +533,10 @@ sub find_files
             }
             elsif ($ext1 eq "vars" ||
                 $ext1 eq "am" ||
+                # FAIL ../install_libevent with extension install_libevent has type FILE TYPE UNKNOWN
+                $ext1 eq "install_libev" ||
+                $ext1 eq "install_libuv" ||
+                $ext1 eq "install_libevent" ||
                 $ext1 eq "cmake" ||
                 $ext1 eq "dep" ||
                 $ext1 eq "targets" ||
@@ -477,6 +547,8 @@ sub find_files
                 $type1 = "makefile";
             }
             elsif ($ext1 eq "conf" ||
+                $ext1 eq "nuspec" ||
+                $ext1 eq "spec" ||
                 $ext1 eq "xcscmblueprint" ||
                 $ext1 eq "swig" ||
                 $ext1 eq "cfg" ||
@@ -552,12 +624,13 @@ sub find_files
             }
             if ($type1 eq "FILE TYPE UNKNOWN")
             {
-                print "FAIL $file1 with extension $ext1 has type $type1\n";
+                # FAIL ../install_libevent with extension install_libevent has type FILE TYPE UNKNOWN
+                print "1 FAIL $file1 with extension $ext1 has type $type1\n";
                 exit 2;
             }
             if ($ext1 eq "NO FILE EXTENSION")
             {
-                print "FAIL $file1 extension is $ext1\n";
+                print "2 FAIL $file1 extension is $ext1\n";
                 exit 3;
             }
         }
@@ -587,7 +660,7 @@ sub list_functions
         }
         if (!defined($funcparents{$func}))
         {
-            print "FAIL found no caller for function $func\n";
+            print "3 FAIL found no caller for function $func\n";
         }
         my $fifileref = $funcinfo{$func};
         my %fifilehash = %$fifileref;

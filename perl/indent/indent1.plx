@@ -20,7 +20,7 @@ sub indent
     }
     my $filler = sprintf("%.*s", $indent * 2, "                                                                                                                                                                 ");
     print "| $filler$indent\n";
-    indent(--$indent);
+    indent($indent - 1);
 }
 
 main();
