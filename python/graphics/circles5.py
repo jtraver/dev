@@ -17,6 +17,176 @@ YCENTER = YSCALE / 2
 # {\displaystyle \left({\frac {ax_{a}+bx_{b}+cx_{c}}{a+b+c}},{\frac {ay_{a}+by_{b}+cy_{c}}{a+b+c}}\right)={\frac {a\left(x_{a},y_{a}\right)+b\left(x_{b},y_{b}\right)+c\left(x_{c},y_{c}\right)}{a+b+c}}.}
 # {ax_{a}+bx_{b}+cx_{c}}{a+b+c}},{{ay_{a}+by_{b}+cy_{c}}{a+b+c}}
 
+def circles5(win, scale):
+
+    red1 = color_rgb(255, 0, 0)
+    green1 = color_rgb(0, 255, 0)
+    blue1 = color_rgb(0, 0, 255)
+    print "red1 = %s" % str(red1)
+    print "green1 = %s" % str(green1)
+    print "blue1 = %s" % str(blue1)
+    rb_magenta1 = color_rgb(255, 0, 255)
+    gb_cyan1 = color_rgb(0, 255, 255)
+    rg_yellow1 = color_rgb(255, 255, 0)
+
+    rm_rose1 = color_rgb(255, 0, 127)
+    bm_violet1 = color_rgb(127, 0, 255)
+    bc_azure1 = color_rgb(0, 127, 255)
+    gc_green1 = color_rgb(0, 255, 127)
+    gy_chart1 = color_rgb(127, 255, 0)
+    ry_orange1 = color_rgb(255, 127, 0)
+    # red magenta blue cyan green yellow
+    # rose violet azure spring-green chartreuse orange
+
+    c0 = Circle(Point(XCENTER,YCENTER), 10 * scale)
+    c0.setWidth(4)
+    # c0.setWidth(10)
+    # c0.setOutline(rm_rose1)
+    # c0.setOutline(bm_violet1)
+    # c0.setOutline(bc_azure1)
+    # c0.setOutline(gc_green1)
+    # c0.setOutline(gy_chart1)
+    # c0.setOutline(ry_orange1)
+    c0.draw(win)
+    # https://en.wikipedia.org/wiki/Color_wheel
+    # https://en.wikipedia.org/wiki/File:Color_star-en_(tertiary_names).svg
+
+    # red purple blue green yellow orange
+    # magenta, violet, teal, chartreuse, amber, vermilion
+    # c0.setOutline("red")                  #FF0000
+    # c0.setOutline("purple")               #A020F0
+    # c0.setOutline("blue")                 #0000FF
+    # c0.setOutline("green")                #00FF00
+    # c0.setOutline("yellow")               #FFFF00
+    # c0.setOutline("orange")               #FFA500
+    # c0.setOutline("magenta")              #FF00FF
+    # c0.setOutline("violet")
+    # # c0.setOutline("teal")     # unknown     #008080  https://en.wikipedia.org/wiki/X11_color_names
+    # c0.setOutline("chartreuse")
+    # # c0.setOutline("amber")    # unknown
+    # # c0.setOutline("vermilion")        # unknown
+
+    # https://en.wikipedia.org/wiki/File:RBG_color_wheel.svg
+    # red magenta blue cyan green yellow
+    # rose violet azure spring-green chartreuse orange
+    # c0.setOutline("red")                  #FF0000
+    # c0.setOutline("magenta")              #FF00FF
+    # c0.setOutline("blue")                 #0000FF
+    # c0.setOutline("cyan")                 #00FFFF
+    # c0.setOutline("green")                #00FF00
+    # c0.setOutline("yellow")               #FFFF00
+    # # c0.setOutline("rose")     # unknown
+    # c0.setOutline("pink")                 #FFC0CB
+    # c0.setOutline("violet")               #EE82EE
+    # c0.setOutline("azure")                #F0FFFF
+    # c0.setOutline("spring green")         #00FF7F
+    # c0.setOutline("chartreuse")           #7FFF00
+    # c0.setOutline("orange")               #FFA500
+
+    radius1 = 10 * scale
+    diameter1 = radius1 * 2
+    npoints = 6
+    inc1 = (math.pi * 2) / npoints
+    theta1 = 0
+    xs = []
+    ys = []
+    # color1 = ["red", "magenta", "blue", "cyan", "green", "yellow"]
+    color1 = [red1, rb_magenta1, blue1, gb_cyan1, green1, rg_yellow1]
+    for i1 in range(npoints):
+        x1 = (math.sin(theta1) * diameter1) + XCENTER
+        xs.append(x1)
+        y1 = (math.cos(theta1) * diameter1) + YCENTER
+        ys.append(y1)
+        c1 = Circle(Point(x1, y1), 10 * scale)
+        c1.setOutline(color1[i1])
+        c1.setWidth(4)
+        c1.draw(win)
+        theta1 += inc1
+    xa = XCENTER * diameter1
+    ya = YCENTER * diameter1
+    xb1 = xs[0] * diameter1
+    yb1 = ys[0] * diameter1
+    xc1 = xs[1] * diameter1
+    yc1 = ys[1] * diameter1
+    x1 = (xa + xb1 + xc1) / (3 * diameter1)
+    y1 = (ya + yb1 + yc1) / (3 * diameter1)
+    c1 = Circle(Point(x1, y1), 10 * scale)
+    # c1.setOutline("pink")
+    c1.setOutline(rm_rose1)
+    c1.setWidth(4)
+    c1.draw(win)
+
+    xb2 = xs[2] * diameter1
+    yb2 = ys[2] * diameter1
+    xc2 = xs[3] * diameter1
+    yc2 = ys[3] * diameter1
+    x2 = (xa + xb2 + xc2) / (3 * diameter1)
+    y2 = (ya + yb2 + yc2) / (3 * diameter1)
+    c2 = Circle(Point(x2, y2), 10 * scale)
+    # c2.setOutline("azure")
+    c2.setOutline(bc_azure1)
+    # c2.setWidth(10)
+    c2.setWidth(4)
+    c2.draw(win)
+
+    # red magenta blue cyan green yellow
+    # rose violet azure spring-green chartreuse orange
+    xb3 = xs[4] * diameter1
+    yb3 = ys[4] * diameter1
+    xc3 = xs[5] * diameter1
+    yc3 = ys[5] * diameter1
+    x3 = (xa + xb3 + xc3) / (3 * diameter1)
+    y3 = (ya + yb3 + yc3) / (3 * diameter1)
+    c3 = Circle(Point(x3, y3), 10 * scale)
+    # c3.setOutline(gc_green1)
+    c3.setOutline(gy_chart1)
+    c3.setWidth(4)
+    c3.draw(win)
+
+    ## rm_rose1 = color_rgb(255, 0, 127)
+    # bm_violet1 = color_rgb(127, 0, 255)
+    ## bc_azure1 = color_rgb(0, 127, 255)
+    # gc_green1 = color_rgb(0, 255, 127)
+    ## gy_chart1 = color_rgb(127, 255, 0)
+    # ry_orange1 = color_rgb(255, 127, 0)
+    # # red magenta blue cyan green yellow
+    # # rose violet azure spring-green chartreuse orange
+
+    xb4 = xs[5] * diameter1
+    yb4 = ys[5] * diameter1
+    xc4 = xs[0] * diameter1
+    yc4 = ys[0] * diameter1
+    x4 = (xa + xb4 + xc4) / (3 * diameter1)
+    y4 = (ya + yb4 + yc4) / (3 * diameter1)
+    c4 = Circle(Point(x4, y4), 10 * scale)
+    # c4.setOutline(bm_violet1)
+    # c4.setOutline(gc_green1)
+    c4.setOutline(ry_orange1)
+    c4.setWidth(4)
+    c4.draw(win)
+
+    xb5 = xs[1] * diameter1
+    yb5 = ys[1] * diameter1
+    xc5 = xs[2] * diameter1
+    yc5 = ys[2] * diameter1
+    x5 = (xa + xb5 + xc5) / (3 * diameter1)
+    y5 = (ya + yb5 + yc5) / (3 * diameter1)
+    c5 = Circle(Point(x5, y5), 10 * scale)
+    c5.setOutline(bm_violet1)
+    c5.setWidth(4)
+    c5.draw(win)
+
+    xb6 = xs[3] * diameter1
+    yb6 = ys[3] * diameter1
+    xc6 = xs[4] * diameter1
+    yc6 = ys[4] * diameter1
+    x6 = (xa + xb6 + xc6) / (3 * diameter1)
+    y6 = (ya + yb6 + yc6) / (3 * diameter1)
+    c6 = Circle(Point(x6, y6), 10 * scale)
+    c6.setOutline(gc_green1)
+    c6.setWidth(4)
+    c6.draw(win)
+
 def circles4(win, scale):
     c0 = Circle(Point(XCENTER,YCENTER), 10 * scale)
     c0.draw(win)
@@ -209,7 +379,8 @@ def main():
     # circles1(win, 0, 0, scale)
     # circles2(win, scale)
     # circles3(win, scale)
-    circles4(win, scale)
+    # circles4(win, scale)
+    circles5(win, scale)
 
     # p0 = Point(XCENTER, YCENTER)
     # p0.setFill("red")
