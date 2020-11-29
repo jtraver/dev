@@ -19,7 +19,10 @@ YCENTER = YSCALE / 2
 
 def circles5(win, scale):
 
-    win.setBackground("black")
+    white1 = color_rgb(255, 255, 255)
+    black1 = color_rgb(0, 0, 0)
+    # win.setBackground("black")
+    win.setBackground(black1)
     red1 = color_rgb(255, 0, 0)
     green1 = color_rgb(0, 255, 0)
     blue1 = color_rgb(0, 0, 255)
@@ -41,7 +44,8 @@ def circles5(win, scale):
 
     c0 = Circle(Point(XCENTER,YCENTER), 10 * scale)
     c0.setWidth(4)
-    c0.setOutline("white")
+    # c0.setOutline("white")
+    c0.setOutline(white1)
     # c0.setWidth(10)
     # c0.setOutline(rm_rose1)
     # c0.setOutline(bm_violet1)
