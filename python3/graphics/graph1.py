@@ -3,6 +3,8 @@
 
 #!/usr/bin/python
 
+# import tkinter
+# import _tkinter
 from graphics import *
 
 def main():

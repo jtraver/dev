@@ -1,0 +1,11 @@
+pi = 4*a(1)
+pi
+s2 = sqrt(2)
+s2
+s3 = sqrt(3)
+s3
+s2ps3 = s2 + s3
+s2ps3
+diff1 = s2ps3 - pi
+diff1
+quit
