@@ -10,6 +10,7 @@ line = "this is the string to search"
 regex = re.compile(r'e.s')
 regex = re.compile(r'e s')
 regex = re.compile(r'e[ ]+s')
+regex = re.compile('e[ ]+s')
 # regex = re.compile(r'ejunk[ ]+s')
 
 #parts = <re.Match object; span=(10, 13), match='e s'>
