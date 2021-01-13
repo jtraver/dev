@@ -11,6 +11,7 @@ regex = re.compile(
 
 
 def parse_time(time_str):
+    print("\nparse_time: time_str = %s" % str(time_str))
     parts = regex.match(time_str)
     if not parts:
         return time_str
