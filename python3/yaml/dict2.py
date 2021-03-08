@@ -9,6 +9,17 @@ VT100_RED = "[0;1;31m"
 VT100_GREEN = "[0;1;32m"
 VT100_STOP_MARKUP = "[0m"
 
+
+def file(filename):
+    f = open(filename, "r")
+    contents = ""
+    for line in f:
+        contents += line
+    f.close()
+    return contents
+
+
+
 def list1():
     print("\n---------------------------------------------------------------------------------")
     print("list1")
