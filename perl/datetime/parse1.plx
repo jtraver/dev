@@ -51,10 +51,17 @@ sub main
     my $diff2 = $time0 - $time2;
     print "$str2 -> $diff2 seconds before $tag\n";
     # my $str3 = "Mon Sep 18 20:47:24 EDT 2017";
+
     my $str3 = "Mon Sep 18 21:05:49 EDT 2017";
     my $time3 = parseDateTime($str3);
     my $diff3 = $time0 - $time3;
     print "$str3 -> $diff3 seconds before $tag\n";
+
+    my $str4 = "10 Mar 21 21:13 EST";
+    my $time4 = parseDateTime($str4);
+    my $diff4 = $time0 - $time4;
+    print "$str4 -> $diff4 seconds before $tag\n";
+
 }
 
 #use DateTime::Format::Strptime;
@@ -114,6 +121,7 @@ $months{"Dec"} = 11;
 
 sub parseDateTime
 {
+    print "\nparseDateTime\n";
     my ($dateTime) = @_;
     print "$dateTime\n";
     my $time;
@@ -169,6 +177,27 @@ sub parseDateTime
         my $mday = $3;
         my $hour = $4;
         my $min = $5;
+        my $sec = 0;
+        print "$sec, $min, $hour, $mday, $mon, $year\n";
+        $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "time is $time\n";
+    }
+    # my $str4 = "10 Mar 21 21:13 EST";
+    elsif ($dateTime =~ /(\d\d) (\S\S\S) (\d\d) (\d\d):(\d\d) (\S\S\S)/)
+    {
+        my $mday = $1;
+        my $monStr = $2;
+        my $mon = $months{$monStr};
+        my $year = $3 + 2000;
+        my $hour = $4;
+        my $min = $5;
+        my $tzStr = $6;
+        # my $year = $1;
+        # my $mon = $2 - 1;
+        # my $mday = $3;
+        # my $hour = $4;
+        # my $min = $5;
+        # my $sec = 0;
         my $sec = 0;
         print "$sec, $min, $hour, $mday, $mon, $year\n";
         $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
