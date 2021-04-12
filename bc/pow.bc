@@ -1,0 +1,23 @@
+
+/* https://en.wikipedia.org/wiki/Bc_(programming_language)#A_.27Power.27_function_in_POSIX_bc */
+/* https://stackoverflow.com/questions/16164925/using-fractional-exponent-with-bc */
+
+/* A function to return the integer part of x */
+define i(x) {
+    auto s
+    s = scale
+    scale = 0
+    x /= 1   /* round x down */
+    scale = s
+    return (x)
+}
+
+/* Use the fact that x^y == e^(y*log(x)) */
+define p(x,y) {
+    if (y == i(y)) {
+        return (x ^ y)
+    }
+    return ( e( y * l(x) ) )
+}
+
+p(2, 0.5)
