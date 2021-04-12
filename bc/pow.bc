@@ -1,5 +1,17 @@
 
 /* https://en.wikipedia.org/wiki/Bc_(programming_language)#A_.27Power.27_function_in_POSIX_bc */
+/*
+
+The bc standard library[1]
+bc command	Function	Description
+s(x)	Sine	Takes x, an angle in radians
+c(x)	Cosine	Takes x, an angle in radians
+a(x)	Arctangent	Returns radians
+l(x)	Natural logarithm
+e(x)	Exponential function
+j(n,x)	Bessel function	Returns the order-n Bessel function of x.
+
+*/
 /* https://stackoverflow.com/questions/16164925/using-fractional-exponent-with-bc */
 
 /* A function to return the integer part of x */
