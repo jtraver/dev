@@ -8,6 +8,7 @@ def twos():
     cval = 16406297185095647658
     sval = 8579294738944438520
     dval = cval - sval
+    sum1 = cval + sval
     val1 = 1
     last1 = val1
     for i1 in range(68):
@@ -32,6 +33,18 @@ def twos():
             print("    dval1 = %s" % str(dval1))
             dval2 = dval + last1
             print("    dval2 = %s" % str(dval2))
+        if val1 > sval:
+            print("  sum1 = %s" % str(sum1))
+            sum11 = val1 - sum1
+            print("    sum11 = %s" % str(sum11))
+            sum12 = sum1 + last1
+            print("    sum12 = %s" % str(sum12))
+            sum13 = val1 + sum1
+            print("    sum13 = %s" % str(sum13))
+            sum14 = val1 + sum1
+            print("    sum14 = %s" % str(sum14))
+            sum15 = sum1 - val1
+            print("    sum15 = %s" % str(sum15))
         last1 = val1
         val1 *= 2
 
