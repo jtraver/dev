@@ -22,6 +22,46 @@ sub make_all
         {
             next;
         }
+        if ($file =~ /\.sh$/)
+        {
+            next;
+        }
+        if ($file =~ /mk.dir/)
+        {
+            next;
+        }
+        if ($file =~ /\.\/miss/)
+        {
+            next;
+        }
+        if ($file =~ /\.out$/)
+        {
+            next;
+        }
+        if ($file =~ /\.tmp$/)
+        {
+            next;
+        }
+        if ($file =~ /\.svg$/)
+        {
+            next;
+        }
+        if ($file =~ /\.txt$/)
+        {
+            next;
+        }
+        if ($file =~ /\.html$/)
+        {
+            next;
+        }
+        if ($file =~ /\.plx$/)
+        {
+            next;
+        }
+        if ($file =~ /.DS_Store/)
+        {
+            next;
+        }
         if ($count % 50 == 0)
         {
             if ($count != 0)
