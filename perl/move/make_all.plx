@@ -13,7 +13,7 @@ sub make_all
 {
     my @glob = `find .`;
     chomp(@glob);
-    print "<ol>\n";
+    # print "<ol>\n";
     my $count = 0;
     my $fileopen = open(INDEX, ">index.html");
     foreach my $file (sort @glob)
@@ -72,7 +72,7 @@ sub make_all
             $count++;
             my $filen = "$count.html";
             my $fileopen = open(OUTPUT, ">$filen");
-            print INDEX "<li><a href=\"$filen\">$filen<\/>\n";
+            print INDEX "<li><a href=\"$filen\">$filen $file<\/>\n";
             print OUTPUT "<ol>\n";
         }
         else
@@ -88,7 +88,8 @@ sub make_all
         # print FILE "<img height=100 width=100 src=\"$file\">\n";
         # close(FILE);
     }
-    print "</ol>\n";
+    close(INDEX);
+    # print "</ol>\n";
 }
 
 main();
