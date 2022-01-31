@@ -1,0 +1,54 @@
+# 1 "hello1.c"
+# attempting to correct hello1.s output for mmix-al instead of mmix-gcc
+! mmixal:= 8H LOC Data_Section
+	.text ! mmixal:= 9H LOC 8B
+	.section	.rodata
+	.p2align 2
+	LOC @+(4-@)&3
+LC:0	IS @
+	BYTE "world",#0
+	.p2align 2
+	LOC @+(4-@)&3
+LC:1	IS @
+	BYTE "hello, %s",#a,#0
+	.text ! mmixal:= 9H LOC 8B
+	.p2align 2
+	LOC @+(4-@)&3
+	.global Main
+Main	IS @
+	SUBU $254,$254,32
+	STOU $253,$254,24
+	ADDU $253,$254,32
+	SET $2,$0
+	SUBU $0,$253,24
+	STOU $1,$0,0
+	SUBU $0,$253,12
+	STTU $2,$0,0
+	SUBU $0,$253,12
+	LDT $0,$0,0
+	SLU $0,$0,32
+	SR $0,$0,32
+	CMP $0,$0,1
+	BNP $0,L:2
+	SUBU $0,$253,24
+	LDO $0,$0,0
+	ADDU $0,$0,8
+	LDO $2,$0,0
+	SUBU $1,$253,32
+	STOU $2,$1,0
+	JMP L:4
+L:2	IS @
+	GETA $1,LC:0
+	SUBU $0,$253,32
+	STOU $1,$0,0
+L:4	IS @
+	GETA $4,LC:1
+	SUBU $2,$253,32
+	LDO $5,$2,0
+#	PUSHJ $3,printf
+#	SETL $4,0
+    TRAP    LC:0,Fputs,StdOut
+    TRAP    0,Halt,0
+#	PUSHJ $3,exit
+
+	.data ! mmixal:= 8H LOC 9B
