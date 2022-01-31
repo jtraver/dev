@@ -1,0 +1,2 @@
+rm *.mmb
+rm *.mmo
