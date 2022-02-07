@@ -1,0 +1,25 @@
+
+pseudo op codes for assembler:
+    - NAME: BYTE
+      USED:
+        - hello.mms
+      MEANING: define a data byte array
+    - NAME: IS
+      USED:
+        - hello.mms
+      MEANING: assign an assembler variable to a register or address
+    - NAME: LOC
+      USED:
+        - hello.mms
+      MEANING: sets next address location
+
+op codes:
+    - NAME: GETA
+      USED:
+        - hello.mms
+    - NAME: LDOU
+      USED:
+        - hello.mms
+    - NAME: TRAP
+      USED:
+        - hello.mms
