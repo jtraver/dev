@@ -1,6 +1,6 @@
 MMIX_HOME=~/mmix
 
-MMIX_PROG=hello2
+MMIX_PROG=hello3
 
 # $MMIX_HOME/mmixal-2 --help
 # $MMIX_HOME/mmixal-2 -h
@@ -12,9 +12,13 @@ $MMIX_HOME/mmix-2 $MMIX_PROG
 # $MMIX_HOME/mmmix-2 $MMIX_HOME/plain.mmconfig $MMIX_PROG.mmb
 
 echo
-echo $MMIX_HOME/mmix-2 -b300 -t1 -l1000  $MMIX_PROG
-$MMIX_HOME/mmix-2 -b300 -t1 -l1000  $MMIX_PROG
-$MMIX_HOME/mmix-2 -h
+# echo $MMIX_HOME/mmix-2 -t1 -l1000  $MMIX_PROG
+# $MMIX_HOME/mmix-2 -t1 -l1000  $MMIX_PROG > $MMIX_PROG.trace
+echo $MMIX_HOME/mmix-2 -b300 -v $MMIX_PROG
+$MMIX_HOME/mmix-2 -b300 -v $MMIX_PROG > $MMIX_PROG.trace
+vi $MMIX_PROG.trace
+
+# $MMIX_HOME/mmix-2 -h
 # $MMIX_HOME/mmix-2 -D$MMIX_PROG.dump $MMIX_PROG
 
 
@@ -34,19 +38,9 @@ $MMIX_HOME/mmix-2 -h
 # echo $MMIX_HOME/mmix-2 -t1 -l1000 $MMIX_PROG
 # $MMIX_HOME/mmix-2 -t1 -l1000 $MMIX_PROG
 # -s    show statistics after each traced instruction
-# echo
-# echo $MMIX_HOME/mmix-2 -t1 -s -l1000 $MMIX_PROG
-# $MMIX_HOME/mmix-2 -t1 -s -l1000 $MMIX_PROG
 # -P    print a profile when simulation ends
 # -L<n> list source lines with the profile
-echo
-echo $MMIX_HOME/mmix-2 -P Ll1000 $MMIX_PROG
-$MMIX_HOME/mmix-2 -P -L1000 $MMIX_PROG
 # -v    be verbose: show almost everything
-echo
-echo "---------------------------------------------------------------------------------"
-echo $MMIX_HOME/mmix-2 -b300 -v $MMIX_PROG
-$MMIX_HOME/mmix-2 -b300 -v $MMIX_PROG
 # -q    be quiet: show only the simulated standard output
 # -i    run interactively (prompt for online commands)
 # -I    interact, but only after the program halts

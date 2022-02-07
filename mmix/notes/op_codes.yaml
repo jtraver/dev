@@ -17,6 +17,7 @@ op codes:
     - NAME: GETA
       USED:
         - hello.mms
+      MEANING: load a relative address into a register
     - NAME: LDOU
       USED:
         - hello.mms
