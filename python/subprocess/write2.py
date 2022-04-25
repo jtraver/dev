@@ -26,7 +26,7 @@ if err != None:
     print 'errput = %s' % str(err)
 
 print "output = %s" % str(out)
-out2 = stdout.read()
-print "output = %s" % str(out)
+out2 = stdout.readline()
+print "output = %s" % str(out2)
 
 subprocess.call(['echo', ''])
