@@ -1,0 +1,6 @@
+PyOpenGL
+    http://pyopengl.sourceforge.net
+pyglet
+    https://pyglet.org
+vispy
+    https://vispy.org
