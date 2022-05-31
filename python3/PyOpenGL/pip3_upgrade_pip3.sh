@@ -1,21 +1,11 @@
 
-
-echo "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv"
-
-
-# http://pyopengl.sourceforge.net/documentation/installation.html
-sudo -H pip3 install PyDispatcher PyVRML97 OpenGLContext
+sudo -H /Library/Developer/CommandLineTools/usr/bin/python3 -m pip install --upgrade pip
 
 # sudo -H pip3 install PyOpenGL
 
 # http://pyopengl.sourceforge.net
 
 # sudo -H pip3 install PyOpenGL_accelerate
-
-
-# https://pythonprogramming.net/opengl-rotating-cube-example-pyopengl-tutorial/
-# https://www.pygame.org/news
-# sudo -H pip3 install pygame
 
 
 # # sudo -H pip install graphics.py
