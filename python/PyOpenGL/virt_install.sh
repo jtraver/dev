@@ -1,9 +1,13 @@
 
 
-echo "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv"
+# echo "WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv"
 
+pip2 install -I http://sourceforge.net/projects/fonttools/files/2.3/fonttools-2.3.tar.gz/download
+pip2 install -I TTFQuery PyOpenGL PyOpenGL-accelerate
+pip2 install -I pydispatcher PyVRML97 PyVRML97-accelerate simpleparse
+pip2 install -I OpenGLContext
 
-sudo -H pip2 install virtualenv
+# sudo -H pip2 install virtualenv
 
 # sudo -H pip2 install PyOpenGL
 
