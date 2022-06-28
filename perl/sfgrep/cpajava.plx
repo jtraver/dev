@@ -6,7 +6,6 @@ my $status = 0;
 my @files;
 my $count = 0;
 $| = 1;
-# not really a CPA, just a grep for "public"
 my $word = "public";
 if (!defined($word) || $word eq "")
 {
