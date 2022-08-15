@@ -27,6 +27,7 @@ my $SAT = 6;
 
 sub reminders
 {
+    # https://stackoverflow.com/questions/33973515/waiting-for-a-defined-period-of-time-for-the-input-in-perl
     my $select = IO::Select->new();
     $select->add( \*STDIN );
     print "start reminders\n";
