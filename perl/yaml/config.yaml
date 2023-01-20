@@ -1,0 +1,9 @@
+---
+emailName: David
+emailAddresses: 
+    - sillymoos@cpan.org
+    - perltricks.com@gmail.com
+credentials:
+    username: sillymoose
+    password: itsasecret
+
