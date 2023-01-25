@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-#!/usr/bin/python
 
 file1 = open('file1.py', 'r')
 print(("file1 is %s" % str(type(file1))))

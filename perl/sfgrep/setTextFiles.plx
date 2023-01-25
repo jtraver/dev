@@ -25,9 +25,20 @@ sub wanted
         elsif (! -d && -T &&
                 $name !~ /\/centos\/status\/runs\// &&
                 $name !~ /\/centos\/status\/\.17/ &&
+                $name !~ /\.pytest_cache/ &&
                 $name !~ /\.css\.map$/ &&
                 $name !~ /\.min\.css$/ &&
                 $name !~ /\.min\.js$/ &&
+                $name !~ /\.220/ &&
+                $name !~ /\.out$/ &&
+                $name !~ /\/disrupt.save\// &&
+                $name !~ /\/status\// &&
+                $name !~ /\/saves\// &&
+                $name !~ /\/save_rats.old\// &&
+                $name !~ /\save_rats.2/ &&
+                $name !~ /\.status\// &&
+                $name !~ /\/save_rrat\// &&
+                $name !~ /save\.2/ &&
                 $name !~ /\/SFGREP\// &&
                 $name !~ /\/old.SFGREP\// &&
                 $name !~ /\/coverity\// &&
