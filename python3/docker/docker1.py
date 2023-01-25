@@ -16,6 +16,10 @@ def pinfo(object):
 def main():
     pinfo(docker)
     dockerClient = docker.Client(base_url='unix://var/run/docker.sock')
+    # docker-py          1.10.6
+    # docker-pycreds     0.4.0
+    version = dockerClient.version()
+    print("docker client version = %s" % str(version))
     pinfo(dockerClient)
     # composeClient = client.ClientFromEnv()
     print("\ndc.containers")
@@ -28,5 +32,6 @@ def main():
         for k1, v1 in container1.items():
             print("    k1 = %s" % str(k1))
             print("      v1 = %s" % str(v1))
+    print("docker client version = %s" % str(version))
 
 main()
