@@ -72,6 +72,7 @@ sub do_split
     my $str2 = $str1;
     $str2 =~ tr/@/ /s;
     print "  str2 = $str2\n";
+    print "  str1 = $str1\n";
     my @fields1 = split("@", $str1);
     print "  fields1 = @fields1\n";
     my $len1 = @fields1;
