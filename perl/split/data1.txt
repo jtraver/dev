@@ -1,0 +1,2 @@
+asyncload3\@async/asbench:ref=test-ready
+asyncload3@async/asbench:ref=test-ready
