@@ -1,0 +1,10 @@
+using terms from application "Terminal"
+	tell application "Terminal"
+		activate
+		set tab1 to do script
+		set currentWindow to front window
+		set position of currentWindow to {0, 0}
+		set number of rows of tab1 to 32
+		set number of columns of tab1 to 116
+	end tell
+end using terms from
