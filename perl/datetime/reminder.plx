@@ -242,12 +242,17 @@ sub old_main
 
 sub main
 {
+    my $do_popup = 1;
     while (1)
     {
         my $index = int(rand(@nremind));
         my $reminder = $nremind[$index];
         print "$reminder is amusement\n";
-        sleep(900);
+        if ($do_popup == 1)
+        {
+            system("osascript window.osascript");
+        }
+        sleep(500);
     }
 }
 
