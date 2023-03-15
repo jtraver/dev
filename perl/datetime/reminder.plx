@@ -4,6 +4,9 @@ use diagnostics;
 use warnings;
 use strict;
 
+my $do_popup = 1;
+$do_popup = shift;
+
 my @nremind;
 $nremind[@nremind] = "neutrality";
 $nremind[@nremind] = "amusement";
@@ -242,7 +245,6 @@ sub old_main
 
 sub main
 {
-    my $do_popup = 1;
     while (1)
     {
         my $index = int(rand(@nremind));
