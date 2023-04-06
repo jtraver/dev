@@ -4,6 +4,9 @@ use diagnostics;
 use warnings;
 use strict;
 
+my $do_popup = 1;
+$do_popup = shift;
+
 my @nremind;
 $nremind[@nremind] = "neutrality";
 $nremind[@nremind] = "amusement";
@@ -247,7 +250,11 @@ sub main
         my $index = int(rand(@nremind));
         my $reminder = $nremind[$index];
         print "$reminder is amusement\n";
-        sleep(900);
+        if ($do_popup == 1)
+        {
+            system("osascript window.osascript");
+        }
+        sleep(500);
     }
 }
 
