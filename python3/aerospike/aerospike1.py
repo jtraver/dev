@@ -3,6 +3,9 @@
 
 import apihelper
 import aerospike
+import aerospike_helpers
+import aerospike_helpers.operations
+from aerospike_helpers.operations import operations
 
 
 found = {}
@@ -1278,8 +1281,9 @@ def dir3():
 def do_dir(object):
     attrs = []
     for e in dir(object):
-        if '__' in e:
-            continue
+        print("do_dir: e = %s" % str(e))
+        #if '__' in e:
+        #    continue
         attr = getattr(object, e)
         if type(attr) == int or type(attr) == str or 'NoneType' in str(type(attr)):
             continue
@@ -1289,17 +1293,19 @@ def do_dir(object):
 
 def check(object, name, dict1, status):
     attrs1 = do_dir(object)
+    print("  check: attrs1 = %s" % str(attrs1))
     for e1 in attrs1:
+        print("  check: e1 = %s" % str(e1))
         attr1 = getattr(object, e1)
         if e1 in dict1:
             if 'method' in str(type(attr1)):
-                # print "need a test for %s.%s" % (name, e1)
+                print("need a test for %s.%s" % (name, e1))
                 pass
             else:
                 status = check(attr1, name + "." + e1, dict1[e1], status)
         else:
             print(("need tests for %s.%s" % (name, e1)))
-            # print "  e1 = %s" % dir(e1)
+            print("  e1 = %s" % dir(e1))
             status = False
     return status
 
@@ -1308,6 +1314,15 @@ def main():
     if '__version__' in dir(aerospike):
         print(("Python client version is %s" % aerospike.__version__))
     status = check(aerospike, 'aerospike', elements, True)
+    print("\naerospike_helpers check")
+    status = check(aerospike_helpers, 'aerospike_helpers', elements, True)
+
+    print("\naerospike_helpers.operations check")
+    status = check(aerospike_helpers.operations, 'aerospike_helpers.operations', elements, True)
+
+    print("\noperations check")
+    status = check(operations, 'operations', elements, True)
+
     if status:
         print("tests are good")
     else:
