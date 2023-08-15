@@ -1,0 +1,14 @@
+# duration 5m45.019223s
+build:
+  repo: citrusleaf/aerospike-server
+  ref: master
+  script: enterprise
+  target:
+    - x86-centos-7
+scenarios:
+  std:
+    - xdr2/special/a1b1c1:dc64
+    - xdr2/special/a1b1c1:dc64,sc
+definitions:
+  std:
+    - sanit1@xdr2/64dc_shipping:sanitizer
