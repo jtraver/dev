@@ -12,6 +12,9 @@ $nremind[@nremind] = "neutrality";
 $nremind[@nremind] = "amusement";
 $nremind[@nremind] = "enthusiasm";
 $nremind[@nremind] = "effort";
+$nremind[@nremind] = "Be the Ghost";
+$nremind[@nremind] = "Love is Choice";
+$nremind[@nremind] = "If I'm not at choice I'm not in love";
 
 my @alarms;
 my $alarms = 0;
