@@ -16,6 +16,7 @@ $nremind[@nremind] = "Be the Ghost";
 $nremind[@nremind] = "Love is Choice";
 $nremind[@nremind] = "If I'm not at choice I'm not in love";
 $nremind[@nremind] = "all spiritual practice involves consciously redirecting attention";
+$nremind[@nremind] = "once a spiritual practice becomes habitual, it is no longer a spiritual practice";
 
 my @alarms;
 my $alarms = 0;
