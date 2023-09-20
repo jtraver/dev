@@ -4,8 +4,12 @@ use diagnostics;
 use warnings;
 use strict;
 
-my $do_popup = 1;
+my $do_popup = 0;
 $do_popup = shift;
+if (!defined($do_popup))
+{
+    $do_popup = 0;
+}
 
 my @nremind;
 $nremind[@nremind] = "neutrality";
@@ -254,12 +258,18 @@ sub main
     {
         my $index = int(rand(@nremind));
         my $reminder = $nremind[$index];
-        print "$reminder is amusement\n";
+        my $time = time;
+        # print "time = $time\n";
+        my ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime($time);
+        $year -= 100;
+        $mon++;
+        my $tag = sprintf("%02d%02d%02d%02d%02d%02d", $year, $mon, $mday, $hour, $min, $sec);
+        print "$tag \"$reminder\" is amusement\n";
         if ($do_popup == 1)
         {
             system("osascript window.osascript");
         }
-        sleep(500);
+        sleep(900);
     }
 }
 
