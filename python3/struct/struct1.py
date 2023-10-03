@@ -77,7 +77,7 @@ do_pack('! B 2x B x B I 8x H H', 5, 6, 7, 8, 9, 10)
 do_pack('! I B', 11, 12)
 do_pack('! I B B B', 13, 14, 15, 16)
 do_pack('! I B B B B', 17, 18, 19, 20, 21)
-do_pack('! I B B p', 22, 23, 24, 'string25')
+do_pack('! I B B p', 22, 23, 24, b'string25')
 do_pack('! Q', 26)
 do_pack('! Q B 4x B I 8x H H', 27, 28, 29, 30, 31, 32)
 do_pack('! Q B B B B 12x', 35, 36, 37, 38, 39)
@@ -88,7 +88,7 @@ do_pack('!H', 65)
 do_pack('!I', 66)
 do_pack('!L', 67)
 do_pack('!Q', 68)
-do_pack('4sl', 'st69', 8)
+do_pack('4sl', b'st69', 8)
 do_pack('=2Q', 70, 77)
 do_pack('=3Q', 71, 78, 79)
 do_pack('>II', 72, 80)
@@ -125,3 +125,169 @@ if v1 == v2:
     print("v1 is correct")
 else:
     print("v1 is not correct")
+
+
+
+STRUCT_PROTO = struct.Struct('! Q')
+STRUCT_UINT8 = struct.Struct('! B')
+STRUCT_UINT16 = struct.Struct('! H') 
+STRUCT_UINT32 = struct.Struct('! I') 
+STRUCT_UINT64 = struct.Struct('! Q')
+STRUCT_INT8 = struct.Struct('! b')
+STRUCT_INT16 = struct.Struct('! h') 
+STRUCT_INT32 = struct.Struct('! i')
+STRUCT_INT64 = struct.Struct('! q')
+STRUCT_FLOAT = struct.Struct('! f')
+STRUCT_DOUBLE = struct.Struct('! d')
+STRUCT_HEADER = struct.Struct('! Q B B B B B B I I I H H')
+STRUCT_OP = struct.Struct("! I B B B B")
+STRUCT_FIELD = struct.Struct("! I B")
+STRUCT_STRING_FMT = "! %ds"
+
+# float 1.1
+v2 = 1.1        # floats are doubles in python -> this will lose precision since only 4 bytes are used
+# v1 = do_pack(STRUCT_FLOAT, v2)
+v1 = do_pack('! f', v2)
+print("v1 = %s" % str(v1))
+# print("v1 = 0x%x" % v1)
+print("v1 = %s" % str(type(v1)))
+print("v2 = %s" % str(v2))
+# print("v2 = 0x%x" % v2)
+print("v2 = %s" % str(type(v2)))
+if v1 == v2:
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+if str(v1) == str(v2):
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+ba1 = bytearray(struct.pack("f", v1))
+print([ "0x%02x" % b for b in ba1 ])
+ba2 = bytearray(struct.pack("f", v2))
+print([ "0x%02x" % b for b in ba2 ])
+len1 = len(ba1)
+len2 = len(ba2)
+if len1 == len2:
+    print("lengths are the same")
+else:
+    print("lengths are not the same")
+    print("len1 = %s" % str(len1))
+    print("len2 = %s" % str(len2))
+if ba1 == ba2:
+    print("byte arrays are the same")
+else:
+    print("byte arrays are not the same")
+    print("ba1 = %s" % str(ba1))
+    print("ba2 = %s" % str(ba2))
+
+# double 1.1
+v2 = 1.1
+# STRUCT_DOUBLE = struct.Struct('! d')
+v1 = do_pack('! d', v2)
+print("v1 = %s" % str(v1))
+# print("v1 = 0x%x" % v1)
+print("v1 = %s" % str(type(v1)))
+print("v2 = %s" % str(v2))
+# print("v2 = 0x%x" % v2)
+print("v2 = %s" % str(type(v2)))
+if v1 == v2:
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+if str(v1) == str(v2):
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+ba1 = bytearray(struct.pack("d", v1))
+print([ "0x%02x" % b for b in ba1 ])
+ba2 = bytearray(struct.pack("d", v2))
+print([ "0x%02x" % b for b in ba2 ])
+len1 = len(ba1)
+len2 = len(ba2)
+if len1 == len2:
+    print("lengths are the same")
+else:
+    print("lengths are not the same")
+    print("len1 = %s" % str(len1))
+    print("len2 = %s" % str(len2))
+if ba1 == ba2:
+    print("byte arrays are the same")
+else:
+    print("byte arrays are not the same")
+    print("ba1 = %s" % str(ba1))
+    print("ba2 = %s" % str(ba2))
+
+# double 3.2999
+v2 = 3.2999
+# STRUCT_DOUBLE = struct.Struct('! d')
+v1 = do_pack('! d', v2)
+print("v1 = %s" % str(v1))
+# print("v1 = 0x%x" % v1)
+print("v1 = %s" % str(type(v1)))
+print("v2 = %s" % str(v2))
+# print("v2 = 0x%x" % v2)
+print("v2 = %s" % str(type(v2)))
+if v1 == v2:
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+if str(v1) == str(v2):
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+ba1 = bytearray(struct.pack("d", v1))
+print([ "0x%02x" % b for b in ba1 ])
+ba2 = bytearray(struct.pack("d", v2))
+print([ "0x%02x" % b for b in ba2 ])
+len1 = len(ba1)
+len2 = len(ba2)
+if len1 == len2:
+    print("lengths are the same")
+else:
+    print("lengths are not the same")
+    print("len1 = %s" % str(len1))
+    print("len2 = %s" % str(len2))
+if ba1 == ba2:
+    print("byte arrays are the same")
+else:
+    print("byte arrays are not the same")
+    print("ba1 = %s" % str(ba1))
+    print("ba2 = %s" % str(ba2))
+
+# double 3.3001
+v2 = 3.3001
+# STRUCT_DOUBLE = struct.Struct('! d')
+v1 = do_pack('! d', v2)
+print("v1 = %s" % str(v1))
+# print("v1 = 0x%x" % v1)
+print("v1 = %s" % str(type(v1)))
+print("v2 = %s" % str(v2))
+# print("v2 = 0x%x" % v2)
+print("v2 = %s" % str(type(v2)))
+if v1 == v2:
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+if str(v1) == str(v2):
+    print("v1 is correct")
+else:
+    print("v1 is not correct")
+ba1 = bytearray(struct.pack("d", v1))
+print([ "0x%02x" % b for b in ba1 ])
+ba2 = bytearray(struct.pack("d", v2))
+print([ "0x%02x" % b for b in ba2 ])
+len1 = len(ba1)
+len2 = len(ba2)
+if len1 == len2:
+    print("lengths are the same")
+else:
+    print("lengths are not the same")
+    print("len1 = %s" % str(len1))
+    print("len2 = %s" % str(len2))
+if ba1 == ba2:
+    print("byte arrays are the same")
+else:
+    print("byte arrays are not the same")
+    print("ba1 = %s" % str(ba1))
+    print("ba2 = %s" % str(ba2))
