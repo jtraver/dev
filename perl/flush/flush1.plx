@@ -10,6 +10,9 @@ my %files;
 my %inodes;
 my %links;
 
+# Causes the currently selected handle to be flushed after every print.
+# $| = 1;
+
 # https://stackoverflow.com/questions/33812618/can-you-force-flush-output-in-perl
 
 sub main
