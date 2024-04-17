@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-loopSCRIPT_NAME=grep.sh
+loopSCRIPT_NAME=string_cmp1.bash
 
 loopSTARTTIME=$(date +%s)
 loopDATE=`date +%y%m%d%H%M%S`
@@ -14,7 +14,7 @@ loop_limit=`echo  $FILES | wc | awk -F' ' '{print $2; exit;}'`
 
 echo $feo_tcount files
 
-echo "test" >> tmp.tmp
+echo "test" > tmp.tmp
 
 FOUND=FOUND
 notFOUND=notFOUND
@@ -32,15 +32,85 @@ else
     aRC1=notFOUND
 fi
 
+
+
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
-if (( $aRC1 == $FOUND )) ; then
-    echo 2aRC1 found test in tmp.tmp
+if (( aRC1 == "FOUND" )) ; then
+    echo 1 PASS 2aRC1 found test in tmp.tmp
 else
-    echo 2aRC1 did not find test in tmp.tmp
+    echo 1 FAIL 2aRC1 did not find test in tmp.tmp
 fi
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if (( aRC1 == "notFOUND" )) ; then
+    echo 2 FAIL 2aRC1 found test in tmp.tmp
+else
+    echo 2 PASS 2aRC1 did not find test in tmp.tmp
+fi
+
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if (( aRC1 != "FOUND" )) ; then
+    echo 1 FAIL 2aRC1 found test in tmp.tmp
+else
+    echo 1 PASS 2aRC1 did not find test in tmp.tmp
+fi
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if (( aRC1 != "notFOUND" )) ; then
+    echo 2 PASS 2aRC1 found test in tmp.tmp
+else
+    echo 2 FAIL 2aRC1 did not find test in tmp.tmp
+fi
+
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if [[ $aRC1 == $FOUND ]] ; then
+    echo 3 PASS 2aRC1 found test in tmp.tmp
+else
+    echo 3 FAIL 2aRC1 did not find test in tmp.tmp
+fi
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if [[ $aRC1 == $notFOUND ]] ; then
+    echo 4 FAIL 2aRC1 found test in tmp.tmp
+else
+    echo 4 PASS 2aRC1 did not find test in tmp.tmp
+fi
+
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if [[ $aRC1 != $FOUND ]] ; then
+    echo 3 FAIL 2aRC1 found test in tmp.tmp
+else
+    echo 3 PASS 2aRC1 did not find test in tmp.tmp
+fi
+echo
+echo "---------------------------------------------------------------------------------"
+echo 2 RC1 $RC1
+echo 2 aRC1 $aRC1
+if [[ $aRC1 != $notFOUND ]] ; then
+    echo 4 PASS 2aRC1 found test in tmp.tmp
+else
+    echo 4 FAIL 2aRC1 did not find test in tmp.tmp
+fi
+
+
 
 echo
 echo "---------------------------------------------------------------------------------"
