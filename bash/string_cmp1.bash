@@ -39,18 +39,18 @@ echo "--------------------------------------------------------------------------
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if (( aRC1 == "FOUND" )) ; then
-    echo 1 PASS 2aRC1 found test in tmp.tmp
+    echo 1 1 PASS 2aRC1 found test in tmp.tmp
 else
-    echo 1 FAIL 2aRC1 did not find test in tmp.tmp
+    echo 1 1 FAIL 2aRC1 did not find test in tmp.tmp
 fi
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if (( aRC1 == "notFOUND" )) ; then
-    echo 2 FAIL 2aRC1 found test in tmp.tmp
+    echo 2 2 FAIL 2aRC1 found test in tmp.tmp
 else
-    echo 2 PASS 2aRC1 did not find test in tmp.tmp
+    echo 2 2 PASS 2aRC1 did not find test in tmp.tmp
 fi
 
 echo
@@ -58,18 +58,18 @@ echo "--------------------------------------------------------------------------
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if (( aRC1 != "FOUND" )) ; then
-    echo 1 FAIL 2aRC1 found test in tmp.tmp
+    echo 1 3 FAIL 2aRC1 found test in tmp.tmp
 else
-    echo 1 PASS 2aRC1 did not find test in tmp.tmp
+    echo 1 3 PASS 2aRC1 did not find test in tmp.tmp
 fi
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if (( aRC1 != "notFOUND" )) ; then
-    echo 2 PASS 2aRC1 found test in tmp.tmp
+    echo 2 4 PASS 2aRC1 found test in tmp.tmp
 else
-    echo 2 FAIL 2aRC1 did not find test in tmp.tmp
+    echo 2 4 FAIL 2aRC1 did not find test in tmp.tmp
 fi
 
 echo
@@ -77,37 +77,37 @@ echo "--------------------------------------------------------------------------
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if [[ $aRC1 == $FOUND ]] ; then
-    echo 3 PASS 2aRC1 found test in tmp.tmp
+    echo 3 5 PASS 2aRC1 found test in tmp.tmp
 else
-    echo 3 FAIL 2aRC1 did not find test in tmp.tmp
+    echo 3 5 FAIL 2aRC1 did not find test in tmp.tmp
 fi
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
 if [[ $aRC1 == $notFOUND ]] ; then
-    echo 4 FAIL 2aRC1 found test in tmp.tmp
+    echo 4 6 FAIL 2aRC1 found test in tmp.tmp
 else
-    echo 4 PASS 2aRC1 did not find test in tmp.tmp
+    echo 4 6 PASS 2aRC1 did not find test in tmp.tmp
 fi
 
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
-if [[ $aRC1 != $FOUND ]] ; then
-    echo 3 FAIL 2aRC1 found test in tmp.tmp
+if [[ $aRC1 != "FOUND" ]] ; then
+    echo 3 7 FAIL 2aRC1 found test in tmp.tmp
 else
-    echo 3 PASS 2aRC1 did not find test in tmp.tmp
+    echo 3 7 PASS 2aRC1 did not find test in tmp.tmp
 fi
 echo
 echo "---------------------------------------------------------------------------------"
 echo 2 RC1 $RC1
 echo 2 aRC1 $aRC1
-if [[ $aRC1 != $notFOUND ]] ; then
-    echo 4 PASS 2aRC1 found test in tmp.tmp
+if [[ $aRC1 != "notFOUND" ]] ; then
+    echo 4 8 PASS 2aRC1 found test in tmp.tmp
 else
-    echo 4 FAIL 2aRC1 did not find test in tmp.tmp
+    echo 4 8 FAIL 2aRC1 did not find test in tmp.tmp
 fi
 
 
