@@ -21,6 +21,14 @@ def n_bit_integer(n_bits):
         max *= 2
     return next(integer(min, max))
 
+def n_byte_integer(n_bytes):
+    min = 0
+    max = 256
+    for _ in range(1, n_bytes):
+        min = max
+        max *= 256
+    return next(integer(min, max))
+
 def random_size_integer():
     which1 = next(integer(0, 2))
     if which1 == 0:
@@ -32,46 +40,51 @@ def random_size_integer():
 
 # int.bit_length(0) == 0 -> is this a bug?
 def main():
-
-    for _ in range(100):
+    sizes1 = {}
+    for ix1 in range(1000):
         ri1 = random_size_integer()
-        print("ri1 = %s" % str(ri1))
-
+        # print("ri1 = %s" % str(ri1))
+        l1 = int.bit_length(ri1)
+        if l1 in sizes1:
+            ti1 = sizes1[l1]
+            # print("%s already saw size l1 = %s with ri1 = %s, ti1 = %s " % (str(ix1), str(l1), str(ri1), str(ti1)))
+        sizes1[l1] = ri1
+        if len(sizes1) == 100:
+            print("breaking at ix1 = %s" % str(ix1))
+            break
+    for size1 in sorted(sizes1.keys()):
+        ri1 = sizes1[size1]
+        print("size1 = %s, ri1 = %s" % (str(size1), str(ri1)))
     for n_bits in range(1, 100):
         i1 = n_bit_integer(n_bits)
         l1 = int.bit_length(i1)
         if l1 != n_bits and i1 != 0:
             print("l1 = %s, i1 = %s" % (str(l1), str(i1)))
-
     n_bits = 1
     i1 = n_bit_integer(n_bits)
     l1 = int.bit_length(i1)
     if l1 != n_bits and i1 != 0:
         print("l1 = %s, i1 = %s" % (str(l1), str(i1)))
-
     n_bits = 2
     i2 = n_bit_integer(n_bits)
     l2 = int.bit_length(i2)
     if l2 != n_bits and i2 != 0:
         print("l2 = %s, i2 = %s" % (str(l2), str(i2)))
-
     n_bits = 3
     i3 = n_bit_integer(n_bits)
     l3 = int.bit_length(i3)
     if l3 != n_bits and i3 != 0:
         print("l3 = %s, i3 = %s" % (str(l3), str(i3)))
-
-
+    n_bits = 1
     i1 = one_bit()
     l1 = int.bit_length(i1)
-    if l1 != i1 and i1 != 0:
+    if l1 != n_bits and i1 != 0:
         print("l1 = %s, i1 = %s" % (str(l1), str(i1)))
-
+    n_bits = 2
     i2 = two_bit()
     l2 = int.bit_length(i2)
-    if l2 != i2 and i2 != 0:
+    if l2 != n_bits and i2 != 0:
         print("l2 = %s, i2 = %s" % (str(l2), str(i2)))
-
     n_bytes = 1
     min_bits = 0
     n_bits = n_bytes * 8
@@ -79,7 +92,6 @@ def main():
     l1 = int.bit_length(in1)
     if l1 > n_bits or l1 < min_bits:
         print("n_bytes = %s, n_bits = %s, l1 = %s, in1 = %s" % (str(n_bytes), str(n_bits), str(l1), str(in1)))
-
     n_bytes = 2
     min_bits = n_bits + 1
     n_bits = n_bytes * 8
@@ -87,7 +99,6 @@ def main():
     l1 = int.bit_length(in1)
     if l1 > n_bits or l1 < min_bits:
         print("n_bytes = %s, n_bits = %s, l1 = %s, in1 = %s" % (str(n_bytes), str(n_bits), str(l1), str(in1)))
-
     for ix1 in range(100):
         min_bits = 0
         for n_bytes in range(1, 10):
@@ -97,58 +108,47 @@ def main():
             if l1 > n_bits or l1 < min_bits:
                 print("n_bytes = %s, n_bits = %s, l1 = %s, in1 = %s" % (str(n_bytes), str(n_bits), str(l1), str(in1)))
             min_bits = n_bits + 1
-
     for ix1 in range(100):
         i1 = one_byte()
         l1 = int.bit_length(i1)
         if l1 > 8 or l1 < 0:
             print("l1 = %s, i1 = %s" % (str(l1), str(i1)))
-
         i2 = two_bytes()
         l2 = int.bit_length(i2)
         if l2 > 16 or i2 < 9:
             print("l2 = %s, i2 = %s" % (str(l2), str(i2)))
-
         i3 = three_bytes()
         l3 = int.bit_length(i3)
         if l3 > 24 or i3 < 17:
             print("l3 = %s, i3 = %s" % (str(l3), str(i3)))
-
         i4 = four_bytes()
         l4 = int.bit_length(i4)
         if l4 > 32 or i4 < 25:
             print("l4 = %s, i4 = %s" % (str(l4), str(i4)))
-
         i5 = five_bytes()
         l5 = int.bit_length(i5)
         if l5 > 40 or l5 < 33:
             print("l5 = %s, i5 = %s" % (str(l5), str(i5)))
-
         i6 = six_bytes()
         l6 = int.bit_length(i6)
         if l6 > 48 or l6 < 41:
             print("l6 = %s, i6 = %s" % (str(l6), str(i6)))
-
         i7 = seven_bytes()
         l7 = int.bit_length(i7)
         if l7 > 56 or l7 < 49:
             print("l7 = %s, i7 = %s" % (str(l7), str(i7)))
-
         i8 = eight_bytes()
         l8 = int.bit_length(i8)
         if l8 > 64 or l8 < 57:
             print("l8 = %s, i8 = %s" % (str(l8), str(i8)))
-
         i9 = nine_bytes()
         l9 = int.bit_length(i9)
         if l9 > 72 or l9 < 65:
             print("l9 = %s, i9 = %s" % (str(l9), str(i9)))
-
         i10 = ten_bytes()
         l10 = int.bit_length(i10)
         if l10 > 80 or l10 < 73:
             print("l10 = %s, i10 = %s" % (str(l10), str(i10)))
-
     byte = 256
     for x1 in range(1, 10):
         print("x1 = %s, byte = %s" % (str(x1), str(byte)))
@@ -163,14 +163,6 @@ def main():
 # x1 = 7, byte = 72057594037927936
 # x1 = 8, byte = 18446744073709551616
 # x1 = 9, byte = 4722366482869645213696
-
-def n_byte_integer(n_bytes):
-    min = 0
-    max = 256
-    for _ in range(1, n_bytes):
-        min = max
-        max *= 256
-    return next(integer(min, max))
 
 def one_byte():
     return next(integer(0, 256))
