@@ -26,7 +26,7 @@ sub find_pngs
     my $tag = makeDateTag();
     my $dir = "png$tag";
     mkdir $dir;
-    my $glob = "../*.png ../*.PNG";
+    my $glob = "../*.png ../*.PNG ../../Desktop/*.png";
     my @glob = glob($glob);
     my $count = 0;
     foreach my $filename (@glob)
