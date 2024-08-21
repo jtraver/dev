@@ -27,6 +27,7 @@ sub read_by_line
     {
         print $_;
     }
+    close(FH)
 }
 
 main();
