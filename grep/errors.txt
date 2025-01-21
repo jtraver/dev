@@ -1,0 +1,11 @@
+CLUSTER INTEGRITY FAULT
+CRITICAL 
+ERROR
+Error
+FAIL
+Fail
+Fault
+SEG
+WARN
+call stack
+stacktrace

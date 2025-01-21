@@ -1,0 +1,583 @@
+critical (alloc): (alloc.c:.*) bad free of 0x.* via 0x.* (vs. 0x.*)
+critical (alloc): (alloc.c:.*) corruption .* ra 0x.* potential double free, possibly freed before with ra 0x
+critical (arenax): (arenax.c:.*) failed to add first stage
+critical (as): (as.c:.*) lua user directory .* is not set up properly: no such file or directory
+critical (config): (cfg.c:.*) failed to set up fabric tls
+critical (config): (cfg.c:.*) failed to set up heartbeat tls
+critical (config): (cfg.c:.*) failed to set up service tls
+critical (config): (cfg_ee.c:.* missing or invalid sindex mount point
+critical (config): (cfg_ee.c:.*) no valid feature key found
+critical (config): (features_ee.c:.*) failed to get feature key
+critical (config): (features_ee.c:.*) feature key /etc/aerospike/features.conf expired (date)
+critical (config): (features_ee.c:.*) invalid value .* for feature feature-key-version in .* line
+critical (config): (features_ee.c:.*) trailing garbage in env-b64:features_doskey, line
+critical (config): (tls_ee.c:.*) failed to load tls spec
+critical (drv-mem): (drv_mem.c:.*) hit stop-writes limit before drive scan completed
+critical (drv-mem): (drv_mem_ee.c:.*) bad void-time
+critical (drv_pmem): (drv_pmem_ee.c:.*) .* load bins failed
+critical (drv_pmem): (drv_pmem_ee.c:.*) unable to map file .* 28 (no space left on device)
+critical (drv_pmem): (drv_pmem_ee.c:.*) .* unpack bins failed
+critical (drv_ssd): (drv_ssd.c:.*) .* can't change write-block-size from .* to
+critical (drv_ssd): (drv_ssd.c:.*) /var/lib/aerospike/test.dat: device failed write: errno 28 (no space left on device)
+critical (drv_ssd): (drv_ssd_ee.c:.*) bad void-time
+critical (partition): (partition_balance_ee.c:.* pid .* has .* masters
+critical (sindex): (sindex_arena_ee.c:.*) could not allocate .* sindex arena stage .* no space left on device
+critical (storage): (drv_common_ee.c:.* can't get encryption key from
+critical (vault): (vault_ee.c:.*) can't read vault token
+critical (vault): (vault_ee.c:.*) failed to read vault token
+critical (xdr): (dc.c:.*) dc .* has invalid authentication config
+debug (query): .* query .* error at base
+debug (socket): (socket.c:.*) error while receiving on fd .* 9 (bad file descriptor)
+info (info): (thr_info.c:.*) jat: warning test custom scan in cdt/test_map_keys.test_distro
+warning (arenax): (arenax_ee.c:.*) could not allocate .*-byte arena stage .* no space left on device
+warning (arenax): (arenax_ee.c:.*) could not allocate .*byte arena stage .* structure needs cleaning
+warning (as): (as.c:.*) failed clean shutdown - exiting
+warning (as): (log.c:.*) stacktrace: found .* frames: 0x
+warning (as): (log.c:.*) stacktrace: frame
+warning (as): (log.c:.*) stacktrace: registers: fault .* x0 .* x1 .* x2 .* x3 .* x4 .* x5 .* x6 .* x7 .* x8 .* x9 .* x10 .* x11 .* x12 .* x13 .* x14 .* x15 .* x16 .* x17 .* x18 .* x19 .* x20 .* x21 .* x22 .* x23 .* x24 .* x25 .* x26 .* x27 .* x28 .* x29 .* x30 .* x31 .* pc
+warning (as): (log.c:.*) stacktrace: registers: rax .* rbx .* rcx .* rdx .* rsi .* rdi .* rbp .* rsp .* r8 .* r9 .* r10 .* r11 .* r12 .* r13 .* r14 .* r15 .* rip
+warning (as): (signal.c:.*) si_code segv_maperr .*) si_addr 0x
+warning (as): (signal.c:.*) si_code si_kernel .*) si_addr 0x
+warning (as): (signal.c:.*) si_code si_tkill
+warning (as): (signal.c:.*) sigint received, aborting aerospike .* edition build .* os .* arch .* sha .* ee-sha
+warning (as): (signal.c:.*) sigint received, shutting down aerospike .* edition build .* os
+warning (as): (signal.c:.*) sigsegv received, aborting aerospike .* edition build .* os .* arch .* sha .* ee-sha
+warning (as): (signal.c:.*) sigusr1 received, aborting aerospike .* edition build .* os
+warning (as): (signal.c:.*) sigusr1 received, aborting aerospike .* edition build .* os .* arch .* sha .* ee-sha
+warning (as): (signal.c:.*) stacktrace: found .* frames: .* offset
+warning (as): (signal.c:.*) stacktrace: frame
+warning (as): (signal.c:.*) stacktrace: memory r10 0x.*
+warning (as): (signal.c:.*) stacktrace: memory r12 0x
+warning (as): (signal.c:.*) stacktrace: memory r13 0x
+warning (as): (signal.c:.*) stacktrace: memory r14 0x
+warning (as): (signal.c:.*) stacktrace: memory r15 0x
+warning (as): (signal.c:.*) stacktrace: memory r8 0x
+warning (as): (signal.c:.*) stacktrace: memory r9 0x
+warning (as): (signal.c:.*) stacktrace: memory rbp 0x
+warning (as): (signal.c:.*) stacktrace: memory rbx 0x
+warning (as): (signal.c:.*) stacktrace: memory rcx 0x
+warning (as): (signal.c:.*) stacktrace: memory rdi 0x
+warning (as): (signal.c:.*) stacktrace: memory rdx 0x.*
+warning (as): (signal.c:.*) stacktrace: memory rsi 0x
+warning (as): (signal.c:.*) stacktrace: memory rsp 0x
+warning (as): (signal.c:.*) stacktrace: memory x
+warning (as): (signal.c:.*) stacktrace: registers: fault .* x0 .* x1 .* x2 .* x3 .* x4 .* x5 .* x6 .* x7 .* x8 .* x9 .* x10 .* x11 .* x12 .* x13 .* x14 .* x15 .* x16 .* x17 .* x18 .* x19 .* x20 .* x21 .* x22 .* x23 .* x24 .* x25 .* x26 .* x27 .* x28 .* x29 .* x30 .* x31 .* pc
+warning (as): (signal.c:.*) stacktrace: registers: rax .* rbx .* rcx .* rdx .* rsi .* rdi .* rbp .* rsp .* r8 .* r9 .* r10 .* r11 .* r12 .* r13 .* r14 .* r15 .* rip
+warning (as): (signal.c:.*) startup was not complete, exiting immediately
+warning (batch): (batch.c:.*) abandoned batch from .* with .* transactions after .* ms
+warning (batch): (batch.c:.*) batch request size .* exceeds max 1000
+warning (batch): .* batch-index-threads has been disabled: 0
+warning (batch): .* failed to build batch predexp
+warning (batch): .* failed to find active batch queue that is not full
+warning (clustering): .* all cluster members are part of different cluster - changing state to orphan
+warning (clustering): (clustering.c:.*) duplicate node-id - changing state to orphan
+warning (clustering): (clustering.c:.*) duplicate node-id - remain orphan
+warning (clustering): (clustering.c:.*) ignoring paxos promise from node .* it is not in acceptor list
+warning (clustering): .* clustering stopped - ignoring message from node
+warning (clustering): .* cluster size .* less than required minimum size .* switching to orphan state
+warning (clustering): .* evicted from cluster by principal node .* changing state to orphan
+warning (clustering): .* ignoring paxos accepted from node .* - it is not in acceptor list
+warning (clustering): .* older paxos round still running - should have finished by now
+warning (clustering): .* paxos round aborted - new cluster size .* less than min cluster size
+warning (config): .* cluster name '' is not allowed. ignoring.
+warning (config): .* failed best-practices checks - see
+warning (config): .* failed memory-size check - 'memory-size' for all namespaces .* exceeds system ram
+warning (config): (features_ee.c:.*) feature key /etc/aerospike/features.conf expired (date)
+warning (config): (features_ee.c:.*) feature key secrets:featurekey:feature-key-file expired (date)
+warning (config): (features_ee.c:.*) feature key secrets:feature_key_file:feature_key_file expired (date)
+warning (config): (features_ee.c:.*) feature key secrets:featurekeyres:key expired (date)
+warning (drv-mem): (drv_mem.c:.*) bad flat record
+warning (drv-mem): (drv_mem.c:.*) bad metadata for
+warning (drv-mem): (drv_mem.c:.*) bad void-time for
+warning (drv-mem): (drv_mem.c:.*) .* out of space
+warning (drv-mem): (drv_mem.c:.*) stripe-0.0x.* found used wblock after skipping .* unused
+warning (drv-mem): (drv_mem.c:.*) stripe.* bad record size
+warning (drv-mem): (drv_mem_ee.c.* found stripe but not storage-engine memory
+warning (drv-mem): (drv_mem_ee.c:.*) stripe.* bad record size
+warning (drv_pmem): (drv_pmem_ee.c:.*) .* bad record size
+warning (drv_pmem): (drv_pmem_ee.c:.*) device .* defrag: rblock_id .* generation mismatch
+warning (drv_pmem): (drv_pmem_ee.c:.* failed pmem_read_record()
+warning (drv_pmem): (drv_pmem_ee.c:.* out of space
+warning (drv_pmem): (drv_pmem_ee.c:.* read .* digest .* bad generation .* expecting
+warning (drv_pmem): (drv_pmem_ee.c:.* read .* digest .* bad lut .* expecting
+warning (drv_ssd): .* bad end marker for
+warning (drv_ssd): .* deleted .* records on wiped and/or missing devices
+warning (drv_ssd): (drv_ssd.c:.*) bad compressed data for
+warning (drv_ssd): (drv_ssd.c:.*) bad flat record
+warning (drv_ssd): (drv_ssd.c:.*) bad metadata for
+warning (drv_ssd): (drv_ssd.c:.*) bad void-time for
+warning (drv_ssd): (drv_ssd.c:.* no magic at beginning of used wblock
+warning (drv_ssd): (drv_ssd.c.* read .* digest .* bad bin data
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* bad lut .* expecting
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* bad magic 0x0 offset
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* bad n-rblocks 0 expecting
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* bad tree-id 0 expecting
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* but found flat digest
+warning (drv_ssd): (drv_ssd.c:.* read .* digest .* failed read directly from device
+warning (drv_ssd): (drv_ssd.c:.*) /var/lib/aerospike/test.dat: found used wblock after skipping .* unused
+warning (drv_ssd): (drv_ssd.c:.* write fail: queue too deep: exceeds max
+warning (drv_ssd): (drv_ssd_ee.c:.*) .* bad record size
+warning (drv_ssd): .* replica write fail: queue too deep: exceeds max 256
+warning (drv_ssd): .* write fail: queue too deep: exceeds max 64
+warning (drv_ssd): .* write fail: queue too deep: exceeds max 8
+warning (exchange): .* blocking client transactions in orphan state
+warning (exchange): .* error sending commit message
+warning (exchange): .* error sending data ack message
+warning (exchange): .* error sending exchange data
+warning (exchange): .* error sending ready to commit message
+warning (exchange): (exchange.c:.* has unmatched active-racks
+warning (exp): .* build_count_sz - invalid 'let' op at offset .* ele_count
+warning (exp): .* check_filter_exp - filters must return type 17 (bool) found
+warning (exp): (exp.c:.*) build_call - error 4 invalid msgpack list
+warning (exp): (exp.c:.*) build_compare - error 4 cannot compare arg type 5 (map)
+warning (exp): (exp.c:.*) build_compare - error 4 cannot compare arg type 8 (geojson)
+warning (exp): (exp.c:.*) build_compare - error 4 cannot compare arg type 9 (hll)
+warning (exp): (exp.c:.*) build_compare - error 4 mismatched arg types ltype 3 (str) rtype 0 (invalid)
+warning (exp): (exp.c:.*) build_compare - error 4 mismatched arg types ltype .* rtype
+warning (exp): (exp.c:.*) build_math - error 4 invalid type 0 (invalid) at arg
+warning (exp): (exp.c:.*) build_math - error 4 invalid type .* at arg
+warning (exp): (exp.c:.*) build_math - error 4 mixed types at arg
+warning (exp): (exp.c:.*) eval_div - integer division by zero
+warning (fabric): (fabric.c:.*) fabric_connection_process_readable() recv_sz .* msg_sz .* remote 0x.* errno .* connection timed out
+warning (fabric): (fabric.c:.*) fabric_connection_process_readable() recv_sz .* msg_sz .* remote 0x.* errno .* operation not permitted
+warning (fabric): (fabric.c:.*) fabric_connection_process_readable() recv_sz .* msg_sz .* remote 0x.* errno .* transport endpoint is not connected
+warning (fabric): (fabric.c:.*) fabric tls client handshake with .* failed
+warning (fabric): (fabric.c:.*) fabric tls server handshake with .* failed
+warning (fabric): .* fabric_connection_process_readable() recv_sz .* msg_sz .* errno .* connection reset by peer
+warning (fabric): .* fabric_connection_process_readable() recv_sz .* msg_sz .* remote .* errno 104 connection reset by peer
+warning (flat): (flat.c:.*) bad flat bin name
+warning (flat): (flat.c:.*) bad key size
+warning (flat): (flat.c:.*) bad n-bins 0
+warning (flat): (flat.c:.*) bad set name len
+warning (flat): (flat.c:.*) extra rblocks follow flat record
+warning (flat): (flat.c:.*) generation 0
+warning (flat): (flat.c:.*) incomplete flat bin
+warning (flat): (flat.c:.*) incomplete flat record
+warning (flat): (flat.c:.*) n_rblocks mismatch
+warning (flat): (flat.c:.*) unsupported extra storage fields
+warning (geo): .* failed to parse point: invalid latitude-longitude
+warning (hardware): (hardware.c:.*) mount point .* is not a directory
+warning (hb): .* could not create heartbeat connection to node
+warning (hb): .* error sending info reply message to node
+warning (hb): .* error sending info request message to node
+warning (hb): .* found a socket .* without an associated channel
+warning (hb): (hb.c:.*) duplicate node-id: .* with fabric endpoints
+warning (hb): (hb.c:.*) heartbeat tls client handshake failed
+warning (hb): (hb.c:.*) heartbeat tls server handshake with .* failed
+warning (hb): (hb.c:.* ignoring message from .* with different cluster name
+warning (hb): (hb.c:.*) node expired .* potentially duplicate node-id
+warning (hb): (hb.c:.*) node: .* fabric endpoints changed from .* to .* possible duplicate node-id
+warning (hb): (hb.c:.* sending mesh message to .* on fd .* failed : operation not permitted
+warning (hb): .* ignoring delayed heartbeat - expected timestamp less than .* but was .* from node
+warning (hb): .* mesh size recv failed fd .* transport endpoint is not connected
+warning (hb): .* multicast message send failed on fd .* bad file descriptor
+warning (hb): .* sending mesh message to .* on fd .* failed : broken pipe
+warning (hb): .* sending mesh message to .* on fd .* failed : connection reset by peer
+warning (hb): .* sending mesh message to .* on fd .* failed : transport endpoint is not connected
+warning (health): (health.c:.*) outlier .* confidence-pct .* reason fabric_connections_opened
+warning (health): (health.c:.*) outlier .* confidence-pct .* reason node_arrivals
+warning (health): (health.c:.*) outlier .* confidence-pct .* reason proxies
+warning (health): (health.c:.*) outlier .* namespace .* confidence-pct .* reason replication_latency
+warning (info): (cfg_info.c:.*) max-record-size can't be bigger than write-block-size
+warning (info): (cfg_info.c:.*) max-record-size must be between 64 (bytes) and 8m
+warning (info): (cfg_info.c:.*) ns .* can't set flush-size if storage-engine memory with no backing
+warning (info): (cfg_info.c:.*) ns .* can't set post-write-cache if not storage-engine device
+warning (info): (cfg_info.c:.*) ns .* can't set post-write-queue if not storage-engine device
+warning (info): .* failed to get statistics for index .* err
+warning (info): .* failed to get statistics for index .* not found
+warning (info): .* found 1 sindexes with the same index name
+warning (info): .* sindex-create .* already at sindex definition limit
+warning (info): .* sindex create : failed. index name longer than allowed 255.
+warning (info): .* sindex create  : failed. invalid indexdata
+warning (info): .* sindex create .* : failed. invalid indexdata
+warning (info): .* sindex create .* : failed. invalid indextype
+warning (info): .* sindex create .* : failed. missing bin name.
+warning (info): .* sindex create .* : failed. missing bin type
+warning (info): .* sindex create : failed. missing index name.
+warning (info): .* sindex create  : failed. missing namespace
+warning (info): .* sindex create .* : failed. missing namespace
+warning (info): .* sindex create .* : failed. namespace .* not found
+warning (info): .* sindex create: index already exists on namespace .* either with same name .* or same bin .* type .* combination
+warning (info): .* sindex create: index already exists on namespace .* either with same name .* or same bin .* type .* combination.
+warning (info): .* sindex-create index: bad
+warning (info): .* sindex-create index: 'indexdata' missing bin name
+warning (info): .* sindex-create index: 'indexdata' missing bin type
+warning (info): .* sindex create index: invalid index type
+warning (info): .* sindex create index: invalid number of fields in indexdata
+warning (info): .* sindex-create index: missing
+warning (info): .* sindex create index: missing indexdata
+warning (info): .* sindex create index: missing namespace name
+warning (info): .* sindex-create .* 'indexname' already exists with different definition
+warning (info): .* sindex create: indexname longer than allowed
+warning (info): .* sindex-create: 'indexname' too long
+warning (info): .* sindex-create index: zero-length
+warning (info): .* sindex create index: zero-length setname
+warning (info): .* sindex create: missing indexname
+warning (info): .* sindex-create: missing 'indexname'
+warning (info): .* sindex create : more than 256 index are not allowed per namespace.
+warning (info): .* sindex create: more than .* indexes are not allowed per namespace
+warning (info): .* sindex create .* namespace .* not found
+warning (info): .* sindex create: timeout while creating .* in smd
+warning (info): .* sindex-create: timeout while creating .* in smd
+warning (info): .* sindex-delete: timeout while dropping .* in smd
+warning (info): .* sindex drop: index .* does not exist
+warning (info): .* sindex drop : index .* does not exist on the system
+warning (info): .* sindex drop: timeout while dropping .* in smd
+warning (info): .* sindex list : ns.*not found
+warning (info): (thr_info.c:.*) bad trid
+warning (info): (thr_info.c:.*) ignore-migrations value invalid
+warning (info): (thr_info.c:.*) 'indexname' value too long
+warning (info): (thr_info.c:.*) missing 'indexname'
+warning (info): (thr_info.c:.*) missing 'set'
+warning (info): (thr_info.c:.*) namespace .* not found on node
+warning (info): (thr_info.c:.*) namespace 'ns2' not found on node
+warning (info): (thr_info.c:.*) received unparsable command
+warning (info): (thr_info.c:.*) revive: failed - recluster in progress
+warning (info): (thr_info.c:.*) roster-set command: invalid nodes in command
+warning (info): (thr_info.c:.*) sindex-create .* bad .* bin type
+warning (info): (thr_info.c:.*) sindex create .* invalid bin type 'blob'
+warning (info): (thr_info.c:.*) unrecognized command
+warning (migrate): (migrate.c:.*) handle insert: got bad record
+warning (migrate): (migrate.c:.*) handle insert: got no record
+warning (migrate): (migrate.c:.*) imbalance: .* refused migrate with ack_fail
+warning (migrate): (migrate.c:.*) unreadable digest
+warning (misc): (fetch.c:.*) empty file /data/aerospike_vault/data/docktoken
+warning (misc): (fetch.c:.*) unable to open file .* no such file or directory
+warning (mon): .* no query was found with trid
+warning (mrt-monitor): (mrt_monitor_ee.c:.*) bad .* bin or bin-op
+warning (mrt-monitor): (mrt_monitor_ee.c:.*) client commit lost race
+warning (mrt-monitor): (mrt_monitor_ee.c:.*) client found monitor tombstone
+warning (mrt-monitor): (mrt_utils_ee.c:.*) mrt expired by .* sec
+warning (namespace): .* aborted cool restart, will try cold start
+warning (namespace): .* aborted warm restart, will try cold
+warning (namespace): .* can't convert persistent memory version .* to
+warning (namespace): .* can't resume arena: error
+warning (namespace): .* can't resume .* arena: error attaching stage
+warning (namespace): .* can't resume si-arena
+warning (namespace): .* can't resume sindex arena
+warning (namespace): (namespace.c:.*) at set names limit, can't add set
+warning (namespace): (namespace_ee.c:.* can't create persistent memory treex block: no space left on device
+warning (namespace): (namespace_ee.c:.* previous shutdown not trusted
+warning (namespace): .* set-id .* negative device bytes
+warning (nsup): .* breached eviction hwm (disk), memory sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached eviction hwm (disk), memory sz:.* hwm:.* index-device sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached eviction hwm (disk), memory sz:.* hwm:.* sindex-device sz:.* hwm:.* disk sz:.* hwm:
+warning (nsup): .* breached eviction hwm (memory & disk), memory sz:.* hwm:.* index-device sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached eviction hwm (memory), memory sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached eviction hwm (memory), memory sz:.* hwm:.* index-device sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached eviction hwm (memory), memory sz:.* hwm:.* sindex-device sz:.* hwm:.* disk sz:.* hwm
+warning (nsup): .* breached stop-writes limit (memory), memory sz:.* limit:.* disk avail-pct
+warning (nsup): .* breached stop-writes limit (memory), sys-memory pct:.* memory sz.* limit:.* disk avail-pct:.* used-pct
+warning (nsup): .* breached stop-writes limit (sys-memory & memory), sys-memory pct.* memory sz.* limit.* disk avail-pct.* used-pct
+warning (nsup): .* breached stop-writes limit (sys-memory), sys-memory pct:.* memory sz:.* limit:.* disk avail-pct:.* used-pct
+warning (nsup): .* clock-skew > 30 sec
+warning (nsup): .* failed set evict-void-time
+warning (nsup): .* hwm breached but nothing to evict
+warning (nsup): .* no records below eviction void-time .* threshold bucket .* width .* sec, count .* target
+warning (nsup): .* no records eligible for eviction
+warning (nsup): (nsup.c:.* breached eviction hwm (memory & disk), memory sz.* hwm.* disk sz.* hwm
+warning (nsup): (nsup.c:.* breached eviction limit (data-used-pct), indexes-memory sz:.* data used-pct
+warning (nsup): (nsup.c.* breached eviction limit (data-used-pct), sys-memory pct.* indexes-memory sz.* data used-pct
+warning (nsup): (nsup.c* breached eviction limit (data-used-pct), sys-memory pct.* indexes-memory sz.* index-device sz.* used-pct.* data used-pct
+warning (nsup): (nsup.c:.* breached eviction limit (index-device), indexes-memory sz.* index-device sz:.* used-pct:.* sindex-device sz:.* used-pct:.* data used-pct
+warning (nsup): (nsup.c:.* breached eviction limit (indexes-memory), indexes-memory sz:.* used-pct:.* data used-pct
+warning (nsup): (nsup.c:.* breached eviction limit (sindex-device), indexes-memory sz:.* index-device sz:.* used-pct:.* sindex-device sz:.* used-pct:.* data used-pct
+warning (nsup): (nsup.c:.* breached eviction limit (sindex-device), indexes-memory sz:.* sindex-device sz:.* used-pct:.* data used-pct
+warning (nsup): (nsup.c.* breached eviction limit (sys-memory & data-used-pct), sys-memory pct.* indexes-memory sz.* data used-pct
+warning (nsup): (nsup.c:.* breached eviction limit (sys-memory), sys-memory pct.* indexes-memory sz.* data used-pct
+warning (nsup): (nsup.c:.*) .* breached stop-writes limit (data-avail-pct), sys-memory pct.* indexes-memory sz.* data avail-pct.* used-pct
+warning (nsup): (nsup.c.* breached stop-writes limit (data-used-pct), sys-memory pct.* indexes-memory sz.* data avail-pct.* used-pct
+warning (nsup): (nsup.c:.*) .* breached stop-writes limit (sys-memory), sys-memory pct.* indexes-memory sz.* data avail-pct.* used-pct
+warning (nsup): (nsup.c:.* clock-skew > 40 sec stopped writes
+warning (nsup): (nsup.c:.* hit stop-writes limit
+warning (nsup): (nsup.c:.* timeout deleting evict-void-time
+warning (nsup): .* timeout setting evict-void-time
+warning (os): (os.c:.*) failed zone-reclaim-mode check - zone-reclaim-mode not set to
+warning (os): (os_ee.c:.*) failed shmall check - shmall not at least
+warning (os): (os_ee.c:.*) failed shmmax check - shmmax not at least
+warning (particle): .* as_bin_bits_packed_modify - error 26 operation (bit_subtract) unable to apply operation
+warning (particle): .* as_cdt_op_list_get_by_index: failed
+warning (particle): .* as_cdt_op_list_get_by_rank: failed
+warning (particle): .* as_cdt_op_list_increment: failed
+warning (particle): .* as_cdt_op_list_insert: failed
+warning (particle): .* as_cdt_op_list_insert_items: failed
+warning (particle): .* as_cdt_op_list_remove_by_index: failed
+warning (particle): .* as_cdt_op_list_set: failed
+warning (particle): .* as_cdt_op_map_get_by_index: failed
+warning (particle): .* as_cdt_op_map_get_by_rank: failed
+warning (particle): .* as_cdt_op_map_remove_by_index: failed
+warning (particle): .* bits_parse_offset - error 4 op bit_rshift (9) offset .* is larger than max
+warning (particle): .* bits_prepare_modify_op - error 26 op bit_and (6) operation may not expand blob
+warning (particle): .* bits_prepare_modify_op - error 26 op bit_lshift (8) operation may not expand blob
+warning (particle): .* bits_prepare_modify_op - error 26 op bit_rshift (9) operation may not expand blob
+warning (particle): .* bits_prepare_read_op - error 26 op bit_add (10) operation would expand blob
+warning (particle): .* bits_prepare_read_op - error 26 op bit_count (51) operation too large for blob
+warning (particle): .* bits_prepare_read_op - error 26 op bit_count (51) operation would expand blob
+warning (particle): .* bits_prepare_read_op - error 26 op bit_lscan (52) operation would expand blob
+warning (particle): .* bits_prepare_read_op - error 26 op bit_rscan (53) operation would expand blob
+warning (particle): .* bits_prepare_remove_op - error 4 op bit_remove (2) remove size extended past end of blob without the partial policy
+warning (particle): .* bits_prepare_remove_op - error 4 op bit_remove (2) tried to remove past the end of blob
+warning (particle): (cdt.c:.*) invalid cdt flags 0x20 type
+warning (particle): (cdt.c:.*) map has duplicate keys
+warning (particle): (cdt.c:.*) map has invalid key type
+warning (particle): (cdt.c:.*) map not ordered as expected
+warning (particle): .* cdt_delta_value_add() only valid for int/double
+warning (particle): .* cdt_process_state_packed_map_modify_optype() invalid type
+warning (particle): .* concat size for integer/float/bool
+warning (particle): (expop.c:.*) parse_op - error 4 received invalid expression size
+warning (particle): (expop.c:.*) parse_op - error 4 received invalid modify flags
+warning (particle): .* geo_parse failed
+warning (particle): .* hll_parse_elements - error 4 op hll_add (1) element .* is either a list or map which are unsupported
+warning (particle): .* list_increment() index -102 out of bounds for ele_count 100
+warning (particle): .* list_increment() index .* out of bounds for ele_count
+warning (particle): .* list_set() index -103 out of bounds for ele_count 100
+warning (particle): .* list_set() index .* out of bounds for ele_count
+warning (particle): (msgpack_in.c:.*) msgpack_sz_internal: invalid at i .* count
+warning (particle): .* packed_list_get_remove_by_index_range() index .* out of bounds for ele_count
+warning (particle): .* packed_list_get_remove_by_rank_range() rank 65535 out of bounds for ele_count 100
+warning (particle): .* packed_list_get_remove_by_rank_range() rank .* out of bounds for ele_count
+warning (particle): .* packed_list_insert() index -109 out of bounds for ele_count 100
+warning (particle): .* packed_list_insert() index .* out of bounds for ele_count
+warning (particle): .* packed_map_get_remove_by_index_range() index -104 out of bounds for ele_count 99
+warning (particle): .* packed_map_get_remove_by_index_range() index 108 out of bounds for ele_count 100
+warning (particle): .* packed_map_get_remove_by_index_range() index .* out of bounds for ele_count
+warning (particle): .* packed_map_get_remove_by_index_range() invalid result type
+warning (particle): .* packed_map_get_remove_by_rank_range() rank .* out of bounds for ele_count
+warning (particle): .* parse_op - error 4 unable to build expression op
+warning (particle): (particle_blob.c:991) as_bin_bits_packed_modify - error 26 operation (bit_subtract) unable to apply operation
+warning (particle): (particle_blob.c:.*) bits_parse_op - error 4 op bit_insert (1) unexpected number of args .* for op bit_insert
+warning (particle): (particle_blob.c:.*) incomplete flat blob/string
+warning (particle): (particle.c:.*) encountered bad particle type
+warning (particle): (particle_list.c:.*) cdt_process_state_packed_list_modify_optype() invalid type
+warning (particle): (particle_list.c:.*) list deserialize failed
+warning (particle): (particle_list.c:.*) list_from_wire() invalid packed list
+warning (particle): (particle_map.c:6943) as_cdt_op_map_increment: failed
+warning (particle): (particle_map.c:.*) as_cdt_op_map_put: failed
+warning (particle): (particle_map.c:.*) as_cdt_op_map_put_items: failed
+warning (particle): (particle_map.c:.*) map_add() invalid params
+warning (particle): (particle_map.c:.*) map_add_items() invalid parameter
+warning (particle): (particle_map.c:.*) map deserialize failed
+warning (particle): (particle_map.c:.*) map_from_wire()
+warning (particle): (particle_map.c:.*) map_from_wire() invalid packed map
+warning (particle): (particle_map.c:.*) map_set_flags() invalid flags 0x2
+warning (particle): .* subcontext type .* expected type
+warning (partition): .* ignoring node .* not on roster
+warning (partition): (partition_balance.c:.* active-rack disallowed - n-racks .* > replication-factor
+warning (partition): (partition_balance.c:.* active-rack disallowed - replication-factor .* > n-racks
+warning (partition): (partition_balance.c:.* immigrate_start - source .* working-master .* pending-immigrations .* prole's source not final working master
+warning (partition): (partition_balance.c:.* partitions auto-revived
+warning (partition): (partition_balance_ee.c.* can't quiesce all nodes - ignoring
+warning (partition): (partition_balance_ee.c:.* is read-only .* cluster-size .* replication-factor
+warning (partition): .* rebalanced: regime .* expected-migrations .* expected-appeals .* dead-partitions
+warning (proto): .* send error - fd .* broken pipe
+warning (proto): .* send error - fd .* connection reset by peer
+warning (proto): .* send error - fd .* connection timed out
+warning (proto): (transaction.c:.*) extra bytes follow fields and bin-ops
+warning (proto): (transaction.c:.*) incomplete as_msg_field
+warning (query): .* aggregation queries can't be 'short' queries
+warning (query): .* at query threads limit - can't start new query
+warning (query): .* basic query job failed msg field processing
+warning (query): .* basic query job failed quota
+warning (query): .* basic query job .* failed to start
+warning (query): .* bin .* not found
+warning (query): .* digest array empty or too big
+warning (query): .* error sending to .* fd .* sz .* broken pipe
+warning (query): .* error sending to .* fd .* sz .* connection reset by peer
+warning (query): .* error sending to .* fd .* sz .* connection timed out
+warning (query): .* ops-bg query job failed msg field processing
+warning (query): (query.c:.*) aggregation output too big
+warning (query): (query.c:.*) invalid particle type
+warning (query): (query.c:.*) invalid range
+warning (query): (query.c:.*) invalid type
+warning (query): (query.c:.*) ops-bg query job error sending fin
+warning (query): (query.c:.*) ops-bg query job .* failed to start (22)
+warning (query): (query.c:.*) udf-bg query job error sending fin
+warning (query): .* query msg from .* has unrecognized set
+warning (query): (thr_query.c:.*) invalid type
+warning (query): .* udf-bg query job failed msg field processing
+warning (record): (record.c:.* record replace: failed load bins
+warning (record): (record.c:.* record replace: failed unpickle bins
+warning (record): (record_ee.c:.* clock-skew > 56 sec stopped writes
+warning (record): (record_ee.c:.* clock-skew .* sec stopped writes
+warning (roster): (roster_ee.c:.*) illegal node id
+warning (roster): (roster_ee.c:.* invalid node list
+warning (roster): .* timeout setting roster
+warning (rw): (read_touch.c:.* bad read-touch-ttl-pct .* reading
+warning (rw): (replica_write.c:.*) repl-write ack: no digest
+warning (rw): (replica_write.c:.*) repl_write_handle_op: bad record
+warning (rw): (re_replicate_ee.c:.* drop .* create while re-replicating
+warning (rw): (re_replicate_ee.c:.* drop while re-replicating
+warning (rw): (rw_utils.c:322) .* key mismatch
+warning (rw): (rw_utils_ce.c:.*) durable delete is an enterprise feature
+warning (rw): (rw_utils.c:.* key mismatch - end of universe
+warning (rw): (rw_utils_ee.c:.* drop .* create while replicating
+warning (rw): (rw_utils_ee.c.* drop while replicating
+warning (rw): (write.c.* at stop-writes-size - can't write
+warning (rw): (write.c:.* write_master: disallowed ttl with nsup-period 0
+warning (rw): (write.c:.* write_master: failed as_bin_particle_from_client
+warning (rw): (write.c:.* write_master: failed as_bin_particle_modify_from_client
+warning (rw): (write.c:.*) write_master: invalid ttl
+warning (rw): (write.c:.* write_master: set can't be added
+warning (rw): .* write_master: failed as_bin_particle_alloc_modify_from_client
+warning (rw): .* write_master: failed as_bin_particle_stack_modify_from_client
+warning (scan): (scan.c:.*) error sending to .* fd .* sz .* broken pipe
+warning (scan): .* scan msg from .* has unrecognized set
+warning (secrets): (secrets_ee.c:.*) error receiving: connection timed out
+warning (secrets): (secrets_ee.c:.*) failed to connect to secrets
+warning (security): .* authenticate-session - invalid token
+warning (security): .* error binding to ldap for user .* (can't contact ldap server)
+warning (security): (ldap_ee.c:.*) cannot get role for user badwan
+warning (security): (ldap_ee.c:.*) could not get dn for user
+warning (security): (ldap_ee.c:.*) couldn't authenticate trusted aerospike user
+warning (security): (ldap_ee.c:.*) couldn't start tls: .* err -5 (timed out)
+warning (security): (ldap_ee.c:.*) unknown error .* getting user results
+warning (security): .* login - internal user credential mismatch
+warning (security): .* query roles - role not found
+warning (security): .* query users - user not found
+warning (security): .* search for user - resetting connection
+warning (security): (security.c:.*) login - internal user not found
+warning (service-list): (service_list.c:.*) error while sending op_ack to
+warning (sindex): .* bin not found .* error at
+warning (sindex): .* failed attaching sindex arena stage .* no such file or directory
+warning (sindex): .* failed sindex on bin .* string longer than 2048
+warning (sindex): .* invalid key type
+warning (sindex): (secondary_index.c:.*) smd - bad itype
+warning (sindex): (secondary_index.c:.*) smd - bad sktype
+warning (sindex): (secondary_index.c:.*) unknown smd ktype
+warning (sindex): (secondary_index.c:.*) unknown smd type c
+warning (sindex): (sindex.c:.*) invalid smd ktype
+warning (sindex): .* sindex create: iname already in use - ignoring
+warning (sindex): (sindex.c:.*) smd - bad ktype
+warning (sindex): (sindex.c:.*) smd - iname too long
+warning (sindex): .* sindex drop: defn not found
+warning (sindex): .* sindex stat : sindex .* not found
+warning (skew): .* node .* hlc not in sync
+warning (socket): .* error while connecting: 104 (connection reset by peer)
+warning (socket): .* error while connecting: 111 (connection refused)
+warning (socket): .* error while connecting: 113 (no route to host)
+warning (socket): .* error while connecting socket to
+warning (socket): .* error while converting address .* name or service not known
+warning (socket): .* error while converting address .* temporary failure in name resolution
+warning (socket): .* error while getting remote name: 107 (transport endpoint is not connected)
+warning (socket): .* timeout while connecting
+warning (socket): .* unexpected events .* on fd
+warning (storage): (storage.c:.* udf fail: queue too deep: exceeds max
+warning (storage): (storage.c.* write fail: queue too deep: exceeds max
+warning (tls): .* failed to load key file .*:error:.*:asn1 encoding routines:asn1_get_object:header too long
+warning (tls): .* failed to load key file .*:error:.*:common libcrypto routines:do_ui_passphrase:interrupted or cancelled
+warning (tls): .* failed to load key file .*:error:.*:common libcrypto routines:do_ui_passphrase:interrupted or cancelled:crypto
+warning (tls): .* failed to load key file .*:error:.*:digital envelope routines:evp_decryptfinal_ex:bad decrypt
+warning (tls): .* failed to load key file .*:error:.*:pem routines:pem_do_header:bad password read
+warning (tls): .* failed to load key file .*:error:.*:provider routines:ossl_cipher_unpadblock:bad decrypt
+warning (tls): .* failed to load key file .*:error:.*:provider routines:ossl_cipher_unpadblock:bad decrypt:providers
+warning (tls): .* invalid password for key file
+warning (tls): .* ssl_accept with .* failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): .* ssl_accept with (unknown) failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): .* ssl_read i/o error with (unknown): connection reset by peer
+warning (tls): .* ssl_read i/o unexpected eof with
+warning (tls): .* ssl_read with (unknown) failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): .* ssl_shutdown i/o error with (unknown): connection reset by peer
+warning (tls): .* ssl_shutdown i/o error with (unknown): transport endpoint is not connected
+warning (tls): .* ssl_shutdown with (unknown) failed: .*:error:.*:ssl routines:ssl_shutdown:shutdown while in init
+warning (tls): .* ssl_write i/o error with (unknown): transport endpoint is not connected
+warning (tls): (tls_ee.c:.*) failed to load cert file
+warning (tls): (tls_ee.c:.*) failed to load key file .*:error:.*:decoder routines:ossl_decoder_from_bio:unsupported:.*:no supported data to decode. input type: pem
+warning (tls): (tls_ee.c:.*) failed to load secrets:tls_cert_file:cert_file
+warning (tls): (tls_ee.c:.*) failed to read ca-file /data/certs/platinum/cacert.pem / ca-path (none) for .*:error:.*:system library
+warning (tls): (tls_ee.c:.*) failed to use key .*:error:.*:x509 certificate routines:x509_check_private_key:key values mismatch
+warning (tls): (tls_ee.c:.*) ssl_accept i/o error with (unknown): connection reset by peer
+warning (tls): (tls_ee.c:.*) ssl_accept i/o unexpected eof with (unknown)
+warning (tls): (tls_ee.c:.*) ssl_accept with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:sslv3 alert bad certificate:.* alert number
+warning (tls): (tls_ee.c:.*) ssl_accept with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:sslv3 alert certificate expired:.*:ssl alert number
+warning (tls): (tls_ee.c:.*) ssl_accept with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:sslv3 alert certificate unknown.* alert number
+warning (tls): (tls_ee.c:.*) ssl_accept with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:tlsv1 alert unknown ca.* alert number
+warning (tls): (tls_ee.c:.*) ssl_accept with .* failed: .*:error:.*:ssl routines:tls_process_client_certificate:certificate verify failed
+warning (tls): (tls_ee.c:.*) ssl_connect i/o error with (unknown): broken pipe
+warning (tls): (tls_ee.c:.*) ssl_connect i/o error with (unknown): connection reset by peer
+warning (tls): (tls_ee.c:.*) ssl_connect i/o unexpected eof with
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:ssl3_get_server_certificate:certificate verify failed
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:sslv3 alert certificate unknown.*ssl alert number
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:tlsv1 alert unknown .* alert number
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:tls_construct_client_hello:no protocols available
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:tls_post_process_server_certificate:certificate verify failed
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:tls_process_server_certificate:certificate verify failed
+warning (tls): (tls_ee.c:.*) ssl_connect with .* failed: .*:error:.*:ssl routines:tls_setup_handshake:no protocols available
+warning (tls): (tls_ee.c:.*) ssl_connect with (unknown) failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): (tls_ee.c:.*) ssl_read with .* failed: .*:error:.*:ssl routines:ssl3_get_record:decryption failed or bad record mac:ssl/record/ssl3_record.c
+warning (tls): (tls_ee.c:.*) ssl_read with .* failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): (tls_ee.c:.*) ssl_shutdown i/o error with (unknown): broken pipe
+warning (tls): (tls_ee.c:.*) ssl_shutdown with .* failed: .*:error:.*:ssl routines:ssl3_read_bytes:application data after close notify
+warning (tls): (tls_ee.c:.*) ssl_shutdown with .* failed: .*:error:.*:ssl routines:ssl3_read_n:unexpected eof while reading
+warning (tls): (tls_ee.c:.*) ssl_shutdown with .* failed: .*:error:.*:ssl routines:ssl3_write_pending:bad write retry
+warning (tls): (tls_ee.c:.*) ssl_shutdown with (unknown) failed: .*:error:.*:ssl routines:ssl3_read_bytes:application data after close notify
+warning (tls): (tls_ee.c:.*) ssl_shutdown with (unknown) failed: .*:error:.*:ssl routines:ssl3_write_pending:bad write
+warning (tls): (tls_ee.c:.*) ssl_write i/o error with (unknown): broken pipe
+warning (tls): (tls_ee.c:.*) ssl_write i/o error with (unknown): connection reset by peer
+warning (tls): (tls_ee.c:.*) ssl_write with .* failed: .*:error:.*:ssl routines:ssl3_write_pending:bad write retry
+warning (tls): (tls_ee.c:.*) ssl_write with .* failed: .*:error:.*:ssl routines:ssl_write_internal:protocol is shutdown
+warning (tls): (tls_ee.c:.*) ssl_write with (unknown) failed: .*:error:.*:ssl routines:ssl_write_internal:protocol is shutdown
+warning (tls): (tls_ee.c:.*) tls verify result: authority and subject key identifier mismatch
+warning (tls): (tls_ee.c:.*) tls verify result: certificate has expired
+warning (tls): (tls_ee.c:.*) tls verify result: unable to get local issuer certificate
+warning (tls): .* tls key .* requires a password (key-file-password)
+warning (truncate): (truncate.c:.* timeout during undo truncate
+warning (truncate): (truncate.c:.*) timeout truncating test.*demo to
+warning (truncate): (truncate.c:.*) timeout truncating .* to
+warning (udf): .* lua create error: module .* not found
+warning (udf): .* lua-error: result .*udf: execution error 1
+warning (udf): .* lua-error: result .*udf execution timeout
+warning (udf): .* lua-error: rv 0 result
+warning (udf): (udf_aerospike.c.* at stop-writes-size - can't execute
+warning (udf): (udf_aerospike.c:.*) remove found urecord not open
+warning (udf): (udf_aerospike.c:.*) update found urecord not open
+warning (udf): (udf_cask.c:.*) failed to open file .* no such file or directory
+warning (udf): (udf_cask.c:.*) udf module .* remove timed out
+warning (udf): (udf_cask.c:.*) udf-put: compile error: .* expected near
+warning (udf): (udf.c:.*) lua-error: result .* attempt to call a nil value (field
+warning (udf): (udf.c:.*) lua-error: result .* attempt to call global 'no_func' (a nil value
+warning (udf): (udf.c:.*) lua-error: result .* bad argument .* to .* (map expected, got bytes)
+warning (udf): (udf.c:.*) lua-error: result .* bad argument .* to '.*map expected, got geojson
+warning (udf): (udf.c:.*) lua-error: result .* bad argument .* to .* (map expected, got list
+warning (udf): (udf.c:.*) lua-error: result .* can't get bin names
+warning (udf): .* udf module .* registration timed out
+warning (udf): (udf_record.c:.*) record not open
+warning (udf): .* udf timed out .* ms ago
+warning (vault): (vault_ee.c:.*) can't read vault token
+warning (xdr-client): .* auth failed - error 65
+warning (xdr-client): (cluster.c:.*) .* failed check .* times
+warning (xdr-client): (cluster.c:.*) from .* bad response for command 'replicas:max=1'
+warning (xdr-client): (cluster.c:.*) from .* expected command 'peers-generation', got
+warning (xdr-client): (cluster.c:.*) login to node .* failed
+warning (xdr-client): .* dc .* auth receive error on
+warning (xdr-client): .* dc .* network timeout on
+warning (xdr-client): .* error receiving from node .* connection reset by peer
+warning (xdr-client): .* error receiving from node .* connection timed out
+warning (xdr-client): .* error receiving from node .* operation not permitted
+warning (xdr-client): .* error receiving from node .* transport endpoint is not connected
+warning (xdr-client): .* error sending to node .* connection reset by peer
+warning (xdr-client): .* failed to connect to
+warning (xdr-client): .* login failed
+warning (xdr-client): .* node .* partition refresh failed: aerospike_err_connection socket read error
+warning (xdr-client): (ship.c:.*) dc .* send error on (no connection)
+warning (xdr-client): (ship.c:.*) dc .* timeout connecting on (no connection)
+warning (xdr-client): (ship.c:.*) dc .* tls handshake error on
+warning (xdr): .* dc .* abandon result
+warning (xdr): (dc.c:.*) dc .* can't read password
+warning (xdr): (dc_manager.c.* dc .* not found
+warning (xdr): .* did not find xdr lastship information about node=.* ignoring it.
+warning (xdr): (info.c:694) can't set 'bin-policy' to 'all' when using 'ship-bin'
+warning (xdr): (info.c:782) can't set 'ignore-bin' if 'bin-policy' ships specified bins
+warning (xdr): (info.c:840) can't set 'ship-bin' unless 'bin-policy' ships specified bins
+warning (xdr): (info.c:.*) bad namespace config parameter in command context=xdr;dc=.*;namespace=.*;reset-bin
+warning (xdr): (info.c:.*) bad namespace config parameter in command context=xdr;dc=.*;namespace=.*;restrict-version-skipping
+warning (xdr): (info.c:.*) can't set 'bin-policy' to 'all' if 'ship-bin-luts' is 'true'
+warning (xdr): (info.c:.*) can't set 'ignore-bin' if 'bin-policy' ships specified bins
+warning (xdr): (info.c:.*) can't set non-zero 'delay-ms' if 'ship-versions-policy' is 'all'
+warning (xdr): (info.c:.*) can't set 'ship-bin-luts' to 'true' if 'bin-policy' is 'all'
+warning (xdr): (info.c:.*) can't set 'ship-bin' unless 'bin-policy' ships specified bins
+warning (xdr): (info.c:.*) can't set 'write-policy' to 'replace' unless 'bin-policy' is 'all'
+warning (xdr): (info.c:.*) unknown dc
+warning (xmem): .* is not pmem
+warning (xmem): .* no file system mounted at
+warning (xmem): (xmem_pmem.c:.*) .* size .* pmem_map_file() create failed
+warning (xmem): (xmem_pmem.c:.*) /var/lib/aerospike/index/.* size .* pmem_map_file() create failed
