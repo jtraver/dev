@@ -77,7 +77,6 @@ sub main
     $contexts{"AS_XDR"} = "xdr";
     $contexts{"CF_FAULT_CONTEXT_UNDEF"} = "UNDEFINED CONTEXT";
 
-
     #if (-e $output)
     #{
     #}
