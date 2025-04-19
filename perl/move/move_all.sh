@@ -1,5 +1,6 @@
 make_html.plx
 make_pic.plx
+move_heic.plx
 move_gif.plx
 move_jpeg.plx
 move_jpg.plx
