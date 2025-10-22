@@ -62,6 +62,7 @@ sub main
     my $diff4 = $time0 - $time4;
     print "$str4 -> $diff4 seconds before $tag\n";
 
+    check_log_times();
 }
 
 #use DateTime::Format::Strptime;
@@ -124,7 +125,7 @@ sub parseDateTime
     print "\nparseDateTime\n";
     my ($dateTime) = @_;
     print "$dateTime\n";
-    my $time;
+    my $returnTime = -1;
     # Sep 19 2017 00:08:15 GMT:
     if ($dateTime =~ /(\S+) (\d+) (\d+) (\d+):(\d+):(\d+) GMT:/)
     {
@@ -137,8 +138,8 @@ sub parseDateTime
         my $sec = $6;
         print "$sec, $min, $hour, $mday, $monStr, $year\n";
         print "$sec, $min, $hour, $mday, $mon, $year\n";
-        $time = timegm($sec, $min, $hour, $mday, $mon, $year);
-        print "time is $time\n";
+        $returnTime = timegm($sec, $min, $hour, $mday, $mon, $year);
+        print "1 time is $returnTime\n";
     }
     # Mon Sep 18 20:47:24 EDT 2017
     elsif ($dateTime =~ /(\S+) (\S+) (\d+) (\d+):(\d+):(\d+) (\S+) (\d+)/)
@@ -154,8 +155,8 @@ sub parseDateTime
         my $year = $8;
         print "$sec, $min, $hour, $mday, $monStr, $year\n";
         print "$sec, $min, $hour, $mday, $mon, $year\n";
-        $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
-        print "time is $time\n";
+        $returnTime = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "2 time is $returnTime\n";
     }
     elsif ($dateTime =~ /(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/)
     {
@@ -166,8 +167,8 @@ sub parseDateTime
         my $min = $5;
         my $sec = $6;
         print "$sec, $min, $hour, $mday, $mon, $year\n";
-        $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
-        print "time is $time\n";
+        $returnTime = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "3 time is $returnTime\n";
     }
     # 1709182030
     elsif ($dateTime =~ /(\d\d)(\d\d)(\d\d)(\d\d)(\d\d)/)
@@ -179,8 +180,8 @@ sub parseDateTime
         my $min = $5;
         my $sec = 0;
         print "$sec, $min, $hour, $mday, $mon, $year\n";
-        $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
-        print "time is $time\n";
+        $returnTime = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "4 time is $returnTime\n";
     }
     # my $str4 = "10 Mar 21 21:13 EST";
     elsif ($dateTime =~ /(\d\d) (\S\S\S) (\d\d) (\d\d):(\d\d) (\S\S\S)/)
@@ -200,8 +201,46 @@ sub parseDateTime
         # my $sec = 0;
         my $sec = 0;
         print "$sec, $min, $hour, $mday, $mon, $year\n";
-        $time = timelocal($sec, $min, $hour, $mday, $mon, $year);
-        print "time is $time\n";
+        $returnTime = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "5 time is $returnTime\n";
+    }
+    # Sep 19 2017 00:08:15 GMT:
+    # WHAT: Oct 22 2025 16:16:19 GMT
+    elsif ($dateTime =~ /(\S+) (\d+) (\d+) (\d+):(\d+):(\d+) GMT/)
+    {
+        print "aerospike server logs $dateTime\n";
+        my $monStr = $1;
+        my $mon = $months{$monStr};
+        my $mday = $2;
+        my $year = $3;
+        my $hour = $4;
+        my $min = $5;
+        my $sec = $6;
+        print "str $sec, $min, $hour, $mday, $monStr, $year\n";
+        print "int $sec, $min, $hour, $mday, $mon, $year\n";
+        $returnTime = timegm($sec, $min, $hour, $mday, $mon, $year);
+        print "6 time is $returnTime\n";
+    }
+    # WHAT: Oct 22 09:16
+    elsif ($dateTime =~ /(\S+) (\d+) (\d+):(\d+)/)
+    {
+        print "ls -lat $dateTime\n";
+        my $monStr = $1;
+        my $mon = $months{$monStr};
+        my $mday = $2;
+        my $hour = $3;
+        my $min = $4;
+        my $now1 = time;
+        print "now1 is $now1\n";
+        my ($sec,$min1,$hour1,$mday1,$mon1,$year,$wday,$yday,$isdst) = localtime($now1);
+        # $sec does not matter -> it will be off 0-59 randomly no matter what it is set to
+        $year -= 100;   
+        $year += 2000;
+        print "year is $year\n";
+        print "$min, $hour, $mday, $monStr\n";
+        print "$min, $hour, $mday, $mon\n";
+        $returnTime = timelocal($sec, $min, $hour, $mday, $mon, $year);
+        print "7 time is $returnTime\n";
     }
     else
     {
@@ -209,8 +248,49 @@ sub parseDateTime
     }
 # my $time = timelocal( $sec, $min, $hour, $mday, $mon, $year );
 # my $time = timegm( $sec, $min, $hour, $mday, $mon, $year );
-    return $time;
+    return $returnTime;
 }
 
+
+# CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788
+# sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst
+sub check_log_times
+{
+    my $now0 = time;
+    my $date0 = makeDateTagSec($now0);
+    print "\nSTART check_log_times\n";
+    print "now0 is $now0\n";
+    print "date0 = $date0\n";
+    my $time0 = parseDateTime($date0);
+    print "time0 = $time0\n";
+    my $line1 = "CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
+    # my $line1 = "CAUSE Oct 22 2025 17:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
+    # PDT my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
+    # MDT
+    my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 10:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
+    my $date1 = $line1;
+    $date1 =~ s/^CAUSE (.*): WARNING.*$/$1/;
+    print "date1 = $date1\n";
+    my @date2 = split(" ", $line2);
+    my $date2 = "$date2[6] $date2[7] $date2[8]";
+    my $time1 = parseDateTime($date1);
+    print "time1 = $time1\n";
+    print "date2 = $date2\n";
+    my $time2 = parseDateTime($date2);
+    print "now0 = $now0\n";
+    print "time0 = $time0\n";
+    print "time1 = $time1\n";
+    print "time2 = $time2\n";
+    print "date0 = $date0\n";
+    print "date1 = $date1\n";
+    print "date2 = $date2\n";
+    my $diff0 = $now0 - $time0;
+    my $diff1 = $now0 - $time1;
+    my $diff2 = $now0 - $time2;
+    print "diff0 = $diff0\n";
+    print "diff1 = $diff1\n";
+    print "diff2 = $diff2\n";
+    print "END check_log_times\n";
+}
 
 main();
