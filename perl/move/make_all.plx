@@ -4,7 +4,7 @@ use diagnostics;
 use warnings;
 use strict;
 
-my $prefix = "h";
+my $prefix = "k";
 
 sub main
 {

@@ -1,8 +1,11 @@
 make_html.plx
 make_pic.plx
+move_heic.plx
 move_gif.plx
 move_jpeg.plx
 move_jpg.plx
+move_mov.plx
+move_mp4.plx
 move_png.plx
 move_ss.plx
 move_webp.plx
