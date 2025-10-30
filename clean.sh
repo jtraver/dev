@@ -16,5 +16,4 @@ rm python3/random/r4.out
 rm python3/random/r5.out
 rm tmp.tmp
 
-
 git status .
