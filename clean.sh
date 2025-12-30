@@ -1,53 +1,19 @@
-rm go/hello/cmd_vet.txt
-rm go/hello/gopath.help
-rm go/hello/hello.fmt
-rm go/standard/p.out
-rm health/brain_fog.blog
-rm health/j.out
-rm health/journal.txt
-rm perl/add/tmp1.tmp
-rm python/aerospike/apihelper.pyc
-rm python/bs4/0.html
-rm python/bs4/option.out
-rm python/ctypes/apihelper.pyc
-rm python/ctypes/c1.out
-rm python/ctypes/h.out
-rm python/datetime/dows.out
-rm python/datetime/dows.year
-rm python/datetime/long.out
-rm python/list/apihelper.pyc
-rm python/list/l1.out
-rm python/os/o.out
-rm -rf python/os/tmp
-rm python/prime/g1.err
-rm python/prime/g1.out
-rm python/random/apihelper.pyc
-rm python/random/r1.out
-rm python/re/apihelper.pyc
-rm python/re/data.txt
-rm python/sort/s1.out
-rm python/sys/apihelper.pyc
-rm python/sys/s2.out
-rm python/tbg/t.out
-rm python/urllib/0.out
-rm python/urllib/1.out
-rm python/urllib2/1.out
-rm python/yaml/config1.yml
-rm python/yaml/tags1.yml
-rm python/yaml/tbg.yml
-rm python/yaml/tbg1.yml
-rm python/yaml/yaml3.config
-rm python/yml/165a.out
-rm python/yml/166.out
-rm python/yml/166a.out
-rm python/yml/s1.out
-rm python/yml/s2.out
-rm python/yml/sudoku2.save1
-rm sh/sh2.sh
-rm sh/tmp1
-rm python/char/c2.out
-rm python/list/apihelper.pyc
-rm python/yaml/dict1.yaml
-rm python/yaml/list1.yaml
+rm bash/i2.out
+rm bash/sc1.out
+rm bash/tmp.tmp
+# python3/aerospike/.python-version
+rm -rf python3/aerospike/__pycache__/
+rm python3/aerospike/a1.out
+rm python3/find/f1.out
+rm -rf python3/path/__pycache__/
+rm python3/path/p1.out
+rm -rf python3/random/__pycache__/
+rm python3/random/r1.out
+rm python3/random/r2.out
+rm python3/random/r3.o
+rm python3/random/r3.out
+rm python3/random/r4.out
+rm python3/random/r5.out
+rm tmp.tmp
 
 git status .
