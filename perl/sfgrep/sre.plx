@@ -12,11 +12,21 @@ my $count = 0;
 my $output = "TextFiles.txt";
 my @files;
 my $search_word = shift;
+#if (!defined($search_word) || $search_word eq "")
+#{
+#    $search_word = "\"test\"\n";
+#}
+print "search word is $search_word\n";
 if (!defined($search_word) || $search_word eq "")
 {
         die "need a word to search for";
 }
 my $replace_word = shift;
+#if (!defined($replace_word) || $replace_word eq "")
+#{
+#    $replace_word = "\"testY\"\n";
+#}
+print "replace word is $replace_word\n";
 if (!defined($replace_word) || $replace_word eq "")
 {
         die "need a word to replace with";
