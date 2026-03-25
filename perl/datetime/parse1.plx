@@ -5,6 +5,7 @@ use warnings;
 use strict;
 
 use Time::Local;
+# use DateTime::Format::Strptime;
 
 sub makeDateTagMin 
 {
@@ -63,6 +64,11 @@ sub main
     print "$str4 -> $diff4 seconds before $tag\n";
 
     check_log_times();
+    my $str5 = "2025-10-09 11:25:44.261422871 -0700";
+    my $statTime = parseDateTime($str5);
+    print "$str5 -> $statTime\n";
+    my $tag5 = makeDateTagSec($statTime);
+    print "$str5 -> $tag5\n";
 }
 
 #use DateTime::Format::Strptime;
@@ -120,6 +126,48 @@ $months{"Oct"} = 9;
 $months{"Nov"} = 10;
 $months{"Dec"} = 11;
 
+
+# CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788
+# sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst
+sub check_log_times
+{
+    my $now0 = time;
+    my $date0 = makeDateTagSec($now0);
+    print "\nSTART check_log_times\n";
+    print "now0 is $now0\n";
+    print "date0 = $date0\n";
+    my $time0 = parseDateTime($date0);
+    print "time0 = $time0\n";
+    my $line1 = "CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
+    # my $line1 = "CAUSE Oct 22 2025 17:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
+    # PDT my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
+    # MDT
+    my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 10:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
+    my $date1 = $line1;
+    $date1 =~ s/^CAUSE (.*): WARNING.*$/$1/;
+    print "date1 = $date1\n";
+    my @date2 = split(" ", $line2);
+    my $date2 = "$date2[6] $date2[7] $date2[8]";
+    my $time1 = parseDateTime($date1);
+    print "time1 = $time1\n";
+    print "date2 = $date2\n";
+    my $time2 = parseDateTime($date2);
+    print "now0 = $now0\n";
+    print "time0 = $time0\n";
+    print "time1 = $time1\n";
+    print "time2 = $time2\n";
+    print "date0 = $date0\n";
+    print "date1 = $date1\n";
+    print "date2 = $date2\n";
+    my $diff0 = $now0 - $time0;
+    my $diff1 = $now0 - $time1;
+    my $diff2 = $now0 - $time2;
+    print "diff0 = $diff0\n";
+    print "diff1 = $diff1\n";
+    print "diff2 = $diff2\n";
+    print "END check_log_times\n";
+}
+
 sub parseDateTime
 {
     print "\nparseDateTime\n";
@@ -140,6 +188,26 @@ sub parseDateTime
         print "$sec, $min, $hour, $mday, $mon, $year\n";
         $returnTime = timegm($sec, $min, $hour, $mday, $mon, $year);
         print "1 time is $returnTime\n";
+    }
+    # chatGPT
+    # my $s = "2025-10-09 11:25:44.261422871 -0700";
+    elsif ($dateTime =~ /^(\d{4})-(\d{2})-(\d{2})\s+
+           (\d{2}):(\d{2}):(\d{2})
+           (?:\.(\d+))?\s+
+           ([+-]\d{4})$/x)
+   {
+        my ($year,$mon,$mday,$hour,$min,$sec,$frac,$tz) = ($1,$2,$3,$4,$5,$6,$7,$8);
+        print "dateTime = $dateTime\n";
+        print "year=$year mon=$mon day=$mday\n";
+        print "time=$hour:$min:$sec\n";
+        print "fraction=$frac\n";
+        print "tz=$tz\n";
+        $returnTime = 0;
+        $returnTime = timelocal($sec, $min, $hour, $mday, --$mon, $year);
+        # my $strp = DateTime::Format::Strptime->new( pattern => '%F %T.%N %z');
+        # my $dt = $strp->parse_datetime( "2025-10-09 11:25:44.261422871 -0700");
+        # print $dt->epoch, "\n";
+        # $returnTime = $dt->epoch;
     }
     # Mon Sep 18 20:47:24 EDT 2017
     elsif ($dateTime =~ /(\S+) (\S+) (\d+) (\d+):(\d+):(\d+) (\S+) (\d+)/)
@@ -249,48 +317,6 @@ sub parseDateTime
 # my $time = timelocal( $sec, $min, $hour, $mday, $mon, $year );
 # my $time = timegm( $sec, $min, $hour, $mday, $mon, $year );
     return $returnTime;
-}
-
-
-# CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788
-# sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst
-sub check_log_times
-{
-    my $now0 = time;
-    my $date0 = makeDateTagSec($now0);
-    print "\nSTART check_log_times\n";
-    print "now0 is $now0\n";
-    print "date0 = $date0\n";
-    my $time0 = parseDateTime($date0);
-    print "time0 = $time0\n";
-    my $line1 = "CAUSE Oct 22 2025 16:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
-    # my $line1 = "CAUSE Oct 22 2025 17:16:19 GMT: WARNING (as): (signal.c:247) SIGSEGV received, aborting Aerospike Enterprise Edition build 8.1.1.0-start-48-g9ec5aeb os el9 arch x86_64 sha 9ec5aeb ee-sha fb39788";
-    # PDT my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 09:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
-    # MDT
-    my $line2 = "sscLine -rw-r-----. 1 root root 1192831873 Oct 22 10:16 /var/lib/systemd/coredump/core.asd.0.a8c472bceeb446e29f5868c7ee49af65.2296041.1761149780000000.zst";
-    my $date1 = $line1;
-    $date1 =~ s/^CAUSE (.*): WARNING.*$/$1/;
-    print "date1 = $date1\n";
-    my @date2 = split(" ", $line2);
-    my $date2 = "$date2[6] $date2[7] $date2[8]";
-    my $time1 = parseDateTime($date1);
-    print "time1 = $time1\n";
-    print "date2 = $date2\n";
-    my $time2 = parseDateTime($date2);
-    print "now0 = $now0\n";
-    print "time0 = $time0\n";
-    print "time1 = $time1\n";
-    print "time2 = $time2\n";
-    print "date0 = $date0\n";
-    print "date1 = $date1\n";
-    print "date2 = $date2\n";
-    my $diff0 = $now0 - $time0;
-    my $diff1 = $now0 - $time1;
-    my $diff2 = $now0 - $time2;
-    print "diff0 = $diff0\n";
-    print "diff1 = $diff1\n";
-    print "diff2 = $diff2\n";
-    print "END check_log_times\n";
 }
 
 main();
