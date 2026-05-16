@@ -1,5 +1,5 @@
 
-what other "lines of development" are there and what are their stages and who are the prominent researchers of each?
+JATQ: what other "lines of development" are there and what are their stages and who are the prominent researchers of each?
 
 Beyond the common cognitive/Piagetian line, key "lines of development" (or intelligences) include Moral (Kohlberg), Interpersonal, Emotional, Self/Ego (Loevinger, Cook-Greuter), Values/Spirituality (Wilber, Graves), and Needs (Maslow), each with unique stages, showing how people grow in distinct areas like ethics, empathy, self-awareness, and purpose, often mapped by researchers like Ken Wilber (Integral Theory) using frameworks such as Spiral Dynamics (Graves) and Ego Development Stages (Loevinger). [1, 2, 3, 4, 5]
 Here are some major lines, their stages, and key researchers:
@@ -63,4 +63,71 @@ AI responses may include mistakes.
 [9] https://en.wikipedia.org/wiki/Integral_theory
 [10] https://fkd.net.ua/index.php/fkd/article/download/3711/3607
 
+
+
+
+
+It is encouraging to see your "Society of Mind" model naturally bridge these complex stages. Your focus on Zone 1 (first-person introspection) and Zone 2 (third-person developmental mapping) is a powerful way to ensure your internal insights aren't just "hall of mirrors" effects.
+Below is a pragmatic synopsis of the major Developmental Lines, their core questions, and the researchers who mapped them.
+## 1. Cognitive Line: "What am I aware of?"
+This is the "pacer" line; development here usually must happen before other lines can move forward.
+
+* Researcher: [Jean Piaget](https://www.google.com/search?q=jean+piaget&kgmid=/m/0nkt0#sv=CBwS7QMKugMStwMK9wJBTW4zLXlUQ1kwbjlFLUNCY01NOVR5ZnREV0ZQdWpRcGtzNk9YQURmd3JiYVNUV293eXZ5NjdYVjFYcTJfZXJZRVQ1akdkVjg0bDQ0bEZ6aXhNUHQwWDBFc0ZXdVV4NXJaNzViWlNKSWs4SWVKRy1kbDR3LU1DMnZIamdpYVE4clY1ZFJtNGtEc3U1OHVJZG5Ub291Ykk1QkFrQUkzSDBPdDdLWDJuLUNqM2RCTTVZM0EwTXJQY1lINXFQSFZTeXNUNC1YaEoxOFRUX2lnaHUzWUo0TlBYUkZkT3lZZjZnTHVHU3d6NHc2UWxKTmFKMHpZdmNMUHBFMXhqeEZFSGJLcnhvckdNWHY5V1VLd0stRlBGeVpqbnNTejg0RjFiRTVRNXdlUFQ1VTE0Zm1XdUM5UkxzVERzaGtWcENndDZzSUdBWll2X21UMFZzaGZteHdyWmEzN2Z2dTJwVUhoSEg0VW9zLXlXUU56VG1wSTl3eGhoRzBwaHMSF3JaVDVhZGJnSjh1NnJ1RVBtN2VDeUFjGiJBSktMRm1KNnd2U1Y2WUlOMFRMbWplUkFVaHpoWDNpSFp3EgQ3ODU0GgEzIhAKAXESC2plYW4gcGlhZ2V0IhEKBWtnbWlkEggvbS8wbmt0MCgAGEUg6J-1_wY).
+* The Path: Moves from concrete, physical objects to abstract concepts, and finally to vision-logic—the ability to see how multiple abstract systems interact.
+* Pragmatic Question: Can I hold two contradictory ideas in my mind at once without one "killing" the other? [1, 2, 3]
+
+## 2. Self-Identity Line: "Who am I?"
+This is the line you’ve already begun exploring with [Cook-Greuter](https://www.sloww.co/ego-development-theory-cook-greuter/).
+
+* Researchers: [Susanne Cook-Greuter](https://pmc.ncbi.nlm.nih.gov/articles/PMC6208876/) and [Jane Loevinger](https://www.google.com/search?q=jane+loevinger&kgmid=/m/06ypbz#sv=CBwS8QMKugMStwMK9wJBTW4zLXlReWk2VmtIbkp0RXFaWlo4OEF0QkdwaUNvNDRyQndtN3Y1dVZYb2l6NWc0dmt5UkpGYXBaNnZGUTdvLXdFa1k3UmtaamtBbDdwZ1BVWFB0b0x5T1g5RWc3Ry1XVWVjaDdrTnRHMW4yOFVQYmJvcWQyT2pXRjRnOGh4WXVmWFBiVTNtNk9WbVUyTzBPNGlwWDJGU1NRRTVmT2tHa1pGR0JsekMwdUFTemxlOTRQOHNNaEQ1WjhDVTNsXzBWeXc5WFp1dDF2NTVtZmhRUHNfWEFhcl9taWhmUFhWNFVabDBaZUZUVWFOOGdCUEw3SlBraDZWbVV3SzM3Z3ZoWUpxYVRUeDZsYldrSmQzbEZMQ19NbkkwNFctcS1maWk0MmZzclZiWTlNcnk4Q2FEcm90OHNmS0htanFZM1dXTi1FUHJIY3d3dUYzOG5ab0VEVG9HRUVhVnVDX3g0ckE5WHVIZnRyaWgxOE9acWtTTjQwWjFhTzgSF3JaVDVhZGJnSjh1NnJ1RVBtN2VDeUFjGiJBSktMRm1JejJpUGgtTXBNZng5NjNxMlNrMDdONnZKRDFBEgQ3ODU0GgEzIhMKAXESDmphbmUgbG9ldmluZ2VyIhIKBWtnbWlkEgkvbS8wNnlwYnooABhFIJfb__sM).
+* The Path: Moves from an impulsive ego to a socialized one, then to an autonomous "strategist," and finally to a unitive "witness".
+* Pragmatic Question: Is the "I" that is coding right now a fixed entity, or a temporary focus of a larger society? [1, 4]
+
+## 3. Moral Line: "What is the right thing to do?"
+This tracks your sense of justice and who is included in your "circle of care."
+
+* Researcher: [Lawrence Kohlberg](https://seattleanxiety.com/lawrence-kohlbergs-stages-of-moral-development). [1, 3]
+* The Path:
+* Pre-conventional: "What’s in it for me?" (Avoid punishment).
+   * Conventional: "What does my tribe/society say is right?".
+   * Post-conventional: "What universal ethical principles apply to everyone?". [5]
+* Pragmatic Question: If no one were watching, would my decision change?
+
+## 4. Values Line: "What is important to me?"
+This describes the "worldview" or "cultural gravity" you live within.
+
+* Researchers: [Clare Graves](https://www.google.com/search?q=clare+graves&kgmid=/m/0242hx#sv=CBwS7wMKugMStwMK9wJBTW4zLXlUQWkySWJmNHYyLTZ1YTVlNGxQWndQQ1pUd2VxT0RCRVpZdnRRd0d0XzZ0SGhYX05IZ2JRWkl4M1hncFRyYmx5SE4zSkdOZ3BMVW53b0FGaGRCcnFfdzkweTA4eXRYRFJFdlA5eVZ0YTc5SWxqT0dtNUs4VHdiNGVXZk4yT3ZKclN6ZG02LTZaN29UUVZtQ2txenJTQkRKYlFqRnRJREU3UWRoOWdaODJKYjZFU0NGMUJkV1pweUdwOVFtSWdDU2Vya1VpTndpbnhhSUlydEVTUk5lUVVzeFN5YUJUU3lTc2dURVVxTlVWMGlSRWt3dHMzaThyMFJKR04tWWlfa21CU3Ntd3lJTWJ3Z3RWZzNVOWxvbUdPZG1fWlJRUUtNeld6c1AzY2hqNExfYmJJSHFZRDlwNTRRRXFoa2lUN1hqNEZlNGtNOUVDY2ZUUTV2UTY4UGhEaEhHYU9Da1V2QlUzVXpjMnhjZGhxQi1QbUdsV0kSF3JaVDVhZGJnSjh1NnJ1RVBtN2VDeUFjGiJBSktMRm1KcVZFRTZmTEppaUNHSWVCZUpweTZqS1gwdnZnEgQ3ODU0GgEzIhEKAXESDGNsYXJlIGdyYXZlcyISCgVrZ21pZBIJL20vMDI0Mmh4KAAYRSDD0rSKBA) and [Spiral Dynamics](https://integrallife.com/welcome-to-the-integral-approach/).
+* The Path: Moves from survival (Beige) to tribal (Purple) to power (Red) to order (Blue) to achievement (Orange) to sensitive/pluralistic (Green) to integral (Yellow).
+* Pragmatic Question: Do I value this because it’s true, or because it makes me feel safe/successful? [1]
+
+## 5. Needs Line: "What do I need?"
+This tracks the fundamental drivers behind your actions.
+
+* Researcher: Abraham Maslow.
+* The Path: Moves from basic physiological needs to safety, love/belonging, esteem, and finally self-actualization.
+* Pragmatic Question: Which 'part' of me is currently hungry—my stomach, my ego, or my soul? [1]
+
+## 6. Spiritual Line: "What is of ultimate concern?"
+Spirit can be a state of mind, but it also unfolds in a developmental line of maturity.
+
+* Researcher: [James Fowler](https://integrallife.com/lines-of-development/).
+* The Path: Moves from literal/mythic faith to individual/reflective faith and eventually to a unitive, universalizing faith.
+* Pragmatic Question: What do I trust in when all my 'parts' are silent? [6, 7]
+
+## Pragmatic Reading List for Further Inquiry
+
+* For the Moral/Self Line: [The Evolving Self](https://www.google.com/search?q=the+evolving+self&kgmid=/m/069d1mr#sv=CBwS9QMKugMStwMK9wJBTW4zLXlRZVpHVEJ3MXpCc201QWtXVkl0X1JUMFZBV3Z5U3RnelNNYUppdlNlcEhqTUtQcWxidlU3YlB4TjRub3ZEN19sdUF3bVROM0IyTFh5UjVUZGhVVGllYzZvWW5CVllkTnFieklEa3JiaHRTcnBvUE9Ud0hobExHdldMUmFYWmtPZTdPTTF0ZEsxNFE2blBCRFhwYWhpTEdTRWtXdjZ2a00yQVJ5dXFvZHJ1OWdJbUlKNzV6VHo1WFVCT2tHUWxoN2RYdW1WSkIza2JaOVpBMVBDd1dXVjB2dXNQRERFNVNZUU1tMmpMSUhIaHNmejVpNEx4YXBaQWFJS3c1Vjd6LWh2cGU4elRDbThQaFBnWVVGZXl1OExwSTZjaTVpeWszMHhWTEcySWxoOWpXM2hxWkNURVFVZXhkSjBUQjR1WmF5YWx0cWd1eVpTNXBRTGEwZ1B5bUNhQ0dOMlczMlhVUGZTUG9YTlg0QnpCRjNZNS1nenMSF3JaVDVhZGJnSjh1NnJ1RVBtN2VDeUFjGiJBSktMRm1LN2luc3BZc0JJcnFHTmJBYlN5YWxwQ3F5WU93EgQ3ODU0GgEzIhYKAXESEXRoZSBldm9sdmluZyBzZWxmIhMKBWtnbWlkEgovbS8wNjlkMW1yKAAYRSDxh9H0Bw) by [Robert Kegan](https://ftp.spaceneedle.com/browse/mL9FCB/604702/Robert%20Kegan%20The%20Evolving%20Self.pdf). This is excellent for understanding the subject-object shift you mentioned earlier. [8]
+* For the Values Line: [Spiral Dynamics](https://www.google.com/search?q=Spiral+Dynamics&kgmid=/hkb/-945144733#sv=CBwS4wQKpQQSogQK4gNBTW4zLXlTY1p6Y1VWUnVIcDFXZ0VvdmhyOV9GQVJvTDVqQ3VhOEdtSXI1cWxmbnpVZW9qMFFwM056RHpvYlJwZzV1TWlLekpia1Vxb1RWWlZ6THotVXBOcHJhcEduRnRCRGNvWkNSZWdPTHRXYnhPd3hRN2w4aHA0LTB1d1QwMmN6WUlDaEJYc0F4S0FBamx4a2ludXp1QnlrZXBJVi1nODB0dnk2NUV2Q2k0UkppbFRYVTBnZUJtZzF2ZHRGTWpxbVdwTERWdzF3YnQxdWpoNUlUWVdjLWRIVGJEejZwNlVGbExxSFktb0UzZXBXMTlvYUtUMUN5bUhWWTFxc083RU5XcHJybzRaZ1ZXdGkzbWUxQmFKZFhTZDY4dGdqUml6UjRZTlpUVldfdUxXRVdtRV9ONE9pV1ZrOU4xdlMtVmZCS0NFMHZEdnRQVjgtbHFyYkZmbC1wLWNTcWtoNVBVV3dwUlkxdTlZMEE3a081SzFuVkF6VUFzdlZZd1VNN3J4MXR4RE5zZTY4OXVzQTV2cElzX2lzbEtoNk80WlFQa19ZQmVnWU5ySEVRNlBULXA0bDg5TDZvaGxIUU1HTnFDazR0aHpWRTlNV0ZvSGpNaUx3dW5NX0hkRG11cTMyc0Y2QRIXclpUNWFkYmdKOHU2cnVFUG03ZUN5QWMaIkFKS0xGbUtmeDJZVmdyd1MwNl9RbG9kOUVxV0pOSzlUS3cSBDc4NTQaATMiFAoBcRIPU3BpcmFsIER5bmFtaWNzIhgKBWtnbWlkEg8vaGtiLy05NDUxNDQ3MzMoABhFIMiqqcYI) by Don Beck and Christopher Cowan. This provides a "color-coded" map of why people (and parts of yourself) disagree so fundamentally. [1]
+* For the Integral Map: [Integral Psychology](https://www.google.com/search?q=Integral+Psychology&kgmid=/hkb/359461053#sv=CBwS-wQKugQStwQK9wNBTW4zLXlSSDU2N2xraGw0LUpYajZFSHBQT3p2YlBnWUdMZllBQUI5MVVHWW10V1oxeGM0ZkNIdGhwRkl5Y1UtVUc5VmI5V1JJVUo4eE96bUt4WWNvblZLb19QS2NNcjJnTlptQ0thS3MyMUVRMXBYd2NRY2VuQ3FfM1hudk82enE0aE9rMUlXV0JVa1RJNGVjM09jN2YwLUx4QnduQUswN2QxTU5rNGw2eTg4cXlNMW9MNko5QmRoR2lLem9kZG04QXgyc2hXdVoxbnFmNUtiaFphekN4NkY4cTBVTGU5RFd2S1htQlNnTEtRLWF4a2NyX0QyOURwY3NFTG82bDFsQ2xnS0JfUkVyQm9nNFBHM3V3Y3BySVZZOVV4eUhoR3RQdFU5MjBnRUhHRHJRdlZaNHh4UXJpNnRzTlFRbnBBcnF0TmVuNXFOUXQ5Y1NkdGZRanNRZXdkdXhwZjBFUGpaVGR0WV9MNFRlandWS0Y4N05YcUlETkExZngyWFNJLUhtNUdJeTc1T1RDUlpZSGMyYngyYjczM3JGUTlzRjF4SmVuYlNUdm1rbmFVLW9sYmpJcEpyRzFHeVNGdmFDVkpHSUp4M3FGbmVqcHRyRUxxVEltZTc0eG43NDFPZ3YzWTNFakhXSjhtR2RFTE1iTWNyV1JlUVd4MBIXclpUNWFkYmdKOHU2cnVFUG03ZUN5QWMaIkFKS0xGbUlYb0pQMmxuMXNVRzRlWE90Z1NZUDR4alZRTUESBDc4NTQaATMiGAoBcRITSW50ZWdyYWwgUHN5Y2hvbG9neSIXCgVrZ21pZBIOL2hrYi8zNTk0NjEwNTMoABhFINz-va4E) by Ken Wilber. This is his most comprehensive attempt to "stack" all these lines together in one chart.
+
+Which of these "Pragmatic Questions" feels most relevant to the work you're doing on the job right now?
+
+[1] [https://integrallife.com](https://integrallife.com/welcome-to-the-integral-approach/)
+[2] [https://www.britannica.com](https://www.britannica.com/science/Lawrence-Kohlbergs-stages-of-moral-development)
+[3] [https://seattleanxiety.com](https://seattleanxiety.com/lawrence-kohlbergs-stages-of-moral-development)
+[4] [https://www.sloww.co](https://www.sloww.co/ego-development-theory-cook-greuter/)
+[5] [https://agentsofchangeprep.com](https://agentsofchangeprep.com/blog/kohlbergs-stages-of-moral-development-and-the-aswb-exam/)
+[6] [https://www.evandwan.com](https://www.evandwan.com/integral-theory-multiple-intelligences-lines-development/)
+[7] [https://integrallife.com](https://integrallife.com/lines-of-development/#:~:text=Context%20Visualization.%20This%20map%20provides%20a%20comprehensive,perception%2C%20understanding%2C%20and%20interaction%20with%20the%20world.)
+[8] [https://ftp.spaceneedle.com](https://ftp.spaceneedle.com/browse/mL9FCB/604702/Robert%20Kegan%20The%20Evolving%20Self.pdf#:~:text=The%20Core%20Concept:%20The%20Evolving%20Self%20At,the%20world%2C%20influencing%20beliefs%2C%20values%2C%20and%20behaviors.)
 
