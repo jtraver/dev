@@ -1,0 +1,148 @@
+<h2 class="sr-only">A translucent Hill tetrahedron (orthoscheme — the space-filling tetrahedron, six of which assemble into a cube) encapsulates the kissing-number configuration of 13 unit spheres. Drag to rotate.</h2>
+<div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 8px; flex-wrap: wrap;">
+  <div style="font-size: 13px; color: var(--color-text-secondary);">
+    Hill tetrahedron (orthoscheme): 6 of these tile a cube. Drag to rotate.
+  </div>
+  <div style="display: flex; gap: 8px;">
+    <button id="toggleSpin" style="font-size: 13px;">Pause spin</button>
+    <button id="toggleFaces" style="font-size: 13px;">Hide faces</button>
+  </div>
+</div>
+<div id="stage" style="width: 100%; height: 520px; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); overflow: hidden; touch-action: none;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  const stage = document.getElementById('stage');
+  const w = stage.clientWidth, h = stage.clientHeight;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(36, w/h, 0.1, 200);
+  camera.position.set(12, 9, 34);
+  camera.lookAt(0,0,0);
+
+  const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(w, h);
+  stage.appendChild(renderer.domElement);
+
+  scene.add(new THREE.AmbientLight(0xffffff, 0.55));
+  const key = new THREE.DirectionalLight(0xffffff, 0.95);
+  key.position.set(8, 10, 12); scene.add(key);
+  const fill = new THREE.DirectionalLight(0xffffff, 0.35);
+  fill.position.set(-8, -4, 8); scene.add(fill);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  const sphereGeo = new THREE.SphereGeometry(1, 48, 36);
+  const centerMat = new THREE.MeshStandardMaterial({color: 0x8a8a8a, roughness: 0.55, metalness: 0.05});
+  group.add(new THREE.Mesh(sphereGeo, centerMat));
+
+  const phi = (1 + Math.sqrt(5)) / 2;
+  const raw = [
+    [0, 1, phi],[0,-1, phi],[0, 1,-phi],[0,-1,-phi],
+    [1, phi, 0],[-1, phi, 0],[1,-phi, 0],[-1,-phi, 0],
+    [phi, 0, 1],[phi, 0,-1],[-phi, 0, 1],[-phi, 0,-1]
+  ];
+  const mag = Math.sqrt(1 + phi*phi);
+  const sc = 2 / mag;
+  const ramps = [0x7F77DD, 0x1D9E75, 0xD85A30, 0xD4537E, 0x378ADD, 0xEF9F27];
+  raw.forEach((v, i) => {
+    const mat = new THREE.MeshStandardMaterial({color: ramps[i % ramps.length], roughness: 0.5, metalness: 0.05});
+    const m = new THREE.Mesh(sphereGeo, mat);
+    m.position.set(v[0]*sc, v[1]*sc, v[2]*sc);
+    group.add(m);
+  });
+
+  const s = 18;
+  const sqrt2 = Math.SQRT2;
+  const denom = 1 + sqrt2;
+  const cx = s * (sqrt2 + 0.5) / denom;
+  const cy = s * (sqrt2/2 + 0.5) / denom;
+  const cz = s * 0.5 / denom;
+  const V0 = [0 - cx, 0 - cy, 0 - cz];
+  const V1 = [s - cx, 0 - cy, 0 - cz];
+  const V2 = [s - cx, s - cy, 0 - cz];
+  const V3 = [s - cx, s - cy, s - cz];
+
+  const tetGeo = new THREE.BufferGeometry();
+  const verts = new Float32Array([
+    ...V0, ...V2, ...V1,
+    ...V1, ...V2, ...V3,
+    ...V0, ...V3, ...V2,
+    ...V0, ...V1, ...V3
+  ]);
+  tetGeo.setAttribute('position', new THREE.BufferAttribute(verts, 3));
+  tetGeo.computeVertexNormals();
+
+  const tetMat = new THREE.MeshStandardMaterial({
+    color: 0x7F77DD,
+    transparent: true,
+    opacity: 0.13,
+    side: THREE.DoubleSide,
+    depthWrite: false,
+    roughness: 0.8,
+    metalness: 0.0
+  });
+  const tetMesh = new THREE.Mesh(tetGeo, tetMat);
+  tetMesh.renderOrder = 2;
+  group.add(tetMesh);
+
+  const edgeGeo = new THREE.EdgesGeometry(tetGeo);
+  const edgeMat = new THREE.LineBasicMaterial({color: 0x26215C, transparent: true, opacity: 0.9});
+  const edges = new THREE.LineSegments(edgeGeo, edgeMat);
+  edges.renderOrder = 3;
+  group.add(edges);
+
+  const vertGeo = new THREE.SphereGeometry(0.22, 16, 12);
+  const vertMat = new THREE.MeshStandardMaterial({color: 0x26215C, roughness: 0.4});
+  [V0, V1, V2, V3].forEach(v => {
+    const m = new THREE.Mesh(vertGeo, vertMat);
+    m.position.set(v[0], v[1], v[2]);
+    group.add(m);
+  });
+
+  let spin = true, showFaces = true;
+  document.getElementById('toggleSpin').addEventListener('click', (e) => {
+    spin = !spin;
+    e.target.textContent = spin ? 'Pause spin' : 'Resume spin';
+  });
+  document.getElementById('toggleFaces').addEventListener('click', (e) => {
+    showFaces = !showFaces;
+    tetMesh.visible = showFaces;
+    e.target.textContent = showFaces ? 'Show faces' : 'Hide faces';
+  });
+
+  let dragging = false, lastX = 0, lastY = 0;
+  let rotY = 0.3, rotX = 0.25;
+  stage.addEventListener('pointerdown', (e) => {
+    dragging = true; lastX = e.clientX; lastY = e.clientY;
+    stage.setPointerCapture(e.pointerId);
+  });
+  stage.addEventListener('pointermove', (e) => {
+    if (!dragging) return;
+    rotY += (e.clientX - lastX) * 0.008;
+    rotX += (e.clientY - lastY) * 0.008;
+    rotX = Math.max(-1.2, Math.min(1.2, rotX));
+    lastX = e.clientX; lastY = e.clientY;
+  });
+  stage.addEventListener('pointerup', () => { dragging = false; });
+  stage.addEventListener('pointercancel', () => { dragging = false; });
+
+  function tick() {
+    if (spin && !dragging) rotY += 0.0035;
+    group.rotation.y = rotY;
+    group.rotation.x = rotX;
+    renderer.render(scene, camera);
+    requestAnimationFrame(tick);
+  }
+  tick();
+
+  window.addEventListener('resize', () => {
+    const W = stage.clientWidth, H = stage.clientHeight;
+    camera.aspect = W/H; camera.updateProjectionMatrix();
+    renderer.setSize(W, H);
+  });
+})();
+</script>
