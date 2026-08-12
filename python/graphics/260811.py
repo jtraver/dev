@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python3
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -9,9 +9,9 @@ center = np.array([0, 0, 0])
 
 # 2. Define the 12 kissing spheres (FCC / Cuboctahedron packing)
 # Assuming sphere radius = 1, distance from center to outer centers = 2
-directions = [, [1, -1, 0], [-1, 1, 0], [-1, -1, 0],
-, [1, 0, -1], [-1, 0, 1], [-1, 0, -1],
-, [0, 1, -1], [0, -1, 1], [0, -1, -1]
+directions = [ [1, -1, 0], [-1, 1, 0], [-1, -1, 0],
+[1, 0, -1], [-1, 0, 1], [-1, 0, -1],
+[0, 1, -1], [0, -1, 1], [0, -1, -1]
 ]
 spheres = np.array(directions) * np.sqrt(2) / 2 * 2 # Normalized distance
 
@@ -29,8 +29,7 @@ for i, pos in enumerate(spheres):
 
 # 4. Add the Hill Tetrahedron (Vertices example)
 # Hill tetrahedra have specific vertex ratios based on the space-filling properties
-tetra_vertices = np.array([,
- ,
+tetra_vertices = np.array([
     [1, np.sqrt(3), 0],
     [1, 1/np.sqrt(3), np.sqrt(8/3)]
 ]) * 2  # Scaled to encapsulate the spheres
