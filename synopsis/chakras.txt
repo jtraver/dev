@@ -29,7 +29,7 @@
     ?? love: my words are a blessing
 
 6
-    fear: I see danger
+    ? fear: I see danger
 
 7
     ??
